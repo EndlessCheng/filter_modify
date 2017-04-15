@@ -522,6 +522,8 @@ def modify_filter(filter_manager):
     filter_manager.append_block(block)
     filter_manager.append_block(FilterBlock(status=HIDE,
                                             Class='"Life Flask"', BaseType='Sanctified Eternal', SetFontSize=20))
+    filter_manager.append_block(FilterBlock(status=HIDE,
+                                            Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=20))
 
     filter_manager.add_comment(2001, 'Hide outdated flasks')
     filter_manager.extend_blocks(block_number=2001)
