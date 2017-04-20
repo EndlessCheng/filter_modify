@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-import copy
-
 from filter_modify import *
 import filter_config
 
@@ -318,6 +316,9 @@ def modify_filter(filter_manager):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2].status = HIDE
+    if filter_config.LEVELING_GEMS_BASE_TYPE != '':
+        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE)
+        blocks.insert(2, tmp)
     filter_manager.extend_blocks(blocks)
 
     # 15改成10，显示Q>=5的功能瓶
@@ -533,10 +534,16 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(2003, 'Hybrid flasks (magic)')
 
     filter_manager.add_comment(2004, 'Life/Mana Flask - Normal (Kudos to Antnee)')
-    filter_manager.extend_blocks(block_number=2004)
+    blocks = filter_manager.get_block(2004)
+    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2005, 'Life/Mana Flask - Magic (Kudos to Antnee)')
-    filter_manager.extend_blocks(block_number=2005)
+    blocks = filter_manager.get_block(2005)
+    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2006, 'Show remaining flasks')
 
@@ -546,7 +553,8 @@ def modify_filter(filter_manager):
     blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
                      ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
                      SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    blocks[1].SetFontSize = 45
+    if filter_config.RARE_BOOTS_ALERT:
+        blocks[1].modify(SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2102, 'Leveling rares - remaining rules')
@@ -647,9 +655,9 @@ def modify_filter(filter_manager):
 
 if __name__ == '__main__':
     with open("NeverSink's filter - 1-REGULAR.filter") as f:
-        filter_manager = FilterManager(f.readlines())
+        fm = FilterManager(f.readlines())
 
-    modify_filter(filter_manager)
+    modify_filter(fm)
 
     with open("C:\Users\Endless\Documents\My Games\Path of Exile\MODIFY.filter", 'w') as f:
-        f.writelines(filter_manager.new_text)
+        f.writelines(fm.new_text)
