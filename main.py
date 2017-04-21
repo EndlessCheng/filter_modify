@@ -638,7 +638,7 @@ def modify_filter(filter_manager):
     tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armours" "Helmets"', ItemLevel='<= 3')
     filter_manager.append_block(tmp)
     filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
-    filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
+    # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
 
     # 改成18
     filter_manager.add_comment(2400, 'HIDE LAYER 5 - Remaining Items')

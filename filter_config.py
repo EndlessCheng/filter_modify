@@ -11,6 +11,8 @@ _FIRST_CHAR = True
 # Essence = 1-46 12-66 30 48 68
 # Ex >= 35(A4N)
 # Ring-Amulet-Belt's T1-Life >= 44(A2C), 54(A4C), 64(A3M)
+# Resistance = 12x
+# MS = 1 15 30 40 55
 
 if _FIRST_CHAR:
     # Dex: "Citrine" "Jade" "Turquoise"  Int: "Agate" "Lapis" "Turquoise" (5 16)
@@ -20,9 +22,8 @@ if _FIRST_CHAR:
     # "Rustic Sash" "Leather Belt" (1 8)
     BELTS_BASE_TYPE = '' + ' "Leather Belt" ' + ' "Rustic Sash" '
 
-    # 1 15 30 40 55
-    # '>= 1'  '>= 15'  '< 2'
-    MAGIC_BOOTS_ITEM_LEVEL = '>= 1'
+    # '>= 1' '< 2'
+    MAGIC_BOOTS_ITEM_LEVEL = '< 2'
 
     HIDE_FLASK_MANA = False
     HIDE_FLASK_LIFE = False
@@ -42,9 +43,10 @@ if _FIRST_CHAR:
     # ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" ' \
     # ' "Vortex" "Ancestral Warchief" "Earthquake" "Less Duration" "Increased Duration" ' \
     # ' "Immortal Call" "Cast when Damage Taken" "Increased Area of Effect" '
-    LEVELING_GEMS_BASE_TYPE = '' + ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" ' \
-                                   ' "Vortex" "Ancestral Warchief" "Earthquake" "Less Duration" "Increased Duration" ' \
-                                   ' "Immortal Call" "Cast when Damage Taken" "Increased Area of Effect" '
+    LEVELING_GEMS_BASE_TYPE = '"Vortex"' \
+                              + ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" ' \
+                                ' "Vortex" "Ancestral Warchief" "Earthquake" "Less Duration" "Increased Duration" ' \
+                                ' "Immortal Call" "Cast when Damage Taken" "Increased Area of Effect" '
 
     NEED_MAP = True
 
