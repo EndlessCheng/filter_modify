@@ -558,7 +558,6 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(2102, 'Leveling rares - remaining rules')
     filter_manager.extend_blocks(block_number=2102)
 
-    # 只要小的换洗色
     filter_manager.add_comment(2201, 'Leveling RGB Exceptions 3L')
     filter_manager.extend_blocks(block_number=2201)
 
