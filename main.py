@@ -180,18 +180,16 @@ def modify_filter(filter_manager):
     # * 高亮蜕变和磨刀石
     filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks = filter_manager.get_block(400)
-    tmp = blocks[0].copy_modify(BaseType='"Orb of Alteration"', PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
     if not filter_config.CURRENCY_ALERT_CHANCE:
-        tmp.BaseType += ' "Orb of Chance"'
+        blocks[0].BaseType += ' "Orb of Chance" '
     if filter_config.CURRENCY_ALERT_TRANSMUTATION:
-        tmp.BaseType += ' "Orb of Transmutation"'
+        blocks[0].BaseType += ' "Orb of Transmutation" '
     if filter_config.CURRENCY_ALERT_AUGMENTATION:
-        tmp.BaseType += ' "Orb of Augmentation"'
-    blocks.insert(0, tmp)
-    blocks[1].BaseType = '"Chromatic Orb" "Jeweller\'s Orb" "Orb of Transmutation"'
+        blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
-        blocks[1].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[2].BaseType = '"Alchemy Shard"'
+        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
+    blocks[1].BaseType = '"Orb of Transmutation" "Alchemy Shard"'
     blocks[-1].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
     blocks.append(blocks[-1].copy_modify(BaseType='"Scroll of Wisdom"',
                                          SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
@@ -317,7 +315,7 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2].status = HIDE
     if filter_config.LEVELING_GEMS_BASE_TYPE != '':
-        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE)
+        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE, PlayAlertSound=SOUND_MID_VALUE)
         blocks.insert(2, tmp)
     filter_manager.extend_blocks(blocks)
 
@@ -562,7 +560,7 @@ def modify_filter(filter_manager):
 
     # 只要小的换洗色
     filter_manager.add_comment(2201, 'Leveling RGB Exceptions 3L')
-    filter_manager.extend_blocks(filter_manager.get_block(2201)[:3])
+    filter_manager.extend_blocks(block_number=2201)
 
     # 显示部分蓝白三小件
     filter_manager.add_comment(2202, 'Jewellery & Helpful leveling and racing gear')
