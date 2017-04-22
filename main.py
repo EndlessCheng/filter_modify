@@ -313,7 +313,7 @@ def modify_filter(filter_manager):
     blocks[0], blocks[1] = blocks[1], blocks[0]
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[2].status = HIDE
+    blocks[2].status = DEBUG
     if filter_config.LEVELING_GEMS_BASE_TYPE != '':
         tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE, PlayAlertSound=SOUND_MID_VALUE)
         blocks.insert(2, tmp)
@@ -329,7 +329,7 @@ def modify_filter(filter_manager):
     blocks[2].Quality = '>= 10'
     del blocks[3:5], blocks[-4]  # 注意这里相当于两个del语句
     blocks[-3].modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, SetFontSize=38)
-    blocks[-2].status = HIDE
+    blocks[-2].status = DEBUG
     blocks.insert(0, tmp)
     filter_manager.extend_blocks(blocks)
 
