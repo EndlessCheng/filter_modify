@@ -127,7 +127,7 @@ def modify_filter(filter_manager):
     ))
     if filter_config.AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            Class='Amulet', BaseType=filter_config.AMULET_BASE_TYPE, Rarity=RARITY_NORMAL, SetTextColor=COLOR_WHITE
+            Class='Amulets', BaseType=filter_config.AMULET_BASE_TYPE, Rarity=RARITY_NORMAL, SetTextColor=COLOR_WHITE
         ))
     if filter_config.RINGS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -632,7 +632,7 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(2303, 'Magic items - progression')
     blocks = filter_manager.get_block(2303)
     # 这两个部位的蓝装没意义——迟早要被白装/RR替代
-    tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armours" "Helmets"', ItemLevel='<= 3')
+    tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
     filter_manager.append_block(tmp)
     filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
     # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
