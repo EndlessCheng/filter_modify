@@ -119,12 +119,13 @@ def modify_filter(filter_manager):
 
     # 三小件等
     filter_manager.add_comment(211, 'Remaining crafting rules - add your own bases here!')
-    filter_manager.append_block(FilterBlock(
-        BaseType='"Vaal Axe"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
-    ))
-    filter_manager.append_block(FilterBlock(
-        BaseType='"Astral Plate"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
-    ))
+    if filter_config.SKILL == 'melee':
+        filter_manager.append_block(FilterBlock(
+            BaseType='"Vaal Axe"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
+        ))
+        filter_manager.append_block(FilterBlock(
+            BaseType='"Astral Plate"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
+        ))
     if filter_config.AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=filter_config.AMULET_BASE_TYPE, Rarity=RARITY_NORMAL, SetTextColor=COLOR_WHITE
@@ -254,7 +255,12 @@ def modify_filter(filter_manager):
     blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
     filter_manager.extend_blocks(blocks)
 
+# TODO !!!!
     filter_manager.add_comment(608, 'All 1H and 2H Staves')
+    # blocks = filter_manager.get_block(608)
+    # blocks[-2].status = DEBUG
+    # blocks[-1].status = DEBUG
+    # filter_manager.extend_blocks(blocks)
 
     # 隐藏bad
     filter_manager.add_comment(615, '2H Swords, Axes, Maces')
@@ -280,6 +286,10 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(619, 'OH: Shields')
+    blocks = filter_manager.get_block(619)
+    # blocks[-2].status = DEBUG
+    # blocks[-1].status = DEBUG
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(620, 'OH: Quivers')
 
@@ -548,9 +558,10 @@ def modify_filter(filter_manager):
     # 4L RRR 稀有
     filter_manager.add_comment(2101, 'Leveling rares - tier list')
     blocks = filter_manager.get_block(2101)
-    blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
-                     SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+    if filter_config.SKILL == 'melee':
+        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     if filter_config.RARE_BOOTS_ALERT:
         blocks[1].modify(SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
     filter_manager.extend_blocks(blocks)
@@ -574,23 +585,24 @@ def modify_filter(filter_manager):
     # 4L RRR, 3L RR, 2L RR
     filter_manager.add_comment(2204, 'Linked gear')
     blocks = filter_manager.get_block(2204)
-    blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
-                     SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    blocks[1].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= ' + str(filter_config.LINKED4_MAGIC_MAX_ITEM_LEVEL),
-                     SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    blocks[2].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=40)
-    blocks[3].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=42)
-    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
-    blocks[5].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
-    blocks[6].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
-    blocks[7].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= 7', SetFontSize=40)
-    blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
-                     ItemLevel='<= 15', SetFontSize=40)
+    if filter_config.SKILL == 'melee':
+        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+        blocks[1].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_MAGIC_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+        blocks[2].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=40)
+        blocks[3].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=42)
+        blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+        blocks[5].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
+        blocks[6].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
+        blocks[7].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= 7', SetFontSize=40)
+        blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= 15', SetFontSize=40)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2205, '20% quality items for those strange people who want them')
@@ -631,10 +643,13 @@ def modify_filter(filter_manager):
     # 蓝装1-3
     filter_manager.add_comment(2303, 'Magic items - progression')
     blocks = filter_manager.get_block(2303)
-    # 这两个部位的蓝装没意义——迟早要被白装/RR替代
-    tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
-    filter_manager.append_block(tmp)
-    filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
+    if filter_config.SKILL == 'melee':
+        # 这两个部位的蓝装没意义——迟早要被白装/RR替代
+        tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
+        filter_manager.append_block(tmp)
+        filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
+    elif filter_config.SKILL == 'spell':
+        filter_manager.extend_blocks(blocks)
     # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
 
     # 改成18
