@@ -119,12 +119,16 @@ def modify_filter(filter_manager):
 
     # 三小件等
     filter_manager.add_comment(211, 'Remaining crafting rules - add your own bases here!')
-    if filter_config.SKILL == 'melee':
+    if 'm' in filter_config.SKILL:
         filter_manager.append_block(FilterBlock(
             BaseType='"Vaal Axe"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
         ))
         filter_manager.append_block(FilterBlock(
             BaseType='"Astral Plate"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
+        ))
+    if 's' in filter_config.SKILL:
+        filter_manager.append_block(FilterBlock(
+            BaseType='"Opal Sceptre" "Void Sceptre"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
         ))
     if filter_config.AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -222,12 +226,24 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].modify(SetBackgroundColor=COLOR_BROWN + ' 225', PlayAlertSound=SOUND_MID_VALUE)
     blocks[3].modify(SetBackgroundColor=COLOR_BROWN + ' 225', PlayAlertSound=SOUND_MID_VALUE)
-    blocks.insert(4, blocks[2].copy_modify(BaseType='"Vaal Regalia" "Astral Plate"', PlayAlertSound=SOUND_CHANCE))
-    blocks.insert(5, blocks[3].copy_modify(BaseType='"Vaal Regalia" "Astral Plate"', PlayAlertSound=SOUND_CHANCE))
-    blocks.insert(6, blocks[2].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
-                                           PlayAlertSound=SOUND_CHANCE))
-    blocks.insert(7, blocks[3].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
-                                           PlayAlertSound=SOUND_CHANCE))
+    blocks.insert(4, blocks[2].copy_modify(BaseType='"Vaal Regalia" ', PlayAlertSound=SOUND_CHANCE))
+    blocks.insert(5, blocks[3].copy_modify(BaseType='"Vaal Regalia" ', PlayAlertSound=SOUND_CHANCE))
+    if 'm' in filter_config.SKILL:
+        blocks[4].BaseType += ' "Astral Plate" '
+        blocks[5].BaseType += ' "Astral Plate" '
+    if 's' in filter_config.SKILL:
+        blocks[4].BaseType += ' "Opal Sceptre" "Void Sceptre" "Bone Spirit Shield" "Ivory Spirit Shield" "Fossilised Spirit Shield" '
+        blocks[5].BaseType += ' "Opal Sceptre" "Void Sceptre" "Bone Spirit Shield" "Ivory Spirit Shield" "Fossilised Spirit Shield" '
+    if 'm' in filter_config.SKILL:
+        blocks.insert(6, blocks[2].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
+                                               PlayAlertSound=SOUND_CHANCE))
+        blocks.insert(7, blocks[3].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
+                                               PlayAlertSound=SOUND_CHANCE))
+    elif 's' in filter_config.SKILL:
+        blocks.insert(6, blocks[2].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
+                                               PlayAlertSound=SOUND_CHANCE))
+        blocks.insert(7, blocks[3].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
+                                               PlayAlertSound=SOUND_CHANCE))
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(604, 'T1.5 rare items')
@@ -236,13 +252,14 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(605, 'T2 rare items')
     filter_manager.extend_blocks(block_number=605)
 
-    # T2末尾再隐藏一波
+    # T2末尾再隐藏一波非本职业稀有物品，借鉴0700
     blocks = filter_manager.get_block(700)
-    for block in blocks:
-        block.status = DEBUG
-        block.Class = filter_config.HIDE_RARES_LOW
-    blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
-    filter_manager.extend_blocks(blocks)
+    if filter_config.HIDE_RARES_LOW != '':
+        for block in blocks:
+            block.status = DEBUG
+            block.Class = filter_config.HIDE_RARES_LOW
+        blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
+        filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(606, 'Breach Rings')
     filter_manager.extend_blocks(block_number=606)
@@ -255,12 +272,22 @@ def modify_filter(filter_manager):
     blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
     filter_manager.extend_blocks(blocks)
 
-# TODO !!!!
-    filter_manager.add_comment(608, 'All 1H and 2H Staves')
-    # blocks = filter_manager.get_block(608)
-    # blocks[-2].status = DEBUG
-    # blocks[-1].status = DEBUG
-    # filter_manager.extend_blocks(blocks)
+    filter_manager.add_comment(608, '1H Daggers')
+    filter_manager.extend_blocks(block_number=608)
+
+    filter_manager.add_comment(609, '1H Claws')
+
+    filter_manager.add_comment(610, '1H Wands')
+    filter_manager.extend_blocks(block_number=610)
+
+    filter_manager.add_comment(611, '1H Swords and Foils')
+
+    filter_manager.add_comment(612, '1H Axes and Maces')
+
+    filter_manager.add_comment(613, '1H Sceptres')
+    filter_manager.extend_blocks(block_number=613)
+
+    filter_manager.add_comment(614, '2H Staves')
 
     # 隐藏bad
     filter_manager.add_comment(615, '2H Swords, Axes, Maces')
@@ -544,13 +571,13 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(2004, 'Life/Mana Flask - Normal (Kudos to Antnee)')
     blocks = filter_manager.get_block(2004)
     blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
-    blocks[-2].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = None
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2005, 'Life/Mana Flask - Magic (Kudos to Antnee)')
     blocks = filter_manager.get_block(2005)
     blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
-    blocks[-2].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = None
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2006, 'Show remaining flasks')
@@ -558,7 +585,7 @@ def modify_filter(filter_manager):
     # 4L RRR 稀有
     filter_manager.add_comment(2101, 'Leveling rares - tier list')
     blocks = filter_manager.get_block(2101)
-    if filter_config.SKILL == 'melee':
+    if filter_config.SKILL == 'm':
         blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
                          SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
@@ -581,11 +608,15 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2203, 'Caster weapons')
+    if 's' == filter_config.SKILL:
+        blocks = filter_manager.get_block(2203)
+        filter_manager.append_block(blocks[1])
 
     # 4L RRR, 3L RR, 2L RR
     filter_manager.add_comment(2204, 'Linked gear')
     blocks = filter_manager.get_block(2204)
-    if filter_config.SKILL == 'melee':
+    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+    if 'm' in filter_config.SKILL:
         blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
                          SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
@@ -594,7 +625,6 @@ def modify_filter(filter_manager):
                          SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
         blocks[2].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=40)
         blocks[3].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=42)
-        blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
         blocks[5].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
         blocks[6].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
@@ -603,11 +633,16 @@ def modify_filter(filter_manager):
                          ItemLevel='<= 7', SetFontSize=40)
         blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= 15', SetFontSize=40)
-    filter_manager.extend_blocks(blocks)
+        filter_manager.extend_blocks(blocks)
+    elif 's' == filter_config.SKILL:
+        filter_manager.append_block(blocks[4])
+    else:
+        filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2205, '20% quality items for those strange people who want them')
 
     # A1用双持斧/剑，之后用双手斧
+    # 法术武器见2203
     filter_manager.add_comment(2300, 'Levelling - normal and magic item progression')
     block = FilterBlock(status=DEBUG,
                         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" ' + filter_config.HIDE_NORMAL_MAGIC,
@@ -643,12 +678,15 @@ def modify_filter(filter_manager):
     # 蓝装1-3
     filter_manager.add_comment(2303, 'Magic items - progression')
     blocks = filter_manager.get_block(2303)
-    if filter_config.SKILL == 'melee':
+    if 'm' in filter_config.SKILL:
         # 这两个部位的蓝装没意义——迟早要被白装/RR替代
         tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
         filter_manager.append_block(tmp)
         filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
-    elif filter_config.SKILL == 'spell':
+    elif 's' == filter_config.SKILL:
+        # TODO !!!
+        # for block in blocks:
+        #     block.ItemLevel = '<= 4'
         filter_manager.extend_blocks(blocks)
     # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
 
