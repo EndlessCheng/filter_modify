@@ -55,7 +55,7 @@ def modify_filter(filter_manager):
     block = filter_manager.get_block(202)[0]
     tmp = block.copy_modify(Class='"Body Armour"', SetFontSize=45, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"')
+    tmp = tmp.copy_modify(DropLevel='>= 58', Class='"Two Hand"')  # "Two Hand Axes"
     filter_manager.append_block(tmp)
     block.PlayAlertSound = SOUND_CHANCE2
     filter_manager.append_block(block)
@@ -128,7 +128,7 @@ def modify_filter(filter_manager):
         ))
     if 's' in filter_config.SKILL:
         filter_manager.append_block(FilterBlock(
-            BaseType='"Opal Sceptre" "Void Sceptre"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
+            BaseType='"Opal Sceptre" "Void Sceptre"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
         ))
     if filter_config.AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -161,7 +161,7 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(215, 'Chromatic recipe items ("RGB Recipe")')
 
     filter_manager.add_comment(216, 'Endgame-start 4-links')
-    filter_manager.extend_blocks(block_number=216)
+    # filter_manager.extend_blocks(block_number=216)
 
     # .
     filter_manager.add_comment(217, 'Animate Weapon script - deactivated by default')
@@ -232,8 +232,8 @@ def modify_filter(filter_manager):
         blocks[4].BaseType += ' "Astral Plate" '
         blocks[5].BaseType += ' "Astral Plate" '
     if 's' in filter_config.SKILL:
-        blocks[4].BaseType += ' "Opal Sceptre" "Void Sceptre" "Bone Spirit Shield" "Ivory Spirit Shield" "Fossilised Spirit Shield" '
-        blocks[5].BaseType += ' "Opal Sceptre" "Void Sceptre" "Bone Spirit Shield" "Ivory Spirit Shield" "Fossilised Spirit Shield" '
+        blocks[4].BaseType += ' "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
+        blocks[5].BaseType += ' "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
     if 'm' in filter_config.SKILL:
         blocks.insert(6, blocks[2].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
                                                PlayAlertSound=SOUND_CHANCE))
@@ -352,7 +352,8 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2].status = DEBUG
     if filter_config.LEVELING_GEMS_BASE_TYPE != '':
-        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE, PlayAlertSound=SOUND_MID_VALUE)
+        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE,
+                                    PlayAlertSound=SOUND_MID_VALUE)
         blocks.insert(2, tmp)
     filter_manager.extend_blocks(blocks)
 

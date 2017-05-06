@@ -24,7 +24,7 @@ SKILL = SKILL_LIST[1]
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise" (5 16)
 AMULET_BASE_TYPE = '' + ' "Gold" '  # + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
-RINGS_BASE_TYPE = '' + ' "Two-Stone" '  # + ' "Sapphire" "Topaz" "Ruby" '
+RINGS_BASE_TYPE = ''  # + ' "Two-Stone" '  # + ' "Sapphire" "Topaz" "Ruby" '
 # "Rustic Sash" "Leather Belt" (1 8)
 BELTS_BASE_TYPE = ''  # + ' "Leather Belt" '  # + ' "Rustic Sash" '
 
@@ -35,14 +35,14 @@ HIDE_FLASK_MANA = True
 
 HIDE_FLASK_LIFE = True
 
-CURRENCY_ALERT_CHANCE = True
+CURRENCY_ALERT_CHANCE = False
 CURRENCY_ALERT_BLACKSMITH = False
-CURRENCY_ALERT_TRANSMUTATION = True
-CURRENCY_ALERT_AUGMENTATION = True
+CURRENCY_ALERT_TRANSMUTATION = False
+CURRENCY_ALERT_AUGMENTATION = False
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = 30  # 33 -> 30
 CURRENCY_WISDOM_SCROLL_FONT_SIZE = 18  # 33 -> 18
 
-# 疯狂点机会石！！！ 前期别洗珠宝，留着洗73物等的Vaal Axe
+# 疯狂点机会石--前期别洗珠宝，留着洗73物等的Vaal Axe
 CHANCE_ALERT_SORCERER_BOOTS = False
 
 CHANCE_ALERT_VAAL_AXE = False
@@ -57,7 +57,7 @@ NEED_MAP = True
 HALLOWED_MAX_ITEM_LEVEL = 41  # 50 -> 41
 
 # >= 15  "Body Armour"
-HIDE_RARES_ALL = '' + ' "Two Hand"   "Body Armour"   '  # + ' "Sceptres" "Daggers" "Wands" '  # + ' "Boots" "Gloves" "Helmets" "Body Armour" '
+HIDE_RARES_ALL = '' + ' "Two Hand"   "Body Armour"   ' + ' "Daggers" '  # + ' "Sceptres" "Wands" '  # + ' "Boots" "Gloves" "Helmets" "Body Armour" '
 # >= 15
 HIDE_RARES_LOW = '"Shields" ' + ' "Staves" '
 # >= 2
@@ -65,38 +65,37 @@ HIDE_NORMAL_MAGIC = '"Shields" ' + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" 
 # >= 2 找到高pDPS武器就隐藏所有白武器
 HIDE_NORMAL = '"Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
 
-
 # else:
-    # AMULET_BASE_TYPE = ''
-    # RINGS_BASE_TYPE = ''
-    # BELTS_BASE_TYPE = ''
-    #
-    # MAGIC_BOOTS_ITEM_LEVEL = '< 2'
-    #
-    # HIDE_FLASK_MANA = True
-    # HIDE_FLASK_LIFE = True
-    #
-    # CURRENCY_ALERT_CHANCE = False
-    # CURRENCY_ALERT_BLACKSMITH = False
-    # CURRENCY_ALERT_TRANSMUTATION = False
-    # CURRENCY_ALERT_AUGMENTATION = False
-    # CURRENCY_PORTAL_SCROLL_FONT_SIZE = 30
-    # CURRENCY_WISDOM_SCROLL_FONT_SIZE = 18
-    #
-    # CHANCE_ALERT_VAAL_AXE = False
-    # CHANCE_ALERT_KARUI_MAUL = False
-    # CHANCE_ALERT_SORCERER_BOOTS = True
-    #
-    # LEVELING_GEMS_BASE_TYPE = ''
-    #
-    # NEED_MAP = False
-    #
-    # HALLOWED_MAX_ITEM_LEVEL = 42
-    #
-    # HIDE_RARES_ALL = '"Sceptres" "Daggers" "Wands" '  # + ' "Two Hand" '  # + ' "Boots" "Gloves" "Helmets" "Body Armour" '
-    # HIDE_RARES_LOW = '"Shields" "Staves"'
-    # HIDE_NORMAL_MAGIC = '"Shields" "Staves" "Two Hand"'
-    # HIDE_NORMAL = '"Two Hand" "Staves"'
+# AMULET_BASE_TYPE = ''
+# RINGS_BASE_TYPE = ''
+# BELTS_BASE_TYPE = ''
+#
+# MAGIC_BOOTS_ITEM_LEVEL = '< 2'
+#
+# HIDE_FLASK_MANA = True
+# HIDE_FLASK_LIFE = True
+#
+# CURRENCY_ALERT_CHANCE = False
+# CURRENCY_ALERT_BLACKSMITH = False
+# CURRENCY_ALERT_TRANSMUTATION = False
+# CURRENCY_ALERT_AUGMENTATION = False
+# CURRENCY_PORTAL_SCROLL_FONT_SIZE = 30
+# CURRENCY_WISDOM_SCROLL_FONT_SIZE = 18
+#
+# CHANCE_ALERT_VAAL_AXE = False
+# CHANCE_ALERT_KARUI_MAUL = False
+# CHANCE_ALERT_SORCERER_BOOTS = True
+#
+# LEVELING_GEMS_BASE_TYPE = ''
+#
+# NEED_MAP = False
+#
+# HALLOWED_MAX_ITEM_LEVEL = 42
+#
+# HIDE_RARES_ALL = '"Sceptres" "Daggers" "Wands" '  # + ' "Two Hand" '  # + ' "Boots" "Gloves" "Helmets" "Body Armour" '
+# HIDE_RARES_LOW = '"Shields" "Staves"'
+# HIDE_NORMAL_MAGIC = '"Shields" "Staves" "Two Hand"'
+# HIDE_NORMAL = '"Two Hand" "Staves"'
 
 # ---Remaining---
 
