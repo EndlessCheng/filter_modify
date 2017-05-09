@@ -1,5 +1,26 @@
 HIDE_RARES_T1_5 = False
-# T2稀有为特定角色的farm提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中
+# T2为特定角色的farm提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中
 HIDE_RARES_T2 = True # 默认值！
 
-# 此外，从第一个角色转第二个角色(CI)的过程中，第一个角色不需要刻意寻找AR/ES, EV/ES，非T1.5EV以及非T1ES，所以这部分装备可以设置一个config
+# 此外，从第一个角色转第二个角色(CI)的过程中，第一个角色不需要刻意寻找AR/ES, EV/ES，T2及以下EV，T2及以下ES
+# 所以可以设置一个config，在进入地图后（数量突变）只显示AR和AR/EV（0617和0618）
+ONLY_HIGHLIGHT_AR = True
+
+
+DropLevel >= 43
+Class "Helmets"
+AR "Ezomyte Burgonet" "Eternal Burgonet" "Siege Helmet" "Samite Helmet" "Royal Burgonet"
+AR/EV "Fencer Helm" "Pig-Faced Bascinet" "Lacquered Helmet" "Fluted Bascinet" "Nightmare Bascinet"
+
+DropLevel >= 43
+Class "Gloves"
+BaseType "Gauntlets"
+
+# 找到高速鞋子，并且有血或者有抗后，加上BaseType "Greaves"
+DropLevel >= 43
+Class "Boots"
+BaseType "Greaves"
+
+Class "Body Armour"
+DropLevel >= 60
+BaseType "Plate" "General\'s Brigandine" "Triumphant Lamellar"
