@@ -1,3 +1,5 @@
 HIDE_RARES_T1_5 = False
 # T2稀有为特定角色的farm提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中
-HIDE_RARES_T2 = True
+HIDE_RARES_T2 = True # 默认值！
+
+# 此外，从第一个角色转第二个角色(CI)的过程中，第一个角色不需要刻意寻找AR/ES, EV/ES以及非T1ES，所以这部分装备可以设置一个config
