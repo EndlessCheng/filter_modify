@@ -13,3 +13,4 @@ EV/ES "Ambush" "Carnal" "Assassin\'s" "Murder"
 remove ES shields highlight
 
 highlight all t1 rare
+hihglight  'm', 's' or 'r' jewel
