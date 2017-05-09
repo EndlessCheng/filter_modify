@@ -1,2 +1,3 @@
 HIDE_RARES_T1_5 = False
+# T2稀有为特定角色的farm提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中
 HIDE_RARES_T2 = True
