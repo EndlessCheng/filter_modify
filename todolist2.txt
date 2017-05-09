@@ -9,6 +9,8 @@ ONLY_HIGHLIGHT_AR = True
 
 HIDE_ALL_RARE放到T2下方与HIDE_LOW_RARE合并
 
+"Added Chaos Damage"移到0901
+
 
 DropLevel >= 43
 Class "Helmets"
