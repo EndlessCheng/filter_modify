@@ -7,6 +7,9 @@ HIDE_RARES_T2 = True # 默认值！
 ONLY_HIGHLIGHT_AR = True
 
 
+HIDE_ALL_RARE放到T2下方与HIDE_LOW_RARE合并
+
+
 DropLevel >= 43
 Class "Helmets"
 BaseType "Siege Helmet" "Samite Helmet" "Burgonet"  "Fencer Helm" "Lacquered Helmet" "Bascinet"
