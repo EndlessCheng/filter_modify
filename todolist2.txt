@@ -21,6 +21,6 @@ DropLevel >= 43
 Class "Boots"
 BaseType "Greaves"
 
-Class "Body Armour"
 DropLevel >= 60
+Class "Body Armour"
 BaseType "Plate" "General\'s Brigandine" "Triumphant Lamellar"
