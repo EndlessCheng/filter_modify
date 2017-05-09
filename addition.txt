@@ -1,0 +1,10 @@
+Class "Helmets"
+AR/EV "Fencer Helm" "Pig-Faced Bascinet" "Lacquered Helmet" "Fluted Bascinet" "Nightmare Bascinet"
+AR/ES "Magistrate Crown" "Praetor Crown" "Zealot Helmet" "Great Crown" "Prophet Crown"
+EV/ES "Callous Mask" "Regicide Mask" "Harlequin Mask" "Vaal Mask" "Deicide Mask"
+
+
+Class "Gloves" "Boots"
+AR/EV "Serpentscale" "Wyrmscale" "Hydrascale" "Dragonscal"
+AR/ES "Zealot" "Soldier" "Legion" "Crusader"
+EV/ES "Ambush" "Carnal" "Assassin\'s" "Murder"
