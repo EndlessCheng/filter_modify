@@ -7,6 +7,8 @@ HIDE_RARES_T2 = True # 默认值！
 ONLY_HIGHLIGHT_AR = True
 
 
+增幅石加个边框213 159 100 200
+
 HIDE_ALL_RARE放到T2下方与HIDE_LOW_RARE合并
 
 "Added Chaos Damage"移到0901
