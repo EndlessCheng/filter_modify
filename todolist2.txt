@@ -9,8 +9,7 @@ ONLY_HIGHLIGHT_AR = True
 
 DropLevel >= 43
 Class "Helmets"
-AR "Ezomyte Burgonet" "Eternal Burgonet" "Siege Helmet" "Samite Helmet" "Royal Burgonet"
-AR/EV "Fencer Helm" "Pig-Faced Bascinet" "Lacquered Helmet" "Fluted Bascinet" "Nightmare Bascinet"
+BaseType "Ezomyte Burgonet" "Eternal Burgonet" "Siege Helmet" "Samite Helmet" "Royal Burgonet" "Fencer Helm" "Pig-Faced Bascinet" "Lacquered Helmet" "Fluted Bascinet" "Nightmare Bascinet"
 
 DropLevel >= 43
 Class "Gloves"
