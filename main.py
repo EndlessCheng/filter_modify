@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+import os
+
 from filter_modify import *
 import filter_config
 
@@ -710,5 +712,5 @@ if __name__ == '__main__':
 
     modify_filter(fm)
 
-    with open("C:\Users\Endless\Documents\My Games\Path of Exile\MODIFY.filter", 'w') as f:
+    with open(os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter", 'w') as f:
         f.writelines(fm.new_text)
