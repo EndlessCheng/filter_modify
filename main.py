@@ -45,23 +45,26 @@ SOUND_CHANCE = '4 300'
 SOUND_CHANCE2 = '3 300'
 
 
+# TODO: split by 0200, ...
+
+
 def modify_filter(filter_manager):
     filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here (includes 6links etc, be careful)')
 
-    # 改成8
+    # 8
     filter_manager.add_comment(201, '6-Linked items')
     block = filter_manager.get_block(201)[0]
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    # 加上"Body Armour" "Two Hand Axes"，改成8
+    # 8
     filter_manager.add_comment(202, '5-Linked items')
     block = filter_manager.get_block(202)[0]
-    tmp = block.copy_modify(Class='"Body Armour"', SetFontSize=45, PlayAlertSound=SOUND_TOP_VALUE)
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='>= 58', Class='"Two Hand"')  # "Two Hand Axes"
-    filter_manager.append_block(tmp)
-    block.PlayAlertSound = SOUND_CHANCE2
+    # tmp = block.copy_modify(Class='"Body Armour"', SetFontSize=45, PlayAlertSound=SOUND_TOP_VALUE)
+    # filter_manager.append_block(tmp)
+    # tmp = tmp.copy_modify(DropLevel='>= 58', Class='"Two Hand"')  # "Two Hand Axes"
+    # filter_manager.append_block(tmp)
+    block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
     # 颜色改成和点金一样的
@@ -96,22 +99,16 @@ def modify_filter(filter_manager):
     block.modify(Class=block.Class + ' Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R)
     filter_manager.append_block(block)
 
-    # * 只留第一个
+    # 只留第一个
     filter_manager.add_comment(206, 'Chancing items')
-    block = filter_manager.get_block(206)[0]
-    block.modify(Corrupted=False, BaseType='', PlayAlertSound=SOUND_CHANCE)
-    if filter_config.CHANCE_ALERT_SORCERER_BOOTS:
-        block.BaseType += ' "Sorcerer Boots"'
-    if filter_config.CHANCE_ALERT_VAAL_AXE:
-        block.BaseType += ' "Vaal Axe"'
-    if filter_config.CHANCE_ALERT_KARUI_MAUL:
-        block.BaseType += ' "Karui Maul"'
-    if block.BaseType != '':
+    if filter_config.CHANCING_ITEM_BASE_TYPE != '':
+        block = filter_manager.get_block(206)[0]
+        block.modify(Corrupted=False, BaseType=filter_config.CHANCING_ITEM_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block)
 
     filter_manager.add_comment(207, 'Add your own crafting rules here')
 
-    # 和0602呼应
+    # 0208是蓝白，0602是稀有
     filter_manager.add_comment(208, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(block_number=208)
 
@@ -123,20 +120,14 @@ def modify_filter(filter_manager):
             block.copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE))
     filter_manager.append_block(block)
 
+    # All Warband mods are prefixes, GG.
     filter_manager.add_comment(210, 'Warband items')
 
-    # 三小件等
+    # 再加上三小件，但不刻意高亮
     filter_manager.add_comment(211, 'Remaining crafting rules - add your own bases here!')
-    if 'm' in filter_config.SKILL:
+    if filter_config.SSF_CRAFT_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            BaseType='"Vaal Axe"', Rarity=RARITY_N2M, SetBorderColor=COLOR_WHITE
-        ))
-        filter_manager.append_block(FilterBlock(
-            BaseType='"Astral Plate"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
-        ))
-    if 's' in filter_config.SKILL:
-        filter_manager.append_block(FilterBlock(
-            BaseType='"Opal Sceptre" "Void Sceptre"', Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
+            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
         ))
     if filter_config.AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -154,24 +145,24 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(212, 'Chisel recipe items')
     filter_manager.extend_blocks(block_number=212)
 
-    # 改成8
+    # 8
     filter_manager.add_comment(213, 'Fishing Rod')
     block = filter_manager.get_block(213)[0]
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    # 改成8
+    # 8
     filter_manager.add_comment(214, 'SRS Crude Bow')
     block = filter_manager.get_block(214)[0]
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
+    # >=65RGB就不捡了
     filter_manager.add_comment(215, 'Chromatic recipe items ("RGB Recipe")')
 
     filter_manager.add_comment(216, 'Endgame-start 4-links')
     # filter_manager.extend_blocks(block_number=216)
 
-    # .
     filter_manager.add_comment(217, 'Animate Weapon script - deactivated by default')
 
     # 改稀有度，高亮边框
