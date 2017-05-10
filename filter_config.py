@@ -25,9 +25,9 @@ SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 # "Cobalt" "Crimson" "Viridian"
 ALERT_JEWEL_BASE_TYPE = '' + ' "Crimson" '
 
-# "Hubris Circlet" "Vaal Regalia"  "Astral Plate" "Saint\'s Hauberk"
+# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"
 # *急需的话直接点金* "Opal Sceptre" "Void Sceptre"  "Vaal Axe"
-SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Saint\'s Hauberk" '
+SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Astral Plate" '
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise" (5 16)
 AMULET_BASE_TYPE = '' + ' "Gold" ' + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
