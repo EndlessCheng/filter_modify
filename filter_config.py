@@ -20,15 +20,14 @@ SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
 # MS = 1 15 30 40 55
 
-# "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
-# "Fiend Dagger"
-CHANCING_ITEM_BASE_TYPE = ''  # + ' "Sorcerer Boots" '
+
+# 洗珠宝：没有废词缀就停手
 # "Cobalt" "Crimson" "Viridian"
 ALERT_JEWEL_BASE_TYPE = '' + ' "Crimson" '
 
-# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"
+# "Hubris Circlet" "Vaal Regalia"  "Astral Plate" "Saint\'s Hauberk"
 # *急需的话直接点金* "Opal Sceptre" "Void Sceptre"  "Vaal Axe"
-SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Astral Plate" '
+SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Saint\'s Hauberk" '
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise" (5 16)
 AMULET_BASE_TYPE = '' + ' "Gold" ' + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
@@ -39,10 +38,6 @@ BELTS_BASE_TYPE = '' + ' "Leather Belt" ' + ' "Rustic Sash" '
 # '>= 1' '< 1'
 MAGIC_BOOTS_ITEM_LEVEL = '>= 1'
 
-HIDE_FLASK_MANA = False
-
-HIDE_FLASK_LIFE = False
-
 CURRENCY_ALERT_CHANCE = True
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -50,11 +45,11 @@ CURRENCY_ALERT_AUGMENTATION = True
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = 33  # 33 -> 30
 CURRENCY_WISDOM_SCROLL_FONT_SIZE = 33  # 33 -> 18
 
-# 疯狂点机会石--前期别洗珠宝，留着洗73物等的Vaal Axe
-CHANCE_ALERT_SORCERER_BOOTS = False
-
-CHANCE_ALERT_VAAL_AXE = False
-CHANCE_ALERT_KARUI_MAUL = False
+# "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
+# "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '
+HIDE_FLASK_MANA = False
+HIDE_FLASK_LIFE = False
 
 # ' "Vortex" "Immortal Call" "Cast when Damage Taken" ' \
 # ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" '
@@ -71,21 +66,27 @@ HIDE_NORMAL_MAGIC = '"Shields" '  # + ' "Two Hand Maces" "Staves" ' + ' "Two Han
 # >= 2 找到高pDPS武器就隐藏所有白武器
 HIDE_NORMAL = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
 
+# "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
+# "Fiend Dagger"
+CHANCING_ITEM_BASE_TYPE = ''  # + ' "Sorcerer Boots" '
+
 RARE_SMALL_ARMOUR_BASE_TYPE = '"Siege Helmet" "Samite Helmet" "Burgonet" "Fencer Helm" "Lacquered Helmet" "Bascinet"' \
                               ' "Gauntlets" "Sharkskin Gloves" "Shagreen Gloves" "Stealth Gloves" "Slink Gloves"' \
                               ' "Greaves" "Sharkskin Boots" "Shagreen Boots" "Stealth Boots" "Slink Boots" "Wyrmscale Boots" "Hydrascale Boots" "Dragonscale Boots" '
 RARE_BODY_ARMOUR_BASE_TYPE = '"Plate" "General\'s Brigandine" "Triumphant Lamellar"'
+
+#
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL == '>= 1')
 
 HIDE_RARES_MIN_ITEM_LEVEL = 15
 
 # RRR BBB
-LINKED4_NORMAL_MAX_ITEM_LEVEL = 66  # >60的由0216负责
+LINKED4_NORMAL_MAX_ITEM_LEVEL = 60  # >60的由0216负责
 LINKED4_MAGIC_MAX_ITEM_LEVEL = 55  # 第三难度不再显示
 LINKED4_RARE_MAX_ITEM_LEVEL = 64  # 0700隐藏了>=65的黄装
 LINKED4_SIMPLE_MAX_ITEM_LEVEL = 40  # 覆盖第一难度
-LINKED4_CLASS = '"Boots" "Gloves" "Helmets" "Body Armour"'
+LINKED4_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Body Armour" ' + ' "Boots"  '
 
 # 三小件
 SMALLS_NORMAL_MAX_ITEM_LEVEL = 9  # 出监狱后     隐藏不需要的白色三小件

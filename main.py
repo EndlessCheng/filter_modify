@@ -345,7 +345,7 @@ def modify_leveling(filter_manager):
                          ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
                          SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     if filter_config.RARE_BOOTS_ALERT:
-        blocks[1].modify(SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+        blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2102, 'Leveling rares - remaining rules')
@@ -370,7 +370,7 @@ def modify_leveling(filter_manager):
     # 4L RRR, 3L RR, 2L RR
     filter_manager.add_comment(2204, 'Linked gear')
     blocks = filter_manager.get_block(2204)
-    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
     if 'm' in filter_config.SKILL:
         blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
@@ -513,28 +513,27 @@ def modify_filter(filter_manager):
         blocks.insert(2, tmp)
     filter_manager.extend_blocks(blocks)
 
-    # 15改成10，显示Q>=5的功能瓶
+    # 低物等15改成10，高亮Q>=5的功能瓶
     filter_manager.add_comment(1000, 'FLASKS (Endgame rules)')
-    # "Bismuth Flask" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"    "Silver Flask" "Quartz Flask"
     blocks = filter_manager.get_block(1000)
-    tmp = blocks[4].copy_modify(
-        BaseType='"Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask"',
-        ItemLevel=None, PlayAlertSound=SOUND_CHANCE)
+    if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
+        filter_manager.append_block(
+            blocks[4].copy_modify(BaseType=filter_config.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
+                                  PlayAlertSound=SOUND_CHANCE))
     blocks[2].Quality = '>= 10'
-    del blocks[3:5], blocks[-4]  # 注意这里相当于两个del语句
+    filter_manager.extend_blocks(blocks[:3])
+    filter_manager.append_block(blocks[5])
     blocks[-3].modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, SetFontSize=38)
-    blocks[-2].status = DEBUG
-    blocks.insert(0, tmp)
-    filter_manager.extend_blocks(blocks)
+    filter_manager.append_block(blocks[-3])
 
     filter_manager.add_comment(1100, 'HIDE LAYER 3: Random Endgame Flasks')
     filter_manager.extend_blocks(block_number=1100)
 
-    # 去掉第一个
+    # 去掉第一个的BaseType
     filter_manager.add_comment(1201, 'Unique Maps')
     blocks = filter_manager.get_block(1201)
     blocks[0].modify(BaseType=None, PlayAlertSound=SOUND_TOP_VALUE)
-    filter_manager.append_block(blocks[0])
+    filter_manager.append_block(blocks)
 
     filter_manager.add_comment(1202, 'Labyrinth items, Offerings')
     filter_manager.extend_blocks(block_number=1202)
@@ -553,27 +552,28 @@ def modify_filter(filter_manager):
         block.modify(SetBorderColor=COLOR_RED_LIGHT, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 加黄边
+    # 加黄边，高亮T9T10
     filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
     blocks = filter_manager.get_block(1205)
     for block in blocks:
         block.modify(SetTextColor=COLOR_WHITE_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
-    blocks[0].SetFontSize = 45
-    blocks[1].SetFontSize = 45
+    blocks[0].SetFontSize = FONT_SIZE_MAX
+    blocks[1].SetFontSize = FONT_SIZE_MAX
+    blocks[2].SetFontSize = FONT_SIZE_MAX
     filter_manager.extend_blocks(blocks)
 
-    # 加蓝边，白边
+    # 字体高亮，加蓝边/白边
     filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
     blocks = filter_manager.get_block(1206)
     for block in blocks:
         block.SetTextColor = COLOR_WHITE_LIGHT
-    for block in blocks[:6:2]:
+    for block in blocks[:6]:
         block.SetBorderColor = COLOR_BLUE_LIGHT
-    for block in blocks[6:10:2]:
+    for block in blocks[6:10]:
         block.SetBorderColor = COLOR_WHITE_LIGHT
     filter_manager.extend_blocks(blocks)
 
-    # 改成8和4
+    # 8和4
     filter_manager.add_comment(1207, 'Map fragments')
     blocks = filter_manager.get_block(1207)
     if filter_config.POE_VERSION == 'old':
@@ -602,14 +602,14 @@ def modify_filter(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 加上"Essence of Zeal"， 8,1
+    # 高亮"Essence of Zeal"；8和1
     filter_manager.add_comment(1303, 'Essence Tier List')
     blocks = filter_manager.get_block(1303)
     blocks[0].modify(BaseType=blocks[0].BaseType + ' "Essence of Zeal"', PlayAlertSound=SOUND_TOP_VALUE)
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 加上"Splinter of Chayula"，预言改成8
+    # 高亮"Splinter of Chayula"，预言改成8
     filter_manager.add_comment(1304, 'Special items')
     blocks = filter_manager.get_block(1304)
     blocks[1].PlayAlertSound = None
