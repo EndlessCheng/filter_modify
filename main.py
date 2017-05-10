@@ -19,6 +19,9 @@ RARITY_N2R = '<= Rare'
 ITEM_LEVEL_REGAL = '>= 75'
 ITEM_LEVEL_CHAOS = '>= 60'
 
+FONT_SIZE_MAX = 45
+FONT_SIZE_MIN = 18
+
 COLOR_WHITE = '255 255 255'
 COLOR_WHITE_LIGHT = '200 200 200'
 COLOR_RED = '255 0 0'
@@ -45,11 +48,8 @@ SOUND_CHANCE = '4 300'
 SOUND_CHANCE2 = '3 300'
 
 
-# TODO: split by 0200, ...
-
-
-def modify_filter(filter_manager):
-    filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here (includes 6links etc, be careful)')
+def modify0200(filter_manager):
+    filter_manager.add_comment(200, 'Recipes, Magic and Normal items (endgame!)')
 
     # 8
     filter_manager.add_comment(201, '6-Linked items')
@@ -174,31 +174,9 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(219, 'Sacrificial Garb')
     filter_manager.extend_blocks(block_number=219)
 
-    # 隐藏>=61的蓝白
-    filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
-    block = filter_manager.get_block(300)[0]
-    block.status = DEBUG
-    filter_manager.append_block(block)
 
-    # alt, chance加上2
-    filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
-    blocks = filter_manager.get_block(400)
-    blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
-    if not filter_config.CURRENCY_ALERT_CHANCE:
-        blocks[0].BaseType += ' "Orb of Chance" '
-    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
-        blocks[0].BaseType += ' "Orb of Transmutation" '
-    if filter_config.CURRENCY_ALERT_AUGMENTATION:
-        blocks[0].BaseType += ' "Orb of Augmentation" '
-    if not filter_config.CURRENCY_ALERT_BLACKSMITH:
-        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Transmutation" "Orb of Augmentation" "Alchemy Shard"'
-    blocks[-1].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
-    blocks.append(blocks[-1].copy_modify(BaseType='"Scroll of Wisdom"',
-                                         SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
-    filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(500, 'OVERRIDE AREA 2 - Override the default rare rulesets here')
+def modify0600(filter_manager):
+    filter_manager.add_comment(600, 'RARE ITEMS (ENDGAME)')
 
     # 8和1
     filter_manager.add_comment(601, 'Rare Atlas bases (84+)')
@@ -321,6 +299,185 @@ def modify_filter(filter_manager):
     # TODO: config to remove?
     filter_manager.add_comment(621, 'Rare endgame items - remaining rules')
     filter_manager.extend_blocks(block_number=621)
+
+
+# 1900-2303
+def modify_leveling(filter_manager):
+    # 隐藏混合，魔力，血；后期只要42和60级的血瓶
+    filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here')
+    block = FilterBlock(status=HIDE, Class='"Hybrid Flask"', SetFontSize=20)
+    if filter_config.HIDE_FLASK_LIFE:
+        block.Class += ' "Life Flask"'
+    if filter_config.HIDE_FLASK_MANA:
+        block.Class += ' "Mana Flask"'
+    filter_manager.append_block(block)
+    filter_manager.append_block(FilterBlock(status=HIDE,
+                                            Class='"Life Flask"', BaseType='Sanctified Eternal', SetFontSize=20))
+    filter_manager.append_block(FilterBlock(status=HIDE,
+                                            Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=20))
+
+    filter_manager.add_comment(2001, 'Hide outdated flasks')
+    filter_manager.extend_blocks(block_number=2001)
+
+    filter_manager.add_comment(2002, 'Hybrid flasks (normal)')
+
+    filter_manager.add_comment(2003, 'Hybrid flasks (magic)')
+
+    filter_manager.add_comment(2004, 'Life/Mana Flask - Normal (Kudos to Antnee)')
+    blocks = filter_manager.get_block(2004)
+    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = None
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(2005, 'Life/Mana Flask - Magic (Kudos to Antnee)')
+    blocks = filter_manager.get_block(2005)
+    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
+    blocks[-2].ItemLevel = None
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(2006, 'Show remaining flasks')
+
+    # 4L RRR 稀有
+    filter_manager.add_comment(2101, 'Leveling rares - tier list')
+    blocks = filter_manager.get_block(2101)
+    if filter_config.SKILL == 'm':
+        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+    if filter_config.RARE_BOOTS_ALERT:
+        blocks[1].modify(SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(2102, 'Leveling rares - remaining rules')
+    filter_manager.extend_blocks(block_number=2102)
+
+    filter_manager.add_comment(2201, 'Leveling RGB Exceptions 3L')
+    filter_manager.extend_blocks(block_number=2201)
+
+    # 显示部分蓝白三小件
+    filter_manager.add_comment(2202, 'Jewellery & Helpful leveling and racing gear')
+    blocks = filter_manager.get_block(2202)[-5:-1]
+    blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_ITEM_LEVEL)
+    del blocks[2]
+    blocks[2].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_ITEM_LEVEL)
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(2203, 'Caster weapons')
+    if 's' == filter_config.SKILL:
+        blocks = filter_manager.get_block(2203)
+        filter_manager.append_block(blocks[1])
+
+    # 4L RRR, 3L RR, 2L RR
+    filter_manager.add_comment(2204, 'Linked gear')
+    blocks = filter_manager.get_block(2204)
+    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
+    if 'm' in filter_config.SKILL:
+        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+        blocks[1].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_MAGIC_MAX_ITEM_LEVEL),
+                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+        blocks[2].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=40)
+        blocks[3].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=42)
+        blocks[5].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
+        blocks[6].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
+        blocks[7].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= 7', SetFontSize=40)
+        blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
+                         ItemLevel='<= 15', SetFontSize=40)
+        filter_manager.extend_blocks(blocks)
+    elif 's' == filter_config.SKILL:
+        filter_manager.append_block(blocks[4])
+    else:
+        filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(2205, '20% quality items for those strange people who want them')
+
+    # A1用双持斧/剑，之后用双手斧
+    # 法术武器见2203
+    filter_manager.add_comment(2300, 'Levelling - normal and magic item progression')
+    block = FilterBlock(status=DEBUG,
+                        Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" ' + filter_config.HIDE_NORMAL_MAGIC,
+                        Rarity=RARITY_N2M, ItemLevel='>= 2',
+                        SetFontSize=FONT_SIZE_MIN, SetBorderColor='0 0 0 150', SetBackgroundColor='0 0 0 165')
+    filter_manager.append_block(block)
+    filter_manager.append_block(block.copy_modify(Class=filter_config.HIDE_NORMAL, Rarity=RARITY_NORMAL))
+    tmp = block.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
+    filter_manager.append_block(tmp)
+    tmp = tmp.copy_modify(DropLevel='> 11', Class='"One Hand"')
+    filter_manager.append_block(tmp)
+    tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 13')
+    filter_manager.append_block(tmp)
+    tmp = tmp.copy_modify(BaseType='"Rusted Spike" "Whalebone Rapier"', ItemLevel=None)
+    filter_manager.append_block(tmp)
+
+    # 白装1-4
+    filter_manager.add_comment(2301, 'Normal items - First 12 levels - exceptions')
+    blocks = filter_manager.get_block(2301)
+    for block in blocks:
+        block.ItemLevel = '<= 4'
+    filter_manager.extend_blocks(blocks)
+
+    # 双持武器阶段隐藏
+    filter_manager.add_comment(2302, 'Normal weapons - progression')
+    blocks = filter_manager.get_block(2302)
+    tmp = blocks[0].copy_modify(DropLevel='>= 1', Class='"One Hand"', ItemLevel='<= 3')
+    blocks.insert(0, tmp)  # "Rusted Hatchet" "Rusted Sword"
+    blocks.insert(1, tmp.copy_modify(DropLevel='>= 5', ItemLevel='<= 7'))  # "Copper Sword"
+    blocks.insert(2, tmp.copy_modify(DropLevel='>= 6', ItemLevel='<= 8'))  # "Jade Hatchet"
+    filter_manager.extend_blocks(blocks)
+
+    # 蓝装1-3
+    filter_manager.add_comment(2303, 'Magic items - progression')
+    blocks = filter_manager.get_block(2303)
+    if 'm' in filter_config.SKILL:
+        # 这两个部位的蓝装没意义——迟早要被白装/RR替代
+        tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
+        filter_manager.append_block(tmp)
+        filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
+    elif 's' == filter_config.SKILL:
+        # TODO !!!
+        # for block in blocks:
+        #     block.ItemLevel = '<= 4'
+        filter_manager.extend_blocks(blocks)
+        # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
+
+
+def modify_filter(filter_manager):
+    filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here (includes 6links etc, be careful)')
+
+    modify0200(filter_manager)
+
+    # 隐藏>=61的蓝白
+    filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
+    block = filter_manager.get_block(300)[0]
+    block.status = DEBUG
+    filter_manager.append_block(block)
+
+    # alt, chance加上2
+    filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
+    blocks = filter_manager.get_block(400)
+    blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
+    if not filter_config.CURRENCY_ALERT_CHANCE:
+        blocks[0].BaseType += ' "Orb of Chance" '
+    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
+        blocks[0].BaseType += ' "Orb of Transmutation" '
+    if filter_config.CURRENCY_ALERT_AUGMENTATION:
+        blocks[0].BaseType += ' "Orb of Augmentation" '
+    if not filter_config.CURRENCY_ALERT_BLACKSMITH:
+        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
+    blocks[1].BaseType = '"Orb of Transmutation" "Orb of Augmentation" "Alchemy Shard"'
+    blocks[-1].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
+    blocks.append(blocks[-1].copy_modify(BaseType='"Scroll of Wisdom"',
+                                         SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(500, 'OVERRIDE AREA 2 - Override the default rare rulesets here')
+
+    modify0600(filter_manager)
 
     filter_manager.add_comment(700, 'HIDE LAYER 2 - RARE ITEMS (65+ ONLY FOR NON-REGULAR VERSIONS)')
     blocks = filter_manager.get_block(700)
@@ -554,152 +711,13 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(1800, 'Exceptions - Quest Items etc.')
     filter_manager.extend_blocks(block_number=1800)
 
-    # 隐藏混合，魔力，血；后期只要42和60级的血瓶
-    filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here')
-    block = FilterBlock(status=HIDE, Class='"Hybrid Flask"', SetFontSize=20)
-    if filter_config.HIDE_FLASK_LIFE:
-        block.Class += ' "Life Flask"'
-    if filter_config.HIDE_FLASK_MANA:
-        block.Class += ' "Mana Flask"'
-    filter_manager.append_block(block)
-    filter_manager.append_block(FilterBlock(status=HIDE,
-                                            Class='"Life Flask"', BaseType='Sanctified Eternal', SetFontSize=20))
-    filter_manager.append_block(FilterBlock(status=HIDE,
-                                            Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=20))
+    # 1900-2303
+    modify_leveling(filter_manager)
 
-    filter_manager.add_comment(2001, 'Hide outdated flasks')
-    filter_manager.extend_blocks(block_number=2001)
-
-    filter_manager.add_comment(2002, 'Hybrid flasks (normal)')
-
-    filter_manager.add_comment(2003, 'Hybrid flasks (magic)')
-
-    filter_manager.add_comment(2004, 'Life/Mana Flask - Normal (Kudos to Antnee)')
-    blocks = filter_manager.get_block(2004)
-    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
-    blocks[-2].ItemLevel = None
-    filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(2005, 'Life/Mana Flask - Magic (Kudos to Antnee)')
-    blocks = filter_manager.get_block(2005)
-    blocks[-4].ItemLevel = '<= ' + str(filter_config.HALLOWED_MAX_ITEM_LEVEL)
-    blocks[-2].ItemLevel = None
-    filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(2006, 'Show remaining flasks')
-
-    # 4L RRR 稀有
-    filter_manager.add_comment(2101, 'Leveling rares - tier list')
-    blocks = filter_manager.get_block(2101)
-    if filter_config.SKILL == 'm':
-        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
-                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    if filter_config.RARE_BOOTS_ALERT:
-        blocks[1].modify(SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(2102, 'Leveling rares - remaining rules')
-    filter_manager.extend_blocks(block_number=2102)
-
-    filter_manager.add_comment(2201, 'Leveling RGB Exceptions 3L')
-    filter_manager.extend_blocks(block_number=2201)
-
-    # 显示部分蓝白三小件
-    filter_manager.add_comment(2202, 'Jewellery & Helpful leveling and racing gear')
-    blocks = filter_manager.get_block(2202)[-5:-1]
-    blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_ITEM_LEVEL)
-    del blocks[2]
-    blocks[2].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_ITEM_LEVEL)
-    filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(2203, 'Caster weapons')
-    if 's' == filter_config.SKILL:
-        blocks = filter_manager.get_block(2203)
-        filter_manager.append_block(blocks[1])
-
-    # 4L RRR, 3L RR, 2L RR
-    filter_manager.add_comment(2204, 'Linked gear')
-    blocks = filter_manager.get_block(2204)
-    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=45, PlayAlertSound=SOUND_CHANCE)
-    if 'm' in filter_config.SKILL:
-        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
-                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-        blocks[1].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_MAGIC_MAX_ITEM_LEVEL),
-                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-        blocks[2].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=40)
-        blocks[3].modify(SocketGroup='RR', Class=filter_config.LINKED4_CLASS, SetFontSize=42)
-        blocks[5].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
-        blocks[6].modify(LinkedSockets=4, Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_SIMPLE_MAX_ITEM_LEVEL))
-        blocks[7].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= 7', SetFontSize=40)
-        blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= 15', SetFontSize=40)
-        filter_manager.extend_blocks(blocks)
-    elif 's' == filter_config.SKILL:
-        filter_manager.append_block(blocks[4])
-    else:
-        filter_manager.extend_blocks(blocks)
-
-    filter_manager.add_comment(2205, '20% quality items for those strange people who want them')
-
-    # A1用双持斧/剑，之后用双手斧
-    # 法术武器见2203
-    filter_manager.add_comment(2300, 'Levelling - normal and magic item progression')
-    block = FilterBlock(status=DEBUG,
-                        Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" ' + filter_config.HIDE_NORMAL_MAGIC,
-                        Rarity=RARITY_N2M, ItemLevel='>= 2',
-                        SetFontSize=18, SetBorderColor='0 0 0 150', SetBackgroundColor='0 0 0 165')
-    filter_manager.append_block(block)
-    filter_manager.append_block(block.copy_modify(Class=filter_config.HIDE_NORMAL, Rarity=RARITY_NORMAL))
-    tmp = block.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='> 11', Class='"One Hand"')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 13')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(BaseType='"Rusted Spike" "Whalebone Rapier"', ItemLevel=None)
-    filter_manager.append_block(tmp)
-
-    # 白装1-4
-    filter_manager.add_comment(2301, 'Normal items - First 12 levels - exceptions')
-    blocks = filter_manager.get_block(2301)
-    for block in blocks:
-        block.ItemLevel = '<= 4'
-    filter_manager.extend_blocks(blocks)
-
-    # 双持武器阶段隐藏
-    filter_manager.add_comment(2302, 'Normal weapons - progression')
-    blocks = filter_manager.get_block(2302)
-    tmp = blocks[0].copy_modify(DropLevel='>= 1', Class='"One Hand"', ItemLevel='<= 3')
-    blocks.insert(0, tmp)  # "Rusted Hatchet" "Rusted Sword"
-    blocks.insert(1, tmp.copy_modify(DropLevel='>= 5', ItemLevel='<= 7'))  # "Copper Sword"
-    blocks.insert(2, tmp.copy_modify(DropLevel='>= 6', ItemLevel='<= 8'))  # "Jade Hatchet"
-    filter_manager.extend_blocks(blocks)
-
-    # 蓝装1-3
-    filter_manager.add_comment(2303, 'Magic items - progression')
-    blocks = filter_manager.get_block(2303)
-    if 'm' in filter_config.SKILL:
-        # 这两个部位的蓝装没意义——迟早要被白装/RR替代
-        tmp = blocks[3].copy_modify(Width=None, Height=None, Class='"Body Armour" "Helmets"', ItemLevel='<= 3')
-        filter_manager.append_block(tmp)
-        filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
-    elif 's' == filter_config.SKILL:
-        # TODO !!!
-        # for block in blocks:
-        #     block.ItemLevel = '<= 4'
-        filter_manager.extend_blocks(blocks)
-    # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
-
-    # 改成18
+    # 改成最小
     filter_manager.add_comment(2400, 'HIDE LAYER 5 - Remaining Items')
     block = filter_manager.get_block(2400)[0]
-    block.modify(status=DEBUG, SetFontSize=18)
+    block.modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     filter_manager.append_block(block)
 
     # 8
