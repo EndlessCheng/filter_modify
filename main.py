@@ -31,6 +31,8 @@ COLOR_YELLOW = '255 255 0'
 COLOR_YELLOW_LIGHT = '255 255 119'
 COLOR_AQUA = '0 255 255'
 COLOR_GOLD = '213 159 0'
+COLOR_ORANGE = '255 125 0'
+COLOR_ORANGE_LIGHT = '255 125 0 200'
 COLOR_BROWN = '100 75 0'
 COLOR_UNIQUE = '175 96 37'
 
@@ -115,7 +117,11 @@ def modify_filter(filter_manager):
 
     # 只留第一个
     filter_manager.add_comment(209, 'Magic jewel')
-    filter_manager.append_block(filter_manager.get_block(209)[0])
+    block = filter_manager.get_block(209)[0]
+    if filter_config.ALERT_JEWEL_BASE_TYPE != '':
+        filter_manager.append_block(
+            block.copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE))
+    filter_manager.append_block(block)
 
     filter_manager.add_comment(210, 'Warband items')
 
@@ -184,7 +190,6 @@ def modify_filter(filter_manager):
     filter_manager.append_block(block)
 
     # alt, chance加上2
-    # * 高亮蜕变和磨刀石
     filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks = filter_manager.get_block(400)
     blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
@@ -196,20 +201,13 @@ def modify_filter(filter_manager):
         blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Transmutation" "Alchemy Shard"'
+    blocks[1].BaseType = '"Orb of Transmutation" "Orb of Augmentation" "Alchemy Shard"'
     blocks[-1].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
     blocks.append(blocks[-1].copy_modify(BaseType='"Scroll of Wisdom"',
                                          SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
     filter_manager.extend_blocks(blocks)
 
-    # 隐藏非本职业稀有物品，借鉴0700
     filter_manager.add_comment(500, 'OVERRIDE AREA 2 - Override the default rare rulesets here')
-    blocks = filter_manager.get_block(700)
-    for block in blocks:
-        block.status = DEBUG
-        block.Class = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" ' + filter_config.HIDE_RARES_ALL
-    blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
-    filter_manager.extend_blocks(blocks)
 
     # 8和1
     filter_manager.add_comment(601, 'Rare Atlas bases (84+)')
@@ -228,6 +226,8 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].modify(SetBackgroundColor=COLOR_BROWN + ' 225', PlayAlertSound=SOUND_MID_VALUE)
     blocks[3].modify(SetBackgroundColor=COLOR_BROWN + ' 225', PlayAlertSound=SOUND_MID_VALUE)
+    for block in blocks[4:]:
+        block.modify(SetBorderColor=COLOR_ORANGE_LIGHT, SetBackgroundColor=COLOR_BROWN + ' 225')
     blocks.insert(4, blocks[2].copy_modify(BaseType='"Vaal Regalia" ', PlayAlertSound=SOUND_CHANCE))
     blocks.insert(5, blocks[3].copy_modify(BaseType='"Vaal Regalia" ', PlayAlertSound=SOUND_CHANCE))
     if 'm' in filter_config.SKILL:
@@ -241,27 +241,26 @@ def modify_filter(filter_manager):
                                                PlayAlertSound=SOUND_CHANCE))
         blocks.insert(7, blocks[3].copy_modify(DropLevel='>= 58', Class='"Two Hand Axes"', BaseType=None,
                                                PlayAlertSound=SOUND_CHANCE))
-    elif 's' in filter_config.SKILL:
-        blocks.insert(6, blocks[2].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
-                                               PlayAlertSound=SOUND_CHANCE))
-        blocks.insert(7, blocks[3].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
-                                               PlayAlertSound=SOUND_CHANCE))
+    # elif 's' in filter_config.SKILL:
+    #     blocks.insert(6, blocks[2].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
+    #                                            PlayAlertSound=SOUND_CHANCE))
+    #     blocks.insert(7, blocks[3].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"',
+    #                                            PlayAlertSound=SOUND_CHANCE))
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(604, 'T1.5 rare items')
     filter_manager.extend_blocks(block_number=604)
 
+    # T2为特定角色的farm gears提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中
     filter_manager.add_comment(605, 'T2 rare items')
-    filter_manager.extend_blocks(block_number=605)
-
-    # T2末尾再隐藏一波非本职业稀有物品，借鉴0700
+    # filter_manager.extend_blocks(block_number=605)
+    # 隐藏非本职业稀有物品，借鉴0700
     blocks = filter_manager.get_block(700)
-    if filter_config.HIDE_RARES_LOW != '':
-        for block in blocks:
-            block.status = DEBUG
-            block.Class = filter_config.HIDE_RARES_LOW
-        blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
-        filter_manager.extend_blocks(blocks)
+    for block in blocks:
+        block.status = DEBUG
+        block.Class = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" ' + filter_config.HIDE_RARES_ALL
+    blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(606, 'Breach Rings')
     filter_manager.extend_blocks(block_number=606)
@@ -270,7 +269,8 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(607, 'Amulets, Jewels, Rings, Belts')
     blocks = filter_manager.get_block(607)
     blocks[0].PlayAlertSound = SOUND_CHANCE  # rare jewel
-    blocks[1].PlayAlertSound = SOUND_MID_VALUE  # regal smalls
+    blocks[1].modify(SetBorderColor=COLOR_ORANGE_LIGHT, SetBackgroundColor=COLOR_BROWN + ' 225',
+                     PlayAlertSound=SOUND_MID_VALUE)  # regal smalls
     blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
     filter_manager.extend_blocks(blocks)
 
@@ -303,6 +303,8 @@ def modify_filter(filter_manager):
     # 隐藏bad
     filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets')
     blocks = filter_manager.get_block(617)
+    blocks[0].BaseType = filter_config.RARE_SMALL_ARMOUR_BASE_TYPE
+    blocks[1].BaseType = filter_config.RARE_SMALL_ARMOUR_BASE_TYPE
     blocks[-2].status = DEBUG
     blocks[-1].status = DEBUG
     filter_manager.extend_blocks(blocks)
@@ -310,10 +312,13 @@ def modify_filter(filter_manager):
     # 隐藏bad
     filter_manager.add_comment(618, 'AR: Body Armors')
     blocks = filter_manager.get_block(618)
+    blocks[0].BaseType = filter_config.RARE_BODY_ARMOUR_BASE_TYPE
+    blocks[1].BaseType = filter_config.RARE_BODY_ARMOUR_BASE_TYPE
     blocks[-2].status = DEBUG
     blocks[-1].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
+    # TODO
     filter_manager.add_comment(619, 'OH: Shields')
     blocks = filter_manager.get_block(619)
     # blocks[-2].status = DEBUG
@@ -322,10 +327,10 @@ def modify_filter(filter_manager):
 
     filter_manager.add_comment(620, 'OH: Quivers')
 
+    # TODO: config to remove?
     filter_manager.add_comment(621, 'Rare endgame items - remaining rules')
     filter_manager.extend_blocks(block_number=621)
 
-    # 目前不会命中这块。。
     filter_manager.add_comment(700, 'HIDE LAYER 2 - RARE ITEMS (65+ ONLY FOR NON-REGULAR VERSIONS)')
     blocks = filter_manager.get_block(700)
     for block in blocks:
@@ -342,7 +347,8 @@ def modify_filter(filter_manager):
     blocks = filter_manager.get_block(901)
     del blocks[0]
     blocks[0].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[1].modify(BaseType=blocks[1].BaseType + ' "Added Chaos Damage"', SetBackgroundColor=COLOR_WHITE,
+                     PlayAlertSound=SOUND_TOP_VALUE)
     blocks[2].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
@@ -422,6 +428,8 @@ def modify_filter(filter_manager):
     # 改成8和4
     filter_manager.add_comment(1207, 'Map fragments')
     blocks = filter_manager.get_block(1207)
+    if filter_config.POE_VERSION == 'old':
+        del blocks[0]
     for block in blocks[:-1]:
         block.PlayAlertSound = SOUND_TOP_VALUE
     blocks[-1].PlayAlertSound = SOUND_MAP
@@ -482,6 +490,9 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(1404, 'T3 - Decent cards')
     blocks = filter_manager.get_block(1404)
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    if filter_config.POE_VERSION == 'old':
+        blocks[
+            0].BaseType = '"The Road to Power" "The Arena Champion" "The Gladiator" "Glimmer of Hope" "The Tyrant" "The Union" "The Risk" "The Trial" "Scholar of the Seas" "Lucky Deck" "Humility" "The Penitent" "The Penitent" "The Surveyor" "Lysah\'s Respite" "The Inventor" "The Jester" "Vinia\'s Token" "Rats" "The Wrath" "Hope" "Treasure Hunter" "The Explorer" "The Body" "Jack in the Box" "The Traitor" "Valley of Steel Boxes" "Wolven King\'s Bite" "Wretched"   "The Fletcher" "The Forsaken" "The Formless Sea" "The Demoness" "Time-Lost Relic" "The Wolf" "Earth Drinker" "Standoff" "Merciless Armament"  '
     filter_manager.extend_blocks(blocks)
 
     # 改成"Carrion Crow" "Other Cheek" "Metalsmith's Gift"
@@ -501,12 +512,13 @@ def modify_filter(filter_manager):
 
     # 改成"Perandus" "Breach" "Essence" 1
     filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
-    blocks = filter_manager.get_block(1600)
-    for block in blocks:
-        block.PlayAlertSound = SOUND_MID_VALUE
-    for block in blocks[::2]:
-        block.BaseType = '"Perandus" "Breach" "Essence"'
-    filter_manager.extend_blocks(blocks)
+    if filter_config.POE_VERSION == 'new':
+        blocks = filter_manager.get_block(1600)
+        for block in blocks:
+            block.PlayAlertSound = SOUND_MID_VALUE
+        for block in blocks[::2]:
+            block.BaseType = '"Perandus" "Breach" "Essence"'
+        filter_manager.extend_blocks(blocks)
 
     # 改成T1
     filter_manager.add_comment(1701, 'Exceptions')
