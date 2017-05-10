@@ -227,7 +227,7 @@ def modify0600(filter_manager):
     blocks = filter_manager.get_block(700)
     for block in blocks:
         block.status = DEBUG
-        block.Class = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" ' + filter_config.HIDE_RARES_ALL
+        block.Class = filter_config.HIDE_RARES_ALL
     blocks[1].ItemLevel = '>= ' + str(filter_config.HIDE_RARES_MIN_ITEM_LEVEL)
     filter_manager.extend_blocks(blocks)
 
@@ -301,20 +301,26 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(block_number=621)
 
 
+def modify_gem_flask_map(filter_manager):
+    pass
+
+
 # 1900-2303
 def modify_leveling(filter_manager):
     # 隐藏混合，魔力，血；后期只要42和60级的血瓶
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here')
-    block = FilterBlock(status=HIDE, Class='"Hybrid Flask"', SetFontSize=20)
+    block = FilterBlock(status=DEBUG, Class='"Hybrid Flask"', SetFontSize=FONT_SIZE_MIN)
     if filter_config.HIDE_FLASK_LIFE:
         block.Class += ' "Life Flask"'
     if filter_config.HIDE_FLASK_MANA:
         block.Class += ' "Mana Flask"'
     filter_manager.append_block(block)
-    filter_manager.append_block(FilterBlock(status=HIDE,
-                                            Class='"Life Flask"', BaseType='Sanctified Eternal', SetFontSize=20))
-    filter_manager.append_block(FilterBlock(status=HIDE,
-                                            Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=20))
+    filter_manager.append_block(FilterBlock(status=DEBUG,
+                                            Class='"Life Flask"', BaseType='Sanctified Eternal',
+                                            SetFontSize=FONT_SIZE_MIN))
+    filter_manager.append_block(FilterBlock(status=DEBUG,
+                                            Class='"Mana Flask"', BaseType='Colossal Hallowed',
+                                            SetFontSize=FONT_SIZE_MIN))
 
     filter_manager.add_comment(2001, 'Hide outdated flasks')
     filter_manager.extend_blocks(block_number=2001)
@@ -337,13 +343,11 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2006, 'Show remaining flasks')
 
-    # 4L RRR 稀有
+    # 4L稀有
     filter_manager.add_comment(2101, 'Leveling rares - tier list')
     blocks = filter_manager.get_block(2101)
-    if filter_config.SKILL == 'm':
-        blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
-                         ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL),
-                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+    blocks[0].modify(Class=filter_config.LINKED4_CLASS,
+                     ItemLevel='<= ' + str(filter_config.LINKED4_RARE_MAX_ITEM_LEVEL), PlayAlertSound=SOUND_CHANCE)
     if filter_config.RARE_BOOTS_ALERT:
         blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
     filter_manager.extend_blocks(blocks)
@@ -364,13 +368,15 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2203, 'Caster weapons')
     if 's' == filter_config.SKILL:
+        # TODO
         blocks = filter_manager.get_block(2203)
         filter_manager.append_block(blocks[1])
 
     # 4L RRR, 3L RR, 2L RR
     filter_manager.add_comment(2204, 'Linked gear')
     blocks = filter_manager.get_block(2204)
-    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
+    blocks[4].modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL, SetFontSize=FONT_SIZE_MAX,
+                     PlayAlertSound=SOUND_CHANCE)
     if 'm' in filter_config.SKILL:
         blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
                          ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL),
@@ -390,6 +396,7 @@ def modify_leveling(filter_manager):
                          ItemLevel='<= 15', SetFontSize=40)
         filter_manager.extend_blocks(blocks)
     elif 's' == filter_config.SKILL:
+        # TODO
         filter_manager.append_block(blocks[4])
     else:
         filter_manager.extend_blocks(blocks)
@@ -439,11 +446,9 @@ def modify_leveling(filter_manager):
         filter_manager.append_block(tmp)
         filter_manager.append_block(tmp.copy_modify(Class='"Gloves"', ItemLevel='<= 12'))
     elif 's' == filter_config.SKILL:
-        # TODO !!!
         # for block in blocks:
         #     block.ItemLevel = '<= 4'
         filter_manager.extend_blocks(blocks)
-        # filter_manager.append_block(blocks[-2].copy_modify(Class='"Gloves"'))
 
 
 def modify_filter(filter_manager):

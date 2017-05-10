@@ -60,7 +60,7 @@ NEED_MAP = True
 HALLOWED_MAX_ITEM_LEVEL = 50  # 50 -> 41
 
 # >= 15  "Staves"  "Body Armour"  "Boots" "Gloves" "Helmets"
-HIDE_RARES_ALL = '' + '   "Shields"    '  # + ' "Daggers" '  # + ' "Sceptres" "Wands" '  # + ' "Boots" "Gloves" "Helmets" "Body Armour" '
+HIDE_RARES_ALL = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '   "Shields"    '  # + ' "Daggers" '  # + ' "Sceptres" "Wands" '
 # >= 2
 HIDE_NORMAL_MAGIC = '"Shields" '  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
 # >= 2 找到高pDPS武器就隐藏所有白武器
@@ -81,7 +81,8 @@ RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL == '>= 1')
 
 HIDE_RARES_MIN_ITEM_LEVEL = 15
 
-# RRR BBB
+# 'RRR' 'BBB'
+LINKED4_SOCKET_GROUP = ['RRR', 'BBB']
 LINKED4_NORMAL_MAX_ITEM_LEVEL = 60  # >60的由0216负责
 LINKED4_MAGIC_MAX_ITEM_LEVEL = 55  # 第三难度不再显示
 LINKED4_RARE_MAX_ITEM_LEVEL = 64  # 0700隐藏了>=65的黄装
