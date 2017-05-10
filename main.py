@@ -301,8 +301,105 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(block_number=621)
 
 
+# 0800-1207
 def modify_gem_flask_map(filter_manager):
-    pass
+    # Need map, exile?
+    filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here')
+    if filter_config.NEED_MAP:  # 样式取自T14
+        filter_manager.append_block(filter_manager.get_block(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R))
+
+    # 改成8和1
+    filter_manager.add_comment(901, 'Value gems')
+    blocks = filter_manager.get_block(901)
+    del blocks[0]
+    blocks[0].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[1].modify(BaseType=blocks[1].BaseType + ' "Added Chaos Damage"', SetBackgroundColor=COLOR_WHITE,
+                     PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[2].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
+    filter_manager.extend_blocks(blocks)
+
+    # 前两个换位，改成1和2
+    filter_manager.add_comment(902, 'Other gems')
+    blocks = filter_manager.get_block(902)
+    blocks[0], blocks[1] = blocks[1], blocks[0]
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[2].status = DEBUG
+    if filter_config.LEVELING_GEMS_BASE_TYPE != '':
+        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE,
+                                    PlayAlertSound=SOUND_MID_VALUE)
+        blocks.insert(2, tmp)
+    filter_manager.extend_blocks(blocks)
+
+    # 低物等15改成10，高亮Q>=5的功能瓶
+    filter_manager.add_comment(1000, 'FLASKS (Endgame rules)')
+    blocks = filter_manager.get_block(1000)
+    if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
+        filter_manager.append_block(
+            blocks[4].copy_modify(BaseType=filter_config.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
+                                  PlayAlertSound=SOUND_CHANCE))
+    blocks[2].Quality = '>= 10'
+    filter_manager.extend_blocks(blocks[:3])
+    filter_manager.append_block(blocks[5])
+    blocks[-3].modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, SetFontSize=38)
+    filter_manager.append_block(blocks[-3])
+
+    filter_manager.add_comment(1100, 'HIDE LAYER 3: Random Endgame Flasks')
+    filter_manager.extend_blocks(block_number=1100)
+
+    # 去掉第一个的BaseType
+    filter_manager.add_comment(1201, 'Unique Maps')
+    blocks = filter_manager.get_block(1201)
+    blocks[0].modify(BaseType=None, PlayAlertSound=SOUND_TOP_VALUE)
+    filter_manager.extend_blocks(blocks)
+
+    filter_manager.add_comment(1202, 'Labyrinth items, Offerings')
+    filter_manager.extend_blocks(block_number=1202)
+
+    # 加红边
+    filter_manager.add_comment(1203, 'Top tier maps (T15-16)')
+    blocks = filter_manager.get_block(1203)
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
+    filter_manager.extend_blocks(blocks)
+
+    # 加红边
+    filter_manager.add_comment(1204, 'High tier maps(T11-14)')
+    blocks = filter_manager.get_block(1204)
+    for block in blocks:
+        block.modify(SetBorderColor=COLOR_RED_LIGHT, PlayAlertSound=SOUND_TOP_VALUE)
+    filter_manager.extend_blocks(blocks)
+
+    # 加黄边，高亮T9T10
+    filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
+    blocks = filter_manager.get_block(1205)
+    for block in blocks:
+        block.modify(SetTextColor=COLOR_WHITE_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
+    blocks[0].SetFontSize = FONT_SIZE_MAX
+    blocks[1].SetFontSize = FONT_SIZE_MAX
+    blocks[2].SetFontSize = FONT_SIZE_MAX
+    filter_manager.extend_blocks(blocks)
+
+    # 字体高亮，加蓝边/白边
+    filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
+    blocks = filter_manager.get_block(1206)
+    for block in blocks:
+        block.SetTextColor = COLOR_WHITE_LIGHT
+    for block in blocks[:6]:
+        block.SetBorderColor = COLOR_BLUE_LIGHT
+    for block in blocks[6:10]:
+        block.SetBorderColor = COLOR_WHITE_LIGHT
+    filter_manager.extend_blocks(blocks)
+
+    # 8和4
+    filter_manager.add_comment(1207, 'Map fragments')
+    blocks = filter_manager.get_block(1207)
+    if filter_config.POE_VERSION == 'old':
+        del blocks[0]
+    for block in blocks[:-1]:
+        block.PlayAlertSound = SOUND_TOP_VALUE
+    blocks[-1].PlayAlertSound = SOUND_MAP
+    filter_manager.extend_blocks(blocks)
 
 
 # 1900-2303
@@ -490,103 +587,8 @@ def modify_filter(filter_manager):
         block.status = DEBUG
     filter_manager.extend_blocks(blocks)
 
-    # Need map, exile?
-    filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here')
-    if filter_config.NEED_MAP:  # 样式取自T14
-        filter_manager.append_block(filter_manager.get_block(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R))
-
-    # 改成8和1
-    filter_manager.add_comment(901, 'Value gems')
-    blocks = filter_manager.get_block(901)
-    del blocks[0]
-    blocks[0].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(BaseType=blocks[1].BaseType + ' "Added Chaos Damage"', SetBackgroundColor=COLOR_WHITE,
-                     PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[2].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
-    filter_manager.extend_blocks(blocks)
-
-    # 前两个换位，改成1和2
-    filter_manager.add_comment(902, 'Other gems')
-    blocks = filter_manager.get_block(902)
-    blocks[0], blocks[1] = blocks[1], blocks[0]
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE
-    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[2].status = DEBUG
-    if filter_config.LEVELING_GEMS_BASE_TYPE != '':
-        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE,
-                                    PlayAlertSound=SOUND_MID_VALUE)
-        blocks.insert(2, tmp)
-    filter_manager.extend_blocks(blocks)
-
-    # 低物等15改成10，高亮Q>=5的功能瓶
-    filter_manager.add_comment(1000, 'FLASKS (Endgame rules)')
-    blocks = filter_manager.get_block(1000)
-    if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
-        filter_manager.append_block(
-            blocks[4].copy_modify(BaseType=filter_config.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
-                                  PlayAlertSound=SOUND_CHANCE))
-    blocks[2].Quality = '>= 10'
-    filter_manager.extend_blocks(blocks[:3])
-    filter_manager.append_block(blocks[5])
-    blocks[-3].modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, SetFontSize=38)
-    filter_manager.append_block(blocks[-3])
-
-    filter_manager.add_comment(1100, 'HIDE LAYER 3: Random Endgame Flasks')
-    filter_manager.extend_blocks(block_number=1100)
-
-    # 去掉第一个的BaseType
-    filter_manager.add_comment(1201, 'Unique Maps')
-    blocks = filter_manager.get_block(1201)
-    blocks[0].modify(BaseType=None, PlayAlertSound=SOUND_TOP_VALUE)
-    filter_manager.append_block(blocks)
-
-    filter_manager.add_comment(1202, 'Labyrinth items, Offerings')
-    filter_manager.extend_blocks(block_number=1202)
-
-    # 加红边
-    filter_manager.add_comment(1203, 'Top tier maps (T15-16)')
-    blocks = filter_manager.get_block(1203)
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
-    filter_manager.extend_blocks(blocks)
-
-    # 加红边
-    filter_manager.add_comment(1204, 'High tier maps(T11-14)')
-    blocks = filter_manager.get_block(1204)
-    for block in blocks:
-        block.modify(SetBorderColor=COLOR_RED_LIGHT, PlayAlertSound=SOUND_TOP_VALUE)
-    filter_manager.extend_blocks(blocks)
-
-    # 加黄边，高亮T9T10
-    filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
-    blocks = filter_manager.get_block(1205)
-    for block in blocks:
-        block.modify(SetTextColor=COLOR_WHITE_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
-    blocks[0].SetFontSize = FONT_SIZE_MAX
-    blocks[1].SetFontSize = FONT_SIZE_MAX
-    blocks[2].SetFontSize = FONT_SIZE_MAX
-    filter_manager.extend_blocks(blocks)
-
-    # 字体高亮，加蓝边/白边
-    filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
-    blocks = filter_manager.get_block(1206)
-    for block in blocks:
-        block.SetTextColor = COLOR_WHITE_LIGHT
-    for block in blocks[:6]:
-        block.SetBorderColor = COLOR_BLUE_LIGHT
-    for block in blocks[6:10]:
-        block.SetBorderColor = COLOR_WHITE_LIGHT
-    filter_manager.extend_blocks(blocks)
-
-    # 8和4
-    filter_manager.add_comment(1207, 'Map fragments')
-    blocks = filter_manager.get_block(1207)
-    if filter_config.POE_VERSION == 'old':
-        del blocks[0]
-    for block in blocks[:-1]:
-        block.PlayAlertSound = SOUND_TOP_VALUE
-    blocks[-1].PlayAlertSound = SOUND_MAP
-    filter_manager.extend_blocks(blocks)
+    # 0800-1207
+    modify_gem_flask_map(filter_manager)
 
     # 第一组加亮，银币单独加个样式
     filter_manager.add_comment(1301, 'Regular Rare Currency')
