@@ -20,20 +20,16 @@ SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
 # MS = 1 15 30 40 55
 
+#
+# 第一部分：1-64（按重要度排序）
+#
 
-# 洗珠宝：没有废词缀就停手
-# "Cobalt" "Crimson" "Viridian"
-ALERT_JEWEL_BASE_TYPE = '' + ' "Crimson" '
-
-# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"
-# *急需的话直接点金* "Opal Sceptre" "Void Sceptre"  "Vaal Axe"
-SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Astral Plate" '
-#  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise" (5 16)
-AMULET_BASE_TYPE = '' + ' "Gold" ' + ' "Citrine" "Jade" "Turquoise"  '
+#  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise"   (5 16)
+SSF_CRAFT_AMULET_BASE_TYPE = '' + ' "Gold" ' + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
-RINGS_BASE_TYPE = '' + ' "Two-Stone" ' + ' "Sapphire" "Topaz" "Ruby" '
+SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" ' + ' "Sapphire" "Topaz" "Ruby" '
 # "Rustic Sash" "Leather Belt" (1 8)
-BELTS_BASE_TYPE = '' + ' "Leather Belt" ' + ' "Rustic Sash" '
+SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" ' + ' "Rustic Sash" '
 
 # '>= 1' '< 1'
 MAGIC_BOOTS_ITEM_LEVEL = '>= 1'
@@ -45,44 +41,76 @@ CURRENCY_ALERT_AUGMENTATION = True
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = 33  # 33 -> 30
 CURRENCY_WISDOM_SCROLL_FONT_SIZE = 33  # 33 -> 18
 
+HIDE_FLASK_MANA = False
+HALLOWED_MAX_ITEM_LEVEL = 50  # 50 -> 41
+HIDE_FLASK_LIFE = False
+
 # "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
 # "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
 ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '
-HIDE_FLASK_MANA = False
-HIDE_FLASK_LIFE = False
 
-# ' "Vortex" "Immortal Call" "Cast when Damage Taken" ' \
-# ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" '
-LEVELING_GEMS_BASE_TYPE = '' + ' "Immortal Call" "Cast when Damage Taken" ' + ' "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" '
+# ' "Vortex" "Immortal Call" "Cast when Damage Taken"   "Added Fire Damage" "Melee Splash" "Clarity" "Sunder" '
+LEVELING_GEMS_BASE_TYPE = '' + ' "Immortal Call" "Cast when Damage Taken" ' + ' "Clarity" "Sunder" '
+
+# >= 15
+HIDE_LEVELING_RARE_CLASS = '' + ' "Shields" '  # + '  "Staves"  '
+# >= 2
+HIDE_NORMAL_MAGIC_CLASS = '"Shields" '  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
+# >= 2 找到高pDPS武器就隐藏所有白武器
+HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
+
+#
+# 第二部分：65+（按重要度排序）
+#
 
 NEED_MAP = True
 
-HALLOWED_MAX_ITEM_LEVEL = 50  # 50 -> 41
+# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"
+# *急需的话直接点金* "Opal Sceptre" "Void Sceptre"  "Vaal Axe"
+SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" "Astral Plate" '
 
-# >= 15  "Staves"  "Body Armour"  "Boots" "Gloves" "Helmets"
-HIDE_RARES_ALL = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '   "Shields"    '  # + ' "Daggers" '  # + ' "Sceptres" "Wands" '
-# >= 2
-HIDE_NORMAL_MAGIC = '"Shields" '  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
-# >= 2 找到高pDPS武器就隐藏所有白武器
-HIDE_NORMAL = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
+ALERT_T1_RARE_BASE_TYPE = '' + ' "Vaal Regalia" '
+
+# 提升部分T2的到T1中（T2为特定角色的farm gears提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中）
+ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
+ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE
+
+# HIGHLIGHT_T2_RARE_BASE_TYPE = '' + ' "Tornado Wand" "Opal Wand" "Prophecy Wand"  "Vaal Axe"  "Opal Sceptre" "Void Sceptre"    '
+
+# 后期去掉注释
+# "Fencer Helm" "Lacquered Helmet" "Bascinet"
+# "Sharkskin Gloves" "Shagreen Gloves" "Stealth Gloves" "Slink Gloves"
+# "Sharkskin Boots" "Shagreen Boots" "Stealth Boots" "Slink Boots" "Wyrmscale Boots" "Hydrascale Boots" "Dragonscale Boots"
+ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE = ''  # + ' "Siege Helmet" "Samite Helmet" "Burgonet" ' \
+# ' "Gauntlets" ' \
+# ' "Greaves"  '
+
+# "General\'s Brigandine" "Triumphant Lamellar"
+ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE = ''  # + ' "Plate" '
+
+ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE = ''
+
+# "Two Hand Swords"  "Body Armour"  "Boots" "Gloves" "Helmets"
+HIDE_ENDGAME_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"  '  # + ' "Shields" '  # + ' "Daggers" '  # + ' "Sceptres" "Wands" '
+
+# 洗珠宝：没有废词缀就停手
+# "Cobalt"  "Crimson" "Viridian"
+ALERT_JEWEL_BASE_TYPE = '' + ' "Cobalt" '
 
 # "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
 # "Fiend Dagger"
-CHANCING_ITEM_BASE_TYPE = ''  # + ' "Sorcerer Boots" '
+CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
 
-RARE_SMALL_ARMOUR_BASE_TYPE = '"Siege Helmet" "Samite Helmet" "Burgonet" "Fencer Helm" "Lacquered Helmet" "Bascinet"' \
-                              ' "Gauntlets" "Sharkskin Gloves" "Shagreen Gloves" "Stealth Gloves" "Slink Gloves"' \
-                              ' "Greaves" "Sharkskin Boots" "Shagreen Boots" "Stealth Boots" "Slink Boots" "Wyrmscale Boots" "Hydrascale Boots" "Dragonscale Boots" '
-RARE_BODY_ARMOUR_BASE_TYPE = '"Plate" "General\'s Brigandine" "Triumphant Lamellar"'
-
+#
+# 第三部分：（大致）固定内容
 #
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL == '>= 1')
 
-HIDE_RARES_MIN_ITEM_LEVEL = 15
+HIDE_LEVELING_RARE_MIN_ITEM_LEVEL = 15
 
 # 'RRR' 'BBB'
-LINKED4_SOCKET_GROUP = ['RRR', 'BBB']
+# LINKED4_SOCKET_GROUP = ['RRR', 'BBB']
 LINKED4_NORMAL_MAX_ITEM_LEVEL = 60  # >60的由0216负责
 LINKED4_MAGIC_MAX_ITEM_LEVEL = 55  # 第三难度不再显示
 LINKED4_RARE_MAX_ITEM_LEVEL = 64  # 0700隐藏了>=65的黄装
