@@ -466,8 +466,10 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2202, 'Jewellery & Helpful leveling and racing gear')
     blocks = filter_manager.get_block(2202)[-5:-1]
     blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_ITEM_LEVEL)
+    blocks[1].Class = filter_config.SMALLS_MAGIC_CLASS
     del blocks[2]
-    blocks[2].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_ITEM_LEVEL)
+    blocks[2].modify(Class=filter_config.SMALLS_MAGIC_CLASS,
+                     ItemLevel='<= ' + str(filter_config.SMALLS_MAGIC_MAX_ITEM_LEVEL))
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2203, 'Caster weapons')
@@ -497,8 +499,10 @@ def modify_leveling(filter_manager):
                      ItemLevel='<= 7', SetFontSize=40)
     blocks[8].modify(LinkedSockets=2, SocketGroup='RR', Class=filter_config.LINKED4_CLASS,
                      ItemLevel='<= 15', SetFontSize=40)
-    filter_manager.append_block(blocks[0].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL)))
-    filter_manager.append_block(blocks[1].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL)))
+    filter_manager.append_block(
+        blocks[0].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL)))
+    filter_manager.append_block(
+        blocks[1].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.LINKED4_NORMAL_MAX_ITEM_LEVEL)))
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2205, '20% quality items for those strange people who want them')

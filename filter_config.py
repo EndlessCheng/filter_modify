@@ -32,7 +32,8 @@ SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" ' + ' "Sapphire" "Topaz" "Ruby" '
 SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" ' + ' "Rustic Sash" '
 
 # '>= 1' '< 1'
-MAGIC_BOOTS_ITEM_LEVEL = '>= 1'
+MAGIC_BOOTS_ITEM_LEVEL = '< 1'
+SMALLS_MAGIC_CLASS = '' + ' "Rings" "Amulets" '  # + ' "Belts" '
 
 CURRENCY_ALERT_CHANCE = True
 CURRENCY_ALERT_BLACKSMITH = True
@@ -53,9 +54,9 @@ ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Gra
 LEVELING_GEMS_BASE_TYPE = '' + ' "Immortal Call" "Cast when Damage Taken" ' + ' "Clarity" "Sunder" '
 
 # >= 15
-HIDE_LEVELING_RARE_CLASS = '' + ' "Shields" '  # + '  "Staves"  '
+HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" ' + ' "Shields" '  + '  "Staves"  '
 # >= 2
-HIDE_NORMAL_MAGIC_CLASS = '"Shields" '  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
+HIDE_NORMAL_MAGIC_CLASS = '"Shields" '   + ' "Two Hand Maces" "Staves" ' # + ' "Two Hand" "One Hand" '
 # >= 2 找到高pDPS武器就隐藏所有白武器
 HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
 
@@ -120,3 +121,4 @@ LINKED4_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Body Armour" ' + ' "Boots"  '
 # 三小件
 SMALLS_NORMAL_MAX_ITEM_LEVEL = 9  # 出监狱后     隐藏不需要的白色三小件
 SMALLS_MAGIC_MAX_ITEM_LEVEL = 23  # 出瓦尔金字塔后隐藏不需要的蓝色三小件
+

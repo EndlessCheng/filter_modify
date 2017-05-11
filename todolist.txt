@@ -9,9 +9,6 @@ AR/EV "Serpentscale" "Wyrmscale" "Hydrascale" "Dragonscal"
 AR/ES "Zealot" "Soldier" "Legion" "Crusader"
 EV/ES "Ambush" "Carnal" "Assassin\'s" "Murder"
 
-给4L添加BBB，在前面直接一个filter_append()就行
-
-
 
 HIDE_RARES_T1_5 = False
 
