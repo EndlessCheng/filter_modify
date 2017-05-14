@@ -67,12 +67,13 @@ def modify0200(filter_manager):
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    # 颜色改成和点金一样的
+    # 颜色改成和神圣/点金一样的
     filter_manager.add_comment(203, '6-Socket Items')
-    # TODO: 前两个颜色
     blocks = filter_manager.get_block(203)
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].modify(SetTextColor=COLOR_RED, SetBorderColor=COLOR_RED, SetBackgroundColor=COLOR_WHITE,
+                     PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[1].modify(SetTextColor=COLOR_RED, SetBorderColor=COLOR_RED, SetBackgroundColor=COLOR_WHITE,
+                     PlayAlertSound=SOUND_TOP_VALUE)
     del blocks[2]
     blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_GOLD,
                      PlayAlertSound=SOUND_MID_VALUE)
@@ -127,7 +128,8 @@ def modify0200(filter_manager):
     filter_manager.add_comment(211, 'Remaining crafting rules - add your own bases here!')
     if filter_config.SSF_CRAFT_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE
+            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE,
+            PlayAlertSound=SOUND_CHANCE
         ))
     if filter_config.SSF_CRAFT_AMULET_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -160,13 +162,15 @@ def modify0200(filter_manager):
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    # >=65RGB就不捡了
     filter_manager.add_comment(215, 'Chromatic recipe items ("RGB Recipe")')
+    if filter_config.NEED_RGB:
+        filter_manager.extend_blocks(block_number=215)
 
     filter_manager.add_comment(216, 'Endgame-start 4-links')
     # filter_manager.extend_blocks(block_number=216)
 
     filter_manager.add_comment(217, 'Animate Weapon script - deactivated by default')
+    # filter_manager.extend_blocks(block_number=217)
 
     # 改稀有度，高亮边框
     filter_manager.add_comment(218, 'W-soc offhand weapons')
@@ -218,22 +222,27 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(604, 'T1.5 rare items')
-    filter_manager.extend_blocks(block_number=604)
+    blocks = filter_manager.get_block(604)
+    for block in blocks:
+        block.SetBorderColor = COLOR_ORANGE_LIGHT
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(605, 'T2 rare items')
-    filter_manager.extend_blocks(block_number=605)
+    blocks = filter_manager.get_block(605)
+    for block in blocks:
+        block.SetBorderColor = COLOR_ORANGE_LIGHT
+    filter_manager.extend_blocks(blocks)
 
     # 提前隐藏部分稀有物品，借鉴0700
     blocks = filter_manager.get_block(700)
     for block in blocks:
-        block.status = DEBUG
-        block.Class = filter_config.HIDE_ENDGAME_RARE_CLASS
+        block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T2_RARE_CLASS)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(606, 'Breach Rings')
     filter_manager.extend_blocks(block_number=606)
 
-    # 4,1,4
+    # 4, 1, 4
     filter_manager.add_comment(607, 'Amulets, Jewels, Rings, Belts')
     blocks = filter_manager.get_block(607)
     blocks[0].PlayAlertSound = SOUND_CHANCE  # rare jewel
@@ -255,16 +264,14 @@ def modify0600(filter_manager):
     filter_manager.add_comment(612, '1H Axes and Maces')
 
     filter_manager.add_comment(613, '1H Sceptres')
-    filter_manager.extend_blocks(block_number=613)
+    blocks = filter_manager.get_block(613)
+    blocks[0].DropLevel = None
+    blocks[1].DropLevel = None
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(614, '2H Staves')
 
-    # 隐藏bad
     filter_manager.add_comment(615, '2H Swords, Axes, Maces')
-    # blocks = filter_manager.get_block(615)
-    # blocks[-2].status = DEBUG
-    # blocks[-1].status = DEBUG
-    # filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(616, '2H Bows')
 
@@ -274,8 +281,8 @@ def modify0600(filter_manager):
     if filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE != '':
         blocks[0].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
         blocks[1].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
-        blocks[-2].status = DEBUG
-        blocks[-1].status = DEBUG
+        blocks[-2].modify(status=DEBUG, Corrupted=False)
+        blocks[-1].modify(status=DEBUG, Corrupted=False)
     filter_manager.extend_blocks(blocks)
 
     # 隐藏bad
@@ -284,19 +291,17 @@ def modify0600(filter_manager):
     if filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE != '':
         blocks[2].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
         blocks[3].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
-        blocks[-2].status = DEBUG
-        blocks[-1].status = DEBUG
+    blocks[-2].modify(status=DEBUG, Corrupted=False)
+    blocks[-1].modify(status=DEBUG, Corrupted=False)
     filter_manager.extend_blocks(blocks)
 
     # 隐藏bad
-    # TODO
     filter_manager.add_comment(619, 'OH: Shields')
     blocks = filter_manager.get_block(619)
-    if filter_config.ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE != '':
-        blocks[-4].status = DEBUG
-        blocks[-3].status = DEBUG
-        blocks[-2].status = DEBUG
-        blocks[-1].status = DEBUG
+    blocks[-4].modify(status=DEBUG, Corrupted=False)
+    blocks[-3].modify(status=DEBUG, Corrupted=False)
+    blocks[-2].modify(status=DEBUG, Corrupted=False)
+    blocks[-1].modify(status=DEBUG, Corrupted=False)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(620, 'OH: Quivers')
@@ -328,11 +333,12 @@ def modify_gem_flask_map(filter_manager):
     blocks[0], blocks[1] = blocks[1], blocks[0]
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[2].status = DEBUG
     if filter_config.LEVELING_GEMS_BASE_TYPE != '':
-        tmp = blocks[2].copy_modify(status=SHOW, BaseType=filter_config.LEVELING_GEMS_BASE_TYPE,
-                                    PlayAlertSound=SOUND_MID_VALUE)
+        tmp = blocks[2].copy_modify(BaseType=filter_config.LEVELING_GEMS_BASE_TYPE,
+                                    PlayAlertSound=SOUND_TOP_VALUE)
         blocks.insert(2, tmp)
+    else:
+        blocks[2].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
     # 低物等15改成10，高亮Q>=5的功能瓶
@@ -422,7 +428,7 @@ def modify_leveling(filter_manager):
         FilterBlock(status=DEBUG, Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=FONT_SIZE_MIN))
     if filter_config.HIDE_LEVELING_RARE_CLASS != '':
         filter_manager.append_block(
-            FilterBlock(status=DEBUG, Class=filter_config.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
+            FilterBlock(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
                         ItemLevel='>= ' + str(filter_config.HIDE_LEVELING_RARE_MIN_ITEM_LEVEL),
                         SetFontSize=FONT_SIZE_MIN))
 
@@ -478,7 +484,7 @@ def modify_leveling(filter_manager):
     #     filter_manager.append_block(blocks[1])
 
     # 4L RRR BBB, 3L RR, 2L RR
-    # TODO
+    # TODO: 45?
     filter_manager.add_comment(2204, 'Linked gear')
     blocks = filter_manager.get_block(2204)
     blocks[0].modify(SocketGroup='RRR', Class=filter_config.LINKED4_CLASS,
