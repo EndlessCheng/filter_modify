@@ -2,15 +2,34 @@ SHOW_ENDGAME_4L = False
 
 0300 改成 >=65
 
-
-HIDE_RARES_T1_5 = False
-
-APPEND_T2_BIG_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
-
-
-显示>=75的rare!
+# 加到最后两个上
+APPEND_T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
 
 重写>=75三小件的高亮
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
