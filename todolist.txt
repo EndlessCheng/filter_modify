@@ -7,6 +7,8 @@ HIDE_RARES_T1_5 = False
 
 显示>=75的rare!
 
+重写>=75三小件的高亮
+
 
 
 #Class "Helmets"
