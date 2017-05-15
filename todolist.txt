@@ -3,6 +3,7 @@
 
 HIDE_RARES_T1_5 = False
 
+APPEND_T2_BIG_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
 
 
 显示>=75的rare!
