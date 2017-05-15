@@ -1,3 +1,5 @@
+SHOW_ENDGAME_4L = False
+
 0300 改成 >=65
 
 
