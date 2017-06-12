@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import time
 import os
 
 from filter_modify import *
@@ -753,6 +754,8 @@ def modify_filter(filter_manager):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
+
     with open("NeverSink's filter - 1-REGULAR.filter") as f:
         fm = FilterManager(f.readlines())
 
@@ -760,3 +763,5 @@ if __name__ == '__main__':
 
     with open(os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter", 'w') as f:
         f.writelines(fm.new_text)
+
+    print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
