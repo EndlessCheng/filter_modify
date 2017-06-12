@@ -20,16 +20,17 @@ SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 # 第一部分：1-64（按重要度排序）
 #
 
-SMALLS_MAGIC_CLASS = '' + ' "Amulets" ' + ' "Rings"  ' + ' "Belts" '
-
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise"   (5 16)
-SSF_CRAFT_AMULET_BASE_TYPE = '' + ' "Gold" '  # + ' "Agate" "Lapis" "Turquoise" '  # + ' "Citrine" "Jade" "Turquoise"  '
+SSF_CRAFT_AMULETS_BASE_TYPE = '' + ' "Gold" '  # + ' "Agate" "Lapis" "Turquoise" '  # + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
 SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 # "Rustic Sash" "Leather Belt" (1 8)
 SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" '  # + ' "Rustic Sash" '
 
 MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][1]
+
+ALERT_ALL_MAGIC_AMULETS = True
+ALERT_RESISTANCE_MAGIC_RINGS = True
 
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -124,4 +125,5 @@ LINKED4_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
 
 # 三小件
 SMALLS_NORMAL_MAX_ITEM_LEVEL = 9  # 出监狱后     隐藏不需要的白色三小件
+SMALLS_MAGIC_ALERT_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" '
 SMALLS_MAGIC_MAX_ITEM_LEVEL = 24  # 出瓦尔金字塔后隐藏不需要的蓝色三小件

@@ -113,12 +113,13 @@ class FilterManager:
     def append_block(self, filter_block):
         self.new_text.extend(filter_block.generate())
 
-    def extend_blocks(self, filter_blocks=None, block_number=-1):
-        if block_number != -1:
-            filter_blocks = self.get_block(block_number)
+    def extend_blocks(self, filter_blocks=None):
+        # if block_number != -1:
+        #     filter_blocks = self.get_block(block_number)
         if filter_blocks is not None:
             for block in filter_blocks:
                 self.append_block(block)
 
     def add_comment(self, block_number, comment):
         self.new_text.append("\n# {:0>4} {}\n".format(block_number, comment))
+        return self.get_block(block_number)

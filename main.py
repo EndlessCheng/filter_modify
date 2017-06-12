@@ -24,13 +24,14 @@ FONT_SIZE_MAX = 45
 FONT_SIZE_MIN = 18
 
 COLOR_WHITE = '255 255 255'
-COLOR_WHITE_LIGHT = '200 200 200'
+COLOR_GRAY_LIGHT = '200 200 200'
+COLOR_GRAY = '150 150 150'
+COLOR_BLACK = '0 0 0'
 COLOR_RED = '255 0 0'
 COLOR_RED_LIGHT = '210 0 0'
 COLOR_GREEN = '0 255 0'
 COLOR_BLUE = '0 0 255'
 COLOR_BLUE_LIGHT = '136 136 255'
-COLOR_BLACK = '0 0 0'
 COLOR_YELLOW = '255 255 0'
 COLOR_YELLOW_LIGHT = '255 255 119'
 COLOR_AQUA = '0 255 255'
@@ -48,46 +49,45 @@ SOUND_UNIQUE = '6 300'
 SOUND_CHANCE = '4 300'
 SOUND_CHANCE2 = '3 300'
 
+STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
+
 
 def modify0200(filter_manager):
     filter_manager.add_comment(200, 'Recipes, Magic and Normal items (endgame!)')
 
     # 8
-    filter_manager.add_comment(201, '6-Linked items')
-    block = filter_manager.get_block(201)[0]
-    block.PlayAlertSound = SOUND_TOP_VALUE
-    filter_manager.append_block(block)
+    blocks = filter_manager.add_comment(201, '6-Linked items')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.extend_blocks(blocks)
 
-    # 8
-    filter_manager.add_comment(202, '5-Linked items')
-    block = filter_manager.get_block(202)[0]
-    # tmp = block.copy_modify(Class='"Body Armour"', SetFontSize=45, PlayAlertSound=SOUND_TOP_VALUE)
-    # filter_manager.append_block(tmp)
-    # tmp = tmp.copy_modify(DropLevel='>= 58', Class='"Two Hand"')  # "Two Hand Axes"
-    # filter_manager.append_block(tmp)
-    block.PlayAlertSound = SOUND_TOP_VALUE
-    filter_manager.append_block(block)
+    # 8 无需多言
+    blocks = filter_manager.add_comment(202, '5-Linked items')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.extend_blocks(blocks)
 
-    # 颜色改成和神圣/点金一样的
-    filter_manager.add_comment(203, '6-Socket Items')
-    blocks = filter_manager.get_block(203)
-    blocks[0].modify(SetTextColor=COLOR_RED, SetBorderColor=COLOR_RED, SetBackgroundColor=COLOR_WHITE,
-                     PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(SetTextColor=COLOR_RED, SetBorderColor=COLOR_RED, SetBackgroundColor=COLOR_WHITE,
-                     PlayAlertSound=SOUND_TOP_VALUE)
+    # 8 1 颜色改成神圣or点金
+    blocks = filter_manager.add_comment(203, '6-Socket Items')
+    blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
+    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]
     blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_GOLD,
                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 8和1
-    filter_manager.add_comment(204, 'Exclusive bases: Atlas bases, talismans')
-    blocks = filter_manager.get_block(204)
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
+    # 8 1
+    blocks = filter_manager.add_comment(204, 'Exclusive bases: Atlas bases, talismans')
+    blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
+    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[3].PlayAlertSound = SOUND_MID_VALUE
     blocks[4].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks)
+
+    # TODO: 提醒特定的功能瓶
+    blocks = filter_manager.add_comment(205, 'FLASKS (Endgame rules)')
+    blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[2].modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, SetFontSize=38, SetBorderColor=COLOR_GRAY,
+                     PlayAlertSound=SOUND_LOW_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 加上Gloves Boots Shields Bows Quivers，改稀有度
@@ -97,45 +97,26 @@ def modify0200(filter_manager):
     # 手：击中附加诅咒
     # 脚：+1球
     # 弓和箭袋：+1箭
-    filter_manager.add_comment(205, 'Corrupted items')
-    block = filter_manager.get_block(205)[0]
-    block.modify(Class=block.Class + ' Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R)
-    filter_manager.append_block(block)
+    blocks = filter_manager.add_comment(206, 'Corrupted items')
+    blocks[0].modify(Class=blocks[0].Class + ' Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R)
+    filter_manager.extend_blocks(blocks)
 
     # 只留第一个
-    filter_manager.add_comment(206, 'Chancing items')
+    block = filter_manager.add_comment(207, 'Chancing items')[0]
     if filter_config.CHANCING_ITEM_BASE_TYPE != '':
-        block = filter_manager.get_block(206)[0]
         block.modify(Corrupted=False, BaseType=filter_config.CHANCING_ITEM_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block)
 
-    filter_manager.add_comment(207, 'Add your own crafting rules here')
-
-    # 0208是蓝白，0602是稀有
-    filter_manager.add_comment(208, '83/84+ Endgame crafting rules')
-    filter_manager.extend_blocks(block_number=208)
-
-    # 只留第一个
-    filter_manager.add_comment(209, 'Magic jewel')
-    block = filter_manager.get_block(209)[0]
-    if filter_config.ALERT_JEWEL_BASE_TYPE != '':
-        filter_manager.append_block(
-            block.copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE))
-    filter_manager.append_block(block)
-
-    # All Warband mods are prefixes, GG.
-    filter_manager.add_comment(210, 'Warband items')
-
-    # 再加上三小件，但不刻意高亮
-    filter_manager.add_comment(211, 'Remaining crafting rules - add your own bases here!')
+    # 加上部分三小件，但不刻意高亮
+    filter_manager.add_comment(208, 'Add your own crafting rules here')
     if filter_config.SSF_CRAFT_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE,
             PlayAlertSound=SOUND_CHANCE
         ))
-    if filter_config.SSF_CRAFT_AMULET_BASE_TYPE != '':
+    if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULET_BASE_TYPE, Rarity=RARITY_NORMAL,
+            Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
             SetTextColor=COLOR_WHITE
         ))
     if filter_config.SSF_CRAFT_RINGS_BASE_TYPE != '':
@@ -149,40 +130,56 @@ def modify0200(filter_manager):
             SetTextColor=COLOR_WHITE
         ))
 
-    filter_manager.add_comment(212, 'Chisel recipe items')
+    # 0209是蓝白，0602是稀有
+    blocks = filter_manager.add_comment(209, '83/84+ Endgame crafting rules')
+    filter_manager.extend_blocks(blocks)
+
+    # 只留第一个
+    block = filter_manager.add_comment(210, 'Magic jewel')[0]
+    if filter_config.ALERT_JEWEL_BASE_TYPE != '':
+        filter_manager.append_block(
+            block.copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE))
+    filter_manager.append_block(block)
+
+    # All Warband mods are prefixes, GG.
+    filter_manager.add_comment(211, 'Warband items')
+
+    filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!')
+
+    filter_manager.add_comment(213, 'Chisel recipe items')
     filter_manager.extend_blocks(block_number=212)
 
     # 8
-    filter_manager.add_comment(213, 'Fishing Rod')
+    filter_manager.add_comment(214, 'Fishing Rod')
     block = filter_manager.get_block(213)[0]
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
     # 8
-    filter_manager.add_comment(214, 'SRS Crude Bow')
+    filter_manager.add_comment(215, 'SRS Crude Bow')
     block = filter_manager.get_block(214)[0]
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    filter_manager.add_comment(215, 'Chromatic recipe items ("RGB Recipe")')
+    filter_manager.add_comment(216, 'Chromatic recipe items ("RGB Recipe")')
     if filter_config.NEED_RGB:
         filter_manager.extend_blocks(block_number=215)
 
-    filter_manager.add_comment(216, 'Endgame-start 4-links')
+    filter_manager.add_comment(217, 'Endgame-start 4-links')
     if filter_config.SHOW_ENDGAME_4L:
         filter_manager.extend_blocks(block_number=216)
 
-    filter_manager.add_comment(217, 'Animate Weapon script - deactivated by default')
+    filter_manager.add_comment(218, 'Animate Weapon script - deactivated by default')
     # filter_manager.extend_blocks(block_number=217)
 
     # 改稀有度，高亮边框
-    filter_manager.add_comment(218, 'W-soc offhand weapons')
+    filter_manager.add_comment(219, 'W-soc offhand weapons')
     block = filter_manager.get_block(218)[0]
     block.modify(Rarity=RARITY_N2R, SetBorderColor=COLOR_WHITE)
     filter_manager.append_block(block)
 
-    filter_manager.add_comment(219, 'Sacrificial Garb')
-    filter_manager.extend_blocks(block_number=219)
+    blocks = filter_manager.add_comment(220, 'Sacrificial Garb')
+    filter_manager.extend_blocks(blocks)
 
 
 # ！！！SSF模式下最重要的部分！！！
@@ -397,7 +394,7 @@ def modify_gem_flask_map(filter_manager):
     filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
     blocks = filter_manager.get_block(1205)
     for block in blocks:
-        block.modify(SetTextColor=COLOR_WHITE_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
+        block.modify(SetTextColor=COLOR_GRAY_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
     blocks[0].SetFontSize = FONT_SIZE_MAX
     blocks[1].SetFontSize = FONT_SIZE_MAX
     blocks[2].SetFontSize = FONT_SIZE_MAX
@@ -407,11 +404,11 @@ def modify_gem_flask_map(filter_manager):
     filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
     blocks = filter_manager.get_block(1206)
     for block in blocks:
-        block.SetTextColor = COLOR_WHITE_LIGHT
+        block.SetTextColor = COLOR_GRAY_LIGHT
     for block in blocks[:6]:
         block.SetBorderColor = COLOR_BLUE_LIGHT
     for block in blocks[6:10]:
-        block.SetBorderColor = COLOR_WHITE_LIGHT
+        block.SetBorderColor = COLOR_GRAY_LIGHT
     filter_manager.extend_blocks(blocks)
 
     # 8和4
@@ -577,7 +574,7 @@ def modify_filter(filter_manager):
 
     modify0200(filter_manager)
 
-    # 隐藏>=65的蓝白
+    # 隐藏>=65的蓝白（而不是>=61）
     filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
     block = filter_manager.get_block(300)[0]
     block.modify(status=DEBUG, ItemLevel='>= 65')
