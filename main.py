@@ -86,6 +86,7 @@ def modify0200(filter_manager):
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[3].PlayAlertSound = SOUND_MID_VALUE
+    blocks[4].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     # 加上Gloves Boots Shields Bows Quivers，改稀有度
@@ -167,7 +168,8 @@ def modify0200(filter_manager):
         filter_manager.extend_blocks(block_number=215)
 
     filter_manager.add_comment(216, 'Endgame-start 4-links')
-    # filter_manager.extend_blocks(block_number=216)
+    if filter_config.SHOW_ENDGAME_4L:
+        filter_manager.extend_blocks(block_number=216)
 
     filter_manager.add_comment(217, 'Animate Weapon script - deactivated by default')
     # filter_manager.extend_blocks(block_number=217)
@@ -231,6 +233,16 @@ def modify0600(filter_manager):
     blocks = filter_manager.get_block(605)
     for block in blocks:
         block.SetBorderColor = COLOR_ORANGE_LIGHT
+    if filter_config.T2_BIG_WEAPON_BASE_TYPE != '':
+        blocks[2].BaseType = filter_config.T2_BIG_WEAPON_BASE_TYPE
+        blocks[3].BaseType = filter_config.T2_BIG_WEAPON_BASE_TYPE
+    else:
+        del blocks[2:4]
+    if filter_config.T2_BIG_ARM_BASE_TYPE != '':
+        blocks[-2].BaseType = filter_config.T2_BIG_ARM_BASE_TYPE
+        blocks[-1].BaseType = filter_config.T2_BIG_ARM_BASE_TYPE
+    else:
+        del blocks[-2:]
     filter_manager.extend_blocks(blocks)
 
     # 提前隐藏部分稀有物品，借鉴0700
@@ -278,21 +290,21 @@ def modify0600(filter_manager):
     # 隐藏bad
     filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets')
     blocks = filter_manager.get_block(617)
-    if filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE != '':
-        blocks[0].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
-        blocks[1].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
-        blocks[-2].modify(status=DEBUG, Corrupted=False)
-        blocks[-1].modify(status=DEBUG, Corrupted=False)
+    # if filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE != '':
+    #     blocks[0].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
+    #     blocks[1].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE
+    #     blocks[-2].modify(status=DEBUG, Corrupted=False)
+    #     blocks[-1].modify(status=DEBUG, Corrupted=False)
     filter_manager.extend_blocks(blocks)
 
     # 隐藏bad
     filter_manager.add_comment(618, 'AR: Body Armors')
     blocks = filter_manager.get_block(618)
-    if filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE != '':
-        blocks[2].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
-        blocks[3].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
-    blocks[-2].modify(status=DEBUG, Corrupted=False)
-    blocks[-1].modify(status=DEBUG, Corrupted=False)
+    # if filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE != '':
+    #     blocks[2].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
+    #     blocks[3].BaseType = filter_config.ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE
+    # blocks[-2].modify(status=DEBUG, Corrupted=False)
+    # blocks[-1].modify(status=DEBUG, Corrupted=False)
     filter_manager.extend_blocks(blocks)
 
     # 隐藏bad
@@ -404,8 +416,6 @@ def modify_gem_flask_map(filter_manager):
     # 8和4
     filter_manager.add_comment(1207, 'Map fragments')
     blocks = filter_manager.get_block(1207)
-    if filter_config.POE_VERSION == 'old':
-        del blocks[0]
     for block in blocks[:-1]:
         block.PlayAlertSound = SOUND_TOP_VALUE
     blocks[-1].PlayAlertSound = SOUND_MAP
@@ -566,10 +576,10 @@ def modify_filter(filter_manager):
 
     modify0200(filter_manager)
 
-    # 隐藏>=61的蓝白
+    # 隐藏>=65的蓝白
     filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
     block = filter_manager.get_block(300)[0]
-    block.status = DEBUG
+    block.modify(status=DEBUG, ItemLevel='>= 65')
     filter_manager.append_block(block)
 
     # alt, chance加上2
@@ -585,6 +595,8 @@ def modify_filter(filter_manager):
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
     blocks[1].BaseType = '"Orb of Transmutation" "Orb of Augmentation" "Alchemy Shard"'
+    blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
+                     SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
     blocks[-1].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
     blocks.append(blocks[-1].copy_modify(BaseType='"Scroll of Wisdom"',
                                          SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
@@ -652,22 +664,16 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(1403, 'T2 - Great cards')
     blocks = filter_manager.get_block(1403)
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].BaseType += ' "Humility" "The Encroaching Darkness" '
     filter_manager.extend_blocks(blocks)
 
     # 1
     filter_manager.add_comment(1404, 'T3 - Decent cards')
     blocks = filter_manager.get_block(1404)
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
-    if filter_config.POE_VERSION == 'old':
-        blocks[
-            0].BaseType = '"The Road to Power" "The Arena Champion" "The Gladiator" "Glimmer of Hope" "The Tyrant" "The Union" "The Risk" "The Trial" "Scholar of the Seas" "Lucky Deck" "Humility" "The Penitent" "The Penitent" "The Surveyor" "Lysah\'s Respite" "The Inventor" "The Jester" "Vinia\'s Token" "Rats" "The Wrath" "Hope" "Treasure Hunter" "The Explorer" "The Body" "Jack in the Box" "The Traitor" "Valley of Steel Boxes" "Wolven King\'s Bite" "Wretched"   "The Fletcher" "The Forsaken" "The Formless Sea" "The Demoness" "Time-Lost Relic" "The Wolf" "Earth Drinker" "Standoff" "Merciless Armament"  '
     filter_manager.extend_blocks(blocks)
 
-    # 改成"Carrion Crow" "Other Cheek" "Metalsmith's Gift"
     filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before')
-    blocks = filter_manager.get_block(1405)
-    blocks[0].modify(BaseType='"Carrion Crow" "Other Cheek" "Metalsmith\'s Gift"', SetFontSize=30)
-    filter_manager.extend_blocks(blocks)
 
     # 2
     filter_manager.add_comment(1406, 'T4 - ...showing the remaining cards')
@@ -680,13 +686,12 @@ def modify_filter(filter_manager):
 
     # 改成"Perandus" "Breach" "Essence" 1
     filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
-    if filter_config.POE_VERSION == 'new':
-        blocks = filter_manager.get_block(1600)
-        for block in blocks:
-            block.PlayAlertSound = SOUND_MID_VALUE
-        for block in blocks[::2]:
-            block.BaseType = '"Perandus" "Breach" "Essence"'
-        filter_manager.extend_blocks(blocks)
+    blocks = filter_manager.get_block(1600)
+    for block in blocks:
+        block.PlayAlertSound = SOUND_MID_VALUE
+    for block in blocks[::2]:
+        block.BaseType = '"Perandus" "Breach" "Essence"'
+    filter_manager.extend_blocks(blocks)
 
     # 改成T1
     filter_manager.add_comment(1701, 'Exceptions')

@@ -1,9 +1,17 @@
-SHOW_ENDGAME_4L = False
+三小件部分需要重构
 
-0300 改成 >=65
 
-# 加到最后两个上
-APPEND_T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
+RRR和BBB N2R都需要4号声音
+
+
+
+
+
+
+
+
+
+
 
 重写>=75三小件的高亮
 
