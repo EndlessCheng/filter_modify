@@ -3,7 +3,7 @@
 DEBUG = False
 
 # 'm2s' -> 's' (3 -> 1)
-SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
+# SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 
 # A1( 1-13), A2(13-23), A3(*23*-33), A4(33-40) N
 # A1(40-44), A2(44-48), A3(*48*-54), A4(54-57) C
@@ -20,17 +20,17 @@ SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
 # 第一部分：1-64（按重要度排序）
 #
 
+MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][0]
+
+# "Sapphire" "Topaz" "Ruby"
+ALERT_MAGIC_SMALLS_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" ' + ' "Rustic Sash" ' + ' "Amulet" '
+
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise"   (5 16)
 SSF_CRAFT_AMULETS_BASE_TYPE = '' + ' "Gold" '  # + ' "Agate" "Lapis" "Turquoise" '  # + ' "Citrine" "Jade" "Turquoise"  '
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
 SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 # "Rustic Sash" "Leather Belt" (1 8)
 SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" '  # + ' "Rustic Sash" '
-
-MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][1]
-
-ALERT_ALL_MAGIC_AMULETS = True
-ALERT_RESISTANCE_MAGIC_RINGS = True
 
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -42,19 +42,15 @@ HIDE_FLASK_MANA = False
 HALLOWED_MAX_ITEM_LEVEL = [50, 41][1]
 HIDE_FLASK_LIFE = False
 
-# "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
-# "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
-ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '
-
 # "Firestorm" "Scorching Ray" "Orb of Storms"  "Clarity" "Added Fire Damage" "Melee Splash"
 # "Blasphemy" "Fortify" "Increased Duration"  "Vortex"
 # "Immortal Call" "Cast when Damage Taken"
 LEVELING_GEMS_BASE_TYPE = '' + ' "Cast when Damage Taken"     "Vortex" '  # + ' "Firestorm" "Scorching Ray" "Orb of Storms" ' + ' "Clarity" '
 
-# >= 15
+# >= 20
 HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '  "Staves" "Two Hand"  '
 # >= 2
-HIDE_NORMAL_MAGIC_CLASS = '"Shields" ' + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
+HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
 # >= 2 找到高pDPS武器就隐藏所有白武器
 HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
 
@@ -71,15 +67,15 @@ CURRENCY_ALERT_CHANCE = True
 
 SHOW_ENDGAME_4L = True
 
-# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"
-# *急需的话直接点金* "Opal Sceptre" "Void Sceptre"  "Fossilised Spirit Shield"  "Vaal Axe"
+# "Hubris Circlet" "Vaal Regalia"  "Astral Plate"  "Opal Sceptre" "Void Sceptre"
+# *急需的话直接点金*
 SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" ' + ' "Astral Plate" ' + ' "Crystal Sceptre" '
 
 ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 
 # 提升部分T2的到T1中（T2为特定角色的farm gears提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中）
-ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" ' + ' "Crystal Sceptre" '
-ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE
+ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
+ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" '
 
 # HIGHLIGHT_T2_RARE_BASE_TYPE = '' + ' "Tornado Wand" "Opal Wand" "Prophecy Wand"  "Vaal Axe"  "Opal Sceptre" "Void Sceptre"    '
 
@@ -103,27 +99,28 @@ HIDE_ENDGAME_BELOW_T2_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Han
 # "Cobalt"  "Crimson" "Viridian"
 ALERT_JEWEL_BASE_TYPE = '' + ' "Cobalt"  "Crimson" "Viridian" '
 
-# "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
-# "Fiend Dagger"
-CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
-
 #
 # 第三部分：（大致）固定内容
 #
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL == '>= 1')
 
-HIDE_LEVELING_RARE_MIN_ITEM_LEVEL = 15
+HIDE_LEVELING_RARE_MIN_IL = 20
 
-# 'RRR' 'BBB'
-LINKED4_SOCKET_GROUP = ['RRR', 'BBB']
-LINKED4_NORMAL_MAX_ITEM_LEVEL = 60  # >60的由0216负责
-LINKED4_MAGIC_MAX_ITEM_LEVEL = 55  # 第三难度不再显示
-LINKED4_RARE_MAX_ITEM_LEVEL = 64  # 0700隐藏了>=65的黄装
-LINKED4_SIMPLE_MAX_ITEM_LEVEL = 40  # 覆盖第一难度
-LINKED4_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
+L4_SPECIAL_NORMAL_MAX_IL = 64  # >=65的由0217负责
+L4_SPECIAL_MAGIC_MAX_IL = 55  # 第三难度不再显示
+L4_RARE_MAX_IL = 64  # 0700隐藏了>=65的黄装
+L4_MAX_IL = 40  # 覆盖第一难度
+LINKED_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
 
 # 三小件
-SMALLS_NORMAL_MAX_ITEM_LEVEL = 9  # 出监狱后     隐藏不需要的白色三小件
-SMALLS_MAGIC_ALERT_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" '
-SMALLS_MAGIC_MAX_ITEM_LEVEL = 24  # 出瓦尔金字塔后隐藏不需要的蓝色三小件
+SMALLS_NORMAL_MAX_IL = 9  # 出监狱后，隐藏不需要的白色三小件
+SMALLS_MAGIC_MAX_IL = 23  # 覆盖前两章
+
+# "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
+# "Fiend Dagger"
+CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
+
+# "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
+# "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '

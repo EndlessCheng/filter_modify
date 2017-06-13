@@ -42,8 +42,8 @@ class FilterBlock:
                     continue
                 pos = line.find(' ')  # 第一个空格分割属性和属性值
                 if line[:pos] == 'ItemLevel' and getattr(self, 'Class', None) == 'Flasks':
-                    if hasattr(self, 'ItemLevel'):
-                        continue  # FIXME: 影响？
+                    if getattr(self, 'ItemLevel', None) is not None:
+                        continue  # FIXME: 目前暂时没问题，后续优化成ItemLevelMin和ItemLevelMax
                 setattr(self, line[:pos], line[pos + 1:])
         self.modify(**kwargs)
 
@@ -60,7 +60,7 @@ class FilterBlock:
     def generate(self):
         new_text = [self.status + '\n']
         for attr in self._FILTER_ORDER:
-            if hasattr(self, attr):
+            if getattr(self, attr, None) is not None:
                 new_text.append(" {} {}\n".format(attr, str(getattr(self, attr))))
         assert len(new_text) > 1
         return new_text
