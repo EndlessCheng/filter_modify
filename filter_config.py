@@ -32,6 +32,11 @@ SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 # "Rustic Sash" "Leather Belt" (1 8)
 SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" '  # + ' "Rustic Sash" '
 
+# >= 2
+HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" '
+# >= 20
+HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '  "Staves" "Two Hand"  '
+
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = [33, 30, 18][0]
@@ -46,13 +51,6 @@ HIDE_FLASK_LIFE = False
 # "Blasphemy" "Fortify" "Increased Duration"  "Vortex"
 # "Immortal Call" "Cast when Damage Taken"
 LEVELING_GEMS_BASE_TYPE = '' + ' "Cast when Damage Taken"     "Vortex" '  # + ' "Firestorm" "Scorching Ray" "Orb of Storms" ' + ' "Clarity" '
-
-# >= 20
-HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '  "Staves" "Two Hand"  '
-# >= 2
-HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" "One Hand" '
-# >= 2 找到高pDPS武器就隐藏所有白武器
-HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" "One Hand" '
 
 #
 # 第二部分：65+（按重要度排序）
@@ -75,25 +73,12 @@ ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 
 # 提升部分T2的到T1中（T2为特定角色的farm gears提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中）
 ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
-ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" '
+ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" ' + ' "Shadow Sceptre" '
 
 # HIGHLIGHT_T2_RARE_BASE_TYPE = '' + ' "Tornado Wand" "Opal Wand" "Prophecy Wand"  "Vaal Axe"  "Opal Sceptre" "Void Sceptre"    '
 
-T2_BIG_WEAPON_BASE_TYPE = ''  # + ' "Vaal Axe" "Coronal Maul" "Harbinger Bow" '
-T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '  # + ' "Assassin\'s Garb" "Glorious Plate" "Astral Plate" "Spike-Point Arrow Quiver" '
-
 # "Two Hand Swords"  "Body Armour"  "Boots" "Gloves" "Helmets"
 HIDE_ENDGAME_BELOW_T2_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"   '  # + ' "Shields" ' + ' "Daggers" ' + ' "Sceptres" "Wands" '
-
-# "Fencer Helm" "Lacquered Helmet" "Bascinet"
-# "Sharkskin Gloves" "Shagreen Gloves" "Stealth Gloves" "Slink Gloves"
-# "Sharkskin Boots" "Shagreen Boots" "Stealth Boots" "Slink Boots" "Wyrmscale Boots" "Hydrascale Boots" "Dragonscale Boots"
-# ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE = '' + ' "Siege Helmet" "Samite Helmet" "Burgonet"   "Gauntlets"  "Greaves" '
-
-# "General\'s Brigandine" "Triumphant Lamellar"
-# ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE = '' + ' "Plate" '
-
-# ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE = ''
 
 # 洗珠宝：没有废词缀就停手。注意近战/弓的元素系玩法
 # "Cobalt"  "Crimson" "Viridian"
@@ -124,3 +109,21 @@ CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
 # "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
 # "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
 ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '
+
+# "Vaal Axe" "Coronal Maul" "Harbinger Bow"
+T2_BIG_WEAPON_BASE_TYPE = ''
+# "Assassin\'s Garb" "Glorious Plate" "Astral Plate" "Spike-Point Arrow Quiver"
+T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
+
+# "Fencer Helm" "Lacquered Helmet" "Bascinet"
+# "Sharkskin Gloves" "Shagreen Gloves" "Stealth Gloves" "Slink Gloves"
+# "Sharkskin Boots" "Shagreen Boots" "Stealth Boots" "Slink Boots" "Wyrmscale Boots" "Hydrascale Boots" "Dragonscale Boots"
+# ONLY_HIGHLIGHT_RARE_SMALL_ARMOUR_BASE_TYPE = '' + ' "Siege Helmet" "Samite Helmet" "Burgonet"   "Gauntlets"  "Greaves" '
+
+# "General\'s Brigandine" "Triumphant Lamellar"
+# ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE = '' + ' "Plate" '
+
+# ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE = ''
+
+# >= 2
+HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" '

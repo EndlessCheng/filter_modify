@@ -186,7 +186,7 @@ def modify0200(filter_manager):
     filter_manager.extend_blocks(blocks)
 
 
-# ！！！SSF模式下最重要的部分！！！
+# SSF模式下最重要的部分
 def modify0600(filter_manager):
     filter_manager.add_comment(600, 'RARE ITEMS (ENDGAME)')
 
@@ -227,7 +227,7 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 提前隐藏部分稀有物品，借鉴0700
-    blocks = filter_manager.get_block(700)
+    blocks = filter_manager.get_blocks(700)
     for block in blocks:
         block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T2_RARE_CLASS)
     filter_manager.extend_blocks(blocks)
@@ -302,7 +302,7 @@ def modify_gem_flask_map(filter_manager):
     # Need map, exile?
     filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here')
     if filter_config.NEED_MAP:  # 样式取自T14
-        filter_manager.append_block(filter_manager.get_block(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R))
+        filter_manager.append_block(filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R))
 
     # 改成8和1
     blocks = filter_manager.add_comment(901, 'Value gems')
@@ -423,10 +423,10 @@ def modify_leveling(filter_manager):
     # 跑鞋，4L RGB
     blocks = filter_manager.add_comment(2100, 'Leveling - Exceptions')
     if filter_config.RARE_BOOTS_ALERT:
-        tmp = filter_manager.get_block(2201)[1].copy_modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
+        tmp = filter_manager.get_blocks(2201)[1].copy_modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(tmp)
-    tmp = filter_manager.get_block(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL,
-                                                        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
+    tmp = filter_manager.get_blocks(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL,
+                                                         SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
     filter_manager.append_block(tmp)
     blocks[0].PlayAlertSound = SOUND_CHANCE
     filter_manager.extend_blocks(blocks)
@@ -481,7 +481,7 @@ def modify_leveling(filter_manager):
     # A1双持斧/剑，之后双手斧
     # 法术武器见2303
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
-    tmp = filter_manager.get_block(2500)[0].copy_modify(
+    tmp = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
     filter_manager.append_block(tmp)
@@ -511,7 +511,7 @@ def modify_leveling(filter_manager):
 
     # 参考2500隐藏部分蓝装
     blocks = filter_manager.add_comment(2403, 'Magic items - progression')
-    tmp = filter_manager.get_block(2500)[0].copy_modify(Class='"Boots"')
+    tmp = filter_manager.get_blocks(2500)[0].copy_modify(Class='"Boots"')
     filter_manager.append_block(tmp)
     # 这两个部位的蓝装没意义——迟早要被白装/RR替代
     filter_manager.append_block(tmp.copy_modify(Class='"Body Armour" "Helmets"', ItemLevel='>= 4'))

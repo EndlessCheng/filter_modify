@@ -105,7 +105,7 @@ class FilterManager:
                 if block_number == int(self.raw_text[i + 1][5:9]):
                     return self._get_small_blocks(i + 3)
 
-    def get_block(self, block_number):
+    def get_blocks(self, block_number):
         if block_number % 100 == 0:
             return self._get_big_block(block_number)
         return self._get_middle_block(block_number)
@@ -113,13 +113,10 @@ class FilterManager:
     def append_block(self, filter_block):
         self.new_text.extend(filter_block.generate())
 
-    def extend_blocks(self, filter_blocks=None):
-        # if block_number != -1:
-        #     filter_blocks = self.get_block(block_number)
-        if filter_blocks is not None:
-            for block in filter_blocks:
-                self.append_block(block)
+    def extend_blocks(self, filter_blocks):
+        for block in filter_blocks:
+            self.append_block(block)
 
     def add_comment(self, block_number, comment):
         self.new_text.append("\n# {:0>4} {}\n".format(block_number, comment))
-        return self.get_block(block_number)
+        return self.get_blocks(block_number)
