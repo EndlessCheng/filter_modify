@@ -35,6 +35,7 @@ COLOR_BLUE_LIGHT = '136 136 255'
 COLOR_YELLOW = '255 255 0'
 COLOR_YELLOW_LIGHT = '255 255 119'
 COLOR_AQUA = '0 255 255'
+COLOR_CYAN = '100 255 255'
 COLOR_GOLD = '213 159 0'
 COLOR_ORANGE = '255 125 0'
 COLOR_ORANGE_LIGHT = '255 125 0 200'
@@ -53,6 +54,7 @@ STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgro
 STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN}
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
+STYLE_4L = {'SetBorderColor': COLOR_CYAN}
 
 
 def modify0200(filter_manager):
@@ -422,7 +424,8 @@ def modify_leveling(filter_manager):
     # 跑鞋，4L RGB
     blocks = filter_manager.add_comment(2100, 'Leveling - Exceptions')
     if filter_config.RARE_BOOTS_ALERT:
-        tmp = filter_manager.get_blocks(2201)[1].copy_modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
+        tmp = filter_manager.get_blocks(2201)[1].copy_modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE,
+                                                             **STYLE_4L)
         filter_manager.append_block(tmp)
     tmp = filter_manager.get_blocks(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL,
                                                          SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
@@ -434,8 +437,8 @@ def modify_leveling(filter_manager):
 
     # 4L稀有
     blocks = filter_manager.add_comment(2201, 'Leveling rares - tier list')
-    blocks[0].modify(Class=filter_config.LINKED_CLASS,
-                     ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL), PlayAlertSound=SOUND_CHANCE)
+    blocks[0].modify(Class=filter_config.LINKED_CLASS, ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL),
+                     PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2202, 'Leveling rares - remaining rules')
@@ -460,7 +463,7 @@ def modify_leveling(filter_manager):
     # 4L RRR BBB 杂色, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
     for block in blocks:
-        block.Class = filter_config.LINKED_CLASS
+        block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
     blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # SocketGroup='RRR', ItemLevel='<= 45',
     blocks[1].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     # tmp0 = blocks[0].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.L4_SPECIAL_NORMAL_MAX_IL))
