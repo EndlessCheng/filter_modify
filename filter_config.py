@@ -2,9 +2,7 @@
 
 DEBUG = False
 
-# 'm2s' -> 's' (3 -> 1)
-# SKILL = ['m', 's', 'r', 'm2s'][3]  # melee spell range
-
+# FIXME
 # A1( 1-13), A2(13-23), A3(*23*-33), A4(33-40) N
 # A1(40-44), A2(44-48), A3(*48*-54), A4(54-57) C
 # A1(56-59), A2(59-63), A3(*63*-67), A4(67-70) M
@@ -17,10 +15,10 @@ DEBUG = False
 # MS = 1 15 30 40 55
 
 #
-# 第一部分：1-64（按重要度排序）
+# 第一部分：1-64
 #
 
-MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '>= 15' '< 1'][0]
+MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '>= 15', '< 1'][2]
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Amulet"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"'][0:])
 
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][0:2])
@@ -43,12 +41,12 @@ HIDE_FLASK_MANA = False
 HALLOWED_MAX_ITEM_LEVEL = [50, 41][0]
 HIDE_FLASK_LIFE = False
 
-LEVELING_GEMS_BASE_TYPE = ' '.join(  # 火雨买3个！
-    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity"', '"Orb of Storms" "Scorching Ray"',
-     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][0:])
+LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm * 3
+    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
+     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][1:])
 
 #
-# 第二部分：65+（按重要度排序）
+# 第二部分：65+
 #
 
 NEED_MAP = True
@@ -61,13 +59,12 @@ CURRENCY_ALERT_CHANCE = True
 SHOW_ENDGAME_4L = True
 
 # "Hubris Circlet" "Vaal Regalia"  "Astral Plate"  "Opal Sceptre" "Void Sceptre"
-# *急需的话直接点金*
+# *直接点金*
 SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" ' + ' "Astral Plate" ' + ' "Crystal Sceptre" '
 SSF_MAGIC_BASE_TYPE = '' + ' "Crystal Sceptre" "Shadow Sceptre" '
 
 ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 
-# 提升部分T2的到T1中（T2为特定角色的farm gears提供了一个很好的参考样例，可以将部分T2物品根据不同的角色需求放入T1中）
 ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
 ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" ' + ' "Shadow Sceptre" '
 
@@ -75,7 +72,6 @@ ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Cr
 HIDE_ENDGAME_BELOW_T2_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"', '"Shields"', '"Sceptres"', '"Wands"', '"Daggers"'][:5])
 
-# 洗珠宝：没有废词缀就停手
 ALERT_JEWEL_BASE_TYPE = ' '.join(['"Cobalt"', '"Crimson"', '"Viridian"'][:])
 
 #
@@ -84,16 +80,15 @@ ALERT_JEWEL_BASE_TYPE = ' '.join(['"Cobalt"', '"Crimson"', '"Viridian"'][:])
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL != '< 1')
 
-# 三小件
-SMALLS_NORMAL_MAX_IL = 9  # 出监狱后，隐藏不需要的白色三小件
-SMALLS_MAGIC_MAX_IL = 23  # 覆盖前两章
+SMALLS_NORMAL_MAX_IL = 9
+SMALLS_MAGIC_MAX_IL = 23
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
 SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 
-# L4_SPECIAL_NORMAL_MAX_IL = 64  # >=65的由0217负责
-# L4_SPECIAL_MAGIC_MAX_IL = 55  # 第三难度不再显示
-L4_RARE_MAX_IL = 64  # 0700隐藏了>=65的黄装
-# L4_MAX_IL = 40  # 覆盖第一难度
+# L4_SPECIAL_NORMAL_MAX_IL = 64
+# L4_SPECIAL_MAGIC_MAX_IL = 55
+L4_RARE_MAX_IL = 64
+# L4_MAX_IL = 40
 LINKED_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
 
 # CHANCING_ITEM_BASE_TYPE = '"Sorcerer Boots"'

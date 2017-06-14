@@ -70,7 +70,7 @@ def modify0200(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 8 1 颜色改成神圣or点金
+    # 8 1 样式改掉
     blocks = filter_manager.add_comment(203, '6-Socket Items')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
@@ -143,7 +143,6 @@ def modify0200(filter_manager):
             SetTextColor=COLOR_WHITE
         ))
 
-    # 0209是蓝白，0601是稀有
     blocks = filter_manager.add_comment(209, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(blocks)
 
@@ -192,7 +191,6 @@ def modify0200(filter_manager):
     filter_manager.extend_blocks(blocks)
 
 
-# SSF模式下最重要的部分
 def modify0600(filter_manager):
     filter_manager.add_comment(600, 'RARE ITEMS (ENDGAME)')
 
@@ -441,7 +439,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2200, 'Leveling - RARES')
 
-    # 4L稀有
+    # 4L Rare
     blocks = filter_manager.add_comment(2201, 'Leveling rares - tier list')
     blocks[0].modify(Class=filter_config.LINKED_CLASS, ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL),
                      PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
@@ -465,7 +463,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2302, 'Caster weapons')
 
-    # TODO: 仍然要重构！完美的4L筛选？
+    # TODO: 完美的4L筛选？
     # 4L RRR BBB 杂色, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
     for block in blocks:
@@ -477,21 +475,16 @@ def modify_leveling(filter_manager):
     # blocks[5].modify(LinkedSockets=4, ItemLevel='<= ' + str(filter_config.L4_MAX_IL))
     # blocks[6].modify(LinkedSockets=4, ItemLevel='<= ' + str(filter_config.L4_MAX_IL))
     filter_manager.extend_blocks(blocks[:2])  # 4L    + [tmp0, tmp1] + blocks[5:7]
-    blocks[2].modify(SocketGroup='RR', SetFontSize=40)
-    blocks[3].modify(SocketGroup='RR', SetFontSize=40)
     tmp2 = blocks[2].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     tmp3 = blocks[3].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.extend_blocks([tmp2, tmp3] + blocks[2:4])  # 3L
-    blocks[-2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
-    blocks[-1].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
-    tmp4 = blocks[-2].copy_modify(ItemLevel='<= 15', SetFontSize=40)
-    tmp5 = blocks[-1].copy_modify(ItemLevel='<= 15', SetFontSize=40)
-    filter_manager.extend_blocks(blocks[-2:] + [tmp4, tmp5])  # 2L
+    blocks[2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
+    blocks[3].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
+    tmp4 = blocks[2].copy_modify(ItemLevel='<= 15', SetFontSize=40)
+    tmp5 = blocks[3].copy_modify(ItemLevel='<= 15', SetFontSize=40)
+    filter_manager.extend_blocks([tmp2, tmp3] + blocks[2:4] + [tmp4, tmp5])  # 3L 2L
 
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
-    # A1双持斧/剑，之后双手斧
-    # 法术武器见2303
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
     tmp = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
@@ -500,20 +493,19 @@ def modify_leveling(filter_manager):
     filter_manager.append_block(tmp.copy_modify(Class=filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL))
     tmp = tmp.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
     filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='> 11', Class='"One Hand"')
+    tmp = tmp.copy_modify(DropLevel='>= 18', Class='"One Hand"')
     filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 13')
+    tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 18')
     filter_manager.append_block(tmp)
     tmp = tmp.copy_modify(BaseType='"Rusted Spike" "Whalebone Rapier"', ItemLevel=None)
     filter_manager.append_block(tmp)
 
-    # 白装1-4
+    # 白1-4
     blocks = filter_manager.add_comment(2401, 'Normal items - First 12 levels - exceptions')
     for block in blocks:
         block.ItemLevel = '<= 4'
     filter_manager.extend_blocks(blocks)
 
-    # 双持
     blocks = filter_manager.add_comment(2402, 'Normal weapons - progression')
     tmp = blocks[0].copy_modify(DropLevel='>= 1', Class='"One Hand"', ItemLevel='<= 3')
     blocks.insert(0, tmp)  # "Rusted Hatchet" "Rusted Sword"
@@ -521,11 +513,10 @@ def modify_leveling(filter_manager):
     blocks.insert(2, tmp.copy_modify(DropLevel='>= 6', ItemLevel='<= 9'))  # "Jade Hatchet"
     filter_manager.extend_blocks(blocks)
 
-    # 参考2500隐藏部分蓝装
+    # 参考2500
     blocks = filter_manager.add_comment(2403, 'Magic items - progression')
     tmp = filter_manager.get_blocks(2500)[0].copy_modify(Class='"Boots"')
     filter_manager.append_block(tmp)
-    # 这两个部位的蓝装没意义——迟早要被白装/RR替代
     filter_manager.append_block(tmp.copy_modify(Class='"Body Armour" "Helmets"', ItemLevel='>= 4'))
     filter_manager.extend_blocks(blocks)
 
@@ -535,7 +526,7 @@ def modify_filter(filter_manager):
 
     modify0200(filter_manager)
 
-    # 隐藏>=66的蓝白（而不是>=61）
+    # 61改成66
     block = filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')[0]
     block.modify(status=DEBUG, ItemLevel='>= 66')
     filter_manager.append_block(block)
@@ -570,7 +561,6 @@ def modify_filter(filter_manager):
     # 0800-1207
     modify_gem_flask_map(filter_manager)
 
-    # 第一组加亮，银币单独加个样式
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
@@ -595,7 +585,7 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 高亮"Splinter of Chayula"，预言改成8
+    # 高亮"Splinter of Chayula"
     blocks = filter_manager.add_comment(1304, 'Special items')
     blocks[1].PlayAlertSound = None
     tmp = blocks[1].copy_modify(BaseType='"Splinter of Chayula"', PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
@@ -632,7 +622,6 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
     filter_manager.extend_blocks(blocks)
 
-    # 改成"Perandus" "Breach" "Essence" 1
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
@@ -680,7 +669,6 @@ def modify_filter(filter_manager):
     # 1900-2403
     modify_leveling(filter_manager)
 
-    # 改成最小
     block = filter_manager.add_comment(2500, 'HIDE LAYER 5 - Remaining Items')[0]
     block.modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     filter_manager.append_block(block)
