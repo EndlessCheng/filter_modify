@@ -20,22 +20,18 @@ DEBUG = False
 # 第一部分：1-64（按重要度排序）
 #
 
-MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][1]
+MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '>= 15' '< 1'][0]
+ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Amulet"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"'][0:])
 
-# "Sapphire" "Topaz" "Ruby"
-ALERT_MAGIC_SMALLS_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" '  # + ' "Rustic Sash" ' + ' "Amulet" '
-
-#  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise"   (5 16)
-SSF_CRAFT_AMULETS_BASE_TYPE = '' + ' "Gold" '  # + ' "Agate" "Lapis" "Turquoise" '  # + ' "Citrine" "Jade" "Turquoise"  '
-# "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
-SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
-# "Rustic Sash" "Leather Belt" (1 8)
-SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" '  # + ' "Rustic Sash" '
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][0:2])
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])
 
 # >= 2
-HIDE_NORMAL_MAGIC_CLASS = '' + ' "Two Hand Maces" "Staves" '  # + ' "Two Hand" '
-# >= 20
-HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '  "Staves" "Two Hand"  '
+HIDE_NORMAL_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:1])
+# >= 2
+HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:0])
+HIDE_LEVELING_RARE_CLASS = ' '.join(
+    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords"', '"Staves"', '"Two Hand"'][:0])
 
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -44,13 +40,12 @@ CURRENCY_WISDOM_SCROLL_FONT_SIZE = [33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [33, 18][0]
 
 HIDE_FLASK_MANA = False
-HALLOWED_MAX_ITEM_LEVEL = [50, 41][1]
+HALLOWED_MAX_ITEM_LEVEL = [50, 41][0]
 HIDE_FLASK_LIFE = False
 
-# "Firestorm" "Scorching Ray" "Orb of Storms"  "Clarity" "Added Fire Damage" "Melee Splash"
-# "Blasphemy" "Fortify" "Increased Duration"  "Vortex"
-# "Immortal Call" "Cast when Damage Taken"
-LEVELING_GEMS_BASE_TYPE = '' + ' "Cast when Damage Taken"     "Vortex" '  # + ' "Firestorm" "Scorching Ray" "Orb of Storms" ' + ' "Clarity" '
+LEVELING_GEMS_BASE_TYPE = ' '.join(  # 火雨买3个！
+    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity"', '"Orb of Storms" "Scorching Ray"',
+     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][0:])
 
 #
 # 第二部分：65+（按重要度排序）
@@ -75,36 +70,32 @@ ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
 ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" ' + ' "Shadow Sceptre" '
 
-# HIGHLIGHT_T2_RARE_BASE_TYPE = '' + ' "Tornado Wand" "Opal Wand" "Prophecy Wand"  "Vaal Axe"  "Opal Sceptre" "Void Sceptre"    '
-
 # "Two Hand Swords"  "Body Armour"  "Boots" "Gloves" "Helmets"
-HIDE_ENDGAME_BELOW_T2_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"   '  # + ' "Shields" ' + ' "Daggers" ' + ' "Sceptres" "Wands" '
+HIDE_ENDGAME_BELOW_T2_RARE_CLASS = ' '.join(
+    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"', '"Shields"', '"Sceptres"', '"Wands"', '"Daggers"'][:5])
 
-# 洗珠宝：没有废词缀就停手。注意近战/弓的元素系玩法
-# "Cobalt"  "Crimson" "Viridian"
-ALERT_JEWEL_BASE_TYPE = '' + ' "Cobalt"  "Crimson" "Viridian" '
+# 洗珠宝：没有废词缀就停手
+ALERT_JEWEL_BASE_TYPE = ' '.join(['"Cobalt"', '"Crimson"', '"Viridian"'][:])
 
 #
 # 第三部分：（大致）固定内容
 #
 
-RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL == '>= 1')
-
-HIDE_LEVELING_RARE_MIN_IL = 20
-
-L4_SPECIAL_NORMAL_MAX_IL = 64  # >=65的由0217负责
-L4_SPECIAL_MAGIC_MAX_IL = 55  # 第三难度不再显示
-L4_RARE_MAX_IL = 64  # 0700隐藏了>=65的黄装
-L4_MAX_IL = 40  # 覆盖第一难度
-LINKED_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
+RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL != '< 1')
 
 # 三小件
 SMALLS_NORMAL_MAX_IL = 9  # 出监狱后，隐藏不需要的白色三小件
 SMALLS_MAGIC_MAX_IL = 23  # 覆盖前两章
+# "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
+SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 
-# "Sorcerer Boots"  "Occultist\'s Vestment" "Prophecy Wand" "Goathide Boots"
-# "Fiend Dagger"
-CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
+# L4_SPECIAL_NORMAL_MAX_IL = 64  # >=65的由0217负责
+# L4_SPECIAL_MAGIC_MAX_IL = 55  # 第三难度不再显示
+L4_RARE_MAX_IL = 64  # 0700隐藏了>=65的黄装
+# L4_MAX_IL = 40  # 覆盖第一难度
+LINKED_CLASS = '' + ' "Gloves" "Helmets" ' + ' "Boots" ' + ' "Body Armour" '
+
+# CHANCING_ITEM_BASE_TYPE = '"Sorcerer Boots"'
 
 # "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
 ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver" "Bismuth" "Stibnite" "Silver" "Granite" "Sulphur" "Basalt" '
@@ -123,6 +114,3 @@ T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
 # ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE = '' + ' "Plate" '
 
 # ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE = ''
-
-# >= 2
-HIDE_NORMAL_CLASS = '"Two Hand Maces" "Staves" '  # + ' "Two Hand" '

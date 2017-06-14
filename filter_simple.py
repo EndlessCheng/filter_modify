@@ -1,5 +1,3 @@
-import copy
-
 from filter_modify import *
 
 if __name__ == '__main__':
@@ -7,7 +5,8 @@ if __name__ == '__main__':
         filter_manager = FilterManager(f.readlines())
 
     for i in range(100, 2501):
-        filter_manager.extend_blocks(block_number=i)
+        blocks = filter_manager.get_blocks(block_number=i)
+        filter_manager.extend_blocks(blocks)
 
     with open("SIMPLE.filter", 'w') as f:
         f.writelines(filter_manager.new_text)
