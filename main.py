@@ -447,7 +447,8 @@ def modify_leveling(filter_manager):
     # 提醒部分三小件 9 23
     blocks = filter_manager.add_comment(2301, 'Jewellery & Helpful leveling and racing gear')[-5:-1]
     if filter_config.ALERT_MAGIC_SMALLS_BASE_TYPE != '':
-        tmp = blocks[1].copy_modify(ItemLevel=None, SetFontSize=40, PlayAlertSound=SOUND_CHANCE)
+        tmp = blocks[1].copy_modify(BaseType=filter_config.ALERT_MAGIC_SMALLS_BASE_TYPE, ItemLevel=None, SetFontSize=40,
+                                    PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(tmp)
     blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_IL)
     del blocks[2]

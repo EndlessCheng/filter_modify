@@ -20,10 +20,10 @@ DEBUG = False
 # 第一部分：1-64（按重要度排序）
 #
 
-MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][0]
+MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '< 1'][1]
 
 # "Sapphire" "Topaz" "Ruby"
-ALERT_MAGIC_SMALLS_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" ' + ' "Rustic Sash" ' + ' "Amulet" '
+ALERT_MAGIC_SMALLS_BASE_TYPE = '' + ' "Sapphire" "Topaz" "Ruby" "Two-Stone" '  # + ' "Rustic Sash" ' + ' "Amulet" '
 
 #  "Gold" (8)    Dex: "Citrine" "Jade" "Turquoise"    Int: "Agate" "Lapis" "Turquoise"   (5 16)
 SSF_CRAFT_AMULETS_BASE_TYPE = '' + ' "Gold" '  # + ' "Agate" "Lapis" "Turquoise" '  # + ' "Citrine" "Jade" "Turquoise"  '
@@ -33,7 +33,7 @@ SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 SSF_CRAFT_BELTS_BASE_TYPE = '' + ' "Leather Belt" '  # + ' "Rustic Sash" '
 
 # >= 2
-HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand Maces" "Staves" ' + ' "Two Hand" '
+HIDE_NORMAL_MAGIC_CLASS = '' + ' "Two Hand Maces" "Staves" '  # + ' "Two Hand" '
 # >= 20
 HIDE_LEVELING_RARE_CLASS = '"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" '  # + '  "Staves" "Two Hand"  '
 
@@ -106,9 +106,8 @@ SMALLS_MAGIC_MAX_IL = 23  # 覆盖前两章
 # "Fiend Dagger"
 CHANCING_ITEM_BASE_TYPE = '' + ' "Sorcerer Boots" '
 
-# "Quicksilver Flask" "Silver Flask" "Bismuth Flask" "Basalt Flask" "Granite Flask" "Diamond Flask"
-# "Stibnite Flask" "Sulphur Flask"  "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
-ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver Flask" "Stibnite Flask" "Granite Flask" "Sulphur Flask" "Basalt Flask" "Silver Flask" '
+# "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ALERT_UTILITY_FLASK_BASE_TYPE = '' + ' "Quicksilver" "Bismuth" "Stibnite" "Silver" "Granite" "Sulphur" "Basalt" '
 
 # "Vaal Axe" "Coronal Maul" "Harbinger Bow"
 T2_BIG_WEAPON_BASE_TYPE = ''
