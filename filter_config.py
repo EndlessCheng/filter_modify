@@ -63,6 +63,7 @@ SHOW_ENDGAME_4L = True
 # "Hubris Circlet" "Vaal Regalia"  "Astral Plate"  "Opal Sceptre" "Void Sceptre"
 # *急需的话直接点金*
 SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" ' + ' "Astral Plate" ' + ' "Crystal Sceptre" '
+SSF_MAGIC_BASE_TYPE = '' + ' "Crystal Sceptre" "Shadow Sceptre" '
 
 ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 

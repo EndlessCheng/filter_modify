@@ -122,6 +122,11 @@ def modify0200(filter_manager):
             BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE,
             PlayAlertSound=SOUND_CHANCE
         ))
+    if filter_config.SSF_MAGIC_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            BaseType=filter_config.SSF_MAGIC_BASE_TYPE, Rarity=RARITY_MAGIC, SetBorderColor=COLOR_WHITE,
+            PlayAlertSound=SOUND_CHANCE
+        ))
     if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
@@ -239,7 +244,7 @@ def modify0600(filter_manager):
     # 4, 1, 4
     blocks = filter_manager.add_comment(606, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_CHANCE  # rare jewel
-    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE)  # regal smalls
+    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
     blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
     filter_manager.extend_blocks(blocks)
 
@@ -428,9 +433,10 @@ def modify_leveling(filter_manager):
                                                              **STYLE_4L)
         filter_manager.append_block(tmp)
     tmp = filter_manager.get_blocks(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL,
-                                                         SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE)
+                                                         SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE,
+                                                         **STYLE_4L)
     filter_manager.append_block(tmp)
-    blocks[0].PlayAlertSound = SOUND_CHANCE
+    blocks[0].modify(PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2200, 'Leveling - RARES')
