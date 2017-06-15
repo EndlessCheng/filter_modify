@@ -27,9 +27,9 @@ SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])
 # >= 2
 HIDE_NORMAL_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:1])
 # >= 2
-HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:0])
+HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Two Hand"'][:0])
 HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords"', '"Staves"', '"Two Hand"'][:0])
+    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" "Staves"', '"Two Hand"'][:1])
 
 CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -82,6 +82,7 @@ RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL != '< 1')
 
 SMALLS_NORMAL_MAX_IL = 9
 SMALLS_MAGIC_MAX_IL = 23
+USELESS_RARE_MAX_IL = 23
 # "Sapphire" "Topaz" "Ruby" "Two-Stone" (8 12 16 20)
 SSF_CRAFT_RINGS_BASE_TYPE = '' + ' "Two-Stone" '
 

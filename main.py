@@ -403,7 +403,7 @@ def modify_leveling(filter_manager):
     if filter_config.HIDE_LEVELING_RARE_CLASS != '':
         filter_manager.append_block(
             FilterBlock(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
-                        SetFontSize=26))
+                        ItemLevel='>= ' + str(filter_config.USELESS_RARE_MAX_IL), SetFontSize=26))
 
     blocks = filter_manager.add_comment(2001, 'Hide outdated flasks')
     filter_manager.extend_blocks(blocks)
@@ -490,7 +490,7 @@ def modify_leveling(filter_manager):
     filter_manager.append_block(tmp.copy_modify(Class=filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL))
     tmp = tmp.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
     filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='>= 18', Class='"One Hand"')
+    tmp = tmp.copy_modify(DropLevel='>= 18', Class='"One Hand" "Two Hand Maces" "Staves"')
     filter_manager.append_block(tmp)
     tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 18')
     filter_manager.append_block(tmp)
@@ -512,7 +512,8 @@ def modify_leveling(filter_manager):
 
     # 参考2500
     blocks = filter_manager.add_comment(2403, 'Magic items - progression')
-    tmp = filter_manager.get_blocks(2500)[0].copy_modify(Class='"Boots"')
+    tmp = filter_manager.get_blocks(2500)[0].copy_modify(
+        Class='"Boots" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"')
     filter_manager.append_block(tmp)
     filter_manager.append_block(tmp.copy_modify(Class='"Body Armour" "Helmets"', ItemLevel='>= 4'))
     filter_manager.extend_blocks(blocks)
