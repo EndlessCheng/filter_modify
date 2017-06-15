@@ -403,7 +403,7 @@ def modify_leveling(filter_manager):
     if filter_config.HIDE_LEVELING_RARE_CLASS != '':
         filter_manager.append_block(
             FilterBlock(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
-                        ItemLevel='>= ' + str(filter_config.USELESS_RARE_MAX_IL), SetFontSize=26))
+                        SetFontSize=26))  # ItemLevel='>= ' + str(filter_config.USELESS_RARE_MAX_IL),
 
     blocks = filter_manager.add_comment(2001, 'Hide outdated flasks')
     filter_manager.extend_blocks(blocks)
@@ -483,19 +483,15 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
-    tmp = filter_manager.get_blocks(2500)[0].copy_modify(
+    tmp0 = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    filter_manager.append_block(tmp)
-    filter_manager.append_block(tmp.copy_modify(Class=filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL))
-    tmp = tmp.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel='>= 18', Class='"One Hand" "Two Hand Maces" "Staves"')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(DropLevel=None, ItemLevel='>= 18')
-    filter_manager.append_block(tmp)
-    tmp = tmp.copy_modify(BaseType='"Rusted Spike" "Whalebone Rapier"', ItemLevel=None)
-    filter_manager.append_block(tmp)
+    tmp1 = tmp0.copy_modify(Class=filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL)
+    tmp2 = tmp0.copy_modify(Class='"One Hand"', BaseType='"Rusted Spike" "Whalebone Rapier"')
+    tmp3 = tmp0.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
+    tmp4 = tmp0.copy_modify(DropLevel='>= 18', Class='"One Hand" "Two Hand Maces" "Staves"')
+    tmp5 = tmp4.copy_modify(DropLevel=None, ItemLevel='>= 18')  # 注意变量名
+    filter_manager.extend_blocks([tmp0, tmp1, tmp2, tmp3, tmp4, tmp5])
 
     # 白1-4
     blocks = filter_manager.add_comment(2401, 'Normal items - First 12 levels - exceptions')
@@ -504,16 +500,23 @@ def modify_leveling(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2402, 'Normal weapons - progression')
-    tmp = blocks[0].copy_modify(DropLevel='>= 1', Class='"One Hand"', ItemLevel='<= 3')
-    blocks.insert(0, tmp)  # "Rusted Hatchet" "Rusted Sword"
-    blocks.insert(1, tmp.copy_modify(DropLevel='>= 5', ItemLevel='<= 8'))  # "Copper Sword"
-    blocks.insert(2, tmp.copy_modify(DropLevel='>= 6', ItemLevel='<= 9'))  # "Jade Hatchet"
+    _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
+                      ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Cleaver"', 16),
+                      ('"Woodsplitter"', 13), ('"Poleaxe"', 18), ('"Double Axe"', 23), ('"Shadow Axe"', 33),
+                      ('"Jasper Chopper"', 37), ('"Labrys"', 49), ('"Karui Chopper"', 58), ('"Vaal Axe"', 64),
+                      ]
+    _LEVELING_BASE_IL_GAP = 3
+    tmp_base = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=None)
+    tmp_list = [tmp_base.copy_modify(BaseType=leveling_base[0],
+                                     ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
+                for leveling_base in _LEVELING_BASE]
+    filter_manager.extend_blocks(tmp_list)
     filter_manager.extend_blocks(blocks)
 
     # 参考2500
     blocks = filter_manager.add_comment(2403, 'Magic items - progression')
     tmp = filter_manager.get_blocks(2500)[0].copy_modify(
-        Class='"Boots" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"')
+        Class='"Boots" "Rings" "Amulets" "Belts" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"')
     filter_manager.append_block(tmp)
     filter_manager.append_block(tmp.copy_modify(Class='"Body Armour" "Helmets"', ItemLevel='>= 4'))
     filter_manager.extend_blocks(blocks)
@@ -531,15 +534,15 @@ def modify_filter(filter_manager):
 
     blocks = filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
-    if not filter_config.CURRENCY_ALERT_CHANCE:
-        blocks[0].BaseType += ' "Orb of Chance" '
     if filter_config.CURRENCY_ALERT_TRANSMUTATION:
         blocks[0].BaseType += ' "Orb of Transmutation" '
     if filter_config.CURRENCY_ALERT_AUGMENTATION:
         blocks[0].BaseType += ' "Orb of Augmentation" '
+    if not filter_config.CURRENCY_ALERT_CHANCE:
+        blocks[0].BaseType += ' "Orb of Chance" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Transmutation" "Orb of Augmentation" "Alchemy Shard"'
+    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"' + ' "Orb of Transmutation"'
     blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
                      SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
@@ -566,6 +569,8 @@ def modify_filter(filter_manager):
         blocks[1].BaseType += ' "Orb of Chance"'
     if filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[1].BaseType += ' "Blacksmith\'s Whetstone"'
+    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
+        blocks[1].BaseType += ' "Orb of Transmutation"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.append(blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
