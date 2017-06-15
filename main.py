@@ -463,18 +463,15 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2302, 'Caster weapons')
 
-    # TODO: 完美的4L筛选？
-    # 4L RRR BBB 杂色, 3L RRR RR, 2L RR
+    # 4L Hide GGG, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
     for block in blocks:
         block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-    blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # SocketGroup='RRR', ItemLevel='<= 45',
+    tmp0 = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
+    tmp1 = blocks[1].copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
+    blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
     blocks[1].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    # tmp0 = blocks[0].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.L4_SPECIAL_NORMAL_MAX_IL))
-    # tmp1 = blocks[1].copy_modify(SocketGroup='BBB', ItemLevel='<= ' + str(filter_config.L4_SPECIAL_MAGIC_MAX_IL))
-    # blocks[5].modify(LinkedSockets=4, ItemLevel='<= ' + str(filter_config.L4_MAX_IL))
-    # blocks[6].modify(LinkedSockets=4, ItemLevel='<= ' + str(filter_config.L4_MAX_IL))
-    filter_manager.extend_blocks(blocks[:2])  # 4L    + [tmp0, tmp1] + blocks[5:7]
+    filter_manager.extend_blocks([tmp0, tmp1] + blocks[:2])  # 4L
     tmp2 = blocks[2].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     tmp3 = blocks[3].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     blocks[2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
