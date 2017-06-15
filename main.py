@@ -534,15 +534,15 @@ def modify_filter(filter_manager):
 
     blocks = filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
-    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
-        blocks[0].BaseType += ' "Orb of Transmutation" '
+    # if filter_config.CURRENCY_ALERT_TRANSMUTATION:
+    #     blocks[0].BaseType += ' "Orb of Transmutation" '
     if filter_config.CURRENCY_ALERT_AUGMENTATION:
         blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_CHANCE:
         blocks[0].BaseType += ' "Orb of Chance" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"' + ' "Orb of Transmutation"'
+    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"' # + ' "Orb of Transmutation"'
     blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
                      SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)

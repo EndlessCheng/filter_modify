@@ -23,7 +23,7 @@ MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '>= 15', '< 1'][2]
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][1:2])
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])
 
-ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Amulet"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"'][0:])
+ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"', '"Amulet"'][3:])
 
 # >= 2
 HIDE_NORMAL_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:1])
