@@ -115,17 +115,18 @@ def modify0200(filter_manager):
     block.modify(Corrupted=False, PlayAlertSound=SOUND_CHANCE)
     filter_manager.append_block(block)
 
-    # 加上部分三小件，但不刻意高亮
+    # FIXME: font size?
+    # SSF
     filter_manager.add_comment(208, 'Add your own crafting rules here')
     if filter_config.SSF_CRAFT_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL, SetBorderColor=COLOR_WHITE,
-            PlayAlertSound=SOUND_CHANCE
+            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
+            SetFontSize=36, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_CHANCE
         ))
     if filter_config.SSF_MAGIC_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            BaseType=filter_config.SSF_MAGIC_BASE_TYPE, Rarity=RARITY_MAGIC, SetBorderColor=COLOR_WHITE,
-            PlayAlertSound=SOUND_CHANCE
+            BaseType=filter_config.SSF_MAGIC_BASE_TYPE, Rarity=RARITY_MAGIC,
+            SetFontSize=38, SetBorderColor=COLOR_BLUE, PlayAlertSound=SOUND_CHANCE
         ))
     if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
@@ -542,7 +543,7 @@ def modify_filter(filter_manager):
         blocks[0].BaseType += ' "Orb of Chance" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"' # + ' "Orb of Transmutation"'
+    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"'  # + ' "Orb of Transmutation"'
     blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
                      SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
