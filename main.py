@@ -428,8 +428,8 @@ def modify_leveling(filter_manager):
     # 跑鞋，4L RGB
     blocks = filter_manager.add_comment(2100, 'Leveling - Exceptions')
     if filter_config.RARE_BOOTS_ALERT:
-        tmp = filter_manager.get_blocks(2201)[1].copy_modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE,
-                                                             **STYLE_4L)
+        tmp = filter_manager.get_blocks(2201)[1].copy_modify(ItemLevel=None, SetFontSize=FONT_SIZE_MAX,
+                                                             PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
         filter_manager.append_block(tmp)
     tmp = filter_manager.get_blocks(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_ITEM_LEVEL,
                                                          SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE,
@@ -468,11 +468,12 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2303, 'Linked gear')
     for block in blocks:
         block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-    tmp0 = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
-    tmp1 = blocks[1].copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
+    hide_ggg = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', Rarity=RARITY_N2M,
+                                     SetFontSize=26, SetTextColor=None)
+    hide_bbb_body = hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
     blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
     blocks[1].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.extend_blocks([tmp0, tmp1] + blocks[:2])  # 4L
+    filter_manager.extend_blocks([hide_ggg, hide_bbb_body] + blocks[:2])  # 4L
     tmp2 = blocks[2].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     tmp3 = blocks[3].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     blocks[2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
@@ -487,7 +488,7 @@ def modify_leveling(filter_manager):
     tmp0 = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    tmp1 = tmp0.copy_modify(Class=filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL)
+    tmp1 = tmp0.copy_modify(Class='"Two Hand Maces" "Staves" ' + filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL)
     tmp2 = tmp0.copy_modify(Class='"One Hand"', BaseType='"Rusted Spike" "Whalebone Rapier"')
     tmp3 = tmp0.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
     tmp4 = tmp0.copy_modify(DropLevel='>= 18', Class='"One Hand" "Two Hand Maces" "Staves"')

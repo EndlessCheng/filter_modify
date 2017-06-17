@@ -12,39 +12,35 @@ DEBUG = False
 # Ex >= 35(A4N)
 # Ring-Amulet-Belt's T1-Life >= 44(A2C), 54(A4C), 64(A3M)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
-# MS = 1 15 30 40 55
 
 #
 # 第一部分：1-64
 #
 
-MAGIC_BOOTS_ITEM_LEVEL = ['>= 1', '>= 15', '< 1'][2]
+# Tips: 4L 跑鞋点蜕变
+MAGIC_BOOTS_ITEM_LEVEL = {10: None, 15: '>= 15', 20: '>= 30', 30: '>= 55', -1: '< 1'}[-1]
 
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][1:2])
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][1:])
 
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"', '"Amulet"'][3:])
 
-# >= 2
-HIDE_NORMAL_CLASS = ' '.join(['"Two Hand Maces" "Staves"', '"Two Hand"'][:1])
-# >= 2
-HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Two Hand"'][:0])
-HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" "Staves"', '"Two Hand"'][:0])
+LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm 买两个
+    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
+     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][3:])
 
-CURRENCY_ALERT_BLACKSMITH = True
+CURRENCY_ALERT_BLACKSMITH = False
 CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = [33, 30, 18][0]
 CURRENCY_WISDOM_SCROLL_FONT_SIZE = [33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [33, 18][0]
 
-HIDE_FLASK_MANA = False
-HALLOWED_MAX_ITEM_LEVEL = [50, 41][0]
+HALLOWED_MAX_ITEM_LEVEL = [50, 1][1]  # 不推荐写成隐藏的方式
 HIDE_FLASK_LIFE = False
+HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand" '
 
-LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm * 3
-    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
-     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][3:])
+HIDE_LEVELING_RARE_CLASS = ' '.join(
+    ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" "Staves"', '"Two Hand"'][:0])
 
 #
 # 第二部分：65+
@@ -112,3 +108,8 @@ T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
 # ONLY_HIGHLIGHT_RARE_BODY_ARMOUR_BASE_TYPE = '' + ' "Plate" '
 
 # ONLY_HIGHLIGHT_RARE_SHIELD_BASE_TYPE = ''
+
+# >= 2
+HIDE_NORMAL_CLASS = ''  # + ' "Two Hand" '
+
+HIDE_FLASK_MANA = (HALLOWED_MAX_ITEM_LEVEL == 1) or HIDE_FLASK_LIFE
