@@ -1,27 +1,3 @@
-4L需要重构：4L RRR BBB 可以在后方补上/隐藏基底，这样能提醒更多
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #Class "Helmets"
 #AR/EV "Fencer Helm" "Pig-Faced Bascinet" "Lacquered Helmet" "Fluted Bascinet" "Nightmare Bascinet"
 #AR/ES "Magistrate Crown" "Praetor Crown" "Zealot Helmet" "Great Crown" "Prophet Crown"
@@ -36,4 +12,3 @@
 #Class "Body Armour"
 #BaseType "Plate" "General\'s Brigandine" "Triumphant Lamellar"
 
-# 增幅石加个边框213 159 100 200
