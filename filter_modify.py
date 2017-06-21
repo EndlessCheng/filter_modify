@@ -43,7 +43,7 @@ class FilterBlock:
                 attr_name, attr_value = line.split(' ', 1)
                 if attr_name == 'ItemLevel' and getattr(self, 'Class', None) == 'Flasks' \
                         and getattr(self, 'ItemLevel', None) is not None:
-                    continue  # FIXME: 目前暂时没问题，后续优化成ItemLevelMin和ItemLevelMax
+                    continue  # FIXME: 目前暂时没问题，后续优化成range
                 setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
 

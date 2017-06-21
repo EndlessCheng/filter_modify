@@ -3,7 +3,7 @@
 import time
 import os
 
-from filter_modify import *
+from filter_modify import FilterBlock, FilterManager
 import filter_config
 
 SHOW = 'Show'
@@ -207,8 +207,7 @@ def modify0600(filter_manager):
     if filter_config.ALERT_RARE_BASE_TYPE != '':
         tmp0 = blocks[0].copy_modify(BaseType=filter_config.ALERT_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         tmp1 = blocks[1].copy_modify(BaseType=filter_config.ALERT_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        blocks.insert(0, tmp0)
-        blocks.insert(1, tmp1)
+        filter_manager.extend_blocks([tmp0, tmp1])
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(603, 'T1.5 rare items')

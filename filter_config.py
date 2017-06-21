@@ -2,12 +2,9 @@
 
 DEBUG = False
 
-# FIXME
-# A1( 1-13), A2(13-23), A3(*23*-33), A4(33-40) N
-# A1(40-44), A2(44-48), A3(*48*-54), A4(54-57) C
-# A1(56-59), A2(59-63), A3(*63*-67), A4(67-70) M
+# A1( 1-13), A2(13-23), A3(23-33), A4(33-40), A 5(41-45)
+# A6(45-50), A7(50-55), A8(55-61), A9(61-63), A10(64-65)
 
-# Essence = (1-46 12-66 30 48 68) = 12 30 47 48 67 68
 # Socket = 2 25 35 50(A3C)
 # Ex >= 35(A4N)
 # Ring-Amulet-Belt's T1-Life >= 44(A2C), 54(A4C), 64(A3M)
@@ -20,14 +17,10 @@ DEBUG = False
 # Tips: 4L 跑鞋点蜕变
 MAGIC_BOOTS_ITEM_LEVEL = {10: None, 15: '>= 15', 20: '>= 30', 30: '>= 55', -1: '< 1'}[-1]
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][1:2])
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][1:])
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][1:])
 
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"', '"Amulet"'][3:])
-
-LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm 买两个
-    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
-     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][3:])
 
 CURRENCY_ALERT_BLACKSMITH = False
 CURRENCY_ALERT_TRANSMUTATION = True
@@ -37,7 +30,11 @@ CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [33, 18][0]
 
 HALLOWED_MAX_ITEM_LEVEL = [50, 1][1]  # 不推荐写成隐藏的方式
 HIDE_FLASK_LIFE = False
-HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand" '
+HIDE_NORMAL_MAGIC_CLASS = '' + ' "Two Hand" '
+LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm 买两个
+    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
+     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][3:]) \
+    if HALLOWED_MAX_ITEM_LEVEL != 1 else ''
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" "Staves"', '"Two Hand"'][:0])
@@ -53,23 +50,22 @@ NEED_RGB = True
 CURRENCY_ALERT_AUGMENTATION = True
 CURRENCY_ALERT_CHANCE = True
 
+# TODO: add socket color?
 SHOW_ENDGAME_4L = True
 
 # "Hubris Circlet" "Vaal Regalia"  "Astral Plate"  "Opal Sceptre" "Void Sceptre"
 # *直接点金*
 SSF_CRAFT_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" ' + ' "Astral Plate" ' + ' "Crystal Sceptre" '
-SSF_MAGIC_BASE_TYPE = '' + ' "Crystal Sceptre" "Shadow Sceptre" '
+SSF_MAGIC_BASE_TYPE = '' + ' "Opal Sceptre" "Void Sceptre" ' + ' "Crystal Sceptre" "Abyssal Sceptre" ' + ' "Shadow Sceptre" "Lead Sceptre" "Blood Sceptre" "Royal Sceptre" "Karui Sceptre" "Tyrant\'s Sekhem" '
 
 ALERT_T1_RARE_BASE_TYPE = ''  # + ' "Vaal Regalia" '
 
 ALERT_T2_RARE_BASE_TYPE = '' + ' "Astral Plate" "Opal Sceptre" "Void Sceptre" "Opal Wand" "Tornado Wand" "Prophecy Wand" '
-ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + ' "Crystal Sceptre" ' + ' "Shadow Sceptre" '
+ALERT_RARE_BASE_TYPE = ALERT_T1_RARE_BASE_TYPE + ALERT_T2_RARE_BASE_TYPE + SSF_MAGIC_BASE_TYPE
 
 # "Two Hand Swords"  "Body Armour"  "Boots" "Gloves" "Helmets"
 HIDE_ENDGAME_BELOW_T2_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand" "Staves"', '"Shields"', '"Sceptres"', '"Wands"', '"Daggers"'][:5])
-
-ALERT_JEWEL_BASE_TYPE = ' '.join(['"Cobalt"', '"Crimson"', '"Viridian"'][:])
 
 #
 # 第三部分：（大致）固定内容
@@ -113,3 +109,7 @@ T2_BIG_ARM_BASE_TYPE = '' + ' "Colossal Tower Shield" "Pinnacle Tower Shield" '
 HIDE_NORMAL_CLASS = ''  # + ' "Two Hand" '
 
 HIDE_FLASK_MANA = (HALLOWED_MAX_ITEM_LEVEL == 1) or HIDE_FLASK_LIFE
+
+ALERT_JEWEL_BASE_TYPE = ' '.join(['"Cobalt"', '"Crimson"', '"Viridian"'][:])
+
+# Essence = (1-46 12-66 30 48 68) = 12 30 47 48 67 68
