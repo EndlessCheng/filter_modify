@@ -40,11 +40,11 @@ class FilterBlock:
             for line in text[1:]:
                 if line == '':
                     continue
-                pos = line.find(' ')  # 第一个空格分割属性和属性值
-                if line[:pos] == 'ItemLevel' and getattr(self, 'Class', None) == 'Flasks':
-                    if getattr(self, 'ItemLevel', None) is not None:
-                        continue  # FIXME: 目前暂时没问题，后续优化成ItemLevelMin和ItemLevelMax
-                setattr(self, line[:pos], line[pos + 1:])
+                attr_name, attr_value = line.split(' ', 1)
+                if attr_name == 'ItemLevel' and getattr(self, 'Class', None) == 'Flasks' \
+                        and getattr(self, 'ItemLevel', None) is not None:
+                    continue  # FIXME: 目前暂时没问题，后续优化成ItemLevelMin和ItemLevelMax
+                setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
 
     def modify(self, **kwargs):
