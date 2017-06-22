@@ -15,26 +15,26 @@ DEBUG = False
 #
 
 # Tips: 4L 跑鞋点蜕变
-MAGIC_BOOTS_ITEM_LEVEL = {10: None, 15: '>= 15', 20: '>= 30', 30: '>= 55', -1: '< 1'}[-1]
+MAGIC_BOOTS_ITEM_LEVEL = {10: None, 15: '>= 15', 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][1:])
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][1:])
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Agate" "Lapis" "Turquoise"', '"Citrine" "Jade" "Turquoise"', '"Gold"'][:-1])
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])
 
-ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"', '"Amulet"'][3:])
+ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Ruby" "Topaz" "Sapphire"', '"Two-Stone"', '"Amulet"'][0:])
 
-CURRENCY_ALERT_BLACKSMITH = False
+CURRENCY_ALERT_BLACKSMITH = True
 CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_SCROLL_FONT_SIZE = [33, 30, 18][0]
 CURRENCY_WISDOM_SCROLL_FONT_SIZE = [33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [33, 18][0]
 
-HALLOWED_MAX_ITEM_LEVEL = [50, 1][1]  # 不推荐写成隐藏的方式
+HALLOWED_MAX_ITEM_LEVEL = [50, 1][0]  # 不推荐写成隐藏的方式
 HIDE_FLASK_LIFE = False
-HIDE_NORMAL_MAGIC_CLASS = '' + ' "Two Hand" '
-LEVELING_GEMS_BASE_TYPE = ' '.join(  # Firestorm 买两个
-    ['"Melee Splash" "Added Fire Damage"', '"Firestorm"', '"Clarity" "Arctic Armour" "Orb of Storms" "Scorching Ray"',
-     '"Vortex" "Blasphemy" "Fortify" "Increased Duration"', '"Cast when Damage Taken" "Immortal Call"'][3:]) \
-    if HALLOWED_MAX_ITEM_LEVEL != 1 else ''
+HIDE_NORMAL_MAGIC_CLASS = ''  # + ' "Two Hand" '
+LEVELING_GEMS_BASE_TYPE = ' '.join(
+    ['"Melee Splash" "Added Fire Damage" "Firestorm"',
+     '"Orb of Storms" "Clarity" "Scorching Ray" "Arctic Armour" "Blasphemy"',
+     '"Cast when Damage Taken" "Immortal Call" "Increased Duration"'][0:]) if HALLOWED_MAX_ITEM_LEVEL != 1 else ''
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "One Hand" "Claws" "Two Hand Swords" "Staves"', '"Two Hand"'][:0])
