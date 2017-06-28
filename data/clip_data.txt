@@ -1,0 +1,71 @@
+Rarity: Magic
+Stallion's Chain Boots of Plunder
+--------
+Armour: 11
+Energy Shield: 3
+--------
+Requirements:
+Level: 40
+Str: 58
+Dex: 54
+Int: 55
+--------
+Sockets: B R B G
+--------
+Item Level: 28
+--------
+6% increased Rarity of Items found
+20% increased Movement Speed
+
+
+
+Rarity: Magic
+Serrated Jasper Chopper of the Pugilist
+--------
+Two Handed Axe
+Quality: +20% (augmented)
+Physical Damage: 92-144 (augmented)
+Critical Strike Chance: 5.00%
+Attacks per Second: 1.15
+Weapon Range: 11
+--------
+Requirements:
+Level: 41
+Str: 100
+Dex: 63
+--------
+Sockets: R-R-G-R
+--------
+Item Level: 39
+--------
+64% increased Physical Damage
+5% reduced Enemy Stun Threshold
+
+
+Rarity: Gem
+Added Fire Damage Support
+--------
+Fire, Support
+Level: 10
+Mana Multiplier: 120%
+Experience: 434,306/755,049
+--------
+Requirements:
+Level: 40
+Str: 66
+--------
+Supported Skills gain 34% of Physical Damage as Extra Fire Damage
+--------
+This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.
+
+
+
+Rarity: Currency
+Orb of Transmutation
+--------
+Stack Size: 7/40
+--------
+Upgrades a normal item to a magic item
+--------
+Right click this item then left click a normal item to apply it.
+Shift click to unstack.
