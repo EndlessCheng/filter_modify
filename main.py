@@ -323,7 +323,7 @@ def modify_gem_flask_map(filter_manager):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     if filter_config.LEVELING_GEMS_BASE_TYPE != '':
-        tmp = blocks[2].copy_modify(BaseType=filter_config.LEVELING_GEMS_BASE_TYPE, PlayAlertSound=SOUND_TOP_VALUE)
+        tmp = blocks[0].copy_modify(BaseType=filter_config.LEVELING_GEMS_BASE_TYPE, PlayAlertSound=SOUND_TOP_VALUE)
         blocks.insert(2, tmp)
     else:
         blocks[2].status = DEBUG
@@ -393,7 +393,7 @@ def modify_leveling(filter_manager):
     block = FilterBlock(status=DEBUG, Class='"Hybrid Flask"', SetFontSize=FONT_SIZE_MIN)
     if filter_config.HIDE_FLASK_MANA:
         block.Class += ' "Mana Flask"'
-    if filter_config.HIDE_FLASK_LIFE:
+    if not filter_config.SHOW_FLASK_LIFE:
         block.Class += ' "Life Flask"'
     filter_manager.append_block(block)
     filter_manager.append_block(
@@ -440,6 +440,7 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2200, 'Leveling - RARES')
 
     # 4L Rare
+    # TODO: add 3L rare
     blocks = filter_manager.add_comment(2201, 'Leveling rares - tier list')
     blocks[0].modify(Class=filter_config.LINKED_CLASS, ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL),
                      PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
@@ -465,6 +466,7 @@ def modify_leveling(filter_manager):
 
     # 4L Hide GGG, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
+
     for block in blocks:
         block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
     hide_ggg = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', Rarity=RARITY_N2M,
@@ -484,6 +486,11 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
+    if filter_config.ALERT_SWAP_SOCKET:
+        for socket_group in ['RRR', 'RRB', 'RBB', 'BBB']:
+            tmp = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
+                              SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
+            filter_manager.append_block(tmp)
     tmp0 = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
@@ -535,15 +542,15 @@ def modify_filter(filter_manager):
 
     blocks = filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
-    # if filter_config.CURRENCY_ALERT_TRANSMUTATION:
-    #     blocks[0].BaseType += ' "Orb of Transmutation" '
-    if filter_config.CURRENCY_ALERT_AUGMENTATION:
-        blocks[0].BaseType += ' "Orb of Augmentation" '
+    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
+        blocks[0].BaseType += ' "Orb of Transmutation" '
+    # if filter_config.CURRENCY_ALERT_AUGMENTATION:
+    #     blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_CHANCE:
         blocks[0].BaseType += ' "Orb of Chance" '
     if not filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Augmentation" "Alchemy Shard"'  # + ' "Orb of Transmutation"'
+    blocks[1].BaseType = '"Orb of Transmutation" "Alchemy Shard"'  # + ' "Orb of Augmentation" '
     blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
                      SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
@@ -570,8 +577,8 @@ def modify_filter(filter_manager):
         blocks[1].BaseType += ' "Orb of Chance"'
     if filter_config.CURRENCY_ALERT_BLACKSMITH:
         blocks[1].BaseType += ' "Blacksmith\'s Whetstone"'
-    if filter_config.CURRENCY_ALERT_TRANSMUTATION:
-        blocks[1].BaseType += ' "Orb of Transmutation"'
+    if filter_config.CURRENCY_ALERT_AUGMENTATION:
+        blocks[1].BaseType += ' "Orb of Augmentation" '
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.append(blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
