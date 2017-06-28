@@ -690,7 +690,7 @@ def modify_filter(filter_manager):
     filter_manager.append_block(block)
 
 
-if __name__ == '__main__':
+def main():
     start_time = time.time()
 
     with open("NeverSink's filter - 1-REGULAR.filter") as f:
@@ -702,3 +702,7 @@ if __name__ == '__main__':
         f.writelines(fm.new_text)
 
     print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
+
+
+if __name__ == '__main__':
+    main()
