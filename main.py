@@ -112,8 +112,8 @@ def modify0200(filter_manager):
 
     # 只留第一个
     block = filter_manager.add_comment(207, 'Chancing items')[0]
-    block.modify(Corrupted=False, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.append_block(block)
+    # block.modify(Corrupted=False, PlayAlertSound=SOUND_CHANCE)
+    # filter_manager.append_block(block)
 
     # FIXME: font size?
     # SSF
@@ -123,11 +123,11 @@ def modify0200(filter_manager):
             BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
             SetFontSize=36, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_CHANCE
         ))
-    if filter_config.SSF_MAGIC_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            BaseType=filter_config.SSF_MAGIC_BASE_TYPE, Rarity=RARITY_MAGIC,
-            SetFontSize=38, SetBorderColor=COLOR_BLUE, PlayAlertSound=SOUND_CHANCE
-        ))
+    # if filter_config.SSF_MAGIC_BASE_TYPE != '':
+    #     filter_manager.append_block(FilterBlock(
+    #         BaseType=filter_config.SSF_MAGIC_BASE_TYPE, Rarity=RARITY_MAGIC,
+    #         SetFontSize=38, SetBorderColor=COLOR_BLUE, PlayAlertSound=SOUND_CHANCE
+    #     ))
     if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
@@ -160,7 +160,9 @@ def modify0200(filter_manager):
     filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!')
 
     blocks = filter_manager.add_comment(213, 'Chisel recipe items')
-    filter_manager.extend_blocks(blocks)
+    blocks[1].Quality = '>= 14'
+    blocks[2].Quality = '>= 5'
+    filter_manager.extend_blocks(blocks[:3])
 
     # 8
     block = filter_manager.add_comment(214, 'Fishing Rod')[0]
@@ -204,16 +206,27 @@ def modify0600(filter_manager):
     blocks = filter_manager.add_comment(602, 'T1 rare items')
     for block in blocks:
         block.modify(**STYLE_T1_RARE)
-    if filter_config.ALERT_RARE_BASE_TYPE != '':
-        tmp0 = blocks[0].copy_modify(BaseType=filter_config.ALERT_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        tmp1 = blocks[1].copy_modify(BaseType=filter_config.ALERT_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
+    if filter_config.ALERT_T1_RARE_BASE_TYPE != '':
+        tmp0 = blocks[0].copy_modify(BaseType=filter_config.ALERT_T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
+        tmp1 = blocks[1].copy_modify(BaseType=filter_config.ALERT_T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         filter_manager.extend_blocks([tmp0, tmp1])
-    filter_manager.extend_blocks(blocks)
+    if not filter_config.HIDE_OTHER_T1_RARES:
+        filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(603, 'T1.5 rare items')
     for block in blocks:
         block.SetBorderColor = COLOR_ORANGE_LIGHT
+    if filter_config.HIDE_OTHER_T1_5_RARES:
+        for block in blocks:
+            block.BaseType = filter_config.T1_5_RARE_BASE_TYPE
     filter_manager.extend_blocks(blocks)
+
+    # 提前隐藏部分稀有物品，借鉴0700
+    blocks = filter_manager.get_blocks(700)
+    if filter_config.HIDE_ENDGAME_BELOW_T1_5_RARE_CLASS != '':
+        for block in blocks:
+            block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T1_5_RARE_CLASS)
+        filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(604, 'T2 rare items')
     for block in blocks:
@@ -228,12 +241,6 @@ def modify0600(filter_manager):
         blocks[-1].BaseType = filter_config.T2_BIG_ARM_BASE_TYPE
     else:
         del blocks[-2:]
-    filter_manager.extend_blocks(blocks)
-
-    # 提前隐藏部分稀有物品，借鉴0700
-    blocks = filter_manager.get_blocks(700)
-    for block in blocks:
-        block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T2_RARE_CLASS)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(605, 'Breach Rings')
@@ -383,7 +390,10 @@ def modify_gem_flask_map(filter_manager):
     for block in blocks[:-1]:
         block.PlayAlertSound = SOUND_TOP_VALUE
     blocks[-1].PlayAlertSound = SOUND_MAP
-    filter_manager.extend_blocks(blocks)
+    if filter_config.NEW:
+        filter_manager.extend_blocks(blocks)
+    else:
+        filter_manager.extend_blocks(blocks[1:])
 
 
 # 1900-2303
@@ -442,8 +452,9 @@ def modify_leveling(filter_manager):
     # 4L Rare
     # TODO: add 3L rare
     blocks = filter_manager.add_comment(2201, 'Leveling rares - tier list')
-    blocks[0].modify(Class=filter_config.LINKED_CLASS, ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL),
-                     PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+    if filter_config.LINKED_CLASS != '':
+        blocks[0].modify(Class=filter_config.LINKED_CLASS, ItemLevel='<= ' + str(filter_config.L4_RARE_MAX_IL),
+                         PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2202, 'Leveling rares - remaining rules')
@@ -458,6 +469,7 @@ def modify_leveling(filter_manager):
                                     PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(tmp)
     blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_IL)
+    blocks[1].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_IL)
     del blocks[2]
     blocks[2].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_IL)
     filter_manager.extend_blocks(blocks)
@@ -466,15 +478,16 @@ def modify_leveling(filter_manager):
 
     # 4L Hide GGG, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
-
-    for block in blocks:
-        block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
+    if filter_config.LINKED_CLASS != '':
+        for block in blocks:
+            block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
     hide_ggg = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', Rarity=RARITY_N2M,
                                      SetFontSize=26, SetTextColor=None)
     hide_bbb_body = hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
+    hide_ggbb_body = hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
     blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
     blocks[1].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.extend_blocks([hide_ggg, hide_bbb_body] + blocks[:2])  # 4L
+    filter_manager.extend_blocks([hide_ggg, hide_bbb_body, hide_ggbb_body] + blocks[:2])  # 4L
     tmp2 = blocks[2].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     tmp3 = blocks[3].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
     blocks[2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
@@ -541,18 +554,22 @@ def modify_filter(filter_manager):
     filter_manager.append_block(block)
 
     blocks = filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
-    blocks[0].modify(BaseType='"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" ', PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[0].BaseType = '"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" '
+    if filter_config.ALERT_LOW_CURRENCY:
+        blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+        # blocks[0].SetFontSize = 30
     if filter_config.CURRENCY_ALERT_TRANSMUTATION:
         blocks[0].BaseType += ' "Orb of Transmutation" '
-    # if filter_config.CURRENCY_ALERT_AUGMENTATION:
-    #     blocks[0].BaseType += ' "Orb of Augmentation" '
+    if not filter_config.CURRENCY_ALERT_AUGMENTATION:
+        blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_CHANCE:
         blocks[0].BaseType += ' "Orb of Chance" '
-    if not filter_config.CURRENCY_ALERT_BLACKSMITH:
-        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
+    # if not filter_config.CURRENCY_ALERT_BLACKSMITH:
+    #     blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
     blocks[1].BaseType = '"Orb of Transmutation" "Alchemy Shard"'  # + ' "Orb of Augmentation" '
-    blocks[2].modify(BaseType='"Armourer\'s Scrap" "Alteration Shard"',
-                     SetFontSize=filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE)
+    blocks[1].SetFontSize = 38
+    blocks[2].modify(BaseType='"Blacksmith\'s Whetstone"  "Armourer\'s Scrap" "Alteration Shard"',
+                     SetFontSize=33)
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
     blocks.append(blocks[3].copy_modify(BaseType='"Scroll of Wisdom"',
                                         SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
@@ -634,11 +651,12 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
-    for block in blocks:
-        block.PlayAlertSound = SOUND_MID_VALUE
-    for block in blocks[::2]:
-        block.BaseType = '"Perandus" "Breach" "Essence"'
-    filter_manager.extend_blocks(blocks)
+    if filter_config.NEW:
+        for block in blocks:
+            block.PlayAlertSound = SOUND_MID_VALUE
+        for block in blocks[::2]:
+            block.BaseType = '"Perandus" "Breach" "Essence"'
+        filter_manager.extend_blocks(blocks)
 
     # 改成T1
     blocks = filter_manager.add_comment(1701, 'Exceptions')
@@ -693,7 +711,8 @@ def modify_filter(filter_manager):
 if __name__ == '__main__':
     start_time = time.time()
 
-    with open("NeverSink's filter - 1-REGULAR.filter") as f:
+    filter_name = "NeverSink's filter - 1-REGULAR.filter" if filter_config.NEW else "old_filter.filter"
+    with open(filter_name) as f:
         fm = FilterManager(f.readlines())
 
     modify_filter(fm)
