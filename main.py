@@ -216,10 +216,9 @@ def modify0600(filter_manager):
     blocks = filter_manager.add_comment(603, 'T1.5 rare items')
     for block in blocks:
         block.SetBorderColor = COLOR_ORANGE_LIGHT
+        filter_manager.append_block(block.copy_modify(BaseType=filter_config.T1_5_RARE_BASE_TYPE))
     if filter_config.HIDE_OTHER_T1_5_RARES:
-        for block in blocks:
-            block.BaseType = filter_config.T1_5_RARE_BASE_TYPE
-    filter_manager.extend_blocks(blocks)
+        filter_manager.extend_blocks(blocks)
 
     # 提前隐藏部分稀有物品，借鉴0700
     blocks = filter_manager.get_blocks(700)
@@ -507,7 +506,7 @@ def modify_leveling(filter_manager):
     tmp0 = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Claws" "One Hand Maces" "Two Hand Swords" "Sceptres" "Daggers" "Wands" "Shields" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    tmp1 = tmp0.copy_modify(Class='"Two Hand Maces" "Staves" ' + filter_config.HIDE_NORMAL_CLASS, Rarity=RARITY_NORMAL)
+    tmp1 = tmp0.copy_modify(Class='"Two Hand Maces" "Staves" ', Rarity=RARITY_NORMAL)
     tmp2 = tmp0.copy_modify(Class='"One Hand"', BaseType='"Rusted Spike" "Whalebone Rapier"')
     tmp3 = tmp0.copy_modify(DropLevel='<= 12', Class='"Two Hand" "Staves"')
     tmp4 = tmp0.copy_modify(DropLevel='>= 18', Class='"One Hand" "Two Hand Maces" "Staves"')
@@ -557,19 +556,17 @@ def modify_filter(filter_manager):
     blocks[0].BaseType = '"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" '
     if filter_config.ALERT_LOW_CURRENCY:
         blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-        # blocks[0].SetFontSize = 30
+    if filter_config.CURRENCY_ALERT_BLACKSMITH:
+        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
     if filter_config.CURRENCY_ALERT_TRANSMUTATION:
         blocks[0].BaseType += ' "Orb of Transmutation" '
-    if not filter_config.CURRENCY_ALERT_AUGMENTATION:
+    if filter_config.CURRENCY_ALERT_AUGMENTATION:
         blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_CHANCE:
         blocks[0].BaseType += ' "Orb of Chance" '
-    # if not filter_config.CURRENCY_ALERT_BLACKSMITH:
-    #     blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
-    blocks[1].BaseType = '"Orb of Transmutation" "Alchemy Shard"'  # + ' "Orb of Augmentation" '
+    blocks[1].BaseType += ' "Orb of Augmentation" '
     blocks[1].SetFontSize = 38
-    blocks[2].modify(BaseType='"Blacksmith\'s Whetstone"  "Armourer\'s Scrap" "Alteration Shard"',
-                     SetFontSize=33)
+    blocks[2].SetFontSize = 36
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_SCROLL_FONT_SIZE)
     blocks.append(blocks[3].copy_modify(BaseType='"Scroll of Wisdom"',
                                         SetFontSize=filter_config.CURRENCY_WISDOM_SCROLL_FONT_SIZE))
@@ -592,10 +589,6 @@ def modify_filter(filter_manager):
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     if filter_config.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
-    if filter_config.CURRENCY_ALERT_BLACKSMITH:
-        blocks[1].BaseType += ' "Blacksmith\'s Whetstone"'
-    if filter_config.CURRENCY_ALERT_AUGMENTATION:
-        blocks[1].BaseType += ' "Orb of Augmentation" '
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.append(blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
