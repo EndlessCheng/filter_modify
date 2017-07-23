@@ -6,9 +6,6 @@ DEBUG = False
 # A6(45-50), A7(50-55), A8(55-61), A9(61-63), A10(64-65)
 # Socket = 2 25 35 50(A3C)
 
-# TODO: FilterBlock
-
-
 #
 # Part 1 - Common
 #

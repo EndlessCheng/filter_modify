@@ -369,16 +369,16 @@ def modify_gem_flask_map(filter_manager):
 def modify_leveling(filter_manager):
     # 隐藏混合瓶、魔瓶、血瓶；后期只要42和60级的血瓶；隐藏不需要的黄装
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here')
-    block = FilterBlock(status=DEBUG, Class=' "Hybrid Flask" ', SetFontSize=FONT_SIZE_MIN)
+    block_hide_flasks = FilterBlock(status=DEBUG, Class=' "Hybrid Flask" ', SetFontSize=FONT_SIZE_MIN)
     if filter_config.HIDE_FLASK_MANA:
-        block.Class += ' "Mana Flask" '
+        block_hide_flasks.Class += ' "Mana Flask" '
     if not filter_config.SHOW_FLASK_LIFE:
-        block.Class += ' "Life Flask" '
-    filter_manager.append_block(block)
-    filter_manager.append_block(
-        FilterBlock(status=DEBUG, Class='"Life Flask"', BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN))
-    filter_manager.append_block(
-        FilterBlock(status=DEBUG, Class='"Mana Flask"', BaseType='Colossal Hallowed', SetFontSize=FONT_SIZE_MIN))
+        block_hide_flasks.Class += ' "Life Flask" '
+    block_hide_some_life_flasks = FilterBlock(status=DEBUG, Class='"Life Flask"', BaseType='Sanctified Eternal',
+                                              SetFontSize=FONT_SIZE_MIN)
+    block_hide_some_mana_flasks = FilterBlock(status=DEBUG, Class='"Mana Flask"', BaseType='Colossal Hallowed',
+                                              SetFontSize=FONT_SIZE_MIN)
+    filter_manager.extend_blocks([block_hide_flasks, block_hide_some_life_flasks, block_hide_some_mana_flasks])
     if filter_config.HIDE_LEVELING_RARE_CLASS != '':
         filter_manager.append_block(
             FilterBlock(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
