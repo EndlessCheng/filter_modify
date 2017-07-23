@@ -6,6 +6,9 @@ DEBUG = False
 # A6(45-50), A7(50-55), A8(55-61), A9(61-63), A10(64-65)
 # Socket = 2 25 35 50(A3C)
 
+# TODO: FilterBlock
+
+
 #
 # Part 1 - Common
 #
@@ -26,7 +29,7 @@ SMALLS_NORMAL_MAX_IL = 9
 SMALLS_MAGIC_MAX_IL = 23
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
-MAGIC_BOOTS_ITEM_LEVEL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
+MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
 
 ALERT_SCEPTRE = True
 
@@ -95,7 +98,7 @@ ALERT_LOW_CURRENCY = True
 # Part 4 - Others
 #
 
-RARE_BOOTS_ALERT = (MAGIC_BOOTS_ITEM_LEVEL != '< 1')
+RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != '< 1')
 
 if ALERT_SCEPTRE:
     SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
