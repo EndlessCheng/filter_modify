@@ -10,8 +10,8 @@ DEBUG = False
 # Part 1 - Common
 #
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Gold"', '"Amber Amulet"'][:1])  # 点80+血
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 0->1, 点125+血
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Gold"', '"Amber Amulet"'][:0])  # 点80+血
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][:0])  # 0->1, 点125+血
 
 #
 # Part 2 - Leveling
@@ -19,16 +19,16 @@ SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  #
 # NPC-4L
 #
 
-ALERT_SWAP_SOCKET = True
-ALERT_WEAPON2_RRG = True
+ALERT_SWAP_SOCKET = False
+ALERT_WEAPON2_RRG = False
 
 SMALLS_NORMAL_MAX_IL = 9
 SMALLS_MAGIC_MAX_IL = 23
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
-MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
+MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[-1]
 
-ALERT_SCEPTRE = True
+ALERT_SCEPTRE = False
 
 # "Elemental Focus" "Concentrated Effect" "Controlled Destruction" "Vortex" "Increased Critical Strikes"
 LEVELING_GEMS_BASE_TYPE = ' '.join(
@@ -41,10 +41,10 @@ LEVELING_GEMS_BASE_TYPE = ' '.join(
 # +Dex->1, +Phy&Res->2, +Life&Res Rings->3, +Life&Res Amulet->4
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(
     ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', SSF_CRAFT_BELTS_BASE_TYPE,
-     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][0:])
+     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][:0])
 
-SHOW_FLASK_HALLOWED = True
-SHOW_FLASK_LIFE = True
+SHOW_FLASK_HALLOWED = False
+SHOW_FLASK_LIFE = False
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
@@ -54,42 +54,42 @@ HIDE_LEVELING_RARE_CLASS = ' '.join(
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
-CURRENCY_ALERT_TRANSMUTATION = True
-CURRENCY_PORTAL_FONT_SIZE = [38, 33, 18][0]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [38, 33, 18][0]
+CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][2]
+CURRENCY_ALERT_TRANSMUTATION = False
+CURRENCY_PORTAL_FONT_SIZE = [38, 33, 18][2]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [38, 33, 18][2]
 
-SSF_CRAFT_BASE_TYPE = ' '.join(['"Opal Sceptre"', '"Astral Plate"', '"Colossal Tower Shield"'][0:])
-SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 找70+血
+SSF_CRAFT_BASE_TYPE = ' '.join(['"Opal Sceptre"', '"Astral Plate"', '"Colossal Tower Shield"'][:0])
+SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:0])  # 找70+血
 
 # 3.0?
 T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" ',
                               '"Colossal Tower Shield" "Ezomyte Tower Shield" "Girded Tower Shield" "Pinnacle Tower Shield"',
                               '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
                               '"Sceptre" "Fetish" "Sekhem"',
-                              '"Spirit Shield"'][:])
-SHOW_OTHER_T1_RARES = True
+                              '"Spirit Shield"'][1:2])
+SHOW_OTHER_T1_RARES = False
 T1_5_RARE_BASE_TYPE = ' '.join(['"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
                                 '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
                                 '"Titan Greaves" "Crusader Boots" "Vaal Greaves"'][:])
-SHOW_OTHER_T1_5_RARES = True
+SHOW_OTHER_T1_5_RARES = False
 HIDE_ENDGAME_BELOW_T1_5_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws"', '"Daggers" "Wands"',
-     '"Body Armour"', '"Boots" "Gloves" "Helmets"'][:0])
+     '"Body Armour"', '"Boots" "Gloves" "Helmets" "Shields" "Sceptres"'][0:])
 
-NEED_RGB = True
+NEED_RGB = False
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join(['"Quicksilver" "Silver" "Granite" "Sulphur" "Basalt"',
-                                          '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"'][:2])
+                                          '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"'][:0])
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade glass
 
-ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][0:])
+ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][:0])
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''  # Jewel
 
-ALERT_LOW_MAP = True
+ALERT_LOW_MAP = False
 CURRENCY_ALERT_CHANCE = True and ALERT_LOW_MAP
 
-ALERT_LOW_CURRENCY = True
+ALERT_LOW_CURRENCY = False
 
 #
 # Part 4 - Others

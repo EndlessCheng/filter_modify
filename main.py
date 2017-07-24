@@ -538,8 +538,7 @@ def modify_filter(filter_manager):
     if filter_config.ALERT_LOW_CURRENCY:
         blocks[0].PlayAlertSound = SOUND_LOW_VALUE
     blocks[1].BaseType += ' "Orb of Augmentation" '
-    blocks[1].SetFontSize = 38
-    blocks[2].SetFontSize = 36
+    blocks[2].SetFontSize = filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_FONT_SIZE)
     blocks.append(blocks[3].copy_modify(BaseType='"Scroll of Wisdom"',
                                         SetFontSize=filter_config.CURRENCY_WISDOM_FONT_SIZE))
@@ -606,7 +605,9 @@ def modify_filter(filter_manager):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before')
+    blocks = filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before')
+    blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+    filter_manager.extend_blocks(blocks)
 
     # 2
     blocks = filter_manager.add_comment(1406, 'T4 - ...showing the remaining cards')
@@ -617,10 +618,8 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
-    for block in blocks:
+    for block in blocks[:-1]:
         block.PlayAlertSound = SOUND_MID_VALUE
-    for block in blocks[::2]:
-        block.BaseType = '"Perandus" "Breach" "Essence"'
     filter_manager.extend_blocks(blocks)
 
     # 改成T1
