@@ -232,8 +232,9 @@ def modify0600(filter_manager):
     # 4, 1, 4
     blocks = filter_manager.add_comment(606, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_CHANCE  # rare jewel
-    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
-    blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
+    if filter_config.ALERT_SMALLS_RARE:
+        blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
+        blocks[2].PlayAlertSound = SOUND_CHANCE  # 1-74 smalls
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(607, '1H Daggers')
