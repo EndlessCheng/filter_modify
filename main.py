@@ -482,12 +482,10 @@ def modify_leveling(filter_manager):
                                      SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
             filter_manager.append_block(block_swap)
     block_hide_n2m = filter_manager.get_blocks(2500)[0].copy_modify(
-        Class='"Bows" "Quivers" "Two Hand" "Staves" "Wands" "Shields" "Claws" "Daggers" "Sceptres" "One Hand Maces" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
+        Class='"Bows" "Quivers" "Two Hand" "Staves" "Wands" "Shields" "Claws" "Daggers" "Sceptres" "Claws" "Daggers" "One Hand Maces" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    block_hide_n = block_hide_n2m.copy_modify(Class='"Claws" "Daggers" "Sceptres" "One Hand Maces"',
-                                              Rarity=RARITY_NORMAL)
-    block_hide_n12 = block_hide_n.copy_modify(Class='"One Hand Swords"', ItemLevel='>= 12')
-    filter_manager.extend_blocks([block_hide_n2m, block_hide_n, block_hide_n12])
+    block_hide_ogs12 = block_hide_n2m.copy_modify(Class='"One Hand Swords"', ItemLevel='>= 12')
+    filter_manager.extend_blocks([block_hide_n2m, block_hide_ogs12])
 
     # 白1-4
     blocks = filter_manager.add_comment(2401, 'Normal items - First 12 levels - exceptions')
@@ -538,7 +536,7 @@ def modify_filter(filter_manager):
         blocks[0].BaseType += ' "Orb of Chance" '
     if filter_config.ALERT_LOW_CURRENCY:
         blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[1].BaseType += ' "Orb of Augmentation" '
+    blocks[1].BaseType += ' "Orb of Augmentation" "Alteration Shard" '
     blocks[2].SetFontSize = filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
     blocks[3].modify(BaseType='"Portal Scroll"', SetFontSize=filter_config.CURRENCY_PORTAL_FONT_SIZE)
     blocks.append(blocks[3].copy_modify(BaseType='"Scroll of Wisdom"',
