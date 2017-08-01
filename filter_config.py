@@ -4,7 +4,7 @@ DEBUG = False
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-61), A9(61-63), A10(64-65)
-# Socket = 2 25 35 50(A3C)
+# Socket = 2 25 35 50(A7)
 
 #
 # Part 1 - Common
@@ -21,7 +21,7 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Amber 
 ALERT_RRG = True
 ALERT_RBB = True
 
-MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
+MAGIC_BOOTS_IL = 10  # 10/20/30/-1
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
@@ -92,7 +92,7 @@ ALERT_LOW_CURRENCY = True
 
 SMALLS_MAX_IL = 8
 
-RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != '< 1')
+RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
 
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 125+Life
 
@@ -108,9 +108,9 @@ CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
     CHANCING_BASE_TYPE += ' '.join(['"Sorcerer Boots"', ][:])
 
-# Ring-Amulet-Belt's T1-Life >= 44(A2C), 54(A4C), 64(A3M)
+# Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
 
 # Essence = (1-46 12-66 30 48 68) = 12 30 47 48 67 68
 
-# Ex >= 35(A4N)
+# Ex >= 35(A4)

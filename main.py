@@ -412,12 +412,13 @@ def modify_leveling(filter_manager):
     # 跑鞋，4L RGB
     blocks = filter_manager.add_comment(2100, 'Leveling - Exceptions')
     if filter_config.RARE_BOOTS_ALERT:
-        block_rare_boots = filter_manager.get_blocks(2201)[1].copy_modify(ItemLevel=None, SetFontSize=FONT_SIZE_MAX,
-                                                                          PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+        block_rare_boots = filter_manager.get_blocks(2201)[1].copy_modify(
+            ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
-    block_magic_boots = filter_manager.get_blocks(2303)[4].copy_modify(ItemLevel=filter_config.MAGIC_BOOTS_IL,
-                                                                       SetFontSize=FONT_SIZE_MAX,
-                                                                       PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+    _magic_boots_il_map = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}
+    block_magic_boots = filter_manager.get_blocks(2303)[4].copy_modify(
+        ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
+        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
     filter_manager.append_block(block_magic_boots)
     blocks[0].modify(PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
     filter_manager.extend_blocks(blocks)
