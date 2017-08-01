@@ -10,8 +10,7 @@ DEBUG = False
 # Part 1 - Common
 #
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Gold"', '"Amber Amulet"'][:1])  # 点80+血
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][1:])  # 0->1, 点125+血
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Amber Amulet"'][:1])  # 80+Life
 
 #
 # Part 2 - Leveling
@@ -19,30 +18,29 @@ SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][1:])  #
 # NPC-4L
 #
 
-ALERT_SWAP_SOCKET = False
-ALERT_WEAPON2_RRG = False
+ALERT_RRG = True
+ALERT_RBB = True
 
-MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[20]
+MAGIC_BOOTS_IL = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}[10]
 
-HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:1])  # AS->1, DPS->2
+HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
-# +Dex->1, +Phy&Res->2, +Life&Res Rings->3, +Life&Res Amulet->4
+# +Dex->1, +Phy&Res->2, +Life&Res->4, +Life&Res Rings->5, +Life&Res Amulet->6
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(
-    ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', SSF_CRAFT_BELTS_BASE_TYPE,
-     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][2:])
+    ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
+     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][0:])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:1])
+    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
 
 ALERT_SCEPTRE = True
-# "Elemental Focus" "Concentrated Effect" "Controlled Destruction" "Vortex" "Increased Critical Strikes"
 LEVELING_GEMS_BASE_TYPE = ' '.join(
     ['"Melee Splash" "Added Fire Damage"',
-     '"Orb of Storms" "Clarity" "Flame Dash" "Scorching Ray" "Arctic Armour"',
-     '"Increased Duration" "Blasphemy" "Immortal" "Channelling" "Taken"',
+     '"Orb of Storms" "Clarity" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus"',
+     '"Vortex" "Increased Duration" "Blasphemy" "Immortal" "Channelling" "Taken"',
      ][0:]) if ALERT_SCEPTRE else ''
-# LEVELING_GEMS_BASE_TYPE = '"Point Blank" "Concentrated Effect" "Physical Projectile Attack Damage" "Vortex" "Enfeeble"'
 SHOW_FLASK_HALLOWED = True
+
 SHOW_FLASK_LIFE = True
 
 #
@@ -50,13 +48,13 @@ SHOW_FLASK_LIFE = True
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][1]
+CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
 CURRENCY_ALERT_TRANSMUTATION = True
-CURRENCY_PORTAL_FONT_SIZE = [38, 33, 18][1]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [38, 33, 18][1]
+CURRENCY_PORTAL_FONT_SIZE = [38, 33, 18][0]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [38, 33, 18][0]
 
 SSF_CRAFT_BASE_TYPE = ' '.join(['"Opal Sceptre"', '"Astral Plate"', '"Colossal Tower Shield"'][0:])
-SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 找70+血
+SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 70+Life
 
 # 3.0?
 T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" ',
@@ -92,10 +90,11 @@ ALERT_LOW_CURRENCY = True
 # Part 4 - Others
 #
 
-SMALLS_NORMAL_MAX_IL = 9
-SMALLS_MAGIC_MAX_IL = 23
+SMALLS_MAX_IL = 8
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != '< 1')
+
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 125+Life
 
 if ALERT_SCEPTRE:
     SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '

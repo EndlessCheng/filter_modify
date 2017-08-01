@@ -116,24 +116,7 @@ def modify0200(filter_manager):
         block.modify(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block)
 
-    # SSF
     filter_manager.add_comment(208, 'Add your own crafting rules here')
-    if filter_config.SSF_CRAFT_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetFontSize=38, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_CHANCE))
-    if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetTextColor=COLOR_WHITE))
-    if filter_config.SSF_CRAFT_RINGS_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            Class='Rings', BaseType=filter_config.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetTextColor=COLOR_WHITE))
-    if filter_config.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            Class='Belts', BaseType=filter_config.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetTextColor=COLOR_WHITE))
 
     blocks = filter_manager.add_comment(209, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(blocks)
@@ -147,7 +130,27 @@ def modify0200(filter_manager):
 
     filter_manager.add_comment(211, 'Warband items')
 
+    # SSF
     filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!')
+    if filter_config.SSF_CRAFT_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
+            SetFontSize=38, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_CHANCE))
+    if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            SetTextColor=COLOR_WHITE))
+    if filter_config.SSF_CRAFT_RINGS_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            Class='Rings', BaseType=filter_config.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            SetTextColor=COLOR_WHITE))
+    if filter_config.SSF_CRAFT_BELTS_BASE_TYPE != '':
+        block_hide_n_rustic_sash = filter_manager.get_blocks(2500)[0].copy_modify(
+            Class=None, BaseType='"Rustic Sash"', Rarity=RARITY_NORMAL, ItemLevel='>= 40')
+        filter_manager.append_block(block_hide_n_rustic_sash)
+        filter_manager.append_block(FilterBlock(
+            Class='Belts', BaseType=filter_config.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            SetTextColor=COLOR_WHITE))
 
     blocks = filter_manager.add_comment(213, 'Chisel recipe items')
     blocks[1].Quality = '>= 14'
@@ -440,10 +443,9 @@ def modify_leveling(filter_manager):
         block_magic_smalls = blocks[1].copy_modify(BaseType=filter_config.ALERT_MAGIC_SMALLS_BASE_TYPE, ItemLevel=None,
                                                    SetFontSize=40, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block_magic_smalls)
-    blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_NORMAL_MAX_IL)
-    blocks[1].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_IL)
-    del blocks[2]
-    blocks[2].ItemLevel = '<= ' + str(filter_config.SMALLS_MAGIC_MAX_IL)
+    blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_MAX_IL)
+    blocks[1].ItemLevel = '<= ' + str(filter_config.SMALLS_MAX_IL)
+    del blocks[2:]
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2302, 'Caster weapons')
@@ -472,11 +474,12 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
-    if filter_config.ALERT_WEAPON2_RRG:
-        block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "Shields" "One Hand" "Claws" "Sceptres" "Daggers"',
-                                       SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
+    if filter_config.ALERT_RRG:
+        block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
+                                       SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
+                                       ItemLevel='<= ' + str(filter_config.SMALLS_MAX_IL), **STYLE_4L)
         filter_manager.append_block(block_rrg_weapon)
-    if filter_config.ALERT_SWAP_SOCKET:
+    if filter_config.ALERT_RBB:
         for socket_group in ['RRB', 'RBB', 'BBB']:
             block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
                                      SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
@@ -503,7 +506,6 @@ def modify_leveling(filter_manager):
                                                     ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
                          for leveling_base in _LEVELING_BASE]
     filter_manager.extend_blocks(block_weapon_list)
-    filter_manager.extend_blocks(blocks)
 
     # 参考2500
     blocks = filter_manager.add_comment(2403, 'Magic items - progression')
