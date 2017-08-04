@@ -45,32 +45,33 @@ SHOW_FLASK_LIFE = True
 
 CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
 CURRENCY_ALERT_TRANSMUTATION = True
-CURRENCY_PORTAL_FONT_SIZE = [38, 33, 18][0]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [38, 33, 18][0]
+CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
 SSF_CRAFT_BASE_TYPE = ' '.join(['"Opal Sceptre"', '"Astral Plate"', '"Colossal Tower Shield"'][0:3])
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 70+Life
 
-# 3.0?
 T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" ',
                               '"Colossal Tower Shield" "Ezomyte Tower Shield" "Girded Tower Shield" "Pinnacle Tower Shield"',
                               '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
                               '"Sceptre" "Fetish" "Sekhem"',
                               '"Spirit Shield"'][:5])
 SHOW_OTHER_T1_RARES = True
-T1_5_RARE_BASE_TYPE = ' '.join(['"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
-                                '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
-                                '"Titan Greaves" "Crusader Boots" "Vaal Greaves"'][:])
-SHOW_OTHER_T1_5_RARES = True
-HIDE_ENDGAME_BELOW_T1_5_RARE_CLASS = ' '.join(
+
+HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws"', '"Daggers" "Wands"',
      '"Body Armour"', '"Boots" "Gloves" "Helmets" "Shields" "Sceptres"'][:1])  # default = [:1]
+
+T2_RARE_BASE_TYPE = ' '.join(['"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
+                              '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
+                              '"Titan Greaves" "Crusader Boots" "Vaal Greaves"'][:])
+SHOW_OTHER_T2_RARES = True
 
 NEED_RGB = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join(['"Quicksilver" "Silver" "Granite" "Sulphur" "Basalt"',
                                           '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"'][0:2])
-CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade glass
+CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 
 ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][0:])  # 0->2
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''  # Jewel
@@ -107,7 +108,7 @@ SHOW_ENDGAME_4L = True
 
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
-    CHANCING_BASE_TYPE += ' '.join(['"Sorcerer Boots"', ][:])
+    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', ][:])
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
