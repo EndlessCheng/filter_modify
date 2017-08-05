@@ -602,6 +602,7 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
+    blocks[0].SetFontSize = FONT_SIZE_MIN
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')

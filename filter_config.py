@@ -11,6 +11,7 @@ DEBUG = False
 #
 
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Amber Amulet"'][:1])  # 80+Life
+CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][1]
 
 #
 # Part 2 - A1-10
@@ -18,32 +19,33 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine" "Jade" "Turquoise"', '"Amber 
 # NPC-4L
 #
 
-ALERT_RRG = True
-ALERT_RBB = True
+ALERT_RRG = False
+ALERT_RBB = False
 
-MAGIC_BOOTS_IL = 10  # 10/20/30/-1
+MAGIC_BOOTS_IL = -1  # 10/20/30/-1
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
-# +Dex->1, +Phy&Res->2, +Life&Res->4, +Life&Res Rings->5, +Life&Res Amulet->6
+# +Dex->1, +Phy&Res->2/3, +Life&Res belt->4, +Life&Res Rings->5, +Life&Res Amulet->6
 ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(
     ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
-     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][0:])
+     '"Two-Stone"', SSF_CRAFT_AMULETS_BASE_TYPE][4:])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
+    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:2])
 
-ALERT_SCEPTRE = True
-SHOW_FLASK_HALLOWED = True
+ALERT_SCEPTRE = False
+SHOW_FLASK_HALLOWED = False
 
 SHOW_FLASK_LIFE = True
+
+
 
 #
 # Part 3 - A11
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
 CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]

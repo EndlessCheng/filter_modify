@@ -41,7 +41,7 @@ class FilterBlock:
                 if line == '':
                     continue
                 attr_name, attr_value = line.split(' ', 1)
-                if attr_name == 'ItemLevel' and getattr(self, 'Class', None) == 'Flasks' \
+                if attr_name == 'ItemLevel' and getattr(self, 'Class', None) in ['"Life Flasks"', '"Mana Flasks"'] \
                         and getattr(self, 'ItemLevel', None) is not None:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
                 setattr(self, attr_name, attr_value)
