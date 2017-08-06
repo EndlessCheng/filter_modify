@@ -13,6 +13,9 @@ DEBUG = False
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Jade" "Turquoise"', '"Citrine"', '"Amber Amulet"'][2:])  # 80+Life
 CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][1]
 
+SSF_CRAFT_BASE_TYPE = ' '.join(
+    ['"Ceremonial Kite Shield"', '"Bronze Tower Shield"', '"Opal Sceptre"', '"Astral Plate"', '"Ezomyte Tower Shield"'][3:5])
+
 #
 # Part 2 - A1-10
 # Set all = True when new
@@ -27,9 +30,9 @@ MAGIC_BOOTS_IL = -1  # 10/20/30/-1
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
 # +Dex->1, +Phy&Res->2/3, +Life&Res belt->4, +Life&Res Rings->5, +Life&Res Amulet->6
-ALERT_MAGIC_SMALLS_BASE_TYPE = ' '.join(
+ALERT_MAGIC_BASE_TYPE = ' '.join(
     ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
-     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"'][4:])
+     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Ceremonial Kite Shield"'][4:6])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:2])
@@ -38,8 +41,6 @@ ALERT_SCEPTRE = False
 SHOW_FLASK_HALLOWED = False
 
 SHOW_FLASK_LIFE = False
-
-
 
 #
 # Part 3 - A11
@@ -50,24 +51,18 @@ CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
-SSF_CRAFT_BASE_TYPE = ' '.join(['"Opal Sceptre"', '"Astral Plate"', '"Ezomyte Tower Shield"'][1:3])
-SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 70+Life
-
-T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" ',
-                              # '"Colossal Tower Shield" "Ezomyte Tower Shield" "Girded Tower Shield" "Pinnacle Tower Shield"',
+T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" "Fossilised Spirit Shield"',  # 对伤害的追求无止境...
                               '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
-                              '"Sceptre" "Fetish" "Sekhem"',
-                              '"Tower Shield"'][:4])
-SHOW_OTHER_T1_RARES = True
-
-HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws"', '"Daggers" "Wands"',
-     '"Body Armour"', '"Boots" "Gloves" "Helmets" "Shields" "Sceptres"'][:1])  # default = [:1]
-
-T2_RARE_BASE_TYPE = ' '.join(['"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
+                              '"Ezomyte Tower Shield"',
+                              '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
                               '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
-                              '"Titan Greaves" "Crusader Boots" "Vaal Greaves"'][:])
-SHOW_OTHER_T2_RARES = True
+                              '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
+                              '"Sceptre" "Fetish" "Sekhem"',
+                              '"Tower Shield"'][:])
+HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
+    ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws" "Shields" "Sceptres"',
+     '"Body Armour"', '"Daggers" "Wands"', '"Boots" "Gloves" "Helmets"'][:2])  # default = [:1]
+SHOW_T2_RARES = False
 
 NEED_RGB = True
 
@@ -111,6 +106,8 @@ SHOW_ENDGAME_4L = True
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
     CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', ][:])
+
+SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 70+Life
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50

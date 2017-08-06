@@ -162,10 +162,7 @@ def modify0200(filter_manager):
     block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.append_block(block)
 
-    # 8
-    block = filter_manager.add_comment(215, 'SRS Crude Bow')[0]
-    block.PlayAlertSound = SOUND_TOP_VALUE
-    filter_manager.append_block(block)
+    filter_manager.add_comment(215, 'SRS Crude Bow')
 
     blocks = filter_manager.add_comment(216, 'Chromatic recipe items ("RGB Recipe")')
     if filter_config.NEED_RGB:
@@ -176,7 +173,6 @@ def modify0200(filter_manager):
         filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(218, 'Animate Weapon script - deactivated by default')
-    # filter_manager.extend_blocks(?)
 
     # 改稀有度，高亮边框
     block = filter_manager.add_comment(219, 'W-soc offhand weapons')[0]
@@ -197,16 +193,12 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(602, 'T1 rare items')
-    for block in blocks:
-        block.modify(**STYLE_T1_RARE)
     if filter_config.T1_RARE_BASE_TYPE != '':
-        block_t1_rare_75 = blocks[0].copy_modify(BaseType=filter_config.T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        block_t1_rare = blocks[1].copy_modify(BaseType=filter_config.T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        filter_manager.extend_blocks([block_t1_rare_75, block_t1_rare])
-    if filter_config.SHOW_OTHER_T1_RARES:
-        filter_manager.extend_blocks(blocks)
+        for block in blocks[:2]:
+            block.modify(BaseType=filter_config.T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE, **STYLE_T1_RARE)
+        filter_manager.extend_blocks(blocks[:2])
 
-    # 提前隐藏部分稀有物品，借鉴0700
+    # 隐藏部分稀有物品，借鉴0700
     blocks = filter_manager.get_blocks(700)
     if filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
         for block in blocks:
@@ -214,14 +206,9 @@ def modify0600(filter_manager):
         filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(603, 'T2 rare items')
-    for block in blocks:
-        block.SetBorderColor = COLOR_ORANGE_LIGHT
-    if filter_config.T2_RARE_BASE_TYPE != '':
-        for block in blocks[:2]:
-            filter_manager.append_block(block.copy_modify(BaseType=filter_config.T2_RARE_BASE_TYPE))
-    if filter_config.SHOW_OTHER_T2_RARES:
-        del blocks[2:4]
-        del blocks[-2:]
+    if filter_config.SHOW_T2_RARES:
+        for block in blocks:
+            block.SetBorderColor = COLOR_ORANGE_LIGHT
         filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
@@ -429,8 +416,8 @@ def modify_leveling(filter_manager):
 
     # 提醒部分三小件 9 23
     blocks = filter_manager.add_comment(2301, 'Jewellery & Helpful leveling and racing gear')[-5:-1]
-    if filter_config.ALERT_MAGIC_SMALLS_BASE_TYPE != '':
-        block_magic_smalls = blocks[1].copy_modify(BaseType=filter_config.ALERT_MAGIC_SMALLS_BASE_TYPE, ItemLevel=None,
+    if filter_config.ALERT_MAGIC_BASE_TYPE != '':
+        block_magic_smalls = blocks[1].copy_modify(BaseType=filter_config.ALERT_MAGIC_BASE_TYPE, ItemLevel=None,
                                                    SetFontSize=40, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block_magic_smalls)
     blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_MAX_IL)
