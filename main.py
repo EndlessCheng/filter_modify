@@ -97,7 +97,7 @@ def modify0200(filter_manager):
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None,
                                       PlayAlertSound=SOUND_LOW_VALUE)
-    filter_manager.extend_blocks(blocks)
+    filter_manager.extend_blocks(blocks[:-1])
 
     # 加上Gloves Boots Shields Bows Quivers，改稀有度
     # 项链：+1诅咒，+1球，移速，抗性上限
