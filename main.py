@@ -277,7 +277,8 @@ def modify_gem_flask_map(filter_manager):
     # Need map, exile?
     filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here')
     if filter_config.ALERT_LOW_MAP:  # 样式取自T14
-        filter_manager.append_block(filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R))
+        filter_manager.append_block(
+            filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R, PlayAlertSound=SOUND_MAP))
 
     # 改成8和1
     blocks = filter_manager.add_comment(901, 'Value gems')
@@ -517,17 +518,18 @@ def modify_filter(filter_manager):
 
     blocks = filter_manager.add_comment(400, 'Currency - PART 1 - Common currency')
     blocks[0].BaseType = '"Orb of Alteration" "Chromatic Orb" "Jeweller\'s Orb" '
-    if filter_config.CURRENCY_ALERT_BLACKSMITH:
-        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
     if filter_config.CURRENCY_ALERT_TRANSMUTATION:
         blocks[0].BaseType += ' "Orb of Transmutation" '
+    if filter_config.CURRENCY_ALERT_BLACKSMITH:
+        blocks[0].BaseType += ' "Blacksmith\'s Whetstone"'
     if filter_config.CURRENCY_ALERT_AUGMENTATION:
         blocks[0].BaseType += ' "Orb of Augmentation" '
     if not filter_config.CURRENCY_ALERT_CHANCE:
         blocks[0].BaseType += ' "Orb of Chance" '
     if filter_config.ALERT_LOW_CURRENCY:
         blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[1].BaseType += ' "Orb of Augmentation" "Alteration Shard" '
+    blocks[1].BaseType = '"Orb of Transmutation" "Blacksmith\'s Whetstone" "Orb of Augmentation"'
+    blocks[2].BaseType = '"Armourer\'s Scrap" "Orb of Augmentation"'
     blocks[2].SetFontSize = filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
     blocks[3].SetFontSize = filter_config.CURRENCY_PORTAL_FONT_SIZE
     blocks[4].SetFontSize = filter_config.CURRENCY_WISDOM_FONT_SIZE
@@ -553,6 +555,10 @@ def modify_filter(filter_manager):
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
+    blocks[-3].BaseType = '"Harbinger\'s Shard" "Horizon Shard"'
+    blocks[-2].BaseType += ' "Annulment Shard" '
+    blocks[-2].SetFontSize = 33
+    blocks[-1].SetFontSize = 33
     filter_manager.extend_blocks(blocks)
 
     # 8
@@ -563,7 +569,7 @@ def modify_filter(filter_manager):
     # 高亮"Essence of Zeal"；8和1
     blocks = filter_manager.add_comment(1303, 'Essence Tier List')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Essence of Zeal"'
+    blocks[0].BaseType += ' "Essence of Zeal" "Essence of Woe" '
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
@@ -603,6 +609,7 @@ def modify_filter(filter_manager):
 
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
     blocks[0].SetFontSize = FONT_SIZE_MIN
+    blocks[1].SetFontSize = 33
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
