@@ -97,7 +97,7 @@ def modify0200(filter_manager):
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None,
                                       PlayAlertSound=SOUND_LOW_VALUE)
-    filter_manager.extend_blocks(blocks[:-1])
+    filter_manager.extend_blocks(blocks[:3])
 
     # 加上Gloves Boots Shields Bows Quivers，改稀有度
     # 项链：+1诅咒，+1球，移速，抗性上限
@@ -537,6 +537,7 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
+    blocks[1].BaseType += ' "Exalted Shard" "Ancient Shard" "Regal Shard" "Harbinger\'s Shard" '
     if filter_config.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
@@ -544,13 +545,14 @@ def modify_filter(filter_manager):
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-3].BaseType = '"Harbinger\'s Shard" "Horizon Shard"'
     blocks[-2].BaseType += ' "Annulment Shard" '
-    blocks[-2].SetFontSize = 33
-    blocks[-1].SetFontSize = 33
+    blocks[-2].SetFontSize = 40
+    blocks[-1].SetFontSize = 40
     filter_manager.extend_blocks(blocks)
 
     # 8
     blocks = filter_manager.add_comment(1302, 'Top Currency')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    for block in blocks:
+        block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
     # 高亮"Essence of Zeal"；8和1
@@ -595,6 +597,7 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
+    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard"'
     blocks[0].SetFontSize = FONT_SIZE_MIN
     blocks[1].SetFontSize = 33
     filter_manager.extend_blocks(blocks)
