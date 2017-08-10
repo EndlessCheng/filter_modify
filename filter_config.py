@@ -32,10 +32,10 @@ HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS
 # +Dex->1, +Phy&Res->2/3, +Life&Res belt->4, +Life&Res Rings->5, +Life&Res Amulet->6
 ALERT_MAGIC_BASE_TYPE = ' '.join(
     ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
-     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Ceremonial Kite Shield"'][4:6])
+     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Ceremonial Kite Shield"'][:0])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:2])
+    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
 
 ALERT_SCEPTRE = False
 SHOW_FLASK_HALLOWED = False
@@ -62,7 +62,6 @@ T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" "Fossilised Spirit 
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws" "Shields" "Sceptres"',
      '"Body Armour"', '"Daggers" "Wands"', '"Boots" "Gloves" "Helmets"'][:2])  # default = [:1]
-SHOW_T2_RARES = False
 
 NEED_RGB = True
 

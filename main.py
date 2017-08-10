@@ -206,11 +206,7 @@ def modify0600(filter_manager):
             block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
         filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(603, 'T2 rare items')
-    if filter_config.SHOW_T2_RARES:
-        for block in blocks:
-            block.SetBorderColor = COLOR_ORANGE_LIGHT
-        filter_manager.extend_blocks(blocks)
+    filter_manager.add_comment(603, 'T2 rare items')
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
     filter_manager.extend_blocks(blocks)
@@ -545,6 +541,7 @@ def modify_filter(filter_manager):
     blocks[2].BaseType += ' "Glassblower\'s Bauble" '
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
+    blocks[-3].BaseType += ' "Horizon Shard" '
     filter_manager.extend_blocks(blocks[:-2])
 
     # 8
@@ -595,7 +592,7 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
-    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" "Alteration Shard" '
+    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" '
     blocks[0].SetFontSize = 20
     blocks[1].SetFontSize = 36
     filter_manager.extend_blocks(blocks)
