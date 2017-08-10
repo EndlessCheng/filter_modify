@@ -538,11 +538,11 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
-    blocks[1].BaseType += ' "Harbinger\'s Shard" "Ancient Shard" "Exalted Shard" "Regal Shard" '
+    blocks[1].BaseType += ' "Regal Shard" '
     if filter_config.CURRENCY_ALERT_CHANCE:
-        blocks[1].BaseType += ' "Orb of Chance"'
+        blocks[1].BaseType += ' "Orb of Chance" '
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    blocks[2].BaseType += ' "Glassblower\'s Bauble"'
+    blocks[2].BaseType += ' "Glassblower\'s Bauble" '
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     filter_manager.extend_blocks(blocks[:-2])
