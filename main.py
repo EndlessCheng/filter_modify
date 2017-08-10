@@ -545,7 +545,6 @@ def modify_filter(filter_manager):
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-3].BaseType = '"Horizon Shard"'
-    blocks[-2].BaseType = '"Binding Shard"'
     blocks[-1].BaseType += ' "Alchemy Shard" '
     blocks[-1].SetFontSize = 36
     filter_manager.extend_blocks(blocks)
