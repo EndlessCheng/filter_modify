@@ -2,6 +2,7 @@
 
 import time
 import os
+import platform
 
 from filter_modify import FilterBlock, FilterManager
 import filter_config
@@ -537,16 +538,16 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
-    blocks[1].BaseType += ' "Exalted Shard" "Ancient Shard" "Regal Shard" "Harbinger\'s Shard" '
+    blocks[1].BaseType += ' "Harbinger\'s Shard" "Ancient Shard" "Exalted Shard" "Regal Shard" '
     if filter_config.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
-    blocks[-3].BaseType = '"Harbinger\'s Shard" "Horizon Shard"'
-    blocks[-2].BaseType += ' "Annulment Shard" '
-    blocks[-2].SetFontSize = 40
-    blocks[-1].SetFontSize = 40
+    blocks[-3].BaseType = '"Horizon Shard"'
+    blocks[-2].BaseType = '"Binding Shard"'
+    blocks[-1].BaseType += ' "Alchemy Shard" '
+    blocks[-1].SetFontSize = 36
     filter_manager.extend_blocks(blocks)
 
     # 8
@@ -597,8 +598,8 @@ def modify_filter(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
-    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard"'
-    blocks[0].SetFontSize = FONT_SIZE_MIN
+    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" "Alteration Shard" "Annulment Shard" '
+    blocks[0].SetFontSize = 20
     blocks[1].SetFontSize = 33
     filter_manager.extend_blocks(blocks)
 
@@ -614,35 +615,35 @@ def modify_filter(filter_manager):
     blocks[0].modify(**STYLE_TOP_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
+    # 6
+    blocks = filter_manager.add_comment(1702, 'Harbinger - Pieces')
+    blocks[0].PlayAlertSound = SOUND_UNIQUE
+    filter_manager.extend_blocks(blocks)
+
     # 8
-    blocks = filter_manager.add_comment(1702, 'Tier 1 uniques')
+    blocks = filter_manager.add_comment(1703, 'Tier 1 uniques')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
     # 改成T1
-    blocks = filter_manager.add_comment(1703, 'Tier 2 uniques')
+    blocks = filter_manager.add_comment(1704, 'Tier 2 uniques')
     for block in blocks:
         block.modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
     # 6
-    blocks = filter_manager.add_comment(1704, 'Multi-Unique bases')
+    blocks = filter_manager.add_comment(1705, 'Multi-Unique bases')
     blocks[0].PlayAlertSound = SOUND_UNIQUE
     filter_manager.extend_blocks(blocks)
 
     # 6
-    blocks = filter_manager.add_comment(1705, 'Prophecy-Material Uniques')
+    blocks = filter_manager.add_comment(1706, 'Prophecy-Material Uniques')
     blocks[0].PlayAlertSound = SOUND_UNIQUE
     filter_manager.extend_blocks(blocks)
 
     # 6
-    blocks = filter_manager.add_comment(1706, 'Random Uniques')
-    blocks[0].PlayAlertSound = SOUND_UNIQUE
-    filter_manager.extend_blocks(blocks)
-
-    # 6
-    blocks = filter_manager.add_comment(1707, 'Harbinger - Pieces')
+    blocks = filter_manager.add_comment(1707, 'Random Uniques')
     blocks[0].PlayAlertSound = SOUND_UNIQUE
     filter_manager.extend_blocks(blocks)
 
@@ -671,7 +672,8 @@ def main():
 
     modify_filter(fm)
 
-    with open(os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter", 'w') as f:
+    filename = os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter" if platform.system() == 'Windows' else os.path.expanduser('~') + "/MODIFY.filter"
+    with open(filename, 'w') as f:
         f.writelines(fm.new_text)
 
     print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
