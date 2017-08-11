@@ -32,7 +32,7 @@ HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS
 # +Dex->1, +Phy&Res->2/3, +Life&Res belt->4, +Life&Res Rings->5, +Life&Res Amulet->6
 ALERT_MAGIC_BASE_TYPE = ' '.join(
     ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
-     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Ceremonial Kite Shield"'][:0])
+     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Layered Kite Shield" "Ceremonial Kite Shield"'][:0])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
@@ -58,7 +58,8 @@ T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" "Fossilised Spirit 
                               '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
                               '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
                               '"Sceptre" "Fetish" "Sekhem"',
-                              '"Tower Shield"'][:])
+                              '"Tower Shield"',
+                              '"Kite Shield"'][:])
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws" "Shields" "Sceptres"',
      '"Body Armour"', '"Daggers" "Wands"', '"Boots" "Gloves" "Helmets"'][:2])  # default = [:1]
