@@ -148,7 +148,9 @@ def modify0200(filter_manager):
     if filter_config.SSF_CRAFT_BELTS_BASE_TYPE != '':
         block_hide_n_rustic_sash = filter_manager.get_blocks(2500)[0].copy_modify(
             Class=None, BaseType='"Rustic Sash"', Rarity=RARITY_NORMAL, ItemLevel='>= 40')
-        filter_manager.append_block(block_hide_n_rustic_sash)
+        block_hide_n_leather_belt = filter_manager.get_blocks(2500)[0].copy_modify(
+            Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')
+        filter_manager.extend_blocks([block_hide_n_rustic_sash, block_hide_n_leather_belt])
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=filter_config.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL,
             SetTextColor=COLOR_WHITE))
@@ -448,11 +450,10 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
-    if filter_config.ALERT_RRG:
-        block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
-                                       SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
-                                       ItemLevel='<= ' + str(filter_config.SMALLS_MAX_IL), **STYLE_4L)
-        filter_manager.append_block(block_rrg_weapon)
+    block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
+                                   SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
+                                   ItemLevel='<= ' + str(filter_config.SMALLS_MAX_IL), **STYLE_4L)
+    filter_manager.append_block(block_rrg_weapon)
     if filter_config.ALERT_RBB:
         for socket_group in ['RRB', 'RBB', 'BBB']:
             block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
@@ -666,7 +667,9 @@ def main():
 
     modify_filter(fm)
 
-    filename = os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter" if platform.system() == 'Windows' else os.path.expanduser('~') + "/MODIFY.filter"
+    filename = os.path.expanduser(
+        '~') + "\Documents\My Games\Path of Exile\MODIFY.filter" if platform.system() == 'Windows' else os.path.expanduser(
+        '~') + "/MODIFY.filter"
     with open(filename, 'w') as f:
         f.writelines(fm.new_text)
 

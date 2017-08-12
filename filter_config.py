@@ -10,32 +10,45 @@ DEBUG = False
 # Part 1 - Common
 #
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Jade" "Turquoise"', '"Citrine"', '"Amber Amulet"'][2:])  # 80+Life
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][1]
+SSF_CRAFT_BASE_TYPE = ' '.join([
+    #  '"Ceremonial Kite Shield"',  # 34
+    #  '"Bronze Tower Shield"',  # 47
+    #  '"Opal Sceptre"',  # 60
+    '"Astral Plate"',  # 62
+    '"Ezomyte Tower Shield"',  # 64
+])
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
+    # '"Jade" "Turquoise"',
+    '"Citrine"',
+    # '"Amber Amulet"'
+])
 
-SSF_CRAFT_BASE_TYPE = ' '.join(
-    ['"Ceremonial Kite Shield"', '"Bronze Tower Shield"', '"Opal Sceptre"', '"Astral Plate"', '"Ezomyte Tower Shield"'][3:5])
+CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
 
 #
 # Part 2 - A1-10
-# Set all = True when new
+#
 # NPC-4L
 #
 
-ALERT_RRG = False
 ALERT_RBB = False
 
-MAGIC_BOOTS_IL = -1  # 10/20/30/-1
+MAGIC_BOOTS_IL = -1  # 10/20/-1 (25:Lv40, 30:Lv55)
 
-HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
-
-# +Dex->1, +Phy&Res->2/3, +Life&Res belt->4, +Life&Res Rings->5, +Life&Res Amulet->6
-ALERT_MAGIC_BASE_TYPE = ' '.join(
-    ['"Amulet"', '"Iron" "Ruby" "Topaz" "Sapphire"', '"Rustic Sash"', '"Leather Belt"',
-     '"Two-Stone"', '"Jade" "Turquoise" "Citrine" "Amber"', '"Layered Kite Shield" "Ceremonial Kite Shield"'][:0])
+ALERT_MAGIC_BASE_TYPE = ' '.join([
+    # '"Amulet"',
+    # '"Iron"',
+    # '"Rustic Sash"',
+    #  '"Leather Belt"',
+    '"Ruby" "Topaz" "Sapphire"',
+    '"Two-Stone"',
+    '"Jade" "Turquoise" "Citrine" "Amber"',
+    #  '"Layered Kite Shield" "Ceremonial Kite Shield"',
+    #  '"Bronze Tower Shield" "Ezomyte Tower Shield"',
+])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])
+    ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])  # 0->1->0
 
 ALERT_SCEPTRE = False
 SHOW_FLASK_HALLOWED = False
@@ -47,23 +60,25 @@ SHOW_FLASK_LIFE = False
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
+HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
+    ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws" "Shields" "Sceptres"',
+     '"Body Armour"', '"Daggers" "Wands"', '"Boots" "Gloves" "Helmets"'][:0])  # 1->0->2
+
+T1_RARE_BASE_TYPE = ' '.join([
+    # '"Kite Shield"',
+    '"Tower Shield"',
+    '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
+    '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
+    '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
+    '"Sceptre" "Fetish" "Sekhem"',
+    '"Ezomyte Tower Shield"',
+    '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
+    '"Opal Sceptre" "Void Sceptre" "Fossilised Spirit Shield" "Archon Kite Shield"',  # MORE DAMAGE PLS
+])
+
 CURRENCY_ALERT_TRANSMUTATION = True
 CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
-
-T1_RARE_BASE_TYPE = ' '.join(['"Opal Sceptre" "Void Sceptre" "Fossilised Spirit Shield"',  # 对伤害的追求无止境...
-                              '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
-                              '"Ezomyte Tower Shield"',
-                              '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
-                              '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
-                              '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
-                              '"Sceptre" "Fetish" "Sekhem"',
-                              '"Tower Shield"',
-                              '"Kite Shield"'][:])
-HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join(
-    ['"Bows" "Quivers" "Two Hand" "Staves" "One Hand" "Claws" "Shields" "Sceptres"',
-     '"Body Armour"', '"Daggers" "Wands"', '"Boots" "Gloves" "Helmets"'][:2])  # default = [:1]
-
 NEED_RGB = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join(['"Quicksilver" "Silver" "Granite" "Sulphur" "Basalt"',
@@ -71,7 +86,7 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join(['"Quicksilver" "Silver" "Granite" "Sul
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 
 ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][0:])  # 0->2
-CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''  # Jewel
+CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 ALERT_SMALLS_RARE = True
 
 ALERT_LOW_MAP = True
@@ -87,12 +102,14 @@ SMALLS_MAX_IL = 8
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
 
+HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
+
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 125+Life
 
 LEVELING_GEMS_BASE_TYPE = ' '.join(
     ['"Melee Splash" "Added Fire Damage"',
      '"Orb of Storms" "Clarity" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus"',
-     '"Vortex" "Increased Duration" "Blasphemy" "Immortal" "Channelling" "Taken"',
+     '"Immortal" "Channelling" "Taken"',
      ][0:]) if ALERT_SCEPTRE else ''
 
 if ALERT_SCEPTRE:
