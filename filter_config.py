@@ -122,7 +122,7 @@ SHOW_ENDGAME_4L = True
 
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
-    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', ][:])
+    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Ezomyte Tower Shield"'][:])
 
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][:])  # 70+Life
 

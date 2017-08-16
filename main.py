@@ -89,7 +89,24 @@ def modify0200(filter_manager):
     blocks[4].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(205, 'FLASKS (Endgame rules)')
+    # 加上Gloves Boots Shields Bows Quivers，改稀有度
+    # 项链：+1诅咒，+1球，移速，抗性上限
+    # 腰带：+1球，技能持续时间/范围
+    # 手脚盾：+1技能等级
+    # 手：击中附加诅咒
+    # 脚：+1球
+    # 弓和箭袋：+1箭
+    blocks = filter_manager.add_comment(205, 'Corrupted items')
+    blocks[0].modify(Class=blocks[0].Class + ' Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R)
+    filter_manager.extend_blocks(blocks)
+
+    # 只留第一个
+    block = filter_manager.add_comment(206, 'Chancing items')[0]
+    if filter_config.CHANCING_BASE_TYPE != '':
+        block.modify(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
+        filter_manager.append_block(block)
+
+    blocks = filter_manager.add_comment(207, 'FLASKS (Endgame rules)')
     if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         block_utility = blocks[0].copy_modify(Quality=None, Class='"Utility Flasks"',
                                               BaseType=filter_config.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
@@ -99,23 +116,6 @@ def modify0200(filter_manager):
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None,
                                       PlayAlertSound=SOUND_LOW_VALUE)
     filter_manager.extend_blocks(blocks[:3])
-
-    # 加上Gloves Boots Shields Bows Quivers，改稀有度
-    # 项链：+1诅咒，+1球，移速，抗性上限
-    # 腰带：+1球，技能持续时间/范围
-    # 手脚盾：+1技能等级
-    # 手：击中附加诅咒
-    # 脚：+1球
-    # 弓和箭袋：+1箭
-    blocks = filter_manager.add_comment(206, 'Corrupted items')
-    blocks[0].modify(Class=blocks[0].Class + ' Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R)
-    filter_manager.extend_blocks(blocks)
-
-    # 只留第一个
-    block = filter_manager.add_comment(207, 'Chancing items')[0]
-    if filter_config.CHANCING_BASE_TYPE != '':
-        block.modify(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        filter_manager.append_block(block)
 
     filter_manager.add_comment(208, 'Add your own crafting rules here')
 
@@ -208,6 +208,7 @@ def modify0600(filter_manager):
             block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
         filter_manager.extend_blocks(blocks)
 
+    # 移除T2
     filter_manager.add_comment(603, 'T2 rare items')
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
@@ -225,26 +226,34 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(607, '1H Claws')
+    filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(608, '1H Wands')
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(609, '1H Foils')
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(610, '1H Swords')
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(611, '1H Maces')
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(612, '1H Axes')
+    filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(613, '1H Sceptres')
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(614, '2H Staves')
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(615, '2H Swords, Axes, Maces')
+    filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(616, '2H Bows')
+    filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets')
     filter_manager.extend_blocks(blocks)
@@ -256,6 +265,7 @@ def modify0600(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(620, 'OH: Quivers')
+    filter_manager.extend_blocks(blocks)
 
 
 # 0800-1207
