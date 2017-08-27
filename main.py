@@ -156,8 +156,10 @@ def modify0200(filter_manager):
             SetTextColor=COLOR_WHITE))
 
     blocks = filter_manager.add_comment(213, 'Chisel recipe items')
-    blocks[1].Quality = '>= 14'
-    blocks[2].Quality = '>= 5'
+    for block in blocks:
+        block.PlayAlertSound = SOUND_MID_VALUE
+    blocks[1].Quality = '>= 12'  # 14 12
+    blocks[2].Quality = '>= 0'  # 5 0
     filter_manager.extend_blocks(blocks[:3])
 
     # 8
@@ -225,34 +227,34 @@ def modify0600(filter_manager):
     blocks = filter_manager.add_comment(606, '1H Daggers')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(607, '1H Claws')
+    blocks = filter_manager.add_comment(607, '1H Claws')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(608, '1H Wands')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(609, '1H Foils')
+    blocks = filter_manager.add_comment(609, '1H Foils')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(610, '1H Swords')
+    blocks = filter_manager.add_comment(610, '1H Swords')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(611, '1H Maces')
+    blocks = filter_manager.add_comment(611, '1H Maces')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(612, '1H Axes')
+    blocks = filter_manager.add_comment(612, '1H Axes')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(613, '1H Sceptres')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(614, '2H Staves')
+    blocks = filter_manager.add_comment(614, '2H Staves')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(615, '2H Swords, Axes, Maces')
+    blocks = filter_manager.add_comment(615, '2H Swords, Axes, Maces')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(616, '2H Bows')
+    blocks = filter_manager.add_comment(616, '2H Bows')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets')
@@ -264,7 +266,7 @@ def modify0600(filter_manager):
     blocks = filter_manager.add_comment(619, 'OH: Shields')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(620, 'OH: Quivers')
+    blocks = filter_manager.add_comment(620, 'OH: Quivers')
     filter_manager.extend_blocks(blocks)
 
 
@@ -331,16 +333,15 @@ def modify_gem_flask_map(filter_manager):
     # 加黄边，不显示稀有度
     blocks = filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
     for block in blocks:
-        block.modify(SetTextColor=COLOR_GRAY_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT)
-    blocks[0].SetFontSize = FONT_SIZE_MAX
-    blocks[1].SetFontSize = FONT_SIZE_MAX
-    blocks[2].SetFontSize = FONT_SIZE_MAX
+        block.modify(SetTextColor=COLOR_GRAY_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT, PlayAlertSound=SOUND_MAP)
+    for block in blocks[:4]:
+        block.SetFontSize = FONT_SIZE_MAX
     filter_manager.extend_blocks(blocks)
 
     # 加蓝边/白边，不显示稀有度
     blocks = filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
     for block in blocks:
-        block.SetTextColor = COLOR_GRAY_LIGHT
+        block.modify(SetTextColor=COLOR_GRAY_LIGHT, PlayAlertSound=SOUND_MAP)
     for block in blocks[:6]:
         block.SetBorderColor = COLOR_BLUE_LIGHT
     for block in blocks[6:10]:
@@ -464,8 +465,8 @@ def modify_leveling(filter_manager):
                                    SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
                                    ItemLevel='<= ' + str(filter_config.SMALLS_MAX_IL), **STYLE_4L)
     filter_manager.append_block(block_rrg_weapon)
-    if filter_config.ALERT_RBB:
-        for socket_group in ['RRB', 'RBB', 'BBB']:
+    if filter_config.ALERT_BBB:
+        for socket_group in ['RBB', 'BBB']:
             block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
                                      SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
             filter_manager.append_block(block_swap)
