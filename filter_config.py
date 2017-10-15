@@ -10,21 +10,21 @@ DEBUG = False
 # Part 1 - Common
 #
 
-SSF_CRAFT_BASE_TYPE = ' '.join([  # 3L/4L
-    #  '"Ceremonial Kite Shield"',  # 34
-    # '"Bronze Tower Shield"',  # 47
-    # '"Karui Sceptre"',  # 56
-    # '"Astral Plate"',  # 62
-    # '"Ezomyte Tower Shield"',  # 64
-    # '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
+SSF_CRAFT_BASE_TYPE = ' '.join([  # 3L
+     '"Ceremonial Kite Shield"',  # 34
+     '"Bronze Tower Shield"',  # 47
+     '"Karui Sceptre"',  # 56
+     '"Astral Plate"',  # 62
+     '"Ezomyte Tower Shield"',  # 64
+     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
 ])
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
-    # '"Jade" "Turquoise"',
-    # '"Citrine"',
-    # '"Amber Amulet"'
+    '"Jade" "Turquoise"',
+    '"Citrine"',
+    '"Amber Amulet"'
 ])
 
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][2]
+CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
 
 #
 # Part 2 - A1-10
@@ -32,52 +32,43 @@ CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][2]
 # NPC-4L
 #
 
-MAGIC_BOOTS_IL = -1  # ★★★ 10/20/-1 (25:Lv40, 30:Lv55)  ★★★
+MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (25:Lv40, 30:Lv55)  ★★★
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    # '"Iron"',
-    # '"Rustic Sash"',
-    # '"Layered Kite Shield" "Ceremonial Kite Shield"',
-    # '"Leather Belt"',
-    # '"Ruby" "Topaz" "Sapphire"',
-    # '"Two-Stone"',
-    # '"Amulet"',
-    # '"Jade" "Turquoise" "Citrine" "Amber"',
-    # '"Bronze Tower Shield"',
-    # '"Ezomyte Tower Shield"',
+    '"Iron"',
+    '"Rustic Sash"',
+    '"Layered Kite Shield" "Ceremonial Kite Shield"',
+    '"Leather Belt"',
+    '"Ruby" "Topaz" "Sapphire"',
+    '"Two-Stone"',
+    '"Amulet"',
+    '"Jade" "Turquoise" "Citrine" "Amber"',
+    '"Bronze Tower Shield"',
+    '"Ezomyte Tower Shield"',
 ])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join(
     ['"Bows" "Quivers" "Two Hand" "Staves"', '"Claws" "One Hand"', '"Wands" "Daggers"'][:0])  # 0->1->0
 
-ALERT_SCEPTRE = False
-SHOW_FLASK_HALLOWED = False
+ALERT_SCEPTRE = True
+SHOW_FLASK_HALLOWED = True
 
-SHOW_FLASK_LIFE = False
+SHOW_FLASK_LIFE = True
 
 #
 # Part 3 - A11
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][2:])  # 125+Life
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 125+Life
 
-SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][1:])  # 70+Life
-
-HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
-    '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres" "Body Armour"',
-    '"Gloves"',
-    '"Boots"',
-    '"Helmets"',
-    '"Claws" "One Hand"',
-    # '"Daggers" "Wands"',
-])
+SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
 
 T1_RARE_BASE_TYPE = ' '.join([
-    # '"Kite Shield"',
-    # '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
-    # '"Tower Shield"',
-    #  '"Sceptre" "Fetish" "Sekhem"',
+    '"Kite Shield"',
+    '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
+    '"Tower Shield"',
+    '"Sceptre" "Fetish" "Sekhem"',
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
     '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
     '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
@@ -85,24 +76,35 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre"',
 ])
 
-NEED_RGB = False
+HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
+    '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres" "Body Armour"',
+    # '"Gloves"',
+    # '"Boots"',
+    # '"Helmets"',
+    # '"Claws" "One Hand"',
+    # '"Daggers" "Wands"',
+])
 
-CURRENCY_ALERT_TRANSMUTATION = False
-CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][1]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][1]
+NEED_RGB = True
+
+CURRENCY_ALERT_TRANSMUTATION = True
+CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join(['"Quicksilver" "Silver" "Granite" "Sulphur" "Basalt"',
-                                          '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"'][2:2])
+                                          '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"'][0:2])
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 
-ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][3:])  # 0->2
-CURRENCY_ALERT_AUGMENTATION = False and ALERT_JEWEL_BASE_TYPE != ''
+ALERT_JEWEL_BASE_TYPE = ' '.join(['"Viridian"', '"Crimson"', '"Cobalt"'][0:])  # 0->3
+CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 ALERT_SMALLS_RARE = True
 
-ALERT_LOW_MAP = False
+ALERT_LOW_MAP = True
 CURRENCY_ALERT_CHANCE = True and ALERT_LOW_MAP
 
 ALERT_LOW_CURRENCY = True
+
+NEED_CHISEL = False
 
 #
 # Part 4 - Others

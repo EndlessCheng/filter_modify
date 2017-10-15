@@ -158,8 +158,8 @@ def modify0200(filter_manager):
     blocks = filter_manager.add_comment(213, 'Chisel recipe items')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
-    blocks[1].Quality = '>= 12'  # 14 12
-    blocks[2].Quality = '>= 0'  # 5 0
+    blocks[1].Quality = '>= 10' if filter_config.NEED_CHISEL else '>= 14'
+    blocks[2].Quality = '>= 0' if filter_config.NEED_CHISEL else '>= 5'
     filter_manager.extend_blocks(blocks[:3])
 
     # 8
