@@ -392,12 +392,14 @@ def modify_leveling(filter_manager):
     block.status = DEBUG
     filter_manager.append_block(block)
 
-    # 跑鞋，4L RGB
+    # 跑鞋，R-G-B-X
     blocks = filter_manager.add_comment(2100, 'Leveling - Exceptions')
     if filter_config.RARE_BOOTS_ALERT:
-        block_rare_boots = filter_manager.get_blocks(2201)[1].copy_modify(
+        block_rare_boots = filter_manager.get_blocks(2201)[2].copy_modify(
             ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
+        # filter_manager.append_block(FilterBlock(Class='"Boots"', Rarity=RARITY_RARE, SetFontSize=FONT_SIZE_MAX,
+        #                                         PlayAlertSound=SOUND_CHANCE, **STYLE_4L))
     _magic_boots_il_map = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2303)[4].copy_modify(
         ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
@@ -432,38 +434,33 @@ def modify_leveling(filter_manager):
         filter_manager.append_block(block_magic_smalls)
     blocks[0].ItemLevel = '<= ' + str(filter_config.SMALLS_MAX_IL)
     blocks[1].ItemLevel = '<= ' + str(filter_config.SMALLS_MAX_IL)
-    del blocks[2:]
-    filter_manager.extend_blocks(blocks)
+    filter_manager.extend_blocks(blocks[:2])
 
     filter_manager.add_comment(2302, 'Caster weapons')
 
-    # 4L Hide GGG, 3L RRR RR, 2L RR
     blocks = filter_manager.add_comment(2303, 'Linked gear')
     if filter_config.LINKED_CLASS != '':
-        for block in blocks:
+        for block in blocks[:2]:
             block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-    block_hide_ggg = blocks[0].copy_modify(status=DEBUG, SocketGroup='GGG', Rarity=RARITY_N2M,
-                                           SetFontSize=26, SetTextColor=None)
-    block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
-    block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
-    blocks[0].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
-    blocks[1].modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body] + blocks[:2])  # 4L
-    block_rrr_normal = blocks[2].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    block_rrr_magic = blocks[3].copy_modify(SocketGroup='RRR', SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
-    blocks[2].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
-    blocks[3].modify(LinkedSockets=2, SocketGroup='RR', ItemLevel='<= 7', SetFontSize=42)
-    block_rr_normal = blocks[2].copy_modify(ItemLevel='<= 15', SetFontSize=40)
-    block_rr_magic = blocks[3].copy_modify(ItemLevel='<= 15', SetFontSize=40)
-    filter_manager.extend_blocks(
-        [block_rrr_normal, block_rrr_magic] + blocks[2:4] + [block_rr_normal, block_rr_magic])  # 3L 2L
+            block_hide_ggg = block.copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
+            block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
+            block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
+            block.modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
+            filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])  # 4L
+        for block in blocks[2:4]:
+            block.modify(Class='"Body Armour" "Helmets"', SocketGroup='RR', **STYLE_4L)
+            block_rr = block.copy_modify(LinkedSockets=None, ItemLevel='<= ' + str(filter_config.L2_MAX_IL), SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+            block_hide_rrb = block.copy_modify(status=DEBUG, SocketGroup='RRB')
+            block_rrx = block.copy_modify(ItemLevel='<= ' + str(filter_config.L3_MAX_IL), SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+            filter_manager.extend_blocks([block_rr, block_hide_rrb, block_rrx])  # RR RRR RRG
 
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
+    # 副手位移RRG
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
     block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
                                    SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
-                                   ItemLevel='<= ' + str(filter_config.SMALLS_MAX_IL), **STYLE_4L)
+                                   ItemLevel='<= ' + str(filter_config.MOVE_HAND_MAX_IL), **STYLE_4L)
     filter_manager.append_block(block_rrg_weapon)
     if filter_config.ALERT_BBB:
         for socket_group in ['RBB', 'BBB']:
@@ -482,6 +479,7 @@ def modify_leveling(filter_manager):
         block.ItemLevel = '<= 4'
     filter_manager.extend_blocks(blocks)
 
+    # 蓝白武器
     blocks = filter_manager.add_comment(2402, 'Normal weapons - progression')
     _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                       ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Cleaver"', 16),
