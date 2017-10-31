@@ -449,24 +449,26 @@ def modify_leveling(filter_manager):
             filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])  # 4L
         for block in blocks[2:4]:
             block.modify(Class='"Body Armour" "Helmets"', SocketGroup='RR', **STYLE_4L)
-            block_rr = block.copy_modify(LinkedSockets=None, ItemLevel='<= ' + str(filter_config.L2_MAX_IL), SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+            block_rr = block.copy_modify(LinkedSockets=None, ItemLevel='<= ' + str(filter_config.L2_MAX_IL),
+                                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
             block_hide_rrb = block.copy_modify(status=DEBUG, SocketGroup='RRB')
-            block_rrx = block.copy_modify(ItemLevel='<= ' + str(filter_config.L3_MAX_IL), SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+            block_rrx = block.copy_modify(ItemLevel='<= ' + str(filter_config.L3_MAX_IL), SetFontSize=42,
+                                          PlayAlertSound=SOUND_CHANCE)
             filter_manager.extend_blocks([block_rr, block_hide_rrb, block_rrx])  # RR RRR RRG
 
     filter_manager.add_comment(2304, '20% quality items for those strange people who want them')
 
-    # 副手位移RRG
+    # 副手位移RRG, RBB/BBB, 隐藏武器
     filter_manager.add_comment(2400, 'Levelling - normal and magic item progression')
     block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
                                    SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE,
                                    ItemLevel='<= ' + str(filter_config.MOVE_HAND_MAX_IL), **STYLE_4L)
     filter_manager.append_block(block_rrg_weapon)
-    if filter_config.ALERT_BBB:
-        for socket_group in ['RBB', 'BBB']:
-            block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
-                                     SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
-            filter_manager.append_block(block_swap)
+    for socket_group in ['RBB', 'BBB']:
+        block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
+                                 ItemLevel='<= ' + str(filter_config.BBB_MAX_IL),
+                                 SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
+        filter_manager.append_block(block_swap)
     block_hide_n2m = filter_manager.get_blocks(2500)[0].copy_modify(
         Class='"Bows" "Quivers" "Two Hand" "Staves" "Wands" "Shields" "Claws" "Daggers" "Sceptres" "Claws" "Daggers" "One Hand Maces" ' + filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
