@@ -207,7 +207,8 @@ def modify0600(filter_manager):
     blocks = filter_manager.get_blocks(700)
     if filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
         for block in blocks:
-            block.modify(status=DEBUG, Corrupted=False, Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
+            block.modify(status=DEBUG, Corrupted=False, Identified=False,
+                         Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
         filter_manager.extend_blocks(blocks)
 
     # 移除T2

@@ -1,4 +1,4 @@
-from filter_modify import *
+from filter_modify import FilterManager
 
 if __name__ == '__main__':
     with open("NeverSink's filter - 1-REGULAR.filter") as f:
