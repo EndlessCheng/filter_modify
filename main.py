@@ -4,6 +4,8 @@ import time
 import os
 import platform
 
+import shutil
+
 from filter_modify import FilterBlock, FilterManager
 import filter_config
 
@@ -678,11 +680,12 @@ def main():
 
     modify_filter(fm)
 
-    filename = os.path.expanduser(
+    file_path = os.path.expanduser(
         '~') + "\Documents\My Games\Path of Exile\MODIFY.filter" if platform.system() == 'Windows' else os.path.expanduser(
         '~') + "/MODIFY.filter"
-    with open(filename, 'w') as f:
+    with open(file_path, 'w') as f:
         f.writelines(fm.new_text)
+    shutil.copyfile(file_path, 'MODIFY.filter')
 
     print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
 
