@@ -55,7 +55,8 @@ SHOW_FLASK_LIFE = True
 SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Ceremonial Kite Shield"',  # 34
     '"Bronze Tower Shield"',  # 47
-    '"Karui Sceptre"',  # 56
+    # '"Karui Sceptre"',  # 56
+    '"Opal Sceptre"',  # 60
     '"Astral Plate"',  # 62
     '"Ezomyte Tower Shield"',  # 64
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
