@@ -213,8 +213,8 @@ def modify0600(filter_manager):
                          Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
         filter_manager.extend_blocks(blocks)
 
-    # 移除T2
-    filter_manager.add_comment(603, 'T2 rare items')
+    blocks = filter_manager.add_comment(603, 'T2 rare items')
+    filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
     filter_manager.extend_blocks(blocks)
