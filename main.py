@@ -609,7 +609,7 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
     blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" '
     blocks[0].SetFontSize = 20
-    blocks[1].SetFontSize = 36
+    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
