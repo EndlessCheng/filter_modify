@@ -23,7 +23,7 @@ MOVE_HAND_MAX_IL = 17  # RRG
 L2_MAX_IL = 7
 L3_MAX_IL = 17
 
-MAGIC_BOOTS_IL = 20  # ★★★ 10/20/-1 (25:Lv40, 30:Lv55)  ★★★
+MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (25:Lv40, 30:Lv55)  ★★★
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
@@ -55,7 +55,7 @@ SHOW_FLASK_LIFE = True
 SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Ceremonial Kite Shield"',  # 34
     '"Bronze Tower Shield"',  # 47
-    # '"Karui Sceptre"',  # 56
+    '"Karui Sceptre"',  # 56, 1.65AS!!!
     '"Opal Sceptre"',  # 60
     '"Astral Plate"',  # 62
     '"Ezomyte Tower Shield"',  # 64
@@ -96,12 +96,12 @@ T1_RARE_BASE_TYPE = ' '.join([
 ])
 
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
-    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"',
+    '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"',
     # '"Body Armour"'
+    # '"Claws" "One Hand"',
     # '"Gloves"',
     # '"Boots"',
     # '"Helmets"',
-    # '"Claws" "One Hand"',
     # '"Daggers" "Wands"',
 ])
 

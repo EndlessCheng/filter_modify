@@ -205,7 +205,7 @@ Show
 
 # 0212 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Ceremonial Kite Shield" "Bronze Tower Shield" "Karui Sceptre" "Astral Plate" "Ezomyte Tower Shield" "Royal Burgonet" "Eternal Burgonet" "Crystal Sceptre" 
+ BaseType "Ceremonial Kite Shield" "Bronze Tower Shield" "Karui Sceptre" "Opal Sceptre" "Astral Plate" "Ezomyte Tower Shield" "Royal Burgonet" "Eternal Burgonet" "Crystal Sceptre" 
  Rarity Normal
  SetFontSize 38
  SetBorderColor 255 255 255
@@ -449,8 +449,148 @@ Show
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 4 300
+Hide
+ Corrupted False
+ Identified False
+ Height <= 4
+ Width <= 1
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 75
+ SetFontSize 24
+ SetTextColor 255 190 0
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Corrupted False
+ Identified False
+ Height <= 4
+ Width <= 1
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 65
+ SetFontSize 24
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Corrupted False
+ Identified False
+ Height <= 2
+ Width <= 2
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 75
+ SetFontSize 24
+ SetTextColor 255 190 0
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Corrupted False
+ Identified False
+ Height <= 2
+ Width <= 2
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 65
+ SetFontSize 24
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Corrupted False
+ Identified False
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 75
+ SetFontSize 20
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
+Hide
+ Corrupted False
+ Identified False
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Rarity = Rare
+ ItemLevel >= 65
+ SetFontSize 20
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
 
 # 0603 T2 rare items
+Show
+ BaseType "Gemini Claw" "Tornado Wand" "Opal Wand" "Prophecy Wand" "Vaal Rapier" "Harpy Rapier" "Profane Wand" "Spiraled Foil" "Skean" "Kris" "Demon Dagger" "Ezomyte Dagger" "Corsair Sword"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 40
+ SetTextColor 255 190 0
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Gemini Claw" "Tornado Wand" "Opal Wand" "Prophecy Wand" "Vaal Rapier" "Harpy Rapier" "Profane Wand" "Spiraled Foil" "Skean" "Kris" "Demon Dagger" "Ezomyte Dagger" "Corsair Sword"
+ Rarity Rare
+ ItemLevel >= 65
+ SetFontSize 40
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Vaal Axe" "Coronal Maul" "Harbinger Bow"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 40
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Vaal Axe" "Coronal Maul" "Harbinger Bow"
+ Rarity Rare
+ ItemLevel >= 65
+ SetFontSize 40
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Void Sceptre" "Sambar Sceptre"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 40
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Void Sceptre" "Sambar Sceptre"
+ Rarity Rare
+ ItemLevel >= 65
+ SetFontSize 40
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Crusader Boots" "Nightmare Bascinet" "Murder Boots" "Dragonscale Boots" "Vaal Greaves" "Stealth Boots" "Murder Mitts" "Dragonscale Gauntlets" "Crusader Gloves" "Vaal Gauntlets" "Praetor Crown" "Deicide Mask" "Eternal Burgonet" "Sinner Tricorne" "Solaris Circlet" "Arcanist Slippers" "Arcanist Gloves" "Mind Cage" "Sorcerer Boots" "Sorcerer Gloves" "Harmonic Spirit Shield" "Supreme Spiked Shield"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 40
+ SetTextColor 255 190 0
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Crusader Boots" "Nightmare Bascinet" "Murder Boots" "Dragonscale Boots" "Vaal Greaves" "Stealth Boots" "Murder Mitts" "Dragonscale Gauntlets" "Crusader Gloves" "Vaal Gauntlets" "Praetor Crown" "Deicide Mask" "Eternal Burgonet" "Sinner Tricorne" "Solaris Circlet" "Arcanist Slippers" "Arcanist Gloves" "Mind Cage" "Sorcerer Boots" "Sorcerer Gloves" "Harmonic Spirit Shield" "Supreme Spiked Shield"
+ Rarity Rare
+ ItemLevel >= 65
+ SetFontSize 40
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Glorious Plate" "Saintly Chainmail" "Spike-Point Arrow Quiver" "Vaal Regalia" "Carnal Armour" "Archon Kite Shield" "Elegant Round Shield" "Pinnacle Tower Shield" "Assassin's Garb" "Broadhead Arrow Quiver"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 40
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
+Show
+ BaseType "Glorious Plate" "Saintly Chainmail" "Spike-Point Arrow Quiver" "Vaal Regalia" "Carnal Armour" "Archon Kite Shield" "Elegant Round Shield" "Pinnacle Tower Shield" "Assassin's Garb" "Broadhead Arrow Quiver"
+ Rarity Rare
+ ItemLevel >= 65
+ SetFontSize 40
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 10 60 25 255
 
 # 0604 Breach Rings
 Show
@@ -1786,8 +1926,11 @@ Show
  SetTextColor 170 158 130 165
 Show
  Class Currency
- SetFontSize 36
- SetBorderColor 0 0 0 255
+ SetFontSize 45
+ SetTextColor 255 0 0
+ SetBorderColor 255 0 0
+ SetBackgroundColor 255 255 255
+ PlayAlertSound 8 300
 
 # 1600 Leaguestones - Tierlists
 Show
@@ -2144,7 +2287,6 @@ Show
 Show
  Class "Boots"
  Rarity = Magic
- ItemLevel >= 30
  SetFontSize 45
  SetTextColor 100 100 255 255
  SetBorderColor 0 255 255
