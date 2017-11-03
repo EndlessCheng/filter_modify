@@ -58,6 +58,7 @@ STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BR
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
 STYLE_4L = {'SetBorderColor': COLOR_AQUA}
+STYLE_NONE = {'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
 
 
 def modify0200(filter_manager):
@@ -77,7 +78,7 @@ def modify0200(filter_manager):
     blocks = filter_manager.add_comment(203, '6-Socket Items')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
-    del blocks[2]
+    del blocks[2]  # 移除不需要的提示
     blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_GOLD,
                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
@@ -103,10 +104,10 @@ def modify0200(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 只留第一个
-    block = filter_manager.add_comment(206, 'Chancing items')[0]
+    blocks = filter_manager.add_comment(206, 'Chancing items')
     if filter_config.CHANCING_BASE_TYPE != '':
-        block.modify(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
-        filter_manager.append_block(block)
+        blocks[0].modify(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
+        filter_manager.append_block(blocks[0])
 
     blocks = filter_manager.add_comment(207, 'FLASKS (Endgame rules)')
     if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
@@ -125,11 +126,11 @@ def modify0200(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 只留第一个
-    block = filter_manager.add_comment(210, 'Magic jewel')[0]
+    blocks = filter_manager.add_comment(210, 'Magic jewel')
     if filter_config.ALERT_JEWEL_BASE_TYPE != '':
-        block_alert_jewel = block.copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
+        block_alert_jewel = blocks[0].copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_CHANCE)
         filter_manager.append_block(block_alert_jewel)
-    filter_manager.append_block(block)
+    filter_manager.append_block(blocks[0])
 
     filter_manager.add_comment(211, 'Warband items')
 
@@ -284,11 +285,11 @@ def modify_gem_flask_map(filter_manager):
 
     # 改成8和1
     blocks = filter_manager.add_comment(901, 'Value gems')
-    del blocks[0]
-    blocks[0].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].BaseType += ' "Added Chaos Damage"'
-    blocks[2].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[2].BaseType += ' "Added Chaos Damage"'
+    blocks[3].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 前两个换位，改成1和2
@@ -307,7 +308,7 @@ def modify_gem_flask_map(filter_manager):
     # 15改成10
     blocks = filter_manager.add_comment(1000, 'FLASKS (Levelling Rules)')
     blocks[1].Quality = '>= 10'
-    del blocks[2:-1]
+    del blocks[2:-1]  # 移除不需要的提示
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1100, 'HIDE LAYER 3: Random Endgame Flasks')
@@ -402,8 +403,6 @@ def modify_leveling(filter_manager):
         block_rare_boots = filter_manager.get_blocks(2201)[2].copy_modify(
             ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
-        # filter_manager.append_block(FilterBlock(Class='"Boots"', Rarity=RARITY_RARE, SetFontSize=FONT_SIZE_MAX,
-        #                                         PlayAlertSound=SOUND_CHANCE, **STYLE_4L))
     _magic_boots_il_map = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2303)[4].copy_modify(
         ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
@@ -431,7 +430,8 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2300, 'Leveling - Useful items')
 
     # 提醒部分三小件 9 23
-    blocks = filter_manager.add_comment(2301, 'Jewellery & Helpful leveling and racing gear')[-5:-1]
+    blocks = filter_manager.add_comment(2301, 'Jewellery & Helpful leveling and racing gear')
+    blocks = blocks[-5:]
     if filter_config.ALERT_MAGIC_BASE_TYPE != '':
         block_magic_smalls = blocks[1].copy_modify(BaseType=filter_config.ALERT_MAGIC_BASE_TYPE, ItemLevel=None,
                                                    SetFontSize=40, PlayAlertSound=SOUND_CHANCE)
@@ -558,7 +558,9 @@ def modify_filter(filter_manager):
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[-3].BaseType += ' "Horizon Shard" '
-    filter_manager.extend_blocks(blocks[:-2])
+    blocks[-2].modify(**STYLE_NONE)
+    blocks[-1].modify(**STYLE_NONE)
+    filter_manager.extend_blocks(blocks)
 
     # 8
     blocks = filter_manager.add_comment(1302, 'Top Currency')
@@ -610,7 +612,7 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
     blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" '
     blocks[0].SetFontSize = 20
-    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
+    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)  # CATCHALL
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
