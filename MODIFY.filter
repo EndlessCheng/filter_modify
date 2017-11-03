@@ -514,6 +514,62 @@ Hide
  SetFontSize 20
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
+Show
+ BaseType "Ambusher" "Platinum Kris" "Imbued Wand" "Jewelled Foil" "Imperial Claw"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 42
+ SetTextColor 255 190 0
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Ambusher" "Platinum Kris" "Imbued Wand" "Jewelled Foil" "Imperial Claw"
+ Rarity Rare
+ SetFontSize 42
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Titan Gauntlets" "Lion Pelt" "Slink Boots" "Titan Greaves" "Royal Burgonet" "Slink Gloves" "Hubris Circlet" "Titanium Spirit Shield" "Imperial Buckler" "Colossal Tower Shield"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 42
+ SetTextColor 255 190 0
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Titan Gauntlets" "Lion Pelt" "Slink Boots" "Titan Greaves" "Royal Burgonet" "Slink Gloves" "Hubris Circlet" "Titanium Spirit Shield" "Imperial Buckler" "Colossal Tower Shield"
+ Rarity Rare
+ SetFontSize 42
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Siege Axe"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 42
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Siege Axe"
+ Rarity Rare
+ SetFontSize 42
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Astral Plate"
+ Rarity Rare
+ ItemLevel >= 75
+ SetFontSize 42
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 35 100 20 255
+Show
+ BaseType "Astral Plate"
+ Rarity Rare
+ SetFontSize 42
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 35 100 20 255
 
 # 0603 T2 rare items
 Show

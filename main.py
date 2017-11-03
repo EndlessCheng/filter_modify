@@ -202,16 +202,17 @@ def modify0600(filter_manager):
     blocks = filter_manager.add_comment(602, 'T1 rare items')
     if filter_config.T1_RARE_BASE_TYPE != '':
         for block in blocks[:2]:
-            block.modify(BaseType=filter_config.T1_RARE_BASE_TYPE, PlayAlertSound=SOUND_CHANCE, **STYLE_T1_RARE)
-        filter_manager.extend_blocks(blocks[:2])
-
+            filter_manager.append_block(
+                block.copy_modify(BaseType=filter_config.T1_RARE_BASE_TYPE,
+                                  PlayAlertSound=SOUND_CHANCE, **STYLE_T1_RARE))
     # 隐藏部分稀有物品，借鉴0700
-    blocks = filter_manager.get_blocks(700)
+    hide_blocks = filter_manager.get_blocks(700)
     if filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
-        for block in blocks:
-            block.modify(status=DEBUG, Corrupted=False, Identified=False,
-                         Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
-        filter_manager.extend_blocks(blocks)
+        for hide_block in hide_blocks:
+            hide_block.modify(status=DEBUG, Corrupted=False, Identified=False,
+                              Class=filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
+        filter_manager.extend_blocks(hide_blocks)
+    filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(603, 'T2 rare items')
     filter_manager.extend_blocks(blocks)
