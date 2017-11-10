@@ -31,7 +31,7 @@ class FilterBlock:
     ]
 
     def __init__(self, raw_text=None, status='Show', **kwargs):
-        self.SetFontSize = 33  # default
+        # self.SetFontSize = 33  # default
         if raw_text is None:
             self.status = status
         else:
@@ -117,6 +117,6 @@ class FilterManager:
         for block in filter_blocks:
             self.append_block(block)
 
-    def add_comment(self, block_number, comment):
+    def add_comment(self, block_number, comment, ignored=False):
         self.new_text.append("\n# {:0>4} {}\n".format(block_number, comment))
-        return self.get_blocks(block_number)
+        return self.get_blocks(block_number) if not ignored else None

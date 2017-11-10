@@ -67,7 +67,7 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
     # '  "Amber"',
 ])
 
-CURRENCY_WISDOM_FONT_SIZE = [38, 33, 18][0]
+CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
 #
 # Part 3 - Maps
