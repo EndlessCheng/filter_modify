@@ -53,6 +53,7 @@ SOUND_MAP = '4 300'
 SOUND_UNIQUE = '6 300'
 SOUND_CHANCE = '4 300'
 SOUND_CHANCE2 = '3 300'
+SOUND_LEVELING = '12 300'
 
 STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
 STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN}
@@ -460,7 +461,7 @@ def modify_leveling(filter_manager):
     # 3L/4L Rare
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
     if filter_config.LINKED_CLASS != '':
-        blocks[0].modify(Class=filter_config.LINKED_CLASS, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+        blocks[0].modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
         block_3l_rrr = blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRR', ItemLevel='<= 25')
         blocks.insert(1, block_3l_rrr)
     filter_manager.extend_blocks(blocks)
@@ -478,10 +479,10 @@ def modify_leveling(filter_manager):
     if filter_config.LINKED_CLASS != '':
         for block in blocks:
             block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-            block_hide_ggg = block.copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26)
+            block_hide_ggg = block.copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26, PlayAlertSound=None)
             block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
             block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
-            block.modify(SetFontSize=42, PlayAlertSound=SOUND_CHANCE)  # still include RRGG, GGBB
+            # Others still have RRGG, GGBB
             filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])
 
     filter_manager.add_comment(2402, 'Linked gear - Caster Weapon Configuration', ignored=True)
@@ -767,12 +768,10 @@ def main():
 
     modify_filter(fm)
 
-    file_path = os.path.expanduser(
-        '~') + "\Documents\My Games\Path of Exile\MODIFY.filter" if platform.system() == 'Windows' else os.path.expanduser(
-        '~') + "/MODIFY.filter"
-    with open(file_path, 'w') as f:
+    with open('MODIFY.filter', 'w') as f:
         f.writelines(fm.new_text)
-    shutil.copyfile(file_path, 'MODIFY.filter')
+    if platform.system() == 'Windows':
+        shutil.copyfile('MODIFY.filter', os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter")
 
     print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
 
