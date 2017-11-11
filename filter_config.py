@@ -43,7 +43,8 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 HIDE_LEVELING_RARE_CLASS = ' '.join([
     # '"Bows" "Quivers" "Two Hand" "Staves"',
     # '"Claws" "One Hand"',
-    # '"Shields"',
+    # '"Shields"',  # !!!
+    # '"Body Armour"',
     # '"Wands" "Daggers"',
 ])
 
@@ -56,11 +57,10 @@ SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Ceremonial Kite Shield"',  # 34
     '"Bronze Tower Shield"',  # 47
     '"Karui Sceptre"',  # 56, 1.65AS!!!
-    '"Opal Sceptre"',  # 60
     '"Astral Plate"',  # 62
     '"Ezomyte Tower Shield"',  # 64
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
-])
+])  # '"Opal Sceptre"',  # 60
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
     '"Jade" "Turquoise"',
     # ' "Citrine"',
@@ -68,6 +68,8 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
 ])
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
+
+LINKED_CLASS = ' '.join(['"Boots"', '"Body Armour"', '"Gloves" "Helmets"'][1:])
 
 #
 # Part 3 - Maps
@@ -86,8 +88,8 @@ T1_RARE_BASE_TYPE = ' '.join([
 
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
-    '"Titan Gauntlets" "Crusader Gloves" "Vaal Gauntlets"',
-    '"Titan Greaves" "Crusader Boots" "Vaal Greaves"',
+    '"Crusader Gloves"',
+    '"Crusader Boots"',
 
     '"Archon Kite Shield"',
     '"Ezomyte Tower Shield"',
@@ -97,7 +99,7 @@ T1_RARE_BASE_TYPE = ' '.join([
 
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
     '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"',
-    # '"Body Armour"'
+    # '"Body Armour"',
     # '"Claws" "One Hand"',
     # '"Gloves"',
     # '"Boots"',
@@ -112,7 +114,8 @@ CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Quicksilver" "Silver" "Granite" "Sulphur" "Basalt"',
+    '"Quicksilver" "Granite" "Sulphur" "Basalt"',
+    '"Silver"',
     '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"',
 ])
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
@@ -147,7 +150,6 @@ if ALERT_SCEPTRE:
 
 HIDE_FLASK_MANA = not SHOW_FLASK_HALLOWED or not SHOW_FLASK_LIFE
 
-LINKED_CLASS = ' '.join(['"Boots"', '"Body Armour"', '"Gloves" "Helmets"'][1:])
 SHOW_ENDGAME_4L = False
 
 CHANCING_BASE_TYPE = ''
