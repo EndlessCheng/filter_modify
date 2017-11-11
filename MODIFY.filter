@@ -122,7 +122,7 @@ Show
  SetFontSize 40
  SetBorderColor 250 250 250
  SetBackgroundColor 75 75 75 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Show
  Quality = 20
  BaseType "Flask"
@@ -193,7 +193,7 @@ Show
  SetTextColor 0 100 255
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Show
  Class Jewel
  Rarity <= Magic
@@ -208,7 +208,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 
 # 0211 Warband items
 
@@ -218,7 +218,7 @@ Show
  Rarity Normal
  SetFontSize 38
  SetBorderColor 255 255 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Show
  Class Amulets
  BaseType "Jade" "Turquoise"
@@ -368,7 +368,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Currency
- BaseType "Orb of Transmutation" "Blacksmith's Whetstone" "Orb of Augmentation"
+ BaseType "Orb of Transmutation" "Blacksmith's Whetstone" "Alchemy Shard" "Orb of Augmentation"
  SetFontSize 42
  SetTextColor 170 158 130
  SetBorderColor 190 178 135 110
@@ -382,7 +382,7 @@ Show
  SetBackgroundColor 0 0 0 255
 Show
  Class Currency
- BaseType "Armourer's Scrap" "Orb of Augmentation"
+ BaseType "Armourer's Scrap" "Orb of Augmentation"  "Alteration Shard"
  SetFontSize 40
  SetTextColor 170 158 130 220
  SetBorderColor 60 50 30 255
@@ -453,14 +453,14 @@ Show
  SetTextColor 255 190 0
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
- PlayAlertSound 4 300
+ PlayAlertSound 1 300
 Show
  BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Legion Gloves" "Soldier Gloves" "Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
- PlayAlertSound 4 300
+ PlayAlertSound 1 300
 Hide
  Corrupted False
  Identified False
@@ -686,7 +686,7 @@ Show
  SetTextColor 255 255 0 255
  SetBorderColor 255 255 0 255
  SetBackgroundColor 120 120 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 1 300
 Show
  Class Rings Amulets Belts
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
@@ -705,7 +705,7 @@ Show
  SetFontSize 40
  SetBorderColor 25 235 25 255
  SetBackgroundColor 10 60 25 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Show
  Class Rings Amulets Belts
  Rarity Rare
@@ -722,7 +722,7 @@ Show
  SetFontSize 42
  SetBorderColor 25 235 25 255
  SetBackgroundColor 35 100 20 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 
 # 0606 1H Daggers
 Show
@@ -1763,7 +1763,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Regal Shard"  "Orb of Chance" 
+ BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Regal Shard" "Orb of Chance"
  SetFontSize 45
  SetTextColor 255 0 0
  SetBorderColor 255 0 0
@@ -1771,7 +1771,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Glassblower's Bauble" 
+ BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Glassblower's Bauble"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -1787,7 +1787,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard" "Horizon Shard" 
+ BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard" "Horizon Shard"
  SetFontSize 45
  SetTextColor 255 0 0
  SetBorderColor 255 0 0
@@ -1797,6 +1797,9 @@ Show
  Class Currency
  BaseType "Horizon Shard" "Engineer's Shard" "Binding Shard" "Regal Shard" "Chaos Shard"
  SetFontSize 42
+ SetTextColor 0 0 0 255
+ SetBorderColor 0 0 0
+ SetBackgroundColor 135 140 100 255
 
 # 1302 Top Currency
 Show
@@ -2126,7 +2129,7 @@ Show
 # 1900 OVERRIDE AREA 4 - Insert your custom leveling adjustments here
 Hide
  Quality = 0
- Class  
+ Class "Hybrid Flask" 
  SetFontSize 18
 Hide
  Quality = 0
@@ -2144,7 +2147,7 @@ Show
  SetFontSize 45
  SetBorderColor 0 255 255
  SetBackgroundColor 35 100 20 255
- PlayAlertSound 4 300
+ PlayAlertSound 1 300
 Show
  Class "Boots"
  Rarity = Magic
@@ -2152,7 +2155,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 1 300
 
 # 2000 Leveling - Flasks
 
@@ -2899,7 +2902,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Hide
  LinkedSockets >= 3
  SocketGroup RRB
@@ -2920,7 +2923,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Show
  SocketGroup RR
  Class "Body Armour" "Helmets"
@@ -2930,7 +2933,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 Hide
  LinkedSockets >= 3
  SocketGroup RRB
@@ -2951,7 +2954,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 4 300
+ PlayAlertSound 12 300
 
 # 2404 Extra Highlight: Boots
 

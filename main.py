@@ -51,8 +51,8 @@ SOUND_MID_VALUE = '1 300'
 SOUND_LOW_VALUE = '2 300'
 SOUND_MAP = '4 300'
 SOUND_UNIQUE = '6 300'
-SOUND_CHANCE = '4 300'
-SOUND_CHANCE2 = '3 300'
+# SOUND_CHANCE = '4 300'
+# SOUND_CHANCE2 = '3 300'
 SOUND_LEVELING = '12 300'
 
 STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
@@ -112,7 +112,8 @@ def modify_endgame_mix(filter_manager):
     if filter_config.CHANCING_BASE_TYPE != '':
         block = FilterBlock(Corrupted=False, BaseType=filter_config.CHANCING_BASE_TYPE, Rarity=RARITY_NORMAL,
                             SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_GREEN_LIGHT,
-                            PlayAlertSound=SOUND_CHANCE)
+                            # PlayAlertSound=SOUND_CHANCE
+                            )
         filter_manager.append_block(block)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
@@ -121,7 +122,7 @@ def modify_endgame_mix(filter_manager):
     if filter_config.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         block_utility = blocks[0].copy_modify(Quality=None, Class='"Utility Flasks"',
                                               BaseType=filter_config.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
-                                              PlayAlertSound=SOUND_CHANCE)
+                                              PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_utility)
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None,
@@ -138,14 +139,14 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(210, 'Magic jewel and others')
     if filter_config.ALERT_JEWEL_BASE_TYPE != '':
         block_alert_jewel = blocks[0].copy_modify(BaseType=filter_config.ALERT_JEWEL_BASE_TYPE,
-                                                  PlayAlertSound=SOUND_CHANCE)
+                                                  PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_alert_jewel)
     filter_manager.append_block(blocks[0])
 
     if filter_config.ALERT_MAGIC_BASE_TYPE != '':
         block_magic = filter_manager.get_blocks(2406)[1]
         block_magic_alert = block_magic.copy_modify(BaseType=filter_config.ALERT_MAGIC_BASE_TYPE, ItemLevel=None,
-                                                    PlayAlertSound=SOUND_CHANCE)
+                                                    PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_magic_alert)
 
     filter_manager.add_comment(211, 'Warband items', ignored=True)
@@ -155,7 +156,7 @@ def modify_endgame_mix(filter_manager):
     if filter_config.SSF_CRAFT_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             BaseType=filter_config.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetFontSize=38, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_CHANCE))
+            SetFontSize=38, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_LEVELING))
     if filter_config.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=filter_config.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
@@ -227,7 +228,7 @@ def modify_endgame_rare(filter_manager):
         for block in blocks[:2]:
             filter_manager.append_block(
                 block.copy_modify(BaseType=filter_config.T1_RARE_BASE_TYPE,
-                                  PlayAlertSound=SOUND_CHANCE, **STYLE_T1_RARE))
+                                  PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
     hide_blocks = filter_manager.get_blocks(700)
     if filter_config.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
@@ -247,12 +248,12 @@ def modify_endgame_rare(filter_manager):
     # ALERT_SMALLS_RARE
     # 4, 1, 4
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
-    blocks[0].PlayAlertSound = SOUND_CHANCE  # rare jewel
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
     if filter_config.ALERT_SMALLS_RARE:
         blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
-        blocks[2].PlayAlertSound = SOUND_CHANCE  # 65-74 smalls
+        blocks[2].PlayAlertSound = SOUND_LEVELING  # 65-74 smalls
         blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
-        blocks[4].PlayAlertSound = SOUND_CHANCE  # 65-74 smalls
+        blocks[4].PlayAlertSound = SOUND_LEVELING  # 65-74 smalls
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(606, '1H Daggers')
@@ -396,7 +397,7 @@ def modify_leveling(filter_manager):
     # HIDE_LEVELING_RARE_CLASS
     # RARE_BOOTS_ALERT, MAGIC_BOOTS_IL
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
-    block_hide_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class=' ', SetFontSize=FONT_SIZE_MIN)
+    block_hide_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Hybrid Flask" ', SetFontSize=FONT_SIZE_MIN)
     if filter_config.HIDE_FLASK_MANA:
         block_hide_flasks.Class += ' "Mana Flask" '
     if not filter_config.SHOW_FLASK_LIFE:
@@ -414,12 +415,12 @@ def modify_leveling(filter_manager):
 
     if filter_config.RARE_BOOTS_ALERT:
         block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
-            ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+            ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
     _magic_boots_il_map = {10: None, 15: '>= 15', 20: '>= 30', 25: '>= 40', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2404)[0].copy_modify(
         ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
-        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
+        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
     filter_manager.append_block(block_magic_boots)
 
     filter_manager.add_comment(2000, 'Leveling - Flasks', ignored=True)
@@ -493,10 +494,10 @@ def modify_leveling(filter_manager):
         for block in blocks[:2]:
             block.modify(Class='"Body Armour" "Helmets"', SocketGroup='RR', **STYLE_4L)
             block_rr = block.copy_modify(LinkedSockets=None, ItemLevel='<= ' + str(filter_config.L2_MAX_IL),
-                                         SetFontSize=42, PlayAlertSound=SOUND_CHANCE)
+                                         SetFontSize=42, PlayAlertSound=SOUND_LEVELING)
             block_hide_rrb = block.copy_modify(status=DEBUG, SocketGroup='RRB')
             block_rrx = block.copy_modify(ItemLevel='<= ' + str(filter_config.L3_MAX_IL), SetFontSize=42,
-                                          PlayAlertSound=SOUND_CHANCE)
+                                          PlayAlertSound=SOUND_LEVELING)
             filter_manager.extend_blocks([block_rr, block_hide_rrb, block_rrx])
 
     # Referred by [[1900]]
@@ -598,10 +599,10 @@ def modify_filter(filter_manager):
         blocks[0].BaseType += ' "Orb of Chance" '
     if filter_config.ALERT_LOW_CURRENCY:
         blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[1].BaseType = '"Orb of Transmutation" "Blacksmith\'s Whetstone" "Orb of Augmentation"'
-    blocks[3].BaseType = '"Armourer\'s Scrap" "Orb of Augmentation"'
-    blocks[3].SetFontSize = filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
+    blocks[1].BaseType += ' "Orb of Augmentation"'
     blocks[2].SetFontSize = filter_config.CURRENCY_PORTAL_FONT_SIZE
+    blocks[3].BaseType = blocks[3].BaseType.replace('"Transmutation Shard"', '')
+    blocks[3].SetFontSize = filter_config.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
     blocks[4].SetFontSize = filter_config.CURRENCY_WISDOM_FONT_SIZE
     filter_manager.extend_blocks(blocks)
 
@@ -625,15 +626,14 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
-    blocks[1].BaseType += ' "Regal Shard" '
+    blocks[1].BaseType += ' "Regal Shard"'
     if filter_config.CURRENCY_ALERT_CHANCE:
-        blocks[1].BaseType += ' "Orb of Chance" '
+        blocks[1].BaseType += ' "Orb of Chance"'
+    blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    blocks[2].BaseType += ' "Glassblower\'s Bauble" '
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
+    blocks[-2].BaseType += ' "Horizon Shard"'
     blocks[-2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
-    blocks[-2].BaseType += ' "Horizon Shard" '
-    blocks[-1].modify(**STYLE_NONE)
     filter_manager.extend_blocks(blocks)
 
     # 8
