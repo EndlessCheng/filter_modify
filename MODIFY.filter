@@ -446,7 +446,7 @@ Show
 
 # 0602 T1 rare items
 Show
- BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Crusader Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
+ BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Legion Gloves" "Soldier Gloves" "Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
  Rarity Rare
  ItemLevel >= 75
  SetFontSize 42
@@ -455,7 +455,7 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 4 300
 Show
- BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Crusader Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
+ BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Legion Gloves" "Soldier Gloves" "Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0

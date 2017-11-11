@@ -416,7 +416,7 @@ def modify_leveling(filter_manager):
         block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
             ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
-    _magic_boots_il_map = {10: None, 20: '>= 30', 30: '>= 55', -1: '< 1'}
+    _magic_boots_il_map = {10: None, 15: '>= 15', 20: '>= 30', 25: '>= 40', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2404)[0].copy_modify(
         ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
         SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_CHANCE, **STYLE_4L)

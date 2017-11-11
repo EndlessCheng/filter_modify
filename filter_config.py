@@ -23,7 +23,7 @@ MOVE_HAND_MAX_IL = 17  # RRG
 L2_MAX_IL = 7
 L3_MAX_IL = 17
 
-MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (25:Lv40, 30:Lv55)  ★★★
+MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
 
@@ -88,8 +88,8 @@ T1_RARE_BASE_TYPE = ' '.join([
 
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
-    '"Crusader Gloves"',
-    '"Crusader Boots"',
+    '"Crusader Gloves" "Legion Gloves" "Soldier Gloves"',
+    '"Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots"',
 
     '"Archon Kite Shield"',
     '"Ezomyte Tower Shield"',
