@@ -166,11 +166,13 @@ def modify_endgame_mix(filter_manager):
             Class='Rings', BaseType=filter_config.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL,
             SetTextColor=COLOR_WHITE))
     if filter_config.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        block_hide_n_rustic_sash = filter_manager.get_blocks(2600)[0].copy_modify(
-            Class=None, BaseType='"Rustic Sash"', Rarity=RARITY_NORMAL, ItemLevel='>= 40')
+        # block_hide_n_rustic_sash = filter_manager.get_blocks(2600)[0].copy_modify(
+        #     Class=None, BaseType='"Rustic Sash"', Rarity=RARITY_NORMAL, ItemLevel='>= 40')
         block_hide_n_leather_belt = filter_manager.get_blocks(2600)[0].copy_modify(
             Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')
-        filter_manager.extend_blocks([block_hide_n_rustic_sash, block_hide_n_leather_belt])
+        filter_manager.extend_blocks([
+            # block_hide_n_rustic_sash,
+            block_hide_n_leather_belt])
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=filter_config.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL,
             SetTextColor=COLOR_WHITE))
@@ -415,12 +417,12 @@ def modify_leveling(filter_manager):
 
     if filter_config.RARE_BOOTS_ALERT:
         block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
-            ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
+            ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
     _magic_boots_il_map = {10: None, 15: '>= 15', 20: '>= 30', 25: '>= 40', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2404)[0].copy_modify(
         ItemLevel=_magic_boots_il_map[filter_config.MAGIC_BOOTS_IL],
-        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
+        SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING, **STYLE_4L)
     filter_manager.append_block(block_magic_boots)
 
     filter_manager.add_comment(2000, 'Leveling - Flasks', ignored=True)
@@ -463,8 +465,8 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
     if filter_config.LINKED_CLASS != '':
         blocks[0].modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-        block_3l_rrr = blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRR', ItemLevel='<= 25')
-        blocks.insert(1, block_3l_rrr)
+        blocks.insert(1, blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RR',
+                                               ItemLevel='<= ' + str(filter_config.L3_MAX_IL)))
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2302, 'Leveling rares - Progression')
@@ -475,16 +477,18 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2400, 'Leveling - Useful items', ignored=True)
 
-    # R&B
+    # R
     blocks = filter_manager.add_comment(2401, 'Linked gear - 4links')
     if filter_config.LINKED_CLASS != '':
         for block in blocks:
             block.modify(Class=filter_config.LINKED_CLASS, **STYLE_4L)
-            block_hide_ggg = block.copy_modify(status=DEBUG, SocketGroup='GGG', SetFontSize=26, PlayAlertSound=None)
-            block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
-            block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
-            # Others still have RRGG, GGBB
-            filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])
+            for sg in ['GGG', 'BBB', 'GGBB']:
+                block_hide_xxx = block.copy_modify(status=DEBUG, SocketGroup=sg, SetFontSize=26, PlayAlertSound=None)
+                filter_manager.append_block(block_hide_xxx)
+            # block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
+            # block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
+            # filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])
+            filter_manager.append_block(block)
 
     filter_manager.add_comment(2402, 'Linked gear - Caster Weapon Configuration', ignored=True)
 
@@ -533,8 +537,8 @@ def modify_leveling(filter_manager):
                                    ItemLevel='<= ' + str(filter_config.MOVE_HAND_MAX_IL), **STYLE_4L)
     filter_manager.append_block(block_rrg_weapon)
 
-    for socket_group in ['RBB', 'BBB']:
-        block_swap = FilterBlock(SocketGroup=socket_group, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
+    for sg in ['RBB', 'BBB']:
+        block_swap = FilterBlock(SocketGroup=sg, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
                                  ItemLevel='<= ' + str(filter_config.BBB_MAX_IL),
                                  SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
         filter_manager.append_block(block_swap)
@@ -543,14 +547,16 @@ def modify_leveling(filter_manager):
         Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand Maces" ' +
               filter_config.HIDE_NORMAL_MAGIC_CLASS,
         ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    block_hide_ogs12 = block_hide_n2m.copy_modify(Class='"One Hand Swords"', ItemLevel='>= 12')
-    filter_manager.extend_blocks([block_hide_n2m, block_hide_ogs12])
+    block_hide_ohs12 = block_hide_n2m.copy_modify(Class='"One Hand Swords"', ItemLevel='>= 12')
+    filter_manager.extend_blocks([block_hide_n2m, block_hide_ohs12])
 
     # 蓝白武器，提取模板
     blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
     _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                       ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Cleaver"', 16),
-                      ('"Arming Axe"', 25), ('"Decorative Axe"', 29), ('"Jasper Axe"', 36), ]
+                      ('"Arming Axe"', 25), ('"Decorative Axe"', 29), ('"Jasper Axe"', 36),
+                      ('"Wrist Chopper"', 42), ('"Ceremonial Axe"', 51),
+                      ]
     _LEVELING_BASE_IL_GAP = 3
     block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=None)
     block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
@@ -645,7 +651,7 @@ def modify_filter(filter_manager):
     # alert "Essence of Zeal" "Essence of Woe"; 8, 1
     blocks = filter_manager.add_comment(1303, 'Essence Tier List')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Essence of Zeal" "Essence of Woe" '
+    blocks[0].BaseType += ' "Essence of Greed" "Essence of Zeal" "Essence of Contempt"'  # "Essence of Woe"
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 

@@ -117,7 +117,7 @@ Show
 # 0207 FLASKS (Endgame rules)
 Show
  Class "Utility Flasks"
- BaseType "Quicksilver" "Granite" "Sulphur" "Basalt" "Silver" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ BaseType "Silver" "Quicksilver" "Granite" "Sulphur" "Basalt" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
  Rarity <= Magic
  SetFontSize 40
  SetBorderColor 250 250 250
@@ -187,7 +187,7 @@ Show
 # 0210 Magic jewel and others
 Show
  Class Jewel
- BaseType "Viridian" "Crimson" "Cobalt"
+ BaseType "Crimson" "Viridian" "Cobalt"
  Rarity <= Magic
  SetFontSize 40
  SetTextColor 0 100 255
@@ -202,7 +202,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron" "Rustic Sash" "Layered Kite Shield" "Ceremonial Kite Shield" "Leather Belt" "Ruby" "Topaz" "Sapphire" "Two-Stone" "Amulet" "Jade" "Turquoise" "Citrine" "Amber" "Bronze Tower Shield" "Ezomyte Tower Shield"
+ BaseType "Iron" "Rustic Sash" "Leather Belt" "Ruby" "Topaz" "Sapphire" "Two-Stone" "Amulet" "Turquoise" "Lapis" "Agate" "Onyx" "Siege Axe"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -214,7 +214,7 @@ Show
 
 # 0212 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Ceremonial Kite Shield" "Bronze Tower Shield" "Karui Sceptre" "Astral Plate" "Ezomyte Tower Shield" "Royal Burgonet" "Eternal Burgonet" "Crystal Sceptre" 
+ BaseType "Siege Axe" "Astral Plate" "Royal Burgonet" "Eternal Burgonet"
  Rarity Normal
  SetFontSize 38
  SetBorderColor 255 255 255
@@ -229,13 +229,6 @@ Show
  BaseType "Two-Stone"
  Rarity Normal
  SetTextColor 255 255 255
-Hide
- BaseType "Rustic Sash"
- Rarity Normal
- ItemLevel >= 40
- SetFontSize 26
- SetBorderColor 0 0 0 150
- SetBackgroundColor 0 0 0 165
 Hide
  BaseType "Leather Belt"
  Rarity Normal
@@ -446,7 +439,7 @@ Show
 
 # 0602 T1 rare items
 Show
- BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Legion Gloves" "Soldier Gloves" "Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe"
  Rarity Rare
  ItemLevel >= 75
  SetFontSize 42
@@ -455,7 +448,7 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Show
- BaseType "Kite Shield" "Tower Shield" "Sceptre" "Fetish" "Sekhem" "Spirit Shield" "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Crusader Gloves" "Legion Gloves" "Soldier Gloves" "Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots" "Archon Kite Shield" "Ezomyte Tower Shield" "Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre" "Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
@@ -466,7 +459,7 @@ Hide
  Identified False
  Height <= 4
  Width <= 1
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 75
  SetFontSize 24
@@ -478,7 +471,7 @@ Hide
  Identified False
  Height <= 4
  Width <= 1
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 65
  SetFontSize 24
@@ -489,7 +482,7 @@ Hide
  Identified False
  Height <= 2
  Width <= 2
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 75
  SetFontSize 24
@@ -501,7 +494,7 @@ Hide
  Identified False
  Height <= 2
  Width <= 2
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 65
  SetFontSize 24
@@ -510,7 +503,7 @@ Hide
 Hide
  Corrupted False
  Identified False
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 75
  SetFontSize 20
@@ -520,7 +513,7 @@ Hide
 Hide
  Corrupted False
  Identified False
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Sceptres"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  ItemLevel >= 65
  SetFontSize 20
@@ -1398,7 +1391,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Gems
- BaseType "Melee Splash" "Added Fire Damage" "Orb of Storms" "Clarity" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Concentrated Effect" "Immortal" "Channelling" "Taken"
+ BaseType "Melee Splash" "Added Fire Damage" "Maim" "Clarity" "Concentrated Effect" "Immortal" "Taken" "Multistrike"
  SetFontSize 40
  SetBorderColor 30 150 180 150
  PlayAlertSound 8 300
@@ -1814,7 +1807,7 @@ Show
 # 1303 Essence Tier List
 Show
  Class Currency
- BaseType "Shrieking Essence of" "Essence of Hysteria" "Essence of Insanity" "Essence of Horror" "Essence of Delirium" "Deafening Essence of" "Remnant of Corruption" "Essence of Zeal" "Essence of Woe" 
+ BaseType "Shrieking Essence of" "Essence of Hysteria" "Essence of Insanity" "Essence of Horror" "Essence of Delirium" "Deafening Essence of" "Remnant of Corruption" "Essence of Greed" "Essence of Zeal" "Essence of Contempt"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -2147,7 +2140,7 @@ Show
  SetFontSize 45
  SetBorderColor 0 255 255
  SetBackgroundColor 35 100 20 255
- PlayAlertSound 1 300
+ PlayAlertSound 12 300
 Show
  Class "Boots"
  Rarity = Magic
@@ -2155,7 +2148,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
- PlayAlertSound 1 300
+ PlayAlertSound 12 300
 
 # 2000 Leveling - Flasks
 
@@ -2462,10 +2455,10 @@ Show
  PlayAlertSound 12 300
 Show
  LinkedSockets >= 3
- SocketGroup RRR
+ SocketGroup RR
  Class "Body Armour" "Gloves" "Helmets"
  Rarity Rare
- ItemLevel <= 25
+ ItemLevel <= 17
  SetFontSize 45
  SetBorderColor 0 255 255
  SetBackgroundColor 35 100 20 255
@@ -2829,7 +2822,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Body Armour"
+ Class "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2838,7 +2831,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Body Armour"
+ Class "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2865,7 +2858,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Body Armour"
+ Class "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2874,7 +2867,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Body Armour"
+ Class "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2992,14 +2985,14 @@ Show
 Show
  SocketGroup RBB
  Class "One Hand" "Claws" "Sceptres" "Daggers"
- ItemLevel <= 17
+ ItemLevel <= 1
  SetFontSize 38
  SetBorderColor 0 255 255
  PlayAlertSound 1 300
 Show
  SocketGroup BBB
  Class "One Hand" "Claws" "Sceptres" "Daggers"
- ItemLevel <= 17
+ ItemLevel <= 1
  SetFontSize 38
  SetBorderColor 0 255 255
  PlayAlertSound 1 300
@@ -3075,6 +3068,18 @@ Show
  BaseType "Jasper Axe"
  Rarity <= Magic
  ItemLevel <= 39
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ BaseType "Wrist Chopper"
+ Rarity <= Magic
+ ItemLevel <= 45
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ BaseType "Ceremonial Axe"
+ Rarity <= Magic
+ ItemLevel <= 54
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 
