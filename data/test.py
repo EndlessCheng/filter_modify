@@ -1,9 +1,9 @@
-import time
 import threading
+import time
 
 import pyperclip
 
-from iteminfo_parser import ItemInfoParser
+from data.iteminfo_parser import ItemInfoParser
 
 
 class ClipboardWatcher(threading.Thread):
