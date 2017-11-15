@@ -14,7 +14,7 @@ DEBUG = False
 #
 # Part 2 - A1-10
 #
-# NPC-4L
+# NPC-4L ?
 #
 
 BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
@@ -25,16 +25,19 @@ L3_MAX_IL = 17
 
 MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
 
-HIDE_NORMAL_MAGIC_CLASS = ' '.join(['"Gloves"', '"One Hand"'][:0])  # AS->1, DPS->2
+HIDE_NORMAL_MAGIC_CLASS = ' '.join([
+    # '"Gloves"',
+])
+# '"One Hand"',
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Iron"',
+    '"Iron Ring"',
     '"Rustic Sash"',
     '"Leather Belt"',
-    '"Ruby" "Topaz" "Sapphire"',
-    '"Two-Stone"',
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',
+    '"Two-Stone Ring"',
     '"Amulet"',
-    '"Turquoise" "Lapis" "Agate" "Onyx"',
+    '"Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet"',
     '"Siege Axe"',  # 59
 ])
 # '"Layered Kite Shield" "Ceremonial Kite Shield"', '"Bronze Tower Shield"', '"Ezomyte Tower Shield"',
@@ -58,7 +61,8 @@ SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Astral Plate"',  # 62
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
 ])
-# '"Ceremonial Kite Shield"',  # 34     '"Bronze Tower Shield"',  # 47     '"Karui Sceptre"',  # 56, 1.65AS!!!    '"Opal Sceptre"',  # 60    '"Ezomyte Tower Shield"',  # 64
+# '"Ceremonial Kite Shield"',  # 34     '"Bronze Tower Shield"',  # 47
+# '"Karui Sceptre"',  # 56, 1.65AS!!!    '"Opal Sceptre"',  # 60    '"Ezomyte Tower Shield"',  # 64
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
     '"Jade"',
     '"Turquoise"',
@@ -88,6 +92,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
 
     '"Siege Axe"',
+    '"Behemoth Mace"',
 
     # '"Archon Kite Shield"',
     # '"Ezomyte Tower Shield"',

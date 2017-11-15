@@ -202,7 +202,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron" "Rustic Sash" "Leather Belt" "Ruby" "Topaz" "Sapphire" "Two-Stone" "Amulet" "Turquoise" "Lapis" "Agate" "Onyx" "Siege Axe"
+ BaseType "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -439,7 +439,7 @@ Show
 
 # 0602 T1 rare items
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
  Rarity Rare
  ItemLevel >= 75
  SetFontSize 42
@@ -448,7 +448,7 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
