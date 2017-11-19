@@ -450,7 +450,6 @@ Show
 Show
  BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
  Rarity Rare
- ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225

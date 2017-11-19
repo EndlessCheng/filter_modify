@@ -227,10 +227,10 @@ def modify_endgame_rare(filter_manager):
     # HIDE_ENDGAME_BELOW_T1_RARE_CLASS
     blocks = filter_manager.add_comment(602, 'T1 rare items')
     if settings.T1_RARE_BASE_TYPE != '':
-        for block in blocks[:2]:
-            filter_manager.append_block(
-                block.copy_modify(BaseType=settings.T1_RARE_BASE_TYPE,
-                                  PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
+        filter_manager.append_block(blocks[0].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE,
+                                                          PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
+        filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
+                                                          PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
     hide_blocks = filter_manager.get_blocks(700)
     if settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':

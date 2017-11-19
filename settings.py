@@ -17,7 +17,6 @@ DEBUG = False
 # NPC-4L ?
 #
 
-BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
 MOVE_HAND_MAX_IL = 17  # RRG
 
 L2_MAX_IL = 7
@@ -51,7 +50,6 @@ HIDE_LEVELING_RARE_CLASS = ' '.join([
 ])
 # '"Claws" "One Hand"',
 
-ALERT_SCEPTRE = False
 SHOW_FLASK_HALLOWED = True
 
 SHOW_FLASK_LIFE = True
@@ -146,6 +144,8 @@ NEED_CHISEL = False
 # Part 4 - Others
 #
 
+BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
+
 SMALLS_MAX_IL = 7
 
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
@@ -156,6 +156,8 @@ LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal" "Taken" "Multistrike"',
 ]) if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
 #  "Orb of Storms" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Channelling"
+
+ALERT_SCEPTRE = False
 
 if ALERT_SCEPTRE:
     SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
