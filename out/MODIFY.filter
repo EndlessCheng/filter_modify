@@ -450,6 +450,7 @@ Show
 Show
  BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
  Rarity Rare
+ ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
@@ -530,6 +531,7 @@ Show
 Show
  BaseType "Imperial Claw" "Gemini Claw" "Imbued Wand" "Engraved Wand" "Ambusher" "Jewelled Foil" "Spiraled Foil"
  Rarity Rare
+ ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 180 180 180 255
  SetBackgroundColor 35 100 20 255
@@ -544,6 +546,7 @@ Show
 Show
  BaseType "Titan Gauntlets" "Lion Pelt" "Slink Boots" "Titan Greaves" "Royal Burgonet" "Slink Gloves" "Hubris Circlet" "Titanium Spirit Shield" "Imperial Buckler"
  Rarity Rare
+ ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 180 180 180 255
  SetBackgroundColor 35 100 20 255
@@ -558,6 +561,7 @@ Show
 Show
  BaseType "Siege Axe"
  Rarity Rare
+ ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 0 0 0 255
  SetBackgroundColor 35 100 20 255
@@ -572,6 +576,7 @@ Show
 Show
  BaseType "Astral Plate" "Archon Kite Shield" "Colossal Tower Shield"
  Rarity Rare
+ ItemLevel >= 65
  SetFontSize 42
  SetBorderColor 0 0 0 255
  SetBackgroundColor 35 100 20 255
@@ -1922,7 +1927,7 @@ Show
 # 1402 T1 - Top tier cards
 Show
  Class "Divination"
- BaseType "Abandoned Wealth" "Bowyer's Dream" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Standoff" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "Wealth and Power"
+ BaseType "Abandoned Wealth" "Bowyer's Dream" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Standoff" "The Thaumaturgist" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "Wealth and Power"
  SetFontSize 45
  SetTextColor 0 0 255 255
  SetBorderColor 0 0 255 255
@@ -1932,7 +1937,7 @@ Show
 # 1403 T2 - Great cards
 Show
  Class "Divination"
- BaseType "Chaotic Disposition" "Lucky Deck" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Fletcher" "The Formless Sea" "The Hoarder" "The Offering" "The Polymath" "The Porcupine" "The Risk" "The Thaumaturgist" "The Valley of Steel Boxes" "The Void" "The Wretched" "Time-Lost Relic" "Humility" "The Encroaching Darkness" 
+ BaseType "Chaotic Disposition" "Lucky Deck" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Fletcher" "The Formless Sea" "The Hoarder" "The Polymath" "The Risk" "The Valley of Steel Boxes" "The Void" "The Wretched" "Time-Lost Relic" "Humility" "The Encroaching Darkness" 
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 255 255 0 255
@@ -1942,7 +1947,7 @@ Show
 # 1404 T3 - Decent cards
 Show
  Class "Divination"
- BaseType "Earth Drinker" "Emperor of Purity" "Humility" "Jack in the Box" "Merciless Armament" "Mitts" "Scholar of the Seas" "Standoff" "The Body" "The Chains that Bind" "The Cursed King" "The Dark Mage" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Penitent" "The Soul" "The Stormcaller" "The Warlord" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite" "Wretched"
+ BaseType "Earth Drinker" "Emperor of Purity" "Humility" "Jack in the Box" "Merciless Armament" "Mitts" "Scholar of the Seas" "Standoff" "The Body" "The Cursed King" "The Dark Mage" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Offering" "The Penitent" "The Porcupine" "The Soul" "The Stormcaller" "The Warlord" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite" "Wretched"
  SetFontSize 42
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 255 255
@@ -2070,7 +2075,7 @@ Show
  SetBackgroundColor 255 255 255
  PlayAlertSound 8 300
 Show
- BaseType "Arcanist Gloves" "Carnal Sceptre" "Close Helmet" "Cutlass" "Full Wyrmscale" "Grand Mana Flask" "Imperial Staff" "Ironscale Gauntlets" "Jingling Spirit Shield" "Maelstr" "Necromancer Silks" "Penetrating Arrow Quiver" "Rawhide Tower Shield" "Regicide Mask" "Sacrificial Garb" "Sacrificial Garb" "Sharkskin Tunic" "Thorium Spirit Shield" "Void Axe"
+ BaseType "Carnal Sceptre" "Close Helmet" "Cutlass" "Full Wyrmscale" "Grand Mana Flask" "Highborn Staff" "Imperial Maul" "Imperial Staff" "Ironscale Gauntlets" "Jingling Spirit Shield" "Maelstr" "Necromancer Silks" "Penetrating Arrow Quiver" "Rawhide Tower Shield" "Regicide Mask" "Sacrificial Garb" "Sacrificial Garb" "Sharkskin Tunic" "Thorium Spirit Shield" "Void Axe"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37
@@ -2188,21 +2193,21 @@ Show
 Show
  Class "Life Flasks"
  BaseType "Medium"
- ItemLevel <= 8
+ ItemLevel <= 9
  SetFontSize 42
  SetBorderColor 120 0 0
  SetBackgroundColor 0 0 0 255
 Show
  Class "Life Flasks"
  BaseType "Large"
- ItemLevel <= 12
+ ItemLevel <= 13
  SetFontSize 42
  SetBorderColor 120 0 0
  SetBackgroundColor 0 0 0 255
 Show
  Class "Life Flasks"
  BaseType "Greater"
- ItemLevel <= 18
+ ItemLevel <= 19
  SetFontSize 42
  SetBorderColor 120 0 0
  SetBackgroundColor 0 0 0 255
@@ -3085,11 +3090,9 @@ Show
 
 # 2502 Progression - Part 2 30-40
 
-# 2503 Progression - Part 3 40-65 (3link)
+# 2503 Progression - Part 4 40-65
 
-# 2504 Progression - Part 4 40-65
-
-# 2505 Normal items - First 4 levels - exceptions
+# 2504 Normal items - First 4 levels - exceptions
 Show
  Class "Body Armours"
  Rarity Normal
@@ -3119,7 +3122,7 @@ Show
  SetTextColor 200 200 200 210
  SetBorderColor 0 0 0
 
-# 2506 Magic items - general highlight
+# 2505 Magic items - general highlight
 Hide
  Class "Boots" "Rings" "Amulets" "Belts" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"
  SetFontSize 26
@@ -3149,22 +3152,6 @@ Show
  Rarity Magic
  ItemLevel <= 12
  SetBorderColor 0 0 0
-Show
- Height <= 4
- Width <= 1
- Rarity Magic
- ItemLevel <= 32
- SetFontSize 28
- SetBorderColor 50 50 50
- SetBackgroundColor 0 0 0 185
-Show
- Height <= 2
- Width <= 2
- Rarity Magic
- ItemLevel <= 32
- SetFontSize 28
- SetBorderColor 50 50 50
- SetBackgroundColor 0 0 0 185
 
 # 2600 HIDE LAYER 5 - Remaining Items
 Hide

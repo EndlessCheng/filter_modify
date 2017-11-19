@@ -168,6 +168,9 @@ CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
     CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Ezomyte Tower Shield"'][:])
 
+ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
+# "Essence of Woe"
+
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
 

@@ -558,7 +558,7 @@ def modify_leveling(filter_manager):
                       ('"Wrist Chopper"', 42), ('"Ceremonial Axe"', 51),
                       ]
     _LEVELING_BASE_IL_GAP = 3
-    block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=None)
+    block_template = blocks[0].copy_modify(DropLevel=None, Class=None)
     block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
                                                     ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
                          for leveling_base in _LEVELING_BASE]
@@ -566,16 +566,15 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2502, 'Progression - Part 2 30-40', ignored=True)
 
-    filter_manager.add_comment(2503, 'Progression - Part 3 40-65 (3link)', ignored=True)
+    filter_manager.add_comment(2503, 'Progression - Part 4 40-65', ignored=True)
 
-    filter_manager.add_comment(2504, 'Progression - Part 4 40-65', ignored=True)
-
-    blocks = filter_manager.add_comment(2505, 'Normal items - First 4 levels - exceptions')
+    blocks = filter_manager.add_comment(2504, 'Normal items - First 4 levels - exceptions')
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(2506, 'Magic items - general highlight')
-    block_hide_m = filter_manager.get_blocks(2600)[0].copy_modify(  # 冗余
-        Class='"Boots" "Rings" "Amulets" "Belts" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"')
+    blocks = filter_manager.add_comment(2505, 'Magic items - general highlight')
+    block_hide_m = filter_manager.get_blocks(2600)[0].copy_modify(  # 冗余[[2500]]
+        Class='"Boots" "Rings" "Amulets" "Belts" '
+              '"Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"')
     block_hide_m4 = block_hide_m.copy_modify(Class='"Body Armour" "Helmets"', ItemLevel='>= 4')
     filter_manager.extend_blocks([block_hide_m, block_hide_m4])
     filter_manager.extend_blocks(blocks)
@@ -648,10 +647,10 @@ def modify_filter(filter_manager):
         block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # alert "Essence of Zeal" "Essence of Woe"; 8, 1
+    # ALERT_ESSENCE_BASE_TYPE, 8, 1
     blocks = filter_manager.add_comment(1303, 'Essence Tier List')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Essence of Greed" "Essence of Zeal" "Essence of Contempt"'  # "Essence of Woe"
+    blocks[0].BaseType += settings.ALERT_ESSENCE_BASE_TYPE
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
