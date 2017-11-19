@@ -38,6 +38,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amulet"',
     '"Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet"',
     '"Siege Axe"',  # 59
+    '"Behemoth Mace"',  # 70
 ])
 # '"Layered Kite Shield" "Ceremonial Kite Shield"', '"Bronze Tower Shield"', '"Ezomyte Tower Shield"',
 # '"Jade" "Turquoise" "Citrine" "Amber"',
