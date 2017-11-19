@@ -202,7 +202,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe"
+ BaseType "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe" "Behemoth Mace"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -211,6 +211,38 @@ Show
  PlayAlertSound 12 300
 
 # 0211 Warband items
+Show
+ Corrupted False
+ Identified True
+ Class "Helmets" "Boots"
+ Rarity Magic
+ ItemLevel = 82
+ SetFontSize 34
+ SetBorderColor 129 15 213 200
+Show
+ Corrupted False
+ Identified True
+ Class "Daggers" "Wands" "Sceptres"
+ Rarity Magic
+ ItemLevel = 84
+ SetFontSize 34
+ SetBorderColor 129 15 213 200
+Show
+ Corrupted False
+ Identified True
+ Class "Helmets" "Boots"
+ Rarity Magic
+ ItemLevel > 68
+ SetFontSize 34
+ SetBorderColor 129 15 213 200
+Show
+ Corrupted False
+ Identified True
+ Class "Daggers" "Wands" "Sceptres"
+ Rarity Magic
+ ItemLevel > 68
+ SetFontSize 34
+ SetBorderColor 129 15 213 200
 
 # 0212 Remaining crafting rules - add your own bases here!
 Show

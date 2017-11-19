@@ -149,7 +149,10 @@ def modify_endgame_mix(filter_manager):
                                                     PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_magic_alert)
 
-    filter_manager.add_comment(211, 'Warband items', ignored=True)
+    blocks = filter_manager.add_comment(211, 'Warband items')
+    blocks[2].status = SHOW
+    blocks[3].status = SHOW
+    filter_manager.extend_blocks(blocks)
 
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!', ignored=True)
