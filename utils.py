@@ -88,22 +88,27 @@ class FilterManager:
                 start_index += 1
                 continue
             if line[:2] == '#=' or line[:4] == '#   ':  # 小心未来文件结构上的变化
-                return blocks
+                break
             if line[:4] == 'Show' or line[:4] == 'Hide':
                 blocks.append(self._get_small_block(start_index))
             start_index += 1
+        return blocks
 
     def _get_big_block(self, block_number):
         for i in range(len(self.raw_text)):
             if self.raw_text[i][:2] == '#=' and self.raw_text[i + 1][6:8] == '00':
                 if block_number == int(self.raw_text[i + 1][4:8]):
                     return self._get_small_blocks(i + 3)
+        assert False
+        # return []
 
     def _get_middle_block(self, block_number):
         for i in range(len(self.raw_text)):
             if self.raw_text[i][:2] == '#-' and self.raw_text[i + 1][:4] == '#   ':
                 if block_number == int(self.raw_text[i + 1][5:9]):
                     return self._get_small_blocks(i + 3)
+        assert False
+        # return []
 
     def get_blocks(self, block_number):
         if block_number % 100 == 0:
@@ -119,4 +124,4 @@ class FilterManager:
 
     def add_comment(self, block_number, comment, ignored=False):
         self.new_text.append("\n# {:0>4} {}\n".format(block_number, comment))
-        return self.get_blocks(block_number) if not ignored else None
+        return self.get_blocks(block_number) if not ignored else []
