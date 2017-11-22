@@ -121,7 +121,7 @@ CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Silver"',
-    '"Quicksilver" "Granite" "Sulphur" "Basalt"',
+    '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
     '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"',
 ])
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass

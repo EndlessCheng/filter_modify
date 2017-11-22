@@ -322,7 +322,7 @@ def modify_gem_flask_map(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
     blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[2].BaseType += ' "Added Chaos Damage"'
+    blocks[2].BaseType += ' "Added Chaos Damage" "Vaal Summon Skeletons"'
     blocks[3].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 

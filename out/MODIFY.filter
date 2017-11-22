@@ -117,7 +117,7 @@ Show
 # 0207 FLASKS (Endgame rules)
 Show
  Class "Utility Flasks"
- BaseType "Silver" "Quicksilver" "Granite" "Sulphur" "Basalt" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ BaseType "Silver" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
  Rarity <= Magic
  SetFontSize 40
  SetBorderColor 250 250 250
@@ -1398,7 +1398,7 @@ Show
  PlayAlertSound 8 300
 Show
  Class Gems
- BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Grace" "Item Quantity" "Vaal Breach" "Added Chaos Damage"
+ BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Grace" "Item Quantity" "Vaal Breach" "Added Chaos Damage" "Vaal Summon Skeletons"
  SetFontSize 45
  SetTextColor 30 200 200 255
  SetBorderColor 30 150 180 255
