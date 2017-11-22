@@ -14,7 +14,7 @@ DEBUG = False
 #
 # Part 2 - A1-10
 #
-# NPC-4L ?
+# >>> NPC-4L <<<
 #
 
 MOVE_HAND_MAX_IL = 17  # RRG
@@ -173,6 +173,8 @@ if not ALERT_LOW_CURRENCY:
 
 ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
 # "Essence of Woe"
+
+IGNORE_RARE_UNDER_T2 = False
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50

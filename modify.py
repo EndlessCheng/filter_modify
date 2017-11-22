@@ -261,49 +261,49 @@ def modify_endgame_rare(filter_manager):
         blocks[4].PlayAlertSound = SOUND_LEVELING  # 65-74 smalls
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(606, '1H Daggers')
+    blocks = filter_manager.add_comment(606, '1H Daggers', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(607, '1H Claws')
+    blocks = filter_manager.add_comment(607, '1H Claws', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(608, '1H Wands')
+    blocks = filter_manager.add_comment(608, '1H Wands', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(609, '1H Foils')
+    blocks = filter_manager.add_comment(609, '1H Foils', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(610, '1H Swords')
+    blocks = filter_manager.add_comment(610, '1H Swords', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(611, '1H Maces')
+    blocks = filter_manager.add_comment(611, '1H Maces', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(612, '1H Axes')
+    blocks = filter_manager.add_comment(612, '1H Axes', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(613, '1H Sceptres')
+    blocks = filter_manager.add_comment(613, '1H Sceptres', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(614, '2H Staves')
+    blocks = filter_manager.add_comment(614, '2H Staves', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(615, '2H Swords, Axes, Maces')
+    blocks = filter_manager.add_comment(615, '2H Swords, Axes, Maces', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(616, '2H Bows')
+    blocks = filter_manager.add_comment(616, '2H Bows', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets')
+    blocks = filter_manager.add_comment(617, 'AR: Gloves, Boots, Helmets', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(618, 'AR: Body Armors')
+    blocks = filter_manager.add_comment(618, 'AR: Body Armors', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(619, 'OH: Shields')
+    blocks = filter_manager.add_comment(619, 'OH: Shields', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(620, 'OH: Quivers')
+    blocks = filter_manager.add_comment(620, 'OH: Quivers', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
 
 
