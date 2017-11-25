@@ -1784,19 +1784,19 @@ Show
 # 1301 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Regal Shard" "Orb of Chance"
  SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
+ SetTextColor 29 0 67 255
+ SetBorderColor 29 0 67 255
+ SetBackgroundColor 249 137 25 255
  PlayAlertSound 1 300
 Show
  Class Currency
  BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Regal Shard" "Orb of Chance"
  SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
+ SetTextColor 0 0 0 255
+ SetBorderColor 0 0 0 255
+ SetBackgroundColor 249 150 25 255
  PlayAlertSound 1 300
 Show
  Class Currency
@@ -1818,9 +1818,9 @@ Show
  Class Currency
  BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard" "Horizon Shard"
  SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
+ SetTextColor 0 0 0 255
+ SetBorderColor 40 220 255 255
+ SetBackgroundColor 80 95 210 255
  PlayAlertSound 1 300
 Show
  Class Currency
@@ -2165,11 +2165,6 @@ Hide
  Class "Life Flask"
  BaseType Sanctified Eternal
  SetFontSize 18
-Hide
- Quality = 0
- Class "Mana Flask"
- BaseType Colossal Hallowed
- SetFontSize 18
 Show
  Class "Boots"
  Rarity Rare
@@ -2483,7 +2478,7 @@ Show
 # 2301 Leveling rares - specific items
 Show
  LinkedSockets >= 4
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2492,7 +2487,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RR
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2849,7 +2844,7 @@ Show
 Hide
  LinkedSockets >= 4
  SocketGroup GGG
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2858,7 +2853,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2867,7 +2862,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2875,7 +2870,7 @@ Hide
  SetBackgroundColor 0 0 0 255
 Show
  LinkedSockets >= 4
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2885,7 +2880,7 @@ Show
 Hide
  LinkedSockets >= 4
  SocketGroup GGG
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2894,7 +2889,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2903,7 +2898,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2911,7 +2906,7 @@ Hide
  SetBackgroundColor 0 0 0 255
 Show
  LinkedSockets >= 4
- Class "Body Armour" "Gloves" "Helmets"
+ Class "Boots" "Body Armour" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255

@@ -251,7 +251,7 @@ def modify_endgame_rare(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # ALERT_SMALLS_RARE
-    # 4, 1, 4
+    # 1, 1, 12, 1, 12
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
     if settings.ALERT_SMALLS_RARE:
@@ -400,7 +400,8 @@ def modify_gem_flask_map(filter_manager):
 def modify_leveling(filter_manager):
     # HIDE_FLASK_MANA, SHOW_FLASK_LIFE；后期只要42和60级的血瓶
     # HIDE_LEVELING_RARE_CLASS
-    # RARE_BOOTS_ALERT, MAGIC_BOOTS_IL
+    # RARE_BOOTS_ALERT  放前面是考虑到[[2200]]的影响
+    # MAGIC_BOOTS_IL
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
     block_hide_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Hybrid Flask" ', SetFontSize=FONT_SIZE_MIN)
     if settings.HIDE_FLASK_MANA:
@@ -409,9 +410,7 @@ def modify_leveling(filter_manager):
         block_hide_flasks.Class += ' "Life Flask" '
     block_hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
                                               BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
-    block_hide_some_mana_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Mana Flask"',
-                                              BaseType='Colossal Hallowed', SetFontSize=FONT_SIZE_MIN)
-    filter_manager.extend_blocks([block_hide_flasks, block_hide_some_life_flasks, block_hide_some_mana_flasks])
+    filter_manager.extend_blocks([block_hide_flasks, block_hide_some_life_flasks])
 
     if settings.HIDE_LEVELING_RARE_CLASS != '':
         filter_manager.append_block(
@@ -422,6 +421,7 @@ def modify_leveling(filter_manager):
         block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
             ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING, **STYLE_4L)
         filter_manager.append_block(block_rare_boots)
+
     _magic_boots_il_map = {10: None, 15: '>= 15', 20: '>= 30', 25: '>= 40', 30: '>= 55', -1: '< 1'}
     block_magic_boots = filter_manager.get_blocks(2404)[0].copy_modify(
         ItemLevel=_magic_boots_il_map[settings.MAGIC_BOOTS_IL],
@@ -632,16 +632,18 @@ def modify_filter(filter_manager):
 
     # CURRENCY_ALERT_XXX
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
-    blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
-    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
+    blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
+    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
     blocks[1].BaseType += ' "Regal Shard"'
     if settings.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
+    blocks[0].BaseType += ' ' + blocks[1].BaseType
+
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-2].BaseType += ' "Horizon Shard"'
-    blocks[-2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP)
+    blocks[-2].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
     filter_manager.extend_blocks(blocks)
 
     # 8

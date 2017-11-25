@@ -22,7 +22,7 @@ MOVE_HAND_MAX_IL = 17  # RRG
 L2_MAX_IL = 7
 L3_MAX_IL = 17
 
-MAGIC_BOOTS_IL = 10  # ★★★ 10/20/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
+MAGIC_BOOTS_IL = 10  # ★★★ 10/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
@@ -71,7 +71,7 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
 LINKED_CLASS = ' '.join([
-    # '"Boots"',
+    '"Boots"',
     '"Body Armour"',
     '"Gloves"',
     '"Helmets"',
