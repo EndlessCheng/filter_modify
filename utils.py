@@ -48,12 +48,12 @@ class FilterBlock:
         self.modify(**kwargs)
 
     def modify(self, **kwargs):
-        for k, v in kwargs.iteritems():
+        for k, v in kwargs.items():
             setattr(self, k, v)
 
     def copy_modify(self, **kwargs):
         block = copy.copy(self)
-        for k, v in kwargs.iteritems():
+        for k, v in kwargs.items():
             setattr(block, k, v)
         return block
 

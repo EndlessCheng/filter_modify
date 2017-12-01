@@ -784,7 +784,7 @@ def main():
     if platform.system() == 'Windows':
         shutil.copyfile(out_file_path, os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter")
 
-    print "Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time))
+    print("Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time)))
 
 
 if __name__ == '__main__':
