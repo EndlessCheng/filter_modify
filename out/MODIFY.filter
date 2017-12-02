@@ -246,7 +246,7 @@ Show
 
 # 0212 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Siege Axe" "Astral Plate" "Royal Burgonet" "Eternal Burgonet"
+ BaseType "Siege Axe" "Astral Plate" "Royal Burgonet" "Eternal Burgonet" "Tiger Hook"
  Rarity Normal
  SetFontSize 38
  SetBorderColor 255 255 255
@@ -1427,7 +1427,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Gems
- BaseType "Melee Splash" "Added Fire Damage" "Maim" "Clarity" "Concentrated Effect" "Immortal" "Taken" "Multistrike"
+ BaseType "Added Fire Damage" "Maim" "Clarity" "Concentrated Effect" "Immortal" "Taken" "Multistrike"
  SetFontSize 40
  SetBorderColor 30 150 180 150
  PlayAlertSound 8 300
@@ -2165,21 +2165,6 @@ Hide
  Class "Life Flask"
  BaseType Sanctified Eternal
  SetFontSize 18
-Show
- Class "Boots"
- Rarity Rare
- SetFontSize 45
- SetBorderColor 0 255 255
- SetBackgroundColor 35 100 20 255
- PlayAlertSound 12 300
-Show
- Class "Boots"
- Rarity = Magic
- SetFontSize 45
- SetTextColor 25 95 235 255
- SetBorderColor 0 255 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 12 300
 
 # 2000 Leveling - Flasks
 
@@ -2478,7 +2463,7 @@ Show
 # 2301 Leveling rares - specific items
 Show
  LinkedSockets >= 4
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2487,7 +2472,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RR
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2844,7 +2829,7 @@ Show
 Hide
  LinkedSockets >= 4
  SocketGroup GGG
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2853,7 +2838,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2862,7 +2847,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 26
  SetTextColor 255 255 255 255
@@ -2870,7 +2855,7 @@ Hide
  SetBackgroundColor 0 0 0 255
 Show
  LinkedSockets >= 4
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2880,7 +2865,7 @@ Show
 Hide
  LinkedSockets >= 4
  SocketGroup GGG
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2889,7 +2874,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup BBB
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2898,7 +2883,7 @@ Hide
 Hide
  LinkedSockets >= 4
  SocketGroup GGBB
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 26
  SetTextColor 25 95 235 255
@@ -2906,7 +2891,7 @@ Hide
  SetBackgroundColor 0 0 0 255
 Show
  LinkedSockets >= 4
- Class "Boots" "Body Armour" "Gloves" "Helmets"
+ Class "Body Armour" "Boots" "Gloves" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -2919,7 +2904,7 @@ Show
 # 2403 Linked gear - 3links
 Show
  SocketGroup RR
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Normal
  ItemLevel <= 7
  SetFontSize 42
@@ -2930,7 +2915,7 @@ Show
 Hide
  LinkedSockets >= 3
  SocketGroup RRB
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Normal
  ItemLevel <= 24
  SetFontSize 42
@@ -2940,7 +2925,7 @@ Hide
 Show
  LinkedSockets >= 3
  SocketGroup RR
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Normal
  ItemLevel <= 17
  SetFontSize 42
@@ -2950,7 +2935,7 @@ Show
  PlayAlertSound 12 300
 Show
  SocketGroup RR
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Magic
  ItemLevel <= 7
  SetFontSize 42
@@ -2961,7 +2946,7 @@ Show
 Hide
  LinkedSockets >= 3
  SocketGroup RRB
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Magic
  ItemLevel <= 24
  SetFontSize 42
@@ -2971,7 +2956,7 @@ Hide
 Show
  LinkedSockets >= 3
  SocketGroup RR
- Class "Body Armour" "Helmets"
+ Class "Helmets" "Body Armour" "Boots"
  Rarity = Magic
  ItemLevel <= 17
  SetFontSize 42
@@ -3013,20 +2998,6 @@ Show
  SetFontSize 38
  SetBorderColor 0 255 255
  PlayAlertSound 1 300
-Show
- SocketGroup RBB
- Class "One Hand" "Claws" "Sceptres" "Daggers"
- ItemLevel <= 1
- SetFontSize 38
- SetBorderColor 0 255 255
- PlayAlertSound 1 300
-Show
- SocketGroup BBB
- Class "One Hand" "Claws" "Sceptres" "Daggers"
- ItemLevel <= 1
- SetFontSize 38
- SetBorderColor 0 255 255
- PlayAlertSound 1 300
 Hide
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand Maces" 
  ItemLevel >= 2
@@ -3045,72 +3016,91 @@ Show
  BaseType "Rusted Sword"
  Rarity <= Magic
  ItemLevel <= 4
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Copper Sword"
  Rarity <= Magic
  ItemLevel <= 8
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Sabre"
  Rarity <= Magic
  ItemLevel <= 13
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Rusted Hatchet"
  Rarity <= Magic
  ItemLevel <= 4
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Jade Hatchet"
  Rarity <= Magic
  ItemLevel <= 9
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Boarding Axe"
  Rarity <= Magic
  ItemLevel <= 14
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- BaseType "Cleaver"
+ BaseType "Broad Axe"
  Rarity <= Magic
- ItemLevel <= 19
+ ItemLevel <= 24
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Arming Axe"
  Rarity <= Magic
  ItemLevel <= 28
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- BaseType "Decorative Axe"
+ BaseType "Spectral Axe"
  Rarity <= Magic
- ItemLevel <= 32
+ ItemLevel <= 36
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  BaseType "Jasper Axe"
  Rarity <= Magic
  ItemLevel <= 39
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- BaseType "Wrist Chopper"
+ BaseType "War Axe"
  Rarity <= Magic
- ItemLevel <= 45
+ ItemLevel <= 48
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- BaseType "Ceremonial Axe"
+ BaseType "Chest Splitter"
  Rarity <= Magic
- ItemLevel <= 54
+ ItemLevel <= 51
+ SetFontSize 40
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ BaseType "Wraith Axe"
+ Rarity <= Magic
+ ItemLevel <= 57
+ SetFontSize 40
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 
@@ -3150,13 +3140,13 @@ Show
 
 # 2505 Magic items - general highlight
 Hide
- Class "Boots" "Rings" "Amulets" "Belts" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"
+ Class "Rings" "Amulets" "Belts" "Two Hand" "Bows" "One Hand" "Wand" "Sceptre" "Staves" "Claws" "Daggers"
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
- Class "Body Armour" "Helmets"
- ItemLevel >= 4
+ Class "Helmets" "Body Armour" "Boots"
+ ItemLevel >= 13
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165

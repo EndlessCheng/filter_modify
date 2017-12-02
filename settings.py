@@ -22,8 +22,6 @@ MOVE_HAND_MAX_IL = 17  # RRG
 L2_MAX_IL = 7
 L3_MAX_IL = 17
 
-MAGIC_BOOTS_IL = 10  # ★★★ 10/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
-
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
 ])
@@ -59,6 +57,7 @@ SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Siege Axe"',  # 59
     '"Astral Plate"',  # 62
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
+    '"Tiger Hook"',  # 70
 ])
 # '"Ceremonial Kite Shield"',  # 34     '"Bronze Tower Shield"',  # 47
 # '"Karui Sceptre"',  # 56, 1.65AS!!!    '"Opal Sceptre"',  # 60    '"Ezomyte Tower Shield"',  # 64
@@ -71,8 +70,8 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
 LINKED_CLASS = ' '.join([
-    '"Boots"',
     '"Body Armour"',
+    '"Boots"',
     '"Gloves"',
     '"Helmets"',
 ])
@@ -105,8 +104,7 @@ T1_RARE_BASE_TYPE = ' '.join([
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
     '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
     # '"Body Armour"',
-    # '"Sceptres"',
-    # '"Claws" "One Hand"',
+    # '"Sceptres" "Claws" "One Hand"',
     # '"Gloves"',
     # '"Boots"',
     # '"Helmets"',
@@ -149,19 +147,12 @@ BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
 
 SMALLS_MAX_IL = 7
 
-RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
-
 LEVELING_GEMS_BASE_TYPE = ' '.join([
-    '"Melee Splash" "Added Fire Damage" "Maim"',
+    '"Added Fire Damage" "Maim"',
     '"Clarity" "Concentrated Effect"',
     '"Immortal" "Taken" "Multistrike"',
 ]) if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
 #  "Orb of Storms" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Channelling"
-
-ALERT_SCEPTRE = False
-
-if ALERT_SCEPTRE:
-    SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
 
 HIDE_FLASK_MANA = not SHOW_FLASK_HALLOWED or not SHOW_FLASK_LIFE
 
@@ -175,6 +166,12 @@ ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence o
 # "Essence of Woe"
 
 IGNORE_RARE_UNDER_T2 = False
+
+MAGIC_BOOTS_IL = -1  # ★★★ 10/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
+RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
+ALERT_SCEPTRE = False
+if ALERT_SCEPTRE:
+    SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
