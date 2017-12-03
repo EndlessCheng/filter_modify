@@ -202,7 +202,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe" "Behemoth Mace"
+ BaseType "Iron Ring" "Rustic Sash" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe" "Behemoth Mace"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -253,7 +253,7 @@ Show
  PlayAlertSound 12 300
 Show
  Class Amulets
- BaseType "Jade" "Turquoise"
+ BaseType "Lapis Amulet" "Agate Amulet"
  Rarity Normal
  SetTextColor 255 255 255
 Show
@@ -1427,7 +1427,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Gems
- BaseType "Added Fire Damage" "Maim" "Clarity" "Concentrated Effect" "Immortal" "Taken" "Multistrike"
+ BaseType "Clarity" "Concentrated Effect" "Fortify" "Immortal" "Taken" "Multistrike"
  SetFontSize 40
  SetBorderColor 30 150 180 150
  PlayAlertSound 8 300
@@ -2927,9 +2927,16 @@ Show
 
 # 2406 Act 1
 Show
+ Class "Amulets"
+ Rarity Normal
+ ItemLevel <= 12
+ SetFontSize 42
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
  Class "Rings" "Amulets" "Belts"
- Rarity <= Magic
- ItemLevel <= 7
+ Rarity Magic
+ ItemLevel <= 12
  SetFontSize 42
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255

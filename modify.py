@@ -516,8 +516,9 @@ def modify_leveling(filter_manager):
     # SMALLS_MAX_IL
     blocks = filter_manager.add_comment(2406, 'Act 1')
     block_smalls = blocks[4]
-    block_smalls.ItemLevel = '<= ' + str(settings.SMALLS_MAX_IL)
-    filter_manager.append_block(block_smalls)
+    block_smalls_n = block_smalls.copy_modify(Class='"Amulets"', Rarity=RARITY_NORMAL)
+    block_smalls.modify(Rarity=RARITY_MAGIC)
+    filter_manager.extend_blocks([block_smalls_n, block_smalls])
 
     filter_manager.add_comment(2407, 'Act 2+3', ignored=True)
 

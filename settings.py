@@ -17,6 +17,7 @@ DEBUG = False
 # >>> NPC-4L <<<
 #
 
+# Use some like >>> r-g <<< in the search box
 MOVE_HAND_MAX_IL = 17  # RRG
 
 L3_MAX_IL = 17
@@ -24,12 +25,10 @@ L3_MAX_IL = 17
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
 ])
-# '"One Hand"',
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Iron Ring"',
     '"Rustic Sash"',
-    '"Leather Belt"',
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',
     '"Two-Stone Ring"',
     '"Amulet"',
@@ -37,16 +36,12 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Siege Axe"',  # 59
     '"Behemoth Mace"',  # 70
 ])
-# '"Layered Kite Shield" "Ceremonial Kite Shield"', '"Bronze Tower Shield"', '"Ezomyte Tower Shield"',
-# '"Jade" "Turquoise" "Citrine" "Amber"',
 
 HIDE_LEVELING_RARE_CLASS = ' '.join([
-    # '"Bows" "Quivers" "Two Hand" "Staves"',
-    # '"Shields"',  # !!!
+    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
     # '"Body Armour"',
     # '"Wands" "Daggers"',
 ])
-# '"Claws" "One Hand"',
 
 SHOW_FLASK_HALLOWED = True
 
@@ -58,13 +53,10 @@ SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
     '"Tiger Hook"',  # 70
 ])
-# '"Ceremonial Kite Shield"',  # 34     '"Bronze Tower Shield"',  # 47
-# '"Karui Sceptre"',  # 56, 1.65AS!!!    '"Opal Sceptre"',  # 60    '"Ezomyte Tower Shield"',  # 64
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
-    '"Jade"',
-    '"Turquoise"',
+    '"Lapis Amulet"',
+    '"Agate Amulet"',
 ])
-# ' "Citrine"', '  "Amber"',
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
@@ -143,11 +135,10 @@ NEED_CHISEL = False
 #
 
 L2_MAX_IL = 4
-SMALLS_MAX_IL = 7
+# SMALLS_MAX_IL = 7
 
 LEVELING_GEMS_BASE_TYPE = ' '.join([
-    '"Added Fire Damage" "Maim"',
-    '"Clarity" "Concentrated Effect"',
+    '"Clarity" "Concentrated Effect" "Fortify"',
     '"Immortal" "Taken" "Multistrike"',
 ]) if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
 #  "Orb of Storms" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Channelling"
