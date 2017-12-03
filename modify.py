@@ -162,7 +162,7 @@ def modify_endgame_mix(filter_manager):
             SetFontSize=40, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_LEVELING))
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(

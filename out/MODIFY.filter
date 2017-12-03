@@ -255,6 +255,7 @@ Show
  Class Amulets
  BaseType "Lapis Amulet" "Agate Amulet"
  Rarity Normal
+ ItemLevel >= 13
  SetTextColor 255 255 255
 Show
  Class Rings
