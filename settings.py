@@ -19,7 +19,6 @@ DEBUG = False
 
 MOVE_HAND_MAX_IL = 17  # RRG
 
-L2_MAX_IL = 7
 L3_MAX_IL = 17
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
@@ -143,8 +142,7 @@ NEED_CHISEL = False
 # Part 4 - Others
 #
 
-BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
-
+L2_MAX_IL = 4
 SMALLS_MAX_IL = 7
 
 LEVELING_GEMS_BASE_TYPE = ' '.join([
@@ -169,6 +167,7 @@ IGNORE_RARE_UNDER_T2 = False
 
 MAGIC_BOOTS_IL = -1  # ★★★ 10/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
+BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
 ALERT_SCEPTRE = False
 if ALERT_SCEPTRE:
     SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
