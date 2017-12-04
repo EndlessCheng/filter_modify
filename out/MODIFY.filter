@@ -1368,14 +1368,6 @@ Hide
  SetBackgroundColor 0 0 0 75
 
 # 0800 OVERRIDE AREA 3 - Override Map, Gem and Flask drops here
-Show
- Class Maps
- Rarity <= Rare
- SetFontSize 45
- SetTextColor 0 0 0 255
- SetBorderColor 0 0 0 255
- SetBackgroundColor 200 200 200 255
- PlayAlertSound 4 300
 
 # 0900 Gems
 
@@ -1505,33 +1497,33 @@ Show
  DropLevel >= 81
  Class Maps
  SetFontSize 45
- SetTextColor 0 0 0 255
+ SetTextColor 0 0 0
  SetBorderColor 210 0 0
- SetBackgroundColor 200 200 200 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
  DropLevel >= 80
  Class Maps
  SetFontSize 45
- SetTextColor 0 0 0 255
+ SetTextColor 0 0 0
  SetBorderColor 210 0 0
- SetBackgroundColor 200 200 200 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
  DropLevel >= 79
  Class Maps
  SetFontSize 45
- SetTextColor 0 0 0 255
+ SetTextColor 0 0 0
  SetBorderColor 210 0 0
- SetBackgroundColor 200 200 200 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
  DropLevel >= 78
  Class Maps
  SetFontSize 45
- SetTextColor 0 0 0 255
+ SetTextColor 0 0 0
  SetBorderColor 210 0 0
- SetBackgroundColor 200 200 200 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 
 # 1205 Mid tier maps (T6-10)
@@ -1539,110 +1531,113 @@ Show
  DropLevel >= 77
  Class Maps
  SetFontSize 45
- SetTextColor 200 200 200
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 76
  Class Maps
  ItemLevel < 83
  SetFontSize 45
- SetTextColor 200 200 200
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 76
  Class Maps
  BaseType "Shaped"
  SetFontSize 45
- SetTextColor 200 200 200
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 76
  Class Maps
  SetFontSize 45
- SetTextColor 200 200 200
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 75
  Class Maps
  ItemLevel < 82
- SetFontSize 40
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 75
  Class Maps
  BaseType "Shaped"
- SetFontSize 42
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 75
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 74
  Class Maps
  ItemLevel < 81
- SetFontSize 40
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 74
  Class Maps
  BaseType "Shaped"
- SetFontSize 42
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 74
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 73
  Class Maps
  ItemLevel < 80
- SetFontSize 40
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 73
  Class Maps
  BaseType "Shaped"
- SetFontSize 42
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 255
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 73
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 255 255 119
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 
 # 1206 Low tier maps (T1-T5)
@@ -1650,86 +1645,91 @@ Show
  DropLevel >= 72
  Class Maps
  ItemLevel < 79
- SetFontSize 38
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 226
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 72
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 71
  Class Maps
  ItemLevel < 78
- SetFontSize 38
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 226
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 71
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 70
  Class Maps
  ItemLevel < 77
- SetFontSize 38
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 226
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel >= 70
  Class Maps
- SetTextColor 200 200 200
+ SetFontSize 45
+ SetTextColor 0 0 0
  SetBorderColor 136 136 255
- SetBackgroundColor 0 0 0 185
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel = 69
  Class Maps
  ItemLevel < 76
- SetFontSize 38
- SetTextColor 200 200 200
- SetBorderColor 200 200 200
- SetBackgroundColor 0 0 0 226
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 0 0 0
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel = 69
  Class Maps
- SetTextColor 200 200 200
- SetBorderColor 200 200 200
- SetBackgroundColor 0 0 0 185
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 0 0 0
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel < 69
  Class Maps
  ItemLevel < 75
- SetFontSize 38
- SetTextColor 200 200 200
- SetBorderColor 200 200 200
- SetBackgroundColor 0 0 0 226
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 0 0 0
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  DropLevel < 69
  Class Maps
- SetTextColor 200 200 200
- SetBorderColor 200 200 200
- SetBackgroundColor 0 0 0 185
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 0 0 0
+ SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
  Class Maps
  SetFontSize 45
- SetTextColor 200 200 200
+ SetTextColor 255 0 255 255
  SetBorderColor 255 0 255 255
  PlayAlertSound 4 300
 

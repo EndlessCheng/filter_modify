@@ -27,23 +27,24 @@ FONT_SIZE_MAX = 45
 FONT_SIZE_MIN = 18
 
 COLOR_WHITE = '255 255 255'
-COLOR_GRAY_LIGHT = '200 200 200'
+COLOR_SILVER = '200 200 200'
 COLOR_GRAY = '150 150 150'
 COLOR_BLACK = '0 0 0'
 COLOR_RED = '255 0 0'
 COLOR_RED_LIGHT = '210 0 0'
-COLOR_GREEN = '0 255 0'
-COLOR_GREEN_LIGHT = '0 210 0 210'
-COLOR_BLUE = '0 0 255'
-COLOR_BLUE_LIGHT = '136 136 255'
 COLOR_YELLOW = '255 255 0'
 COLOR_YELLOW_LIGHT = '255 255 119'
-COLOR_AQUA = '0 255 255'
-COLOR_CYAN = '100 255 255'
 COLOR_GOLD = '213 159 0'
 COLOR_ORANGE = '255 125 0'
 COLOR_ORANGE_LIGHT = '255 125 0 200'
 COLOR_BROWN = '100 75 0'
+COLOR_LIME = '0 255 0'
+COLOR_LIME_LIGHT = '0 210 0 210'
+COLOR_AQUA = '0 255 255'
+COLOR_AQUA_LIGHT = '100 255 255'
+COLOR_BLUE = '0 0 255'
+COLOR_BLUE_LIGHT = '136 136 255'
+COLOR_PURPLE = '255 0 255'
 COLOR_UNIQUE = '175 96 37'
 
 SOUND_TOP_VALUE = '8 300'
@@ -59,8 +60,13 @@ STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgro
 STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN}
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
+_STYLE_MAP_BASE = {'SetFontSize': FONT_SIZE_MAX, 'SetTextColor': COLOR_BLACK, 'SetBackgroundColor': COLOR_SILVER}
+STYLE_MAP_HIGH = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED_LIGHT}
+STYLE_MAP_MID = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_YELLOW_LIGHT}
+STYLE_MAP_LOW_3_5 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLUE_LIGHT}
+STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLACK}
 STYLE_LINKS = {'SetBorderColor': COLOR_AQUA}
-STYLE_NONE = {'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
+STYLE_NONE = {'SetFontSize': None, 'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
 
 
 # 0200
@@ -111,7 +117,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(206, 'Chancing items', ignored=True)
     if settings.CHANCING_BASE_TYPE != '':
         block = FilterBlock(Corrupted=False, BaseType=settings.CHANCING_BASE_TYPE, Rarity=RARITY_NORMAL,
-                            SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_GREEN_LIGHT,
+                            SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT,
                             # PlayAlertSound=SOUND_CHANCE
                             )
         filter_manager.append_block(block)
@@ -311,9 +317,9 @@ def modify_endgame_rare(filter_manager):
 def modify_gem_flask_map(filter_manager):
     # ALERT_LOW_MAP: Need map, exile?
     filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here', ignored=True)
-    if settings.ALERT_LOW_MAP:  # 样式取自T14
-        filter_manager.append_block(
-            filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R, PlayAlertSound=SOUND_MAP))
+    # if settings.ALERT_LOW_MAP:  # 样式取自T14
+    #     filter_manager.append_block(
+    #         filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R, PlayAlertSound=SOUND_MAP))
 
     filter_manager.add_comment(900, 'Gems', ignored=True)
 
@@ -362,29 +368,24 @@ def modify_gem_flask_map(filter_manager):
     blocks[1].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # Referred by [[0800]]
     # 加红边
     blocks = filter_manager.add_comment(1204, 'High tier maps(T11-14)')
     for block in blocks:
-        block.modify(SetBorderColor=COLOR_RED_LIGHT, PlayAlertSound=SOUND_TOP_VALUE)
+        block.modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH)
     filter_manager.extend_blocks(blocks)
 
     # 加黄边，不显示稀有度
     blocks = filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
     for block in blocks:
-        block.modify(SetTextColor=COLOR_GRAY_LIGHT, SetBorderColor=COLOR_YELLOW_LIGHT, PlayAlertSound=SOUND_MAP)
-    for block in blocks[:4]:
-        block.SetFontSize = FONT_SIZE_MAX
+        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID)
     filter_manager.extend_blocks(blocks)
 
-    # 加蓝边/白边，不显示稀有度
+    # 加蓝边/黑边，不显示稀有度
     blocks = filter_manager.add_comment(1206, 'Low tier maps (T1-T5)')
-    for block in blocks:
-        block.modify(SetTextColor=COLOR_GRAY_LIGHT, PlayAlertSound=SOUND_MAP)
     for block in blocks[:6]:
-        block.SetBorderColor = COLOR_BLUE_LIGHT
-    for block in blocks[6:10]:
-        block.SetBorderColor = COLOR_GRAY_LIGHT
+        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_LOW_3_5)
+    for block in blocks[6:-1]:
+        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_LOW_1_2)
     filter_manager.extend_blocks(blocks)
 
     # 8, 4
