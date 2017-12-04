@@ -54,8 +54,7 @@ SSF_CRAFT_BASE_TYPE = ' '.join([
     '"Tiger Hook"',  # 70
 ])
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
-    '"Lapis Amulet"',
-    '"Agate Amulet"',
+    '"Lapis" "Agate"',
 ])
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
@@ -111,7 +110,7 @@ CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Silver"',
     '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
-    '"Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"',
+    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
 ])
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 
@@ -138,7 +137,7 @@ L2_MAX_IL = 4
 
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Clarity" "Concentrated Effect" "Fortify"',
-    '"Immortal" "Taken" "Multistrike"',
+    '"Immortal Call" "Cast when Damage Taken" "Multistrike"',
 ]) if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
 #  "Orb of Storms" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Channelling"
 

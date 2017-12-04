@@ -117,7 +117,7 @@ Show
 # 0207 FLASKS (Endgame rules)
 Show
  Class "Utility Flasks"
- BaseType "Silver" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby Flask" "Sapphire Flask" "Topaz Flask" "Amethyst Flask"
+ BaseType "Silver" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby" "Sapphire" "Topaz" "Amethyst"
  Rarity <= Magic
  SetFontSize 40
  SetBorderColor 250 250 250
@@ -253,7 +253,7 @@ Show
  PlayAlertSound 12 300
 Show
  Class Amulets
- BaseType "Lapis Amulet" "Agate Amulet"
+ BaseType "Lapis" "Agate"
  Rarity Normal
  ItemLevel >= 13
  SetTextColor 255 255 255
@@ -1420,7 +1420,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Gems
- BaseType "Clarity" "Concentrated Effect" "Fortify" "Immortal" "Taken" "Multistrike"
+ BaseType "Clarity" "Concentrated Effect" "Fortify" "Immortal Call" "Cast when Damage Taken" "Multistrike"
  SetFontSize 40
  SetBorderColor 30 150 180 150
  PlayAlertSound 8 300
