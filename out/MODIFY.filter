@@ -1498,7 +1498,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 210 0 0
+ SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
@@ -1506,7 +1506,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 210 0 0
+ SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
@@ -1514,7 +1514,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 210 0 0
+ SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 Show
@@ -1522,7 +1522,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 210 0 0
+ SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 8 300
 
@@ -1532,7 +1532,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1541,7 +1541,7 @@ Show
  ItemLevel < 83
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1550,7 +1550,7 @@ Show
  BaseType "Shaped"
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1558,7 +1558,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1567,7 +1567,7 @@ Show
  ItemLevel < 82
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1576,7 +1576,7 @@ Show
  BaseType "Shaped"
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1584,7 +1584,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1593,7 +1593,7 @@ Show
  ItemLevel < 81
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1602,7 +1602,7 @@ Show
  BaseType "Shaped"
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1610,7 +1610,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1619,7 +1619,7 @@ Show
  ItemLevel < 80
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1628,7 +1628,7 @@ Show
  BaseType "Shaped"
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1636,7 +1636,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 119
+ SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 
@@ -1647,7 +1647,7 @@ Show
  ItemLevel < 79
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1655,7 +1655,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1664,7 +1664,7 @@ Show
  ItemLevel < 78
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1672,7 +1672,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1681,7 +1681,7 @@ Show
  ItemLevel < 77
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1689,7 +1689,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 136 136 255
+ SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1698,7 +1698,7 @@ Show
  ItemLevel < 76
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 0 0 0
+ SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1706,7 +1706,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 0 0 0
+ SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1715,7 +1715,7 @@ Show
  ItemLevel < 75
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 0 0 0
+ SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1723,7 +1723,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 0 0 0
+ SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show

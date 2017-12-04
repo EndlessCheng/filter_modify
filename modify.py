@@ -61,10 +61,10 @@ STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BR
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
 _STYLE_MAP_BASE = {'SetFontSize': FONT_SIZE_MAX, 'SetTextColor': COLOR_BLACK, 'SetBackgroundColor': COLOR_SILVER}
-STYLE_MAP_HIGH = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED_LIGHT}
-STYLE_MAP_MID = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_YELLOW_LIGHT}
-STYLE_MAP_LOW_3_5 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLUE_LIGHT}
-STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLACK}
+STYLE_MAP_HIGH = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED}
+STYLE_MAP_MID = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_YELLOW}
+STYLE_MAP_LOW_3_5 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLUE}
+STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_WHITE}
 STYLE_LINKS = {'SetBorderColor': COLOR_AQUA}
 STYLE_NONE = {'SetFontSize': None, 'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
 
