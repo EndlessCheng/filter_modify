@@ -163,27 +163,24 @@ def modify_endgame_mix(filter_manager):
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!', ignored=True)
     if settings.SSF_CRAFT_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            BaseType=settings.SSF_CRAFT_BASE_TYPE, Rarity=RARITY_NORMAL,
-            SetFontSize=40, SetBorderColor=COLOR_WHITE, PlayAlertSound=SOUND_LEVELING))
+        block_normal = filter_manager.get_blocks(2406)[0]
+        block_normal_alert = block_normal.copy_modify(BaseType=settings.SSF_CRAFT_BASE_TYPE, ItemLevel=None,
+                                                      SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
+        filter_manager.append_block(block_normal_alert)
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
-            Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        # block_hide_n_rustic_sash = filter_manager.get_blocks(2600)[0].copy_modify(
-        #     Class=None, BaseType='"Rustic Sash"', Rarity=RARITY_NORMAL, ItemLevel='>= 40')
         block_hide_n_leather_belt = filter_manager.get_blocks(2600)[0].copy_modify(
             Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')
-        filter_manager.extend_blocks([
-            # block_hide_n_rustic_sash,
-            block_hide_n_leather_belt])
+        filter_manager.append_block(block_hide_n_leather_belt)
         filter_manager.append_block(FilterBlock(
-            Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL,
+            Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
 
     # NEED_CHISEL
@@ -213,8 +210,9 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(218, 'Animate Weapon script - deactivated by default', ignored=True)
 
-    # 改稀有度，高亮边框
+    # 8，改稀有度，高亮边框
     blocks = filter_manager.add_comment(219, 'W-soc offhand weapons')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].modify(Rarity=RARITY_N2R, SetBorderColor=COLOR_WHITE)
     filter_manager.extend_blocks(blocks)
 
@@ -315,11 +313,7 @@ def modify_endgame_rare(filter_manager):
 
 # 0800-1207
 def modify_gem_flask_map(filter_manager):
-    # ALERT_LOW_MAP: Need map, exile?
     filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here', ignored=True)
-    # if settings.ALERT_LOW_MAP:  # 样式取自T14
-    #     filter_manager.append_block(
-    #         filter_manager.get_blocks(1204)[0].copy_modify(DropLevel=None, Rarity=RARITY_N2R, PlayAlertSound=SOUND_MAP))
 
     filter_manager.add_comment(900, 'Gems', ignored=True)
 
@@ -487,12 +481,6 @@ def modify_leveling(filter_manager):
     if settings.LINKED_CLASS != '':
         for block in blocks:
             block.modify(Class=settings.LINKED_CLASS, SocketGroup='RR', **STYLE_LINKS)
-            # for sg in ['GGG', 'BBB', 'GGBB']:
-            #     block_hide_xxx = block.copy_modify(status=DEBUG, SocketGroup=sg, SetFontSize=26, PlayAlertSound=None)
-            #     filter_manager.append_block(block_hide_xxx)
-            # block_hide_bbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='BBB')
-            # block_hide_ggbb_body = block_hide_ggg.copy_modify(Class='"Body Armour"', SocketGroup='GGBB')
-            # filter_manager.extend_blocks([block_hide_ggg, block_hide_bbb_body, block_hide_ggbb_body, block])
             filter_manager.append_block(block)
 
     filter_manager.add_comment(2402, 'Linked gear - Caster Weapon Configuration', ignored=True)
@@ -513,13 +501,13 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2405, 'Optional Recipes', ignored=True)
 
-    # Referred by [0210]
-    # SMALLS_MAX_IL
+    # Referred by [0210] [0212]
     blocks = filter_manager.add_comment(2406, 'Act 1')
-    block_smalls = blocks[4]
-    block_smalls_n = block_smalls.copy_modify(Class='"Amulets"', Rarity=RARITY_NORMAL)
-    block_smalls.modify(Rarity=RARITY_MAGIC)
-    filter_manager.extend_blocks([block_smalls_n, block_smalls])
+    blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
+    blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
+    filter_manager.extend_blocks(blocks[:2])
+    blocks[4].Rarity = RARITY_MAGIC
+    filter_manager.append_block(blocks[4])
 
     filter_manager.add_comment(2407, 'Act 2+3', ignored=True)
 

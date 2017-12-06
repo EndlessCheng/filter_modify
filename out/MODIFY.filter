@@ -247,9 +247,11 @@ Show
 # 0212 Remaining crafting rules - add your own bases here!
 Show
  BaseType "Siege Axe" "Astral Plate" "Royal Burgonet" "Eternal Burgonet" "Tiger Hook"
- Rarity Normal
+ Rarity = Normal
  SetFontSize 40
- SetBorderColor 255 255 255
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
  Class Amulets
@@ -261,6 +263,7 @@ Show
  Class Rings
  BaseType "Two-Stone"
  Rarity Normal
+ ItemLevel >= 13
  SetTextColor 255 255 255
 Hide
  BaseType "Leather Belt"
@@ -273,6 +276,7 @@ Show
  Class Belts
  BaseType "Rustic Sash" "Leather Belt"
  Rarity Normal
+ ItemLevel >= 13
  SetTextColor 255 255 255
 
 # 0213 Chisel recipe items
@@ -360,6 +364,7 @@ Show
  Rarity <= Rare
  SetFontSize 42
  SetBorderColor 255 255 255
+ PlayAlertSound 8 300
 Show
  Sockets >= 3
  SocketGroup W
@@ -2928,10 +2933,19 @@ Show
 
 # 2406 Act 1
 Show
- Class "Amulets"
- Rarity Normal
+ BaseType "Iron Ring" "Rustic Sash" "Amulet"
+ Rarity = Normal
  ItemLevel <= 12
  SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ BaseType "Iron Ring" "Rustic Sash" "Amulet"
+ Rarity = Magic
+ ItemLevel <= 12
+ SetFontSize 42
+ SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
