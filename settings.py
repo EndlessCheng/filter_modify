@@ -50,7 +50,7 @@ SHOW_FLASK_HALLOWED = True
 SHOW_FLASK_LIFE = True
 
 SSF_CRAFT_BASE_TYPE = ' '.join([
-    '"Siege Axe"',  # 59
+    '"Siege Axe"',  # 59 73
     '"Astral Plate"',  # 62
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
     '"Tiger Hook"',  # 70
@@ -80,6 +80,7 @@ SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
 T1_RARE_BASE_TYPE = ' '.join([
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
+    '"Tiger Hook"',
 
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
@@ -105,7 +106,6 @@ CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Silver"',
     '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
 ])

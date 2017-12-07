@@ -131,8 +131,8 @@ def modify_endgame_mix(filter_manager):
                                               PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_utility)
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None,
-                                      PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[1].modify(SetFontSize=blocks[0].SetFontSize, PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None)
     filter_manager.extend_blocks(blocks[:3])
 
     filter_manager.add_comment(208, 'Add your own crafting rules here', ignored=True)
@@ -155,10 +155,9 @@ def modify_endgame_mix(filter_manager):
                                                     PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_magic_alert)
 
+    # 去掉 Hide
     blocks = filter_manager.add_comment(211, 'Warband items')
-    blocks[2].status = SHOW
-    blocks[3].status = SHOW
-    filter_manager.extend_blocks(blocks)
+    filter_manager.extend_blocks(blocks[:2])
 
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!', ignored=True)
@@ -213,7 +212,7 @@ def modify_endgame_mix(filter_manager):
     # 8，改稀有度，高亮边框
     blocks = filter_manager.add_comment(219, 'W-soc offhand weapons')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].modify(Rarity=RARITY_N2R, SetBorderColor=COLOR_WHITE)
+    blocks[1].modify(Rarity=RARITY_N2R, SetFontSize=38, SetBorderColor=COLOR_WHITE)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(220, 'Sacrificial Garb')
@@ -239,12 +238,11 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    hide_blocks = filter_manager.get_blocks(700)
     if settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
-        for hide_block in hide_blocks:
-            hide_block.modify(status=DEBUG, Corrupted=False, Identified=False,
-                              Class=settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
-        filter_manager.extend_blocks(hide_blocks)
+        hide_blocks = filter_manager.get_blocks(700)
+        for hide_block in hide_blocks[-2:]:
+            hide_block.modify(status=DEBUG, Identified=False, Class=settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
+            filter_manager.append_block(hide_block)
 
     filter_manager.extend_blocks(blocks)
 
@@ -615,26 +613,26 @@ def modify_filter(filter_manager):
 
     filter_manager.add_comment(1300, 'Currency - PART 2 - Rare currency', ignored=True)
 
+    # 8
+    blocks = filter_manager.add_comment(1302, 'Top Currency')
+    blocks[0].BaseType += ' "Master Cartographer\'s Sextant" "Orb of Annulment" "Stacked Deck" '
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.extend_blocks(blocks)
+
     # CURRENCY_ALERT_XXX
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
-    blocks[0].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
-    blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
     blocks[1].BaseType += ' "Regal Shard"'
     if settings.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
     blocks[0].BaseType += ' ' + blocks[1].BaseType
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[1].PlayAlertSound = SOUND_MID_VALUE
 
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
     blocks[-2].BaseType += ' "Horizon Shard"'
-    blocks[-2].modify(PlayAlertSound=SOUND_MID_VALUE, )  # **STYLE_TOP
-    filter_manager.extend_blocks(blocks)
-
-    # 8
-    blocks = filter_manager.add_comment(1302, 'Top Currency')
-    for block in blocks:
-        block.PlayAlertSound = SOUND_TOP_VALUE
+    blocks[-2].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     # ALERT_ESSENCE_BASE_TYPE, 8, 1
@@ -646,6 +644,8 @@ def modify_filter(filter_manager):
 
     # alert "Splinter of Chayula"
     blocks = filter_manager.add_comment(1304, 'Special items')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[3].PlayAlertSound = None
     blocks[-1].PlayAlertSound = SOUND_TOP_VALUE
@@ -684,7 +684,7 @@ def modify_filter(filter_manager):
 
     # CATCHALL
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
-    blocks[0].BaseType = '"Scroll Fragment" "Transmutation Shard" '
+    blocks[0].BaseType += ' "Transmutation Shard" '
     blocks[0].SetFontSize = FONT_SIZE_MIN
     blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     filter_manager.extend_blocks(blocks)

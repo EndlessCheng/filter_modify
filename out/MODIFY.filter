@@ -117,7 +117,7 @@ Show
 # 0207 FLASKS (Endgame rules)
 Show
  Class "Utility Flasks"
- BaseType "Silver" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby" "Sapphire" "Topaz" "Amethyst"
+ BaseType "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby" "Sapphire" "Topaz" "Amethyst"
  Rarity <= Magic
  SetFontSize 40
  SetBorderColor 250 250 250
@@ -137,14 +137,15 @@ Show
  BaseType "Flask"
  Rarity <= Magic
  ItemLevel > 65
- SetFontSize 36
+ SetFontSize 40
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
+ PlayAlertSound 2 300
 Show
  Quality >= 5
  Class "Utility Flasks"
  Rarity <= Magic
- SetFontSize 36
+ SetFontSize 40
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 2 300
@@ -225,22 +226,6 @@ Show
  Class "Daggers" "Wands" "Sceptres"
  Rarity Magic
  ItemLevel = 84
- SetFontSize 34
- SetBorderColor 129 15 213 200
-Show
- Corrupted False
- Identified True
- Class "Helmets" "Boots"
- Rarity Magic
- ItemLevel > 68
- SetFontSize 34
- SetBorderColor 129 15 213 200
-Show
- Corrupted False
- Identified True
- Class "Daggers" "Wands" "Sceptres"
- Rarity Magic
- ItemLevel > 68
  SetFontSize 34
  SetBorderColor 129 15 213 200
 
@@ -370,6 +355,7 @@ Show
  SocketGroup W
  Class Wands Daggers One Hand Shields Thrusting Sceptre Claws
  Rarity <= Rare
+ SetFontSize 38
  SetBorderColor 255 255 255
 
 # 0220 Sacrificial Garb
@@ -477,7 +463,7 @@ Show
 
 # 0602 T1 rare items
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Tiger Hook" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
  Rarity Rare
  ItemLevel >= 75
  SetFontSize 42
@@ -486,60 +472,13 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Tiger Hook" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Hide
- Corrupted False
- Identified False
- Height <= 4
- Width <= 1
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
- Rarity = Rare
- ItemLevel >= 75
- SetFontSize 24
- SetTextColor 255 190 0
- SetBorderColor 150 150 150
- SetBackgroundColor 0 0 0 75
-Hide
- Corrupted False
- Identified False
- Height <= 4
- Width <= 1
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
- Rarity = Rare
- ItemLevel >= 65
- SetFontSize 24
- SetBorderColor 150 150 150
- SetBackgroundColor 0 0 0 75
-Hide
- Corrupted False
- Identified False
- Height <= 2
- Width <= 2
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
- Rarity = Rare
- ItemLevel >= 75
- SetFontSize 24
- SetTextColor 255 190 0
- SetBorderColor 150 150 150
- SetBackgroundColor 0 0 0 75
-Hide
- Corrupted False
- Identified False
- Height <= 2
- Width <= 2
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
- Rarity = Rare
- ItemLevel >= 65
- SetFontSize 24
- SetBorderColor 150 150 150
- SetBackgroundColor 0 0 0 75
-Hide
- Corrupted False
  Identified False
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
@@ -549,7 +488,6 @@ Hide
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
 Hide
- Corrupted False
  Identified False
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
@@ -1787,6 +1725,16 @@ Show
 
 # 1300 Currency - PART 2 - Rare currency
 
+# 1302 Top Currency
+Show
+ Class Currency
+ BaseType "Mirror of Kalandra" "Exalted Orb" "Divine Orb" "Mirror Shard" "Eternal Orb" "Albino Rhoa Feather" "Master Cartographer's Sextant" "Orb of Annulment" "Stacked Deck" 
+ SetFontSize 45
+ SetTextColor 255 0 0 255
+ SetBorderColor 255 0 0 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+
 # 1301 Regular Rare Currency
 Show
  Class Currency
@@ -1835,16 +1783,6 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 135 140 100 255
-
-# 1302 Top Currency
-Show
- Class Currency
- BaseType "Mirror of Kalandra" "Exalted Orb" "Divine Orb" "Mirror Shard" "Eternal Orb" "Albino Rhoa Feather"
- SetFontSize 45
- SetTextColor 255 0 0 255
- SetBorderColor 255 0 0 255
- SetBackgroundColor 255 255 255 255
- PlayAlertSound 8 300
 
 # 1303 Essence Tier List
 Show
@@ -1902,7 +1840,7 @@ Show
  SetTextColor 130 25 255 255
  SetBorderColor 130 25 255 255
  SetBackgroundColor 255 255 255 255
- PlayAlertSound 6 300
+ PlayAlertSound 8 300
 Show
  Class Currency
  BaseType "Blessing of Xoph" "Blessing of Esh" "Blessing of Tul"
@@ -1910,7 +1848,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213
- PlayAlertSound 2 300
+ PlayAlertSound 1 300
 Show
  Class Currency
  BaseType "Splinter of Chayula"
