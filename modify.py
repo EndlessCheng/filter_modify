@@ -664,7 +664,7 @@ def modify_filter(filter_manager):
     # 8
     blocks = filter_manager.add_comment(1403, 'T2 - Great cards')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Humility" "The Encroaching Darkness" '
+    blocks[0].BaseType += ' "Humility" "The Encroaching Darkness" "The Throne" '
     filter_manager.extend_blocks(blocks)
 
     # 1

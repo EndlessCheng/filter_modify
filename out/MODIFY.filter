@@ -477,7 +477,7 @@ Show
 
 # 0602 T1 rare items
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
  Rarity Rare
  ItemLevel >= 75
  SetFontSize 42
@@ -486,7 +486,7 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Show
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Siege Axe" "Behemoth Mace"
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Siege Axe" "Vaal Hatchet" "Runic Hatchet"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
@@ -1974,7 +1974,7 @@ Show
 # 1403 T2 - Great cards
 Show
  Class "Divination"
- BaseType "Chaotic Disposition" "Lucky Deck" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Fletcher" "The Formless Sea" "The Hoarder" "The Polymath" "The Risk" "The Valley of Steel Boxes" "The Void" "The Wretched" "Time-Lost Relic" "Humility" "The Encroaching Darkness" 
+ BaseType "Chaotic Disposition" "Lucky Deck" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Fletcher" "The Formless Sea" "The Hoarder" "The Polymath" "The Risk" "The Valley of Steel Boxes" "The Void" "The Wretched" "Time-Lost Relic" "Humility" "The Encroaching Darkness" "The Throne" 
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 255 255 0 255
@@ -2469,7 +2469,7 @@ Show
 # 2301 Leveling rares - specific items
 Show
  LinkedSockets >= 4
- Class "Body Armour" "Boots" "Gloves" "Helmets"
+ Class "Body Armour" "Helmets" "Gloves" "Boots"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2478,7 +2478,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RRG
- Class "Body Armour" "Boots" "Gloves" "Helmets"
+ Class "Body Armour" "Helmets" "Gloves" "Boots"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2488,7 +2488,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RRR
- Class "Body Armour" "Boots" "Gloves" "Helmets"
+ Class "Body Armour" "Helmets" "Gloves" "Boots"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2845,7 +2845,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Body Armour" "Boots" "Gloves" "Helmets"
+ Class "Body Armour" "Helmets" "Gloves" "Boots"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2855,7 +2855,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Body Armour" "Boots" "Gloves" "Helmets"
+ Class "Body Armour" "Helmets" "Gloves" "Boots"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255

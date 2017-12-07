@@ -63,9 +63,9 @@ CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
-    '"Boots"',
-    '"Gloves"',
     '"Helmets"',
+    '"Gloves"',
+    '"Boots"',
 ])
 
 #
@@ -81,25 +81,20 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
 
-    '"Siege Axe"',
-    '"Behemoth Mace"',
+    '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',
+    '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
 
-    # '"Archon Kite Shield"',
-    # '"Ezomyte Tower Shield"',
-    # '"Opal Sceptre" "Void Sceptre" "Karui Sceptre" "Vaal Sceptre"',
-    # '"Fossilised Spirit Shield" "Ivory Spirit Shield" "Bone Spirit Shield"'
+    '"Behemoth Mace"',
+    '"Siege Axe" "Vaal Hatchet" "Runic Hatchet"',
 ])
-# '"Kite Shield"', '"Tower Shield"', '"Sceptre" "Fetish" "Sekhem"', '"Spirit Shield"',
-# '"Crusader Gloves" "Legion Gloves" "Soldier Gloves"',
-# '"Crusader Boots" "Legion Boots" "Soldier Boots" "Zealot Boots" "Riveted Boots"',
 
 HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
     '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
     # '"Body Armour"',
     # '"Sceptres" "Claws" "One Hand"',
-    # '"Gloves"',
     # '"Boots"',
     # '"Helmets"',
+    # '"Gloves"',
     # '"Daggers" "Wands"',
 ])
 

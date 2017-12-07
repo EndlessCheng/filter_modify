@@ -21,6 +21,9 @@ class FilterBlock:
         'BaseType',
         'Rarity',
         'ItemLevel',
+        'ElderItem',
+        'ShaperItem',
+        'ShapedMap',
 
         # Actions(Styles)
         'SetFontSize',
