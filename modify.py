@@ -61,8 +61,9 @@ STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BR
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
 _STYLE_MAP_BASE = {'SetFontSize': FONT_SIZE_MAX, 'SetTextColor': COLOR_BLACK, 'SetBackgroundColor': COLOR_SILVER}
-STYLE_MAP_HIGH = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED}
-STYLE_MAP_MID = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_YELLOW}
+STYLE_MAP_HIGH_11_14 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED}
+STYLE_MAP_MID_9_10 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_ORANGE}
+STYLE_MAP_MID_6_8 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_YELLOW}
 STYLE_MAP_LOW_3_5 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLUE}
 STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_WHITE}
 STYLE_LINKS = {'SetBorderColor': COLOR_AQUA}
@@ -363,13 +364,15 @@ def modify_gem_flask_map(filter_manager):
     # 加红边
     blocks = filter_manager.add_comment(1204, 'High tier maps(T11-14)')
     for block in blocks:
-        block.modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH)
+        block.modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
     filter_manager.extend_blocks(blocks)
 
-    # 加黄边，不显示稀有度
+    # 加黄边/橙边，不显示稀有度
     blocks = filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
-    for block in blocks:
-        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID)
+    for block in blocks[:4]:
+        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_9_10)
+    for block in blocks[4:]:
+        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_6_8)
     filter_manager.extend_blocks(blocks)
 
     # 加蓝边/黑边，不显示稀有度

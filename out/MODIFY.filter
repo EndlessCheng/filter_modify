@@ -1475,7 +1475,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 0
+ SetBorderColor 255 125 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1484,7 +1484,7 @@ Show
  ItemLevel < 83
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 0
+ SetBorderColor 255 125 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1493,7 +1493,7 @@ Show
  BaseType "Shaped"
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 0
+ SetBorderColor 255 125 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
@@ -1501,7 +1501,7 @@ Show
  Class Maps
  SetFontSize 45
  SetTextColor 0 0 0
- SetBorderColor 255 255 0
+ SetBorderColor 255 125 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
 Show
