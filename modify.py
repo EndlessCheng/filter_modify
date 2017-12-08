@@ -102,16 +102,19 @@ def modify_endgame_mix(filter_manager):
     blocks[4].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     filter_manager.extend_blocks(blocks)
 
-    # 参考模板，加上Gloves Boots Shields Bows Quivers，改稀有度
+    # 加上Gloves Boots Shields Quivers，改稀有度
     # 项链：+1诅咒，+1球，移速，抗性上限
-    # 腰带：+1球，技能持续时间/范围
+    # 腰带：+1球，技能持续时间
     # 手脚盾：+1技能等级
     # 手：击中附加诅咒
     # 脚：+1球
-    # 弓和箭袋：+1箭
+    # 箭袋：+1箭
+    # 爪匕剑：3-6%格挡
     filter_manager.add_comment(205, 'Corrupted items', ignored=True)
-    block = FilterBlock(Corrupted=True, Class='Amulet Belt Gloves Boots Shields Bows Quivers', Rarity=RARITY_N2R,
-                        SetFontSize=36, SetBorderColor='129 15 213 200')
+    block = FilterBlock(Corrupted=True,
+                        Class='"Amulets" "Belts" "Gloves" "Boots" "Shields" "Quivers" '
+                              '"Claws" "Daggers" "One Hand Swords"',
+                        Rarity=RARITY_N2R, SetFontSize=36, SetBorderColor='129 15 213 200')
     filter_manager.append_block(block)
 
     # 参考模板 CHANCING_BASE_TYPE

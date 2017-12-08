@@ -107,7 +107,7 @@ Show
 # 0205 Corrupted items
 Show
  Corrupted True
- Class Amulet Belt Gloves Boots Shields Bows Quivers
+ Class "Amulets" "Belts" "Gloves" "Boots" "Shields" "Quivers" "Claws" "Daggers" "One Hand Swords"
  Rarity <= Rare
  SetFontSize 36
  SetBorderColor 129 15 213 200
