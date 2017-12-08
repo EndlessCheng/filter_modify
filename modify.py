@@ -44,9 +44,26 @@ COLOR_BLUE = '0 0 255'
 COLOR_MAGENTA = '255 0 255'
 COLOR_MAGENTA_DARK = '129 15 213 200'
 
+_SOUND_1 = '1 300'  # 重敲锣声
+_SOUND_2 = '2 300'
+_SOUND_3 = '3 300'  # 沉闷地敲锣
+_SOUND_4 = '4 300'
+_SOUND_5 = '5 300'  # 摩托快速驶过
+_SOUND_6 = '6 300'
+_SOUND_7 = '7 300'  # 类似8，废弃
+_SOUND_8 = '8 300'
+_SOUND_9 = '9 300'  # 类似8，废弃
+_SOUND_10 = '10 300'  # 重锤铁板
+_SOUND_11 = '11 300'  # 重锤石板
+_SOUND_13 = '13 300'  # 敲锣声
+_SOUND_14 = '14 300'  # 类似8，废弃
+_SOUND_15 = '15 300'  # 类似8，废弃
+_SOUND_16 = '16 300'  # 锤石板
+
 SOUND_TOP_VALUE = '8 300'
 SOUND_MID_VALUE = '1 300'
 SOUND_LOW_VALUE = '2 300'
+SOUND_WAR = '10 300'
 SOUND_MAP = '4 300'
 SOUND_UNIQUE = '6 300'
 # SOUND_CHANCE = '4 300'
