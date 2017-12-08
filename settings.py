@@ -145,6 +145,7 @@ SHOW_ENDGAME_4L = False
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
     CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Ezomyte Tower Shield"'][:])
+    # "Ebony Tower Shield" "Glorious Plate" "Gold Amulet" "Rawhide Tower Shield" "Sorcerer Boots" "Full Wyrmscale"
 
 ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
 # "Essence of Woe"

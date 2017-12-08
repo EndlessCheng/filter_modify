@@ -64,7 +64,7 @@ _SOUND_16 = '16 300'  # 锤石板
 SOUND_TOP_VALUE = _SOUND_8
 SOUND_MID_VALUE = _SOUND_1
 SOUND_LOW_VALUE = _SOUND_2
-SOUND_WAR = _SOUND_10
+SOUND_SHAPER_ELDER = _SOUND_10
 SOUND_MAP = _SOUND_4
 SOUND_UNIQUE = _SOUND_6
 # SOUND_CHANCE = _SOUND_4
@@ -95,12 +95,20 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 8
-    blocks = filter_manager.add_comment(202, '5-Linked items')
+    blocks = filter_manager.add_comment(203, '5-Linked items')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
+    # 8 10
+    blocks = filter_manager.add_comment(202, 'Shaper and Elder Items')
+    for block in blocks[:-2]:
+        block.PlayAlertSound = SOUND_TOP_VALUE
+    for block in blocks[-2:]:
+        block.PlayAlertSound = SOUND_SHAPER_ELDER
+    filter_manager.extend_blocks(blocks)
+
     # 8 1 样式改掉
-    blocks = filter_manager.add_comment(203, '6-Socket Items')
+    blocks = filter_manager.add_comment(204, '6-Socket Items')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示
@@ -108,8 +116,23 @@ def modify_endgame_mix(filter_manager):
                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
+    # 8 1 1
+    blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].PlayAlertSound = SOUND_MID_VALUE
+    blocks[2].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks)
+
+    # 8 8 1 1
+    blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[2].PlayAlertSound = SOUND_MID_VALUE
+    blocks[3].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks)
+
     # 8 1
-    blocks = filter_manager.add_comment(204, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
+    blocks = filter_manager.add_comment(207, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
@@ -120,7 +143,7 @@ def modify_endgame_mix(filter_manager):
     # 改稀有度
     # 项链：+1诅咒，+1球，抗性上限；  腰带：+1球
     # 手：击中附加诅咒；  脚：+1球；  箭袋：+1箭；  爪匕剑：3-6%格挡
-    filter_manager.add_comment(205, 'Corrupted items', ignored=True)
+    filter_manager.add_comment(208, 'Corrupted items', ignored=True)
     block_small = FilterBlock(Corrupted=True, Class='"Amulets" "Belts"', Rarity=RARITY_N2R,
                               SetFontSize=36, SetBorderColor=COLOR_MAGENTA_DARK)
     block_other = block_small.copy_modify(Class='"Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"',
@@ -128,7 +151,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks([block_small, block_other])
 
     # 参考模板 CHANCING_BASE_TYPE
-    filter_manager.add_comment(206, 'Chancing items', ignored=True)
+    filter_manager.add_comment(209, 'Chancing items', ignored=True)
     if settings.CHANCING_BASE_TYPE != '':
         block = FilterBlock(Corrupted=False, BaseType=settings.CHANCING_BASE_TYPE, Rarity=RARITY_NORMAL,
                             SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT,
@@ -138,7 +161,7 @@ def modify_endgame_mix(filter_manager):
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
     # 无视物等
-    blocks = filter_manager.add_comment(207, 'FLASKS (Endgame rules)')
+    blocks = filter_manager.add_comment(210, 'FLASKS (Endgame rules)')
     if settings.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         block_utility = blocks[0].copy_modify(Quality=None, Class='"Utility Flasks"',
                                               BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
@@ -149,14 +172,14 @@ def modify_endgame_mix(filter_manager):
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None)
     filter_manager.extend_blocks(blocks[:3])
 
-    filter_manager.add_comment(208, 'Add your own crafting rules here', ignored=True)
+    filter_manager.add_comment(211, 'Add your own crafting rules here', ignored=True)
 
-    blocks = filter_manager.add_comment(209, '83/84+ Endgame crafting rules')
+    blocks = filter_manager.add_comment(212, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(blocks)
 
     # 只留第一个 ALERT_JEWEL_BASE_TYPE
     # ALERT_MAGIC_BASE_TYPE
-    blocks = filter_manager.add_comment(210, 'Magic jewel and others')
+    blocks = filter_manager.add_comment(213, 'Magic jewel and others')
     if settings.ALERT_JEWEL_BASE_TYPE != '':
         block_alert_jewel = blocks[0].copy_modify(BaseType=settings.ALERT_JEWEL_BASE_TYPE,
                                                   PlayAlertSound=SOUND_LEVELING)
@@ -170,11 +193,11 @@ def modify_endgame_mix(filter_manager):
         filter_manager.append_block(block_magic_alert)
 
     # 去掉 Hide
-    blocks = filter_manager.add_comment(211, 'Warband items')
+    blocks = filter_manager.add_comment(214, 'Warband items')
     filter_manager.extend_blocks(blocks[:2])
 
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
-    filter_manager.add_comment(212, 'Remaining crafting rules - add your own bases here!', ignored=True)
+    filter_manager.add_comment(215, 'Remaining crafting rules - add your own bases here!', ignored=True)
     if settings.SSF_CRAFT_BASE_TYPE != '':
         block_normal = filter_manager.get_blocks(2406)[0]
         block_normal_alert = block_normal.copy_modify(BaseType=settings.SSF_CRAFT_BASE_TYPE, ItemLevel=None,
@@ -197,7 +220,7 @@ def modify_endgame_mix(filter_manager):
             SetTextColor=COLOR_WHITE))
 
     # NEED_CHISEL
-    blocks = filter_manager.add_comment(213, 'Chisel recipe items')
+    blocks = filter_manager.add_comment(216, 'Chisel recipe items')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
     blocks[1].Quality = '>= 10' if settings.NEED_CHISEL else '>= 14'
@@ -205,31 +228,31 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks[:3])
 
     # 8
-    blocks = filter_manager.add_comment(214, 'Fishing Rod')
+    blocks = filter_manager.add_comment(217, 'Fishing Rod')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(215, 'SRS Crude Bow', ignored=True)
+    filter_manager.add_comment(218, 'SRS Crude Bow', ignored=True)
 
     # NEED_RGB
-    blocks = filter_manager.add_comment(216, 'Chromatic recipe items ("RGB Recipe")')
+    blocks = filter_manager.add_comment(219, 'Chromatic recipe items ("RGB Recipe")')
     if settings.NEED_RGB:
         filter_manager.extend_blocks(blocks)
 
     # SHOW_ENDGAME_4L
-    blocks = filter_manager.add_comment(217, 'Endgame-start 4-links')
+    blocks = filter_manager.add_comment(220, 'Endgame-start 4-links')
     if settings.SHOW_ENDGAME_4L:
         filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(218, 'Animate Weapon script - deactivated by default', ignored=True)
+    filter_manager.add_comment(221, 'Animate Weapon script - deactivated by default', ignored=True)
 
     # 8，改稀有度，高亮边框
-    blocks = filter_manager.add_comment(219, 'W-soc offhand weapons')
+    blocks = filter_manager.add_comment(222, 'W-soc offhand weapons')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].modify(Rarity=RARITY_N2R, SetFontSize=38, SetBorderColor=COLOR_WHITE)
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(220, 'Sacrificial Garb')
+    blocks = filter_manager.add_comment(223, 'Sacrificial Garb')
     filter_manager.extend_blocks(blocks)
 
 
@@ -515,7 +538,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2405, 'Optional Recipes', ignored=True)
 
-    # Referred by [0210] [0212]
+    # Referred by [0213] [0215]
     blocks = filter_manager.add_comment(2406, 'Act 1')
     blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
     blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
@@ -759,7 +782,7 @@ def modify_filter(filter_manager):
     # 1900-2505
     modify_leveling(filter_manager)
 
-    # Referred by [0212] [2501]
+    # Referred by [0215] [2501]
     block = filter_manager.add_comment(2600, 'HIDE LAYER 5 - Remaining Items')[0]
     block.modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     filter_manager.append_block(block)

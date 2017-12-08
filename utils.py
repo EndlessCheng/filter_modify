@@ -11,25 +11,19 @@ class FilterBlock:
         'LinkedSockets',
         'Sockets',
         'Quality',
+        'ElderItem', 'ShaperItem', 'ShapedMap',
         'Corrupted',
         'Identified',
         'SocketGroup',
-        'Height',
-        'Width',
+        'Height', 'Width',
         'DropLevel',
         'Class',
         'BaseType',
         'Rarity',
         'ItemLevel',
-        'ElderItem',
-        'ShaperItem',
-        'ShapedMap',
 
         # Actions(Styles)
-        'SetFontSize',
-        'SetTextColor',
-        'SetBorderColor',
-        'SetBackgroundColor',
+        'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
         'PlayAlertSound',
     ]
 
