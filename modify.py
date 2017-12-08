@@ -31,21 +31,17 @@ COLOR_SILVER = '200 200 200'
 COLOR_GRAY = '150 150 150'
 COLOR_BLACK = '0 0 0'
 COLOR_RED = '255 0 0'
-COLOR_RED_LIGHT = '210 0 0'
 COLOR_YELLOW = '255 255 0'
-COLOR_YELLOW_LIGHT = '255 255 119'
-COLOR_GOLD = '213 159 0'
+COLOR_TANGERINE = '213 159 0'
 COLOR_ORANGE = '255 125 0'
-COLOR_ORANGE_LIGHT = '255 125 0 200'
-COLOR_BROWN = '100 75 0'
+COLOR_UNIQUE = '175 96 37'  # Rich Gold
+COLOR_OLIVE = '100 75 0'
 COLOR_LIME = '0 255 0'
 COLOR_LIME_LIGHT = '0 210 0 210'
 COLOR_AQUA = '0 255 255'
-COLOR_AQUA_LIGHT = '100 255 255'
 COLOR_BLUE = '0 0 255'
-COLOR_BLUE_LIGHT = '136 136 255'
-COLOR_PURPLE = '255 0 255'
-COLOR_UNIQUE = '175 96 37'
+COLOR_MAGENTA = '255 0 255'
+COLOR_MAGENTA_DARK = '129 15 213 200'
 
 SOUND_TOP_VALUE = '8 300'
 SOUND_MID_VALUE = '1 300'
@@ -57,8 +53,8 @@ SOUND_UNIQUE = '6 300'
 SOUND_LEVELING = '12 300'
 
 STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
-STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN}
-STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_BROWN + ' 225'}
+STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_OLIVE}
+STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_OLIVE + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
 _STYLE_MAP_BASE = {'SetFontSize': FONT_SIZE_MAX, 'SetTextColor': COLOR_BLACK, 'SetBackgroundColor': COLOR_SILVER}
 STYLE_MAP_HIGH_11_14 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_RED}
@@ -89,7 +85,7 @@ def modify_endgame_mix(filter_manager):
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示
-    blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_GOLD,
+    blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE,
                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
@@ -102,20 +98,15 @@ def modify_endgame_mix(filter_manager):
     blocks[4].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     filter_manager.extend_blocks(blocks)
 
-    # 加上Gloves Boots Shields Quivers，改稀有度
-    # 项链：+1诅咒，+1球，移速，抗性上限
-    # 腰带：+1球，技能持续时间
-    # 手脚盾：+1技能等级
-    # 手：击中附加诅咒
-    # 脚：+1球
-    # 箭袋：+1箭
-    # 爪匕剑：3-6%格挡
+    # 改稀有度
+    # 项链：+1诅咒，+1球，抗性上限；  腰带：+1球
+    # 手：击中附加诅咒；  脚：+1球；  箭袋：+1箭；  爪匕剑：3-6%格挡
     filter_manager.add_comment(205, 'Corrupted items', ignored=True)
-    block = FilterBlock(Corrupted=True,
-                        Class='"Amulets" "Belts" "Gloves" "Boots" "Shields" "Quivers" '
-                              '"Claws" "Daggers" "One Hand Swords"',
-                        Rarity=RARITY_N2R, SetFontSize=36, SetBorderColor='129 15 213 200')
-    filter_manager.append_block(block)
+    block_small = FilterBlock(Corrupted=True, Class='"Amulets" "Belts"', Rarity=RARITY_N2R,
+                              SetFontSize=36, SetBorderColor=COLOR_MAGENTA_DARK)
+    block_other = block_small.copy_modify(Class='"Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"',
+                                          SetFontSize=None)
+    filter_manager.extend_blocks([block_small, block_other])
 
     # 参考模板 CHANCING_BASE_TYPE
     filter_manager.add_comment(206, 'Chancing items', ignored=True)
@@ -261,9 +252,9 @@ def modify_endgame_rare(filter_manager):
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
     if settings.ALERT_SMALLS_RARE:
-        blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
+        blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)  # regal smalls
         blocks[2].PlayAlertSound = SOUND_LEVELING  # 65-74 smalls
-        blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_GOLD)  # regal smalls
+        blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)  # regal smalls
         blocks[4].PlayAlertSound = SOUND_LEVELING  # 65-74 smalls
     filter_manager.extend_blocks(blocks)
 
@@ -636,7 +627,7 @@ def modify_filter(filter_manager):
 
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))
+    blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))  # Pavlova
     blocks[-2].BaseType += ' "Horizon Shard"'
     blocks[-2].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)

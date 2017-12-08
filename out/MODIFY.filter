@@ -107,9 +107,14 @@ Show
 # 0205 Corrupted items
 Show
  Corrupted True
- Class "Amulets" "Belts" "Gloves" "Boots" "Shields" "Quivers" "Claws" "Daggers" "One Hand Swords"
+ Class "Amulets" "Belts"
  Rarity <= Rare
  SetFontSize 36
+ SetBorderColor 129 15 213 200
+Show
+ Corrupted True
+ Class "Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"
+ Rarity <= Rare
  SetBorderColor 129 15 213 200
 
 # 0206 Chancing items
