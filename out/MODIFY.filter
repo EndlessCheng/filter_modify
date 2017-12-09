@@ -18,7 +18,7 @@ Show
  LinkedSockets 5
  Rarity < Unique
  ItemLevel >= 65
- SetFontSize 42
+ SetFontSize 45
  SetBorderColor 0 255 255 255
  PlayAlertSound 8 300
 
@@ -238,7 +238,7 @@ Show
  Class "Utility Flasks"
  BaseType "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt" "Ruby" "Sapphire" "Topaz" "Amethyst"
  Rarity <= Magic
- SetFontSize 40
+ SetFontSize 42
  SetBorderColor 250 250 250
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 12 300
@@ -247,7 +247,7 @@ Show
  BaseType "Flask"
  Rarity <= Magic
  ItemLevel > 65
- SetFontSize 40
+ SetFontSize 42
  SetBorderColor 250 250 250
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 2 300
@@ -256,7 +256,7 @@ Show
  BaseType "Flask"
  Rarity <= Magic
  ItemLevel > 65
- SetFontSize 40
+ SetFontSize 42
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 2 300
@@ -264,7 +264,7 @@ Show
  Quality >= 5
  Class "Utility Flasks"
  Rarity <= Magic
- SetFontSize 40
+ SetFontSize 42
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 2 300
@@ -388,7 +388,7 @@ Show
  Quality = 20
  BaseType "Gavel" "Rock Breaker" "Stone Hammer"
  Rarity < Unique
- SetFontSize 38
+ SetFontSize 45
  SetBorderColor 250 250 250
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 1 300
@@ -466,7 +466,7 @@ Show
  SocketGroup WWW
  Class Wands Daggers One Hand Shields Thrusting Sceptre Claws
  Rarity <= Rare
- SetFontSize 42
+ SetFontSize 45
  SetBorderColor 255 255 255
  PlayAlertSound 8 300
 Show
@@ -610,7 +610,6 @@ Hide
  Identified False
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
- ItemLevel >= 65
  SetFontSize 20
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
@@ -758,7 +757,7 @@ Show
  BaseType "Breach"
  Rarity <= Rare
  ItemLevel >= 75
- SetFontSize 36
+ SetFontSize 45
  SetTextColor 255 190 0
  SetBorderColor 130 25 255 255
  SetBackgroundColor 65 20 80
@@ -766,7 +765,7 @@ Show
  Class Rings
  BaseType "Breach"
  Rarity <= Rare
- SetFontSize 36
+ SetFontSize 45
  SetBorderColor 130 25 255 255
  SetBackgroundColor 65 20 80
 
@@ -784,7 +783,7 @@ Show
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  ItemLevel >= 75
- SetFontSize 40
+ SetFontSize 45
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
  SetBackgroundColor 213 159 0
@@ -794,7 +793,7 @@ Show
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  ItemLevel >= 65
- SetFontSize 40
+ SetFontSize 45
  SetBorderColor 25 235 25 255
  SetBackgroundColor 10 60 25 255
  PlayAlertSound 12 300
@@ -802,7 +801,7 @@ Show
  Class Rings Amulets Belts
  Rarity Rare
  ItemLevel >= 75
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
  SetBackgroundColor 213 159 0
@@ -811,7 +810,7 @@ Show
  Class Rings Amulets Belts
  Rarity Rare
  ItemLevel >= 65
- SetFontSize 42
+ SetFontSize 45
  SetBorderColor 25 235 25 255
  SetBackgroundColor 35 100 20 255
  PlayAlertSound 12 300
@@ -1471,19 +1470,19 @@ Show
 Show
  Class Gems
  BaseType "Detonate Mines" "Added Chaos Damage" "Vaal" "Enhance"
- SetFontSize 40
+ SetFontSize 45
  SetBorderColor 30 150 180 150
  PlayAlertSound 1 300
 Show
  Quality >= 1
  Class Gems
- SetFontSize 40
+ SetFontSize 45
  SetBorderColor 30 150 180 150
  PlayAlertSound 2 300
 Show
  Class Gems
- BaseType "Clarity" "Concentrated Effect" "Fortify" "Immortal Call" "Cast when Damage Taken" "Multistrike"
- SetFontSize 40
+ BaseType "Immortal Call" "Cast when Damage Taken" "Concentrated Effect" "Enfeeble" "Fortify" "Blood Magic" "Blasphemy"
+ SetFontSize 45
  SetBorderColor 30 150 180 150
  PlayAlertSound 8 300
 Show
@@ -1833,7 +1832,7 @@ Show
  PlayAlertSound 8 300
 Show
  Class "Map Fragments"
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 180 0 0 255
  SetBorderColor 180 0 0 255
  SetBackgroundColor 0 0 0 255
@@ -2004,7 +2003,7 @@ Show
 Show
  Class Currency
  BaseType "Prophecy"
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213
@@ -2046,7 +2045,7 @@ Show
 Show
  Class "Divination"
  BaseType "Dialla's Subjugation" "Earth Drinker" "Humility" "Jack in the Box" "Left to Fate" "Merciless Armament" "No Traces" "Scholar of the Seas" "Standoff" "The Body" "The Cursed King" "The Dark Mage" "The Fletcher" "The Gladiator" "The Inventor" "The Jester" "The Porcupine" "The Scavenger" "The Stormcaller" "The Warlord" "Time-Lost Relic" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 255 255
  SetBackgroundColor 50 220 240 235
@@ -2056,6 +2055,7 @@ Show
 Show
  Class "Divination"
  BaseType "Carrion Crow" "Cartographer's Delight" "Death" "Destined to Crumble" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Struck by Lightning" "The Feast" "The Incantation" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Scholar" "The Sigil" "The Surgeon" "The Twins" "The Warden" "Thunderous Skies"
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 175 215 230 180
@@ -2064,7 +2064,7 @@ Show
 # 1406 T4 - ...showing the remaining cards
 Show
  Class "Divination"
- SetFontSize 40
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 100 150 255
  SetBackgroundColor 145 215 230 225
@@ -2530,7 +2530,7 @@ Show
 # 2301 Leveling rares - specific items
 Show
  LinkedSockets >= 4
- Class "Body Armour" "Helmets" "Gloves" "Boots"
+ Class "Body Armour" "Gloves" "Helmets" "Boots"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2539,7 +2539,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RRG
- Class "Body Armour" "Helmets" "Gloves" "Boots"
+ Class "Body Armour" "Gloves" "Helmets" "Boots"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2549,7 +2549,7 @@ Show
 Show
  LinkedSockets >= 3
  SocketGroup RRR
- Class "Body Armour" "Helmets" "Gloves" "Boots"
+ Class "Body Armour" "Gloves" "Helmets" "Boots"
  Rarity Rare
  ItemLevel <= 17
  SetFontSize 45
@@ -2906,7 +2906,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Body Armour" "Helmets" "Gloves" "Boots"
+ Class "Body Armour" "Gloves" "Helmets" "Boots"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2916,7 +2916,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Body Armour" "Helmets" "Gloves" "Boots"
+ Class "Body Armour" "Gloves" "Helmets" "Boots"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3106,13 +3106,6 @@ Show
  BaseType "War Axe"
  Rarity <= Magic
  ItemLevel <= 48
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
- BaseType "Chest Splitter"
- Rarity <= Magic
- ItemLevel <= 51
  SetFontSize 42
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185

@@ -28,7 +28,7 @@ HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
 ])
 
-# 找血
+# 找血，血优先于点伤（珠宝也是）
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Iron Ring"',
     '"Rustic Sash"',
@@ -41,10 +41,23 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Behemoth Mace"',  # 70
 ])
 
-HIDE_LEVELING_RARE_CLASS = ' '.join([
-    #'"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+HIDE_BELOW_T1_RARE_CLASS = ' '.join([
+    '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+    # '"Sceptres" "Claws"',
+    # '"One Hand Swords"',
     # '"Body Armour"',
-    # '"Wands" "Daggers"',
+    # '"One Hand"',
+    # '"Boots"',
+    # '"Helmets"',
+    # '"Gloves"',
+    # '"Daggers" "Wands"',
+])
+
+LINKED_CLASS = ' '.join([
+    '"Body Armour"',
+    '"Gloves"',
+    '"Helmets"',
+    '"Boots"',
 ])
 
 SHOW_FLASK_HALLOWED = True
@@ -62,13 +75,6 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([  # 80+Life
 ])
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
-
-LINKED_CLASS = ' '.join([
-    '"Body Armour"',
-    '"Helmets"',
-    '"Gloves"',
-    '"Boots"',
-])
 
 #
 # Part 3 - Maps
@@ -89,16 +95,6 @@ T1_RARE_BASE_TYPE = ' '.join([
 
     '"Behemoth Mace"',
     '"Siege Axe" "Vaal Hatchet" "Runic Hatchet"',
-])
-
-HIDE_ENDGAME_BELOW_T1_RARE_CLASS = ' '.join([
-    '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
-    # '"Body Armour"',
-    # '"Sceptres" "Claws" "One Hand"',
-    # '"Boots"',
-    # '"Helmets"',
-    # '"Gloves"',
-    # '"Daggers" "Wands"',
 ])
 
 NEED_RGB = True
@@ -136,9 +132,9 @@ L2_MAX_IL = 4
 # SMALLS_MAX_IL = 7
 
 LEVELING_GEMS_BASE_TYPE = ' '.join([
-    '"Clarity" "Concentrated Effect" "Fortify"',
-    '"Immortal Call" "Cast when Damage Taken" "Multistrike"',
-]) if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
+    '"Immortal Call" "Cast when Damage Taken"',
+    '"Concentrated Effect" "Enfeeble" "Fortify" "Blood Magic" "Blasphemy"',
+])  # if SHOW_FLASK_HALLOWED else ''  # ALERT_SCEPTRE
 #  "Orb of Storms" "Flame Dash" "Scorching Ray" "Arctic Armour" "Elemental Focus" "Channelling"
 
 HIDE_FLASK_MANA = not SHOW_FLASK_HALLOWED or not SHOW_FLASK_LIFE

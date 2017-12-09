@@ -96,7 +96,7 @@ def modify_endgame_mix(filter_manager):
 
     # 8
     blocks = filter_manager.add_comment(203, '5-Linked items')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 8 10
@@ -159,13 +159,15 @@ def modify_endgame_mix(filter_manager):
     # ALERT_UTILITY_FLASK_BASE_TYPE
     # 无视物等
     blocks = filter_manager.add_comment(210, 'FLASKS (Endgame rules)')
+    for block in blocks:
+        block.SetFontSize = 42
     if settings.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         block_utility = blocks[0].copy_modify(Quality=None, Class='"Utility Flasks"',
                                               BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
                                               PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_utility)
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[1].modify(SetFontSize=blocks[0].SetFontSize, PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None)
     filter_manager.extend_blocks(blocks[:3])
 
@@ -220,6 +222,7 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(216, 'Chisel recipe items')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
+    blocks[0].SetFontSize = FONT_SIZE_MAX
     blocks[1].Quality = '>= 10' if settings.NEED_CHISEL else '>= 14'
     blocks[2].Quality = '>= 0' if settings.NEED_CHISEL else '>= 5'
     filter_manager.extend_blocks(blocks[:3])
@@ -245,7 +248,7 @@ def modify_endgame_mix(filter_manager):
 
     # 8，改稀有度，高亮边框
     blocks = filter_manager.add_comment(222, 'W-soc offhand weapons')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     blocks[1].modify(Rarity=RARITY_N2R, SetFontSize=38, SetBorderColor=COLOR_WHITE)
     filter_manager.extend_blocks(blocks)
 
@@ -272,11 +275,11 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    if settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS != '':
+    if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_blocks = filter_manager.get_blocks(700)
-        for hide_block in hide_blocks[-2:]:
-            hide_block.modify(status=DEBUG, Identified=False, Class=settings.HIDE_ENDGAME_BELOW_T1_RARE_CLASS)
-            filter_manager.append_block(hide_block)
+        hide_blocks[-2].modify(status=DEBUG, Identified=False, Class=settings.HIDE_BELOW_T1_RARE_CLASS)
+        hide_blocks[-1].modify(status=DEBUG, Identified=False, Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
+        filter_manager.extend_blocks(hide_blocks[-2:])
 
     filter_manager.extend_blocks(blocks)
 
@@ -284,11 +287,15 @@ def modify_endgame_rare(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
+    for block in blocks:
+        block.SetFontSize = FONT_SIZE_MAX
     filter_manager.extend_blocks(blocks)
 
     # ALERT_SMALLS_RARE
     # 1, 1, 12, 1, 12
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
+    for block in blocks:
+        block.SetFontSize = FONT_SIZE_MAX
     blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
     if settings.ALERT_SMALLS_RARE:
         blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)  # regal smalls
@@ -362,8 +369,8 @@ def modify_gem_flask_map(filter_manager):
     # LEVELING_GEMS_BASE_TYPE
     blocks = filter_manager.add_comment(902, 'Other gems')
     blocks[0], blocks[1] = blocks[1], blocks[0]
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE
-    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE)
+    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
     if settings.LEVELING_GEMS_BASE_TYPE != '':
         block_leveling_gems = blocks[0].copy_modify(BaseType=settings.LEVELING_GEMS_BASE_TYPE,
                                                     PlayAlertSound=SOUND_TOP_VALUE)
@@ -420,7 +427,7 @@ def modify_gem_flask_map(filter_manager):
     blocks = filter_manager.add_comment(1207, 'Map fragments')
     for block in blocks[:-2]:
         block.PlayAlertSound = SOUND_TOP_VALUE
-    blocks[-2].PlayAlertSound = SOUND_MAP
+    blocks[-2].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MAP)
     blocks[-1].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
@@ -441,10 +448,10 @@ def modify_leveling(filter_manager):
                                               BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
     filter_manager.extend_blocks([block_hide_flasks, block_hide_some_life_flasks])
 
-    if settings.HIDE_LEVELING_RARE_CLASS != '':
-        filter_manager.append_block(
-            FilterBlock(status=DEBUG, Corrupted=False, Class=settings.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
-                        SetFontSize=26))
+    # if settings.HIDE_LEVELING_RARE_CLASS != '':
+    #     filter_manager.append_block(
+    #         FilterBlock(status=DEBUG, Corrupted=False, Class=settings.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
+    #                     SetFontSize=26))
 
     # if settings.RARE_BOOTS_ALERT:
     #     block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
@@ -576,7 +583,7 @@ def modify_leveling(filter_manager):
     _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                       ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
                       ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
-                      ('"War Axe"', 45), ('"Chest Splitter"', 48), ('"Wraith Axe"', 54),
+                      ('"War Axe"', 45), ('"Wraith Axe"', 54),
                       ]
     _LEVELING_BASE_IL_GAP = 3
     block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
@@ -685,7 +692,7 @@ def modify_filter(filter_manager):
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     blocks[2].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[3].PlayAlertSound = None
-    blocks[-1].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[-1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(1400, 'Currency - PART 3 - Divination cards', ignored=True)
@@ -695,7 +702,7 @@ def modify_filter(filter_manager):
 
     # 8
     blocks = filter_manager.add_comment(1402, 'T1 - Top tier cards')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 8
@@ -706,17 +713,17 @@ def modify_filter(filter_manager):
 
     # 1
     blocks = filter_manager.add_comment(1404, 'T3 - Decent cards')
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 2
     blocks = filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before')
-    blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 2
     blocks = filter_manager.add_comment(1406, 'T4 - ...showing the remaining cards')
-    blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # CATCHALL
