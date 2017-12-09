@@ -116,20 +116,17 @@ def modify_endgame_mix(filter_manager):
                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 8 1 1
+    # 8 只留第一个
     blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].PlayAlertSound = SOUND_MID_VALUE
-    blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    filter_manager.extend_blocks(blocks)
+    filter_manager.append_block(blocks[0])
 
-    # 8 8 1 1
+    # 8 8 1 去掉最后一个
     blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    blocks[3].PlayAlertSound = SOUND_MID_VALUE
-    filter_manager.extend_blocks(blocks)
+    filter_manager.extend_blocks(blocks[:3])
 
     # 8 1
     blocks = filter_manager.add_comment(207, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
@@ -480,6 +477,7 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2005, 'Show remaining flasks')
     blocks[1].Quality = '>= 10'
     del blocks[2]  # 移除不需要的提示
+    blocks[-2].status = DEBUG
     blocks[-1].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
@@ -576,8 +574,8 @@ def modify_leveling(filter_manager):
     # HIDE_NORMAL_MAGIC_CLASS
     blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
     _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
-                      ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21),
-                      ('"Arming Axe"', 25), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
+                      ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
+                      ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
                       ('"War Axe"', 45), ('"Chest Splitter"', 48), ('"Wraith Axe"', 54),
                       ]
     _LEVELING_BASE_IL_GAP = 3

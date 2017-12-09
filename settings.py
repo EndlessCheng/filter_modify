@@ -22,15 +22,17 @@ TENCENT = False
 # Use some like >>> r-g <<< in the search box
 MOVE_HAND_MAX_IL = 17  # RRG
 
-L3_MAX_IL = 17
+L3_MAX_IL = 17  # 头脚3L
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
 ])
 
+# 找血
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Iron Ring"',
     '"Rustic Sash"',
+    '"Stygian Vise"',
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',
     '"Two-Stone Ring"',
     '"Amulet"',
@@ -40,7 +42,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 ])
 
 HIDE_LEVELING_RARE_CLASS = ' '.join([
-    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+    #'"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
     # '"Body Armour"',
     # '"Wands" "Daggers"',
 ])
@@ -73,7 +75,7 @@ LINKED_CLASS = ' '.join([
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 #
 
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 125+Life
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"', '"Stygian Vise"'][0:])  # 125+Life
 
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
 
@@ -115,6 +117,7 @@ ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson"',
     '"Viridian"',
     '"Cobalt"',
+    '"Eye"',
 ])
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 ALERT_SMALLS_RARE = True

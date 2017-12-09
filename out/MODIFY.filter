@@ -137,21 +137,6 @@ Show
  SetBorderColor 255 255 255 255
  SetBackgroundColor 255 125 0 255
  PlayAlertSound 8 300
-Show
- BaseType "Stygian Vise"
- Rarity = Rare
- ItemLevel >= 75
- SetFontSize 45
- SetTextColor 255 190 0
- SetBorderColor 255 125 0 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 1 300
-Show
- BaseType "Stygian Vise"
- SetFontSize 42
- SetBorderColor 255 125 0 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 1 300
 
 # 0206 Abyss Jewels (Rare and Magic)
 Show
@@ -179,14 +164,6 @@ Show
  SetTextColor 255 255 0 255
  SetBorderColor 75 240 75 250
  SetBackgroundColor 120 120 0 255
- PlayAlertSound 1 300
-Show
- Class "Abyss Jewel"
- Rarity <= Magic
- SetFontSize 42
- SetTextColor 0 100 255
- SetBorderColor 75 240 75 250
- SetBackgroundColor 0 20 40 255
  PlayAlertSound 1 300
 
 # 0207 Exclusive bases: Atlas bases, talismans (includes Rare rarity)
@@ -330,7 +307,7 @@ Show
 # 0213 Magic jewel and others
 Show
  Class Jewel
- BaseType "Crimson" "Viridian" "Cobalt"
+ BaseType "Crimson" "Viridian" "Cobalt" "Eye"
  Rarity <= Magic
  SetFontSize 40
  SetTextColor 0 100 255
@@ -345,7 +322,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron Ring" "Rustic Sash" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe" "Behemoth Mace"
+ BaseType "Iron Ring" "Rustic Sash" "Stygian Vise" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Amulet" "Turquoise Amulet" "Lapis Amulet" "Agate Amulet" "Onyx Amulet" "Siege Axe" "Behemoth Mace"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -401,7 +378,7 @@ Hide
  SetBackgroundColor 0 0 0 165
 Show
  Class Belts
- BaseType "Rustic Sash" "Leather Belt"
+ BaseType "Rustic Sash" "Leather Belt" "Stygian Vise"
  Rarity Normal
  ItemLevel >= 13
  SetTextColor 255 255 255
@@ -2470,7 +2447,7 @@ Show
  SetFontSize 42
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
-Show
+Hide
  Class "Utility Flasks"
  Rarity <= Magic
  ItemLevel <= 65
@@ -3108,13 +3085,6 @@ Show
  BaseType "Broad Axe"
  Rarity <= Magic
  ItemLevel <= 24
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
- BaseType "Arming Axe"
- Rarity <= Magic
- ItemLevel <= 28
  SetFontSize 42
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
