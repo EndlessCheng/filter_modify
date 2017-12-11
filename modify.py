@@ -100,6 +100,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 8 10
+    # TODO: 加单手武器 poedb.tw
     blocks = filter_manager.add_comment(202, 'Shaper and Elder Items')
     for block in blocks[:-2]:
         block.PlayAlertSound = SOUND_TOP_VALUE
@@ -118,7 +119,7 @@ def modify_endgame_mix(filter_manager):
 
     # 8 只留第一个
     blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.append_block(blocks[0])
 
     # 8 8 1 去掉最后一个
@@ -356,27 +357,22 @@ def modify_gem_flask_map(filter_manager):
 
     filter_manager.add_comment(900, 'Gems', ignored=True)
 
-    # 8, 1
+    # 8, 1  LEVELING_GEMS_BASE_TYPE
     blocks = filter_manager.add_comment(901, 'Value gems')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
     blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[2].BaseType += ' "Added Chaos Damage" "Vaal Summon Skeletons"'
+    blocks[2].BaseType += ' "Added Chaos Damage" "Vaal Summon Skeletons" ' + settings.LEVELING_GEMS_BASE_TYPE
     blocks[3].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 前两个换位，改成1和2
-    # LEVELING_GEMS_BASE_TYPE
+    # 前两个换位，改成1和2   LEVELING_GEMS_BASE_TYPE
     blocks = filter_manager.add_comment(902, 'Other gems')
     blocks[0], blocks[1] = blocks[1], blocks[0]
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE)
     blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
-    if settings.LEVELING_GEMS_BASE_TYPE != '':
-        block_leveling_gems = blocks[0].copy_modify(BaseType=settings.LEVELING_GEMS_BASE_TYPE,
-                                                    PlayAlertSound=SOUND_TOP_VALUE)
-        blocks.insert(2, block_leveling_gems)
-    else:
-        blocks[2].status = DEBUG
+    if '"Immortal Call"' not in settings.LEVELING_GEMS_BASE_TYPE:
+        blocks[-1].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(1000, 'UTILITY FLASKS (Levelling Rules)', ignored=True)
@@ -410,9 +406,9 @@ def modify_gem_flask_map(filter_manager):
     # 加黄边/橙边，不显示稀有度
     blocks = filter_manager.add_comment(1205, 'Mid tier maps (T6-10)')
     for block in blocks[:4]:
-        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_9_10)
+        block.modify(ShapedMap=None, PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_9_10)
     for block in blocks[4:]:
-        block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_6_8)
+        block.modify(ShapedMap=None, PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_6_8)
     filter_manager.extend_blocks(blocks)
 
     # 加蓝边/黑边，不显示稀有度
@@ -491,6 +487,8 @@ def modify_leveling(filter_manager):
     # 8
     blocks = filter_manager.add_comment(2100, 'Leveling - Merged Rules')  # 包含 4L RGB
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    if settings.LINKED_CLASS == '':
+        del blocks[1:]
     filter_manager.extend_blocks(blocks)
 
     # NEED_RGB
@@ -579,18 +577,19 @@ def modify_leveling(filter_manager):
 
     # 蓝白武器，提取模板
     # HIDE_NORMAL_MAGIC_CLASS
-    blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
-    _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
-                      ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
-                      ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
-                      ('"War Axe"', 45), ('"Wraith Axe"', 54),
-                      ]
-    _LEVELING_BASE_IL_GAP = 3
-    block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
-    block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
-                                                    ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
-                         for leveling_base in _LEVELING_BASE]
-    filter_manager.extend_blocks(block_weapon_list)
+    if '"One Hand"' not in settings.HIDE_NORMAL_MAGIC_CLASS:
+        blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
+        _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
+                          ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
+                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
+                          ('"War Axe"', 45), ('"Wraith Axe"', 54),
+                          ]
+        _LEVELING_BASE_IL_GAP = 3
+        block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
+        block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
+                                                        ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
+                             for leveling_base in _LEVELING_BASE]
+        filter_manager.extend_blocks(block_weapon_list)
 
     block_hide_n2m = filter_manager.get_blocks(2600)[0].copy_modify(
         Class='"Rings" "Amulets" "Belts" '
@@ -708,7 +707,7 @@ def modify_filter(filter_manager):
     # 8
     blocks = filter_manager.add_comment(1403, 'T2 - Great cards')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Humility" "The Encroaching Darkness" "The Throne" '
+    blocks[0].BaseType += ' "The Encroaching Darkness" "The Throne" '
     filter_manager.extend_blocks(blocks)
 
     # 1
