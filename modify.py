@@ -71,8 +71,9 @@ SOUND_UNIQUE = _SOUND_6
 # SOUND_CHANCE2 = _SOUND_3
 SOUND_LEVELING = _SOUND_12
 
-STYLE_TOP = {'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
-STYLE_TOP_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_OLIVE}
+STYLE_TOP = {'SetFontSize': FONT_SIZE_MAX,
+             'SetTextColor': COLOR_RED, 'SetBorderColor': COLOR_RED, 'SetBackgroundColor': COLOR_WHITE}
+STYLE_TOP_RARE = {'SetFontSize': FONT_SIZE_MAX, 'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_OLIVE}
 STYLE_T1_RARE = {'SetBorderColor': COLOR_ORANGE, 'SetBackgroundColor': COLOR_OLIVE + ' 225'}
 STYLE_TOP_UNIQUE = {'SetTextColor': COLOR_UNIQUE, 'SetBorderColor': COLOR_UNIQUE, 'SetBackgroundColor': COLOR_WHITE}
 _STYLE_MAP_BASE = {'SetFontSize': FONT_SIZE_MAX, 'SetTextColor': COLOR_BLACK, 'SetBackgroundColor': COLOR_SILVER}
@@ -133,8 +134,10 @@ def modify_endgame_mix(filter_manager):
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[4].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[3].modify(ItemLevel=None, SetTextColor=None, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[4].modify(BaseType=blocks[4].BaseType.replace('"Bone Helmet"', ''),
+                     PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+
     filter_manager.extend_blocks(blocks)
 
     # 改稀有度
@@ -728,7 +731,7 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1500, 'Currency - PART 4 - remaining items')
     blocks[0].BaseType += ' "Transmutation Shard" '
     blocks[0].SetFontSize = FONT_SIZE_MIN
-    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
+    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1600, 'Leaguestones - Tierlists')
