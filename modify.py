@@ -100,12 +100,11 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 8 10
-    # TODO: 加单手武器 poedb.tw
     blocks = filter_manager.add_comment(202, 'Shaper and Elder Items')
     for block in blocks[:-2]:
         block.PlayAlertSound = SOUND_TOP_VALUE
     for block in blocks[-2:]:
-        block.PlayAlertSound = SOUND_SHAPER_ELDER
+        block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER)
     filter_manager.extend_blocks(blocks)
 
     # 8 1 样式改掉
