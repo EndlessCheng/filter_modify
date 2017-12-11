@@ -160,6 +160,7 @@ def modify_endgame_mix(filter_manager):
         filter_manager.append_block(block)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
+    # CURRENCY_ALERT_BLACKSMITH
     # 无视物等
     blocks = filter_manager.add_comment(210, 'FLASKS (Endgame rules)')
     for block in blocks:
@@ -169,10 +170,11 @@ def modify_endgame_mix(filter_manager):
                                               BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE, ItemLevel=None,
                                               PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_utility)
-    blocks[0].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None)
-    filter_manager.extend_blocks(blocks[:3])
+    if settings.CURRENCY_ALERT_BLACKSMITH:
+        blocks[0].PlayAlertSound = SOUND_LOW_VALUE
+        blocks[1].PlayAlertSound = SOUND_LOW_VALUE
+        blocks[2] = blocks[1].copy_modify(Quality='>= 5', Class='"Utility Flasks"', BaseType=None, ItemLevel=None)
+        filter_manager.extend_blocks(blocks[:3])
 
     filter_manager.add_comment(211, 'Add your own crafting rules here', ignored=True)
 
@@ -194,9 +196,7 @@ def modify_endgame_mix(filter_manager):
                                                     PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_magic_alert)
 
-    # 去掉 Hide
-    blocks = filter_manager.add_comment(214, 'Warband items')
-    filter_manager.extend_blocks(blocks[:2])
+    filter_manager.add_comment(214, 'Warband items', ignored=True)
 
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(215, 'Remaining crafting rules - add your own bases here!', ignored=True)
@@ -364,7 +364,7 @@ def modify_gem_flask_map(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
     blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[2].BaseType += ' "Added Chaos Damage" "Vaal Summon Skeletons" ' + settings.LEVELING_GEMS_BASE_TYPE
+    blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap" ' + settings.LEVELING_GEMS_BASE_TYPE
     blocks[3].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
@@ -478,13 +478,15 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2004, 'Mana Flasks')
     filter_manager.extend_blocks(blocks)
 
-    # 15改成10
+    # 15改成10  CURRENCY_ALERT_BLACKSMITH
     blocks = filter_manager.add_comment(2005, 'Show remaining flasks')
     blocks[1].Quality = '>= 10'
-    del blocks[2]  # 移除不需要的提示
-    blocks[-2].status = DEBUG
-    blocks[-1].status = DEBUG
-    filter_manager.extend_blocks(blocks)
+    if settings.CURRENCY_ALERT_BLACKSMITH:
+        filter_manager.extend_blocks(blocks[:2])
+    blocks[2].status = DEBUG
+    blocks[3].status = DEBUG
+    blocks[4].status = DEBUG
+    filter_manager.extend_blocks(blocks[2:])
 
     # 8
     blocks = filter_manager.add_comment(2100, 'Leveling - Merged Rules')  # 包含 4L RGB
@@ -503,6 +505,7 @@ def modify_leveling(filter_manager):
     # Referred by [[1900]]
     # Rare: 4L/RRG/RRR L3_MAX_IL
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
+    blocks[2].PlayAlertSound = SOUND_LEVELING
     if settings.LINKED_CLASS != '':
         blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
         blocks.insert(1, blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
