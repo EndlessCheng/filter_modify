@@ -432,19 +432,14 @@ def modify_gem_flask_map(filter_manager):
 
 # 1900-2505
 def modify_leveling(filter_manager):
-    # HIDE_FLASK_MANA, SHOW_FLASK_LIFE；后期只要42和60级的血瓶
+    # 后期只要42和60级的血瓶
     # HIDE_LEVELING_RARE_CLASS
     # RARE_BOOTS_ALERT  放前面是考虑到[[2200]]的影响
     # MAGIC_BOOTS_IL
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
-    block_hide_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Hybrid Flask" ', SetFontSize=FONT_SIZE_MIN)
-    if settings.HIDE_FLASK_MANA:
-        block_hide_flasks.Class += ' "Mana Flask" '
-    if not settings.SHOW_FLASK_LIFE:
-        block_hide_flasks.Class += ' "Life Flask" '
     block_hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
                                               BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
-    filter_manager.extend_blocks([block_hide_flasks, block_hide_some_life_flasks])
+    filter_manager.extend_blocks([block_hide_some_life_flasks])
 
     # if settings.HIDE_LEVELING_RARE_CLASS != '':
     #     filter_manager.append_block(
@@ -469,14 +464,17 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2002, 'Hybrid flasks', ignored=True)
 
-    # SHOW_FLASK_HALLOWED 42, 60
+    # SHOW_FLASK_HALLOWED 42, 60   SHOW_FLASK_LIFE
     blocks = filter_manager.add_comment(2003, 'Life Flasks')
-    blocks[-4].ItemLevel = None if settings.SHOW_FLASK_HALLOWED else '<= 1'
-    blocks[-2].ItemLevel = None
-    filter_manager.extend_blocks(blocks)
+    if settings.SHOW_FLASK_LIFE:
+        blocks[-4].ItemLevel = None if settings.SHOW_FLASK_HALLOWED else '<= 1'
+        blocks[-2].ItemLevel = None
+        filter_manager.extend_blocks(blocks)
 
+    # SHOW_FLASK_MANA
     blocks = filter_manager.add_comment(2004, 'Mana Flasks')
-    filter_manager.extend_blocks(blocks)
+    if settings.SHOW_FLASK_MANA:
+        filter_manager.extend_blocks(blocks)
 
     # 15改成10  CURRENCY_ALERT_BLACKSMITH
     blocks = filter_manager.add_comment(2005, 'Show remaining flasks')
