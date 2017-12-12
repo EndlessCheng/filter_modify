@@ -608,6 +608,8 @@ def modify_leveling(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2505, 'Magic items - general highlight')
+    blocks[0].SetFontSize = 40
+    blocks[1].SetFontSize = 40
     filter_manager.extend_blocks(blocks)
 
 
