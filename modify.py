@@ -129,14 +129,13 @@ def modify_endgame_mix(filter_manager):
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks[:3])
 
-    # 8 1
+    # 8 1 ALERT_ATLAS_BASE_TYPE
     blocks = filter_manager.add_comment(207, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     blocks[3].modify(ItemLevel=None, SetTextColor=None, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[4].modify(BaseType=blocks[4].BaseType.replace('"Bone Helmet"', ''),
-                     PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[4].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
 
     filter_manager.extend_blocks(blocks)
 
