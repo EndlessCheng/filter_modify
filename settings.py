@@ -9,12 +9,7 @@ TENCENT = False
 # Socket = 2 25 35 50(A7)
 
 #
-# Part 1 - Common
-#
-
-
-#
-# Part 2 - A1-10
+# Part 1 - A1-10
 #
 # >>> NPC-4L <<<
 #
@@ -40,7 +35,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amulet"',
     '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
 ])
-#
+
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
@@ -85,7 +80,7 @@ NEED_RGB = True
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
 #
-# Part 3 - Maps
+# Part 2 - Maps
 #
 
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
@@ -107,6 +102,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
     '"Siege Axe"',
 ])
+ALERT_SMALLS_RARE = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
@@ -119,15 +115,10 @@ ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Eye"',  # 找血，抗性，点伤
 ])
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
-ALERT_SMALLS_RARE = True
-
-CURRENCY_ALERT_CHANCE = True
 
 ALERT_LOW_CURRENCY = True  # 斧头成型后False
 
 NEED_CHISEL = False
-
-CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 
 ALERT_ATLAS_BASE_TYPE = ' '.join([
     '"Bone Helmet"',
@@ -137,8 +128,10 @@ ALERT_ATLAS_BASE_TYPE = ' '.join([
     '"Two-Toned Boots"',
 ])
 
+CURRENCY_ALERT_CHANCE = True
+
 #
-# Part 4 - Others
+# Part 3 - Others
 #
 
 L2_MAX_IL = 4
@@ -147,6 +140,8 @@ L2_MAX_IL = 4
 SHOW_FLASK_MANA = SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 
 SHOW_ENDGAME_4L = False
+
+CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
