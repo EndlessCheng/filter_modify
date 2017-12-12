@@ -108,17 +108,13 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
 ])
-CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
-
+#
 ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt"',
     '"Eye"',  # 找血，抗性，点伤
 ])
-CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 
 ALERT_LOW_CURRENCY = True  # 斧头成型后False
-
-NEED_CHISEL = False
 
 ALERT_ATLAS_BASE_TYPE = ' '.join([
     '"Bone Helmet"',
@@ -133,6 +129,10 @@ CURRENCY_ALERT_CHANCE = True
 #
 # Part 3 - Others
 #
+
+NEED_CHISEL = False
+CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
+CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 
 L2_MAX_IL = 4
 # SMALLS_MAX_IL = 7
