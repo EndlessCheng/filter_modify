@@ -15,9 +15,9 @@ TENCENT = False
 #
 
 # Use some like >>> r-g <<< in the search box
-MOVE_HAND_MAX_IL = 19  # RRG
+L3_MAX_IL = 19  # 头脚RRG+RR
 
-L3_MAX_IL = 19  # 头脚3L
+MOVE_HAND_MAX_IL = 19  # RRG
 
 HIDE_NORMAL_MAGIC_CLASS = ' '.join([
     # '"Gloves"',
@@ -134,7 +134,7 @@ NEED_CHISEL = False
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 
-L2_MAX_IL = 4
+L2_MAX_IL = min(4, L3_MAX_IL)
 # SMALLS_MAX_IL = 7
 
 SHOW_FLASK_MANA = SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
