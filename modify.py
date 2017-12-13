@@ -153,9 +153,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(209, 'Chancing items', ignored=True)
     if settings.CHANCING_BASE_TYPE != '':
         block = FilterBlock(Corrupted=False, BaseType=settings.CHANCING_BASE_TYPE, Rarity=RARITY_NORMAL,
-                            SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT,
-                            # PlayAlertSound=SOUND_CHANCE
-                            )
+                            SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT)
         filter_manager.append_block(block)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
@@ -480,7 +478,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2300, 'Leveling - RARES', ignored=True)
 
-    # Rare: 4L RRG RRR L3_MAX_IL   提醒下跑鞋
+    # Rare: 4L RRG RRR L3_MAX_IL   ALERT_SMALLS_RARE   提醒下跑鞋
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
     if not settings.ALERT_SMALLS_RARE:
         blocks[1].PlayAlertSound = None
@@ -553,8 +551,7 @@ def modify_leveling(filter_manager):
                                    SetFontSize=42, PlayAlertSound=SOUND_MID_VALUE, **STYLE_LINKS)
     filter_manager.append_block(block_rrg_weapon)
 
-    # 蓝白武器，提取模板
-    # HIDE_NORMAL_MAGIC_CLASS
+    # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
     if '"One Hand"' not in settings.HIDE_NORMAL_MAGIC_CLASS:
         blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
@@ -641,7 +638,7 @@ def modify_filter(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # CURRENCY_ALERT_XXX
+    # CURRENCY_ALERT_CHANCE
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
     blocks[1].BaseType += ' "Regal Shard"'
     if settings.CURRENCY_ALERT_CHANCE:
