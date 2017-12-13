@@ -199,9 +199,9 @@ def modify_endgame_mix(filter_manager):
 
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(215, 'Remaining crafting rules - add your own bases here!', ignored=True)
-    if settings.SSF_CRAFT_BASE_TYPE != '':
+    if settings.ALERT_NORMAL_BASE_TYPE != '':
         block_normal = filter_manager.get_blocks(2406)[0]
-        block_normal_alert = block_normal.copy_modify(BaseType=settings.SSF_CRAFT_BASE_TYPE, ItemLevel=None,
+        block_normal_alert = block_normal.copy_modify(BaseType=settings.ALERT_NORMAL_BASE_TYPE, ItemLevel=None,
                                                       SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_normal_alert)
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
@@ -214,7 +214,7 @@ def modify_endgame_mix(filter_manager):
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         block_hide_n_leather_belt = filter_manager.get_blocks(2600)[0].copy_modify(
-            Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')
+            Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')  # A5开始堆血
         filter_manager.append_block(block_hide_n_leather_belt)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
@@ -432,29 +432,10 @@ def modify_gem_flask_map(filter_manager):
 # 1900-2505
 def modify_leveling(filter_manager):
     # 后期只要42和60级的血瓶
-    # HIDE_LEVELING_RARE_CLASS
-    # RARE_BOOTS_ALERT  放前面是考虑到[[2200]]的影响
-    # MAGIC_BOOTS_IL
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
     block_hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
                                               BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
     filter_manager.extend_blocks([block_hide_some_life_flasks])
-
-    # if settings.HIDE_LEVELING_RARE_CLASS != '':
-    #     filter_manager.append_block(
-    #         FilterBlock(status=DEBUG, Corrupted=False, Class=settings.HIDE_LEVELING_RARE_CLASS, Rarity=RARITY_RARE,
-    #                     SetFontSize=26))
-
-    # if settings.RARE_BOOTS_ALERT:
-    #     block_rare_boots = filter_manager.get_blocks(2301)[2].copy_modify(
-    #         ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING, **STYLE_4L)
-    #     filter_manager.append_block(block_rare_boots)
-    #
-    # _magic_boots_il_map = {10: None, 15: '>= 15', 20: '>= 30', 25: '>= 40', 30: '>= 55', -1: '< 1'}
-    # block_magic_boots = filter_manager.get_blocks(2404)[0].copy_modify(
-    #     ItemLevel=_magic_boots_il_map[settings.MAGIC_BOOTS_IL],
-    #     SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING, **STYLE_4L)
-    # filter_manager.append_block(block_magic_boots)
 
     filter_manager.add_comment(2000, 'Leveling - Flasks', ignored=True)
 
@@ -499,15 +480,18 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2300, 'Leveling - RARES', ignored=True)
 
-    # Referred by [[1900]]
-    # Rare: 4L/RRG/RRR L3_MAX_IL
+    # Rare: 4L RRG RRR L3_MAX_IL   提醒下跑鞋
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
+    if not settings.ALERT_SMALLS_RARE:
+        blocks[1].PlayAlertSound = None
     blocks[2].PlayAlertSound = SOUND_LEVELING
     if settings.LINKED_CLASS != '':
         blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
         blocks.insert(1, blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
                                                ItemLevel='<= ' + str(settings.L3_MAX_IL)))
         blocks.insert(2, blocks[1].copy_modify(SocketGroup='RRR'))
+    else:
+        del blocks[0]
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2302, 'Leveling rares - Progression')
@@ -527,29 +511,28 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2402, 'Linked gear - Caster Weapon Configuration', ignored=True)
 
-    # RG RRG RRR L2_MAX_IL L3_MAX_IL
+    # RR RG RRG RRR L2_MAX_IL L3_MAX_IL
     blocks = filter_manager.add_comment(2403, 'Linked gear - 3links')
     if settings.LINKED_CLASS != '':
         for block in blocks[:2]:
             block.modify(LinkedSockets=None, Class='"Helmets" "Boots" "Body Armour"', **STYLE_LINKS)
+            block_rr = block.copy_modify(SocketGroup='RR', ItemLevel='<= ' + str(settings.L2_MAX_IL),
+                                         PlayAlertSound=SOUND_LEVELING)
             block_rg = block.copy_modify(SocketGroup='RG', ItemLevel='<= ' + str(settings.L2_MAX_IL),
                                          PlayAlertSound=SOUND_LEVELING)
             block_rrg = block_rg.copy_modify(SocketGroup='RRG', ItemLevel='<= ' + str(settings.L3_MAX_IL))
             block_rrr = block_rg.copy_modify(SocketGroup='RRR', ItemLevel='<= ' + str(settings.L3_MAX_IL))
-            filter_manager.extend_blocks([block_rg, block_rrg, block_rrr])
+            filter_manager.extend_blocks([block_rr, block_rg, block_rrg, block_rrr])
 
-    # Referred by [[1900]]
     filter_manager.add_comment(2404, 'Extra Highlight: Boots', ignored=True)
 
     filter_manager.add_comment(2405, 'Optional Recipes', ignored=True)
 
-    # Referred by [0213] [0215]
+    # >>> 注意，后续(13+)需要高亮的蓝白装已经在 [0213] [0215] 里面了 (Referred) <<<
     blocks = filter_manager.add_comment(2406, 'Act 1')
     blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
     blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
     filter_manager.extend_blocks(blocks[:2])
-    blocks[4].Rarity = RARITY_MAGIC
-    filter_manager.append_block(blocks[4])
 
     filter_manager.add_comment(2407, 'Act 2+3', ignored=True)
 
@@ -564,18 +547,11 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2412, '20% quality items for those strange people who want them', ignored=True)
 
     # MOVE_HAND_MAX_IL
-    # BBB_MAX_IL
     filter_manager.add_comment(2500, 'Levelling - normal and magic item progression', ignored=True)
     block_rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
                                    ItemLevel='<= ' + str(settings.MOVE_HAND_MAX_IL),
                                    SetFontSize=42, PlayAlertSound=SOUND_MID_VALUE, **STYLE_LINKS)
     filter_manager.append_block(block_rrg_weapon)
-
-    # for sg in ['RBB', 'BBB']:
-    #     block_swap = FilterBlock(SocketGroup=sg, Class='"One Hand" "Claws" "Sceptres" "Daggers"',
-    #                              ItemLevel='<= ' + str(settings.BBB_MAX_IL),
-    #                              SetFontSize=38, PlayAlertSound=SOUND_MID_VALUE, **STYLE_4L)
-    #     filter_manager.append_block(block_swap)
 
     # 蓝白武器，提取模板
     # HIDE_NORMAL_MAGIC_CLASS
@@ -593,12 +569,13 @@ def modify_leveling(filter_manager):
                              for leveling_base in _LEVELING_BASE]
         filter_manager.extend_blocks(block_weapon_list)
 
-    block_hide_n2m = filter_manager.get_blocks(2600)[0].copy_modify(
+    block_hide_m_2 = filter_manager.get_blocks(2600)[0].copy_modify(
         Class='"Rings" "Amulets" "Belts" '
-              '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand" ' +
-              settings.HIDE_NORMAL_MAGIC_CLASS, ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
-    block_hide_m5 = block_hide_n2m.copy_modify(Class='"Helmets" "Boots" "Body Armour"', ItemLevel='>= 5')
-    filter_manager.extend_blocks([block_hide_n2m, block_hide_m5])
+              '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"',
+        Rarity=RARITY_MAGIC, ItemLevel='>= 2')
+    block_hide_m_5 = block_hide_m_2.copy_modify(Class='"Helmets" "Gloves" "Boots" "Body Armour"', ItemLevel='>= 5')
+    block_hide_n_2 = block_hide_m_2.copy_modify(Rarity=None, SetFontSize=FONT_SIZE_MIN)
+    filter_manager.extend_blocks([block_hide_m_2, block_hide_m_5, block_hide_n_2])
 
     filter_manager.add_comment(2502, 'Progression - Part 2 30-40', ignored=True)
 
@@ -608,8 +585,6 @@ def modify_leveling(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2505, 'Magic items - general highlight')
-    blocks[0].SetFontSize = 40
-    blocks[1].SetFontSize = 40
     filter_manager.extend_blocks(blocks)
 
 

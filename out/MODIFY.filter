@@ -318,7 +318,7 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
- BaseType "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"
+ BaseType "Gloves" "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -2883,6 +2883,16 @@ Show
 
 # 2403 Linked gear - 3links
 Show
+ SocketGroup RR
+ Class "Helmets" "Boots" "Body Armour"
+ Rarity = Normal
+ ItemLevel <= 4
+ SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
  SocketGroup RG
  Class "Helmets" "Boots" "Body Armour"
  Rarity = Normal
@@ -2909,6 +2919,16 @@ Show
  ItemLevel <= 19
  SetFontSize 42
  SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ SocketGroup RR
+ Class "Helmets" "Boots" "Body Armour"
+ Rarity = Magic
+ ItemLevel <= 4
+ SetFontSize 42
+ SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
@@ -2962,13 +2982,6 @@ Show
  ItemLevel <= 12
  SetFontSize 42
  SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- Class "Rings" "Amulets" "Belts"
- Rarity Magic
- ItemLevel <= 12
- SetFontSize 42
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 
@@ -3072,14 +3085,22 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Hide
- Class "Rings" "Amulets" "Belts" "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand" 
+ Class "Rings" "Amulets" "Belts" "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"
+ Rarity Magic
  ItemLevel >= 2
- SetFontSize 18
+ SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
- Class "Helmets" "Boots" "Body Armour"
+ Class "Helmets" "Gloves" "Boots" "Body Armour"
+ Rarity Magic
  ItemLevel >= 5
+ SetFontSize 26
+ SetBorderColor 0 0 0 150
+ SetBackgroundColor 0 0 0 165
+Hide
+ Class "Rings" "Amulets" "Belts" "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"
+ ItemLevel >= 2
  SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
@@ -3124,14 +3145,14 @@ Show
  Width <= 1
  Rarity Magic
  ItemLevel <= 24
- SetFontSize 40
+ SetFontSize 36
  SetBorderColor 50 50 50
 Show
  Height <= 2
  Width <= 2
  Rarity Magic
  ItemLevel <= 24
- SetFontSize 40
+ SetFontSize 36
  SetBorderColor 50 50 50
 Show
  Rarity Magic

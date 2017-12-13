@@ -14,18 +14,19 @@ TENCENT = False
 # >>> NPC-4L <<<
 #
 
-# Use some like >>> r-g <<< in the search box
-L3_MAX_IL = 19  # 头脚RRG+RR
+# >>> r-r / r-g / r-r-g <<<
+L3_MAX_IL = 19  # 头RRG 胸/脚RR
 
 MOVE_HAND_MAX_IL = 19  # RRG
 
-HIDE_NORMAL_MAGIC_CLASS = ' '.join([
-    # '"Gloves"',
-    # '"One Hand"',
+ALERT_NORMAL_BASE_TYPE = ' '.join([
+    '"Astral Plate"',  # 62
+    '"Siege Axe"',  # 59 73
+    '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
 ])
-
 # 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
+    '"Gloves"',
     '"Iron Ring"',
     '"Rustic Sash"',
     '"Leather Belt"',
@@ -35,7 +36,6 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amulet"',
     '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
 ])
-
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
@@ -49,13 +49,6 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Daggers" "Wands"',
 ])
 
-LINKED_CLASS = ' '.join([
-    '"Body Armour"',
-    '"Gloves"',
-    '"Boots"',
-    '"Helmets"',
-])
-
 # 血量够就去A5做支线
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
@@ -64,13 +57,19 @@ LEVELING_GEMS_BASE_TYPE = ' '.join([
 
 SHOW_FLASK_HALLOWED = True
 
+HIDE_NORMAL_MAGIC_CLASS = ' '.join([
+    # '"One Hand"',
+])
+
+LINKED_CLASS = ' '.join([
+    '"Body Armour"',
+    '"Gloves"',
+    '"Boots"',
+    '"Helmets"',
+])
+
 SHOW_FLASK_LIFE = True
 
-SSF_CRAFT_BASE_TYPE = ' '.join([
-    '"Astral Plate"',  # 62
-    '"Siege Axe"',  # 59 73
-    '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
-])
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Lapis"', ][0:])  # 80+Life
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 90+Life
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
@@ -154,10 +153,6 @@ IGNORE_RARE_UNDER_T2 = False
 
 MAGIC_BOOTS_IL = -1  # ★★★ 10/-1 (15:Lv15, 20:Lv30, 25:Lv40, 30:Lv55)  ★★★
 RARE_BOOTS_ALERT = (MAGIC_BOOTS_IL != -1)
-BBB_MAX_IL = 1  # NPC: BBB RBB        RRR RRB
-ALERT_SCEPTRE = False
-if ALERT_SCEPTRE:
-    SSF_CRAFT_BASE_TYPE += ' "Crystal Sceptre" '
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
 # Resistance = 12x : Fire12-48, Lighting13-49, Cold14-50
