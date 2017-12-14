@@ -275,10 +275,15 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
+    hide_blocks = filter_manager.get_blocks(700)
+    hide_blocks[-2].modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+                           SetFontSize=26)
+    hide_blocks[-1].modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+                           ItemLevel='>= 13', SetFontSize=26)
+    filter_manager.extend_blocks(hide_blocks[-2:])
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
-        hide_blocks = filter_manager.get_blocks(700)
-        hide_blocks[-2].modify(status=DEBUG, Identified=False, Class=settings.HIDE_BELOW_T1_RARE_CLASS)
-        hide_blocks[-1].modify(status=DEBUG, Identified=False, Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
+        hide_blocks[-2].Class = settings.HIDE_BELOW_T1_RARE_CLASS
+        hide_blocks[-1].Class = settings.HIDE_BELOW_T1_RARE_CLASS
         filter_manager.extend_blocks(hide_blocks[-2:])
 
     filter_manager.extend_blocks(blocks)

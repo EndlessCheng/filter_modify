@@ -11,7 +11,7 @@ TENCENT = False
 #
 # Part 1 - A1-10
 #
-# >>> NPC-4L <<<
+# >>> NPC-3L/4L <<<
 #
 
 # >>> r-r / r-g / r-r-g <<<
@@ -38,7 +38,6 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 ])
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
-    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
     # '"Body Armour"',  # 血量精华
     # '"Sceptres" "Claws"',
     # '"One Hand Swords"',
@@ -47,6 +46,7 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Boots"',
     # '"Gloves"',  # 高血+点伤/攻速
     # '"Daggers" "Wands"',
+    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
 
 # 血量够就去A5做支线

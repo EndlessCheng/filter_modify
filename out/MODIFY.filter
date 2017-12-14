@@ -577,6 +577,23 @@ Show
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
+Hide
+ Identified False
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Rarity = Rare
+ ItemLevel >= 75
+ SetFontSize 26
+ SetTextColor 255 190 0
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Rarity = Rare
+ ItemLevel >= 13
+ SetFontSize 26
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
 Show
  BaseType "Imperial Claw" "Gemini Claw" "Imbued Wand" "Ambusher" "Jewelled Foil" "Spiraled Foil"
  Rarity Rare
