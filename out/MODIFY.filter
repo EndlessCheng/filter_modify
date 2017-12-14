@@ -3018,7 +3018,7 @@ Show
 Show
  SocketGroup RRG
  Class  "One Hand" "Claws" "Sceptres" "Daggers" 
- ItemLevel <= 19
+ ItemLevel <= 1
  SetFontSize 42
  SetBorderColor 0 255 255
  PlayAlertSound 1 300

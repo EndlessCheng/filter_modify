@@ -17,8 +17,6 @@ TENCENT = False
 # >>> r-r / r-g / r-r-g <<<
 L3_MAX_IL = 19  # 头RRG 胸/脚RR
 
-MOVE_HAND_MAX_IL = 19  # RRG
-
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     '"Astral Plate"',  # 62
     '"Siege Axe"',  # 59 73
@@ -128,6 +126,8 @@ CURRENCY_ALERT_CHANCE = True
 #
 # Part 3 - Others
 #
+
+MOVE_HAND_MAX_IL = 1  # RRG
 
 NEED_CHISEL = False
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
