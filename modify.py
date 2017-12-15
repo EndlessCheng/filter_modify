@@ -561,9 +561,8 @@ def modify_leveling(filter_manager):
         blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                           ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
-                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33), ('"Jasper Axe"', 36),
-                          ('"War Axe"', 45), ('"Wraith Axe"', 54),
-                          ]
+                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33),
+                          ('"War Axe"', 45), ('"Wraith Axe"', 54), ]
         _LEVELING_BASE_IL_GAP = 3
         block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
         block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
