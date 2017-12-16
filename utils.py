@@ -16,11 +16,11 @@ class FilterBlock:
         'Identified',
         'SocketGroup',
         'Height', 'Width',
+        'ItemLevel',
         'DropLevel',
         'Class',
         'BaseType',
         'Rarity',
-        'ItemLevel',  # TODO: move up
 
         # Actions(Styles)
         'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
