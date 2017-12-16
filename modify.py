@@ -64,7 +64,7 @@ _SOUND_16 = '16 300'  # 锤石板
 SOUND_TOP_VALUE = _SOUND_8
 SOUND_MID_VALUE = _SOUND_1
 SOUND_LOW_VALUE = _SOUND_2
-SOUND_SHAPER_ELDER_80 = _SOUND_13
+SOUND_SHAPER_ELDER_80 = _SOUND_3
 SOUND_SHAPER_ELDER = _SOUND_10
 SOUND_MAP = _SOUND_4
 SOUND_UNIQUE = _SOUND_6
@@ -156,7 +156,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(209, 'Chancing items', ignored=True)
     if settings.CHANCING_BASE_TYPE != '':
         block = FilterBlock(Corrupted=False, BaseType=settings.CHANCING_BASE_TYPE, Rarity=RARITY_NORMAL,
-                            SetFontSize=38, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT)
+                            SetFontSize=42, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT)
         filter_manager.append_block(block)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
