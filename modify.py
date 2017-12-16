@@ -655,13 +655,15 @@ def modify_filter(filter_manager):
 
     # CURRENCY_ALERT_CHANCE
     blocks = filter_manager.add_comment(1301, 'Regular Rare Currency')
-    blocks[1].BaseType += ' "Regal Shard"'
+    if settings.TENCENT:
+        blocks[1].BaseType = blocks[1].BaseType.replace('"Orb of Regret"', '')
     if settings.CURRENCY_ALERT_CHANCE:
         blocks[1].BaseType += ' "Orb of Chance"'
     blocks[0].BaseType += ' ' + blocks[1].BaseType
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
-
+    if settings.TENCENT:
+        blocks[2].BaseType += ' "Orb of Regret"'
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))  # Pavlova
