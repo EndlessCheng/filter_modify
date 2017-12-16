@@ -3103,13 +3103,6 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- ItemLevel <= 39
- BaseType "Jasper Axe"
- Rarity <= Magic
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
  ItemLevel <= 48
  BaseType "War Axe"
  Rarity <= Magic
