@@ -54,10 +54,9 @@ LEVELING_GEMS_BASE_TYPE = ' '.join([
 ])
 
 SHOW_FLASK_HALLOWED = True
-
-HIDE_NORMAL_MAGIC_CLASS = ' '.join([
-    # '"One Hand"',
-])
+SHOW_N2M_ONE_HAND = True
+SHOW_FLASK_LIFE = True
+NEED_RGB = True
 
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
@@ -66,13 +65,9 @@ LINKED_CLASS = ' '.join([
     '"Helmets"',
 ])
 
-SHOW_FLASK_LIFE = True
-
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Lapis"', ][0:])  # 80+Life
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 90+Life
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
-
-NEED_RGB = True
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
 
@@ -92,18 +87,16 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
     '"Titan Greaves" "Vaal Greaves"',
     '"Titan Gauntlets" "Vaal Gauntlets"',
-
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
-
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
     '"Siege Axe"',
 ])
 ALERT_SMALLS_RARE = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
+    '"Sulphur" "Quicksilver" "Ruby" "Sapphire" "Topaz" "Amethyst"',
+    '"Stibnite" "Granite" "Basalt"',
 ])
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
@@ -123,13 +116,14 @@ ALERT_ATLAS_BASE_TYPE = ' '.join([
 
 CURRENCY_ALERT_CHANCE = True
 
+NEED_CHISEL = False
+
 #
 # Part 3 - Others
 #
 
 MOVE_HAND_MAX_IL = 1  # RRG
 
-NEED_CHISEL = False
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 
@@ -144,8 +138,7 @@ CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][0]
 
 CHANCING_BASE_TYPE = ''
 if not ALERT_LOW_CURRENCY:
-    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Ezomyte Tower Shield"'][:0])
-    # "Ebony Tower Shield" "Glorious Plate" "Gold Amulet" "Rawhide Tower Shield" "Sorcerer Boots" "Full Wyrmscale"
+    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Full Wyrmscale"'][1:])
 
 ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
 

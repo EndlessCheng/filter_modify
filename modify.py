@@ -568,7 +568,7 @@ def modify_leveling(filter_manager):
     filter_manager.append_block(block_rrg_weapon)
 
     # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
-    if '"One Hand"' not in settings.HIDE_NORMAL_MAGIC_CLASS:
+    if settings.SHOW_N2M_ONE_HAND:
         blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                           ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),

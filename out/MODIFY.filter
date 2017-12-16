@@ -90,7 +90,7 @@ Show
  SetFontSize 45
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 13 300
+ PlayAlertSound 3 300
 Show
  ShaperItem True
  ItemLevel >= 80
@@ -98,7 +98,7 @@ Show
  SetFontSize 45
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 13 300
+ PlayAlertSound 3 300
 Show
  ElderItem True
  Rarity <= Rare
@@ -251,7 +251,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"
+ BaseType "Sulphur" "Quicksilver" "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -1497,7 +1497,7 @@ Show
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"
+ BaseType "Sulphur" "Quicksilver" "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
