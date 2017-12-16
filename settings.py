@@ -105,7 +105,7 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Quicksilver" "Stibnite" "Granite" "Sulphur" "Basalt"',
 ])
-#
+
 ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt"',
     '"Eye"',  # 找血，抗性，点伤

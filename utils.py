@@ -20,7 +20,7 @@ class FilterBlock:
         'Class',
         'BaseType',
         'Rarity',
-        'ItemLevel',
+        'ItemLevel',  # TODO: move up
 
         # Actions(Styles)
         'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
@@ -38,8 +38,7 @@ class FilterBlock:
                 if line == '':
                     continue
                 attr_name, attr_value = line.split(' ', 1)
-                if attr_name == 'ItemLevel' and getattr(self, 'Class', None) in ['"Life Flasks"', '"Mana Flasks"'] \
-                        and getattr(self, 'ItemLevel', None) is not None:
+                if attr_name == 'ItemLevel' and getattr(self, 'ItemLevel', None) is not None:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
                 setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
