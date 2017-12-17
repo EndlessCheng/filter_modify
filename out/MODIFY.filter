@@ -338,6 +338,14 @@ Show
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
 Show
+ Class "Gloves"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
  BaseType "Gloves" "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"
  Rarity = Magic
  SetFontSize 42
@@ -1382,7 +1390,7 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 120
 
-# 0700 HIDE LAYER 2 - RARE ITEMS (65+ ONLY FOR NON-REGULAR VERSIONS)
+# 0700 HIDE LAYER 2 - RARE ITEMS (65+)
 Hide
  Height <= 4
  Width <= 1

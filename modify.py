@@ -68,8 +68,6 @@ SOUND_SHAPER_ELDER_80 = _SOUND_3
 SOUND_SHAPER_ELDER = _SOUND_10
 SOUND_MAP = _SOUND_4
 SOUND_UNIQUE = _SOUND_6
-# SOUND_CHANCE = _SOUND_4
-# SOUND_CHANCE2 = _SOUND_3
 SOUND_LEVELING = _SOUND_12
 
 STYLE_TOP = {'SetFontSize': FONT_SIZE_MAX,
@@ -85,6 +83,10 @@ STYLE_MAP_LOW_3_5 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_BLUE}
 STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_WHITE}
 STYLE_LINKS = {'SetBorderColor': COLOR_AQUA}
 STYLE_NONE = {'SetFontSize': None, 'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
+
+BLOCK_HIDE_RARES_65 = 700
+BLOCK_ACT_1 = 2406
+BLOCK_HIDE_HIDE_REMAINING = 2600
 
 
 # 0200
@@ -193,9 +195,12 @@ def modify_endgame_mix(filter_manager):
     filter_manager.append_block(blocks[0])
 
     if settings.ALERT_MAGIC_BASE_TYPE != '':
-        block_magic = filter_manager.get_blocks(2406)[1]
+        block_magic = filter_manager.get_blocks(BLOCK_ACT_1)[1]
         block_magic_alert = block_magic.copy_modify(BaseType=settings.ALERT_MAGIC_BASE_TYPE, ItemLevel=None,
                                                     PlayAlertSound=SOUND_LEVELING)
+        if '"Gloves"' in settings.ALERT_MAGIC_BASE_TYPE:
+            block_magic_gloves = block_magic_alert.copy_modify(Class='"Gloves"', BaseType=None)
+            filter_manager.append_block(block_magic_gloves)
         filter_manager.append_block(block_magic_alert)
 
     filter_manager.add_comment(215, 'Warband items', ignored=True)
@@ -203,7 +208,7 @@ def modify_endgame_mix(filter_manager):
     # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
     filter_manager.add_comment(216, 'Remaining crafting rules - add your own bases here!', ignored=True)
     if settings.ALERT_NORMAL_BASE_TYPE != '':
-        block_normal = filter_manager.get_blocks(2406)[0]
+        block_normal = filter_manager.get_blocks(BLOCK_ACT_1)[0]
         block_normal_alert = block_normal.copy_modify(BaseType=settings.ALERT_NORMAL_BASE_TYPE, ItemLevel=None,
                                                       SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(block_normal_alert)
@@ -216,7 +221,7 @@ def modify_endgame_mix(filter_manager):
             Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        block_hide_n_leather_belt = filter_manager.get_blocks(2600)[0].copy_modify(
+        block_hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0].copy_modify(
             Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 39')  # A5开始堆血
         filter_manager.append_block(block_hide_n_leather_belt)
         filter_manager.append_block(FilterBlock(
@@ -280,7 +285,7 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    hide_blocks = filter_manager.get_blocks(700)
+    hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
     hide_blocks[-2].modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
                            SetFontSize=26)
     hide_blocks[-1].modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
@@ -542,8 +547,8 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2405, 'Optional Recipes', ignored=True)
 
-    # >>> 注意，后续(13+)需要高亮的蓝白装已经在 [0214] [0216] 里面了 (Referred) <<<
-    blocks = filter_manager.add_comment(2406, 'Act 1')
+    # 注意，后续(13+)需要高亮的蓝白装已经在 [02xx] 里面了
+    blocks = filter_manager.add_comment(BLOCK_ACT_1, 'Act 1')
     blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
     blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
     filter_manager.extend_blocks(blocks[:2])
@@ -581,7 +586,7 @@ def modify_leveling(filter_manager):
                              for leveling_base in _LEVELING_BASE]
         filter_manager.extend_blocks(block_weapon_list)
 
-    block_hide_m_2 = filter_manager.get_blocks(2600)[0].copy_modify(
+    block_hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0].copy_modify(
         Class='"Rings" "Amulets" "Belts" "Flasks" '
               '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"',
         Rarity=RARITY_MAGIC, ItemLevel='>= 2')
@@ -636,8 +641,7 @@ def modify_filter(filter_manager):
     # 0600
     modify_endgame_rare(filter_manager)
 
-    # Referred by [0602]
-    blocks = filter_manager.add_comment(700, 'HIDE LAYER 2 - RARE ITEMS (65+ ONLY FOR NON-REGULAR VERSIONS)')
+    blocks = filter_manager.add_comment(BLOCK_HIDE_RARES_65, 'HIDE LAYER 2 - RARE ITEMS (65+)')
     for block in blocks:
         block.status = DEBUG
     filter_manager.extend_blocks(blocks)
@@ -779,8 +783,7 @@ def modify_filter(filter_manager):
     # 1900-2505
     modify_leveling(filter_manager)
 
-    # Referred by [0216] [2501]
-    blocks = filter_manager.add_comment(2600, 'HIDE LAYER 5 - Remaining Items')
+    blocks = filter_manager.add_comment(BLOCK_HIDE_HIDE_REMAINING, 'HIDE LAYER 5 - Remaining Items')
     blocks[0].modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     filter_manager.extend_blocks(blocks)
 
