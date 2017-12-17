@@ -4,6 +4,8 @@ DEBUG = False
 
 TENCENT = False
 
+TEMP = True
+
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-61), A9(61-63), A10(64-65)
 # Socket = 2 25 35 50(A7)
@@ -14,7 +16,7 @@ TENCENT = False
 # >>> NPC-3L/4L <<<
 #
 
-# >>> r-r / r-g / r-r-g <<<
+# >>> r g <<<
 L3_MAX_IL = 19  # 头RRG 胸/脚RR
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
