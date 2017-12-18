@@ -1,2 +1,1 @@
-"Bows" "Quivers" "Two Hand" "Staves" "Shields"
-有点小问题，rgb应该显示
+TIP加一条：a4买cwdt, ic
