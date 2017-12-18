@@ -225,7 +225,7 @@ def modify_endgame_mix(filter_manager):
             SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         block_hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0].copy_modify(
-            Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 32')  # A4开始堆血
+            Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')  # A4左右开始堆血(T5血从30开始)
         filter_manager.append_block(block_hide_n_leather_belt)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
