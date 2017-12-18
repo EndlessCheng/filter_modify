@@ -414,7 +414,7 @@ def modify_gem_flask_map(filter_manager):
     blocks = filter_manager.add_comment(1203, 'Shaped Maps', ignored=settings.TEMP)
     if blocks:
         blocks[0].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
-        blocks[1].modify(DropLevel='>= 73', PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
+        blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
         blocks[2].modify(DropLevel='>= 71', **STYLE_MAP_MID_9_10)
         blocks.append(blocks[2].copy_modify(DropLevel=None, **STYLE_MAP_MID_6_8))
         filter_manager.extend_blocks(blocks)
