@@ -2358,7 +2358,7 @@ Hide
  Identified False
  ItemLevel >= 23
  Class "Body Armour"
- BaseType "Simple Robe" "Silken Vest" "Scholar's Robe" "Silken Garb" "Mage's Vestment" "Silk Robe" "Cabalist Regalia" "Sage's Robe" "Silken Wrap" "Conjurer's Vestment" "Spidersilk Robe" "Destroyer Regalia" "Savant's Robe" "Necromancer Silks" "Occultist's Vestment" "Widowsilk Robe" "Vaal Regalia"
+ BaseType "Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" "Thief's Garb" "Cutthroat's Garb" "Assassin's Garb" "Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks"
  Rarity = Rare
  SetFontSize 26
  SetBorderColor 0 0 0 100

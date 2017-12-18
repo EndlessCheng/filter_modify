@@ -16,10 +16,10 @@ DEBUG = SHOW if settings.DEBUG else HIDE
 CLASS_WEAPON = '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand"'
 CLASS_ACCESSORY = '"Amulets" "Belts" "Rings"'
 
-BASE_TYPE_BODY_ES = '"Simple Robe" "Silken Vest" ' \
-                    '"Scholar\'s Robe" "Silken Garb" "Mage\'s Vestment" "Silk Robe" "Cabalist Regalia" ' \
-                    '"Sage\'s Robe" "Silken Wrap" "Conjurer\'s Vestment" "Spidersilk Robe" "Destroyer Regalia" ' \
-                    '"Savant\'s Robe" "Necromancer Silks" "Occultist\'s Vestment" "Widowsilk Robe" "Vaal Regalia"'
+BASE_TYPE_BODY_EVA = '"Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" ' \
+                     '"Thief\'s Garb" "Cutthroat\'s Garb" "Assassin\'s Garb"'
+BASE_TYPE_BODY_ES = '"Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks"'
+BASE_TYPE_BODY_EE = ''
 
 RARITY_NORMAL = 'Normal'
 RARITY_MAGIC = 'Magic'
@@ -509,14 +509,14 @@ def modify_leveling(filter_manager):
     if settings.NEED_RGB:
         filter_manager.extend_blocks(blocks)
 
-    # hide_leveling_rares hide_es_body_rares  HIDE_BELOW_T1_RARE_CLASS
+    # hide_leveling_rares hide_some_body_rares  HIDE_BELOW_T1_RARE_CLASS
     filter_manager.add_comment(2300, 'Leveling - RARES', ignored=True)
     hide_big_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_big_rares.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
                           ItemLevel='>= 13', SetFontSize=26)
-    hide_es_body_rares = hide_big_rares.copy_modify(Class='"Body Armour"', BaseType=BASE_TYPE_BODY_ES,
-                                                    ItemLevel='>= 23')
-    filter_manager.extend_blocks([hide_big_rares, hide_es_body_rares])
+    hide_some_body_rares = hide_big_rares.copy_modify(ItemLevel='>= 23', Class='"Body Armour"',
+                                                      BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES]))
+    filter_manager.extend_blocks([hide_big_rares, hide_some_body_rares])
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_rares = hide_big_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
         filter_manager.append_block(hide_rares)
