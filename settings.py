@@ -20,23 +20,21 @@ L3_MAX_IL = 19  # 头RRG 胸/脚RR
 
 # 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Gloves"',  # 有攻速后隐藏
+    '"Gloves"',  # 点伤/攻速
     '"Iron Ring"',  # 抗性戒指有点伤后隐藏
-    '"Rustic Sash" "Leather Belt"',  # 有高血腰带后隐藏
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',
-    '"Two-Stone Ring"',
+    '"Rustic Sash" "Leather Belt"',  # 血抗
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',  # 血抗
+    '"Two-Stone Ring"',  # 血抗
     '"Siege Axe"',  # 59
-    '"Amulet"',
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',
+    '"Amulet"',  # 血抗
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
 ])
 
-SHOW_FLASK_HALLOWED = True
-
-# 血量够就去A5做支线
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
-    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',
+    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A5支线
 ])
+SHOW_FLASK_HALLOWED = True
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     '"Astral Plate"',  # 62
