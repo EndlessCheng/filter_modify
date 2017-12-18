@@ -262,6 +262,13 @@ Hide
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
+Hide
+ ItemLevel >= 30
+ BaseType "Rustic Sash"
+ Rarity Normal
+ SetFontSize 26
+ SetBorderColor 0 0 0 150
+ SetBackgroundColor 0 0 0 165
 Show
  ItemLevel >= 13
  Class Belts
@@ -2352,13 +2359,6 @@ Hide
  ItemLevel >= 23
  Class "Body Armour"
  BaseType "Simple Robe" "Silken Vest" "Scholar's Robe" "Silken Garb" "Mage's Vestment" "Silk Robe" "Cabalist Regalia" "Sage's Robe" "Silken Wrap" "Conjurer's Vestment" "Spidersilk Robe" "Destroyer Regalia" "Savant's Robe" "Necromancer Silks" "Occultist's Vestment" "Widowsilk Robe" "Vaal Regalia"
- Rarity = Rare
- SetFontSize 26
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- Class 
  Rarity = Rare
  SetFontSize 26
  SetBorderColor 0 0 0 100

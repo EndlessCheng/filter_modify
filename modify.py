@@ -233,6 +233,9 @@ def modify_endgame_mix(filter_manager):
         hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
         hide_n_leather_belt.modify(Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')
         filter_manager.append_block(hide_n_leather_belt)  # A4左右开始堆血(T5血从30开始)
+        if settings.TENCENT:
+            hide_n_rustic_sash = hide_n_leather_belt.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
+            filter_manager.append_block(hide_n_rustic_sash)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetFontSize=40, SetTextColor=COLOR_WHITE))
@@ -513,8 +516,10 @@ def modify_leveling(filter_manager):
                           ItemLevel='>= 13', SetFontSize=26)
     hide_es_body_rares = hide_big_rares.copy_modify(Class='"Body Armour"', BaseType=BASE_TYPE_BODY_ES,
                                                     ItemLevel='>= 23')
-    hide_rares = hide_big_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
-    filter_manager.extend_blocks([hide_big_rares, hide_es_body_rares, hide_rares])
+    filter_manager.extend_blocks([hide_big_rares, hide_es_body_rares])
+    if settings.HIDE_BELOW_T1_RARE_CLASS != '':
+        hide_rares = hide_big_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
+        filter_manager.append_block(hide_rares)
 
     # Rare: 4L RRG RRR L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下跑鞋
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')

@@ -30,10 +30,6 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
 ])
 
-LEVELING_GEMS_BASE_TYPE = ' '.join([
-    '"Immortal Call" "Cast when Damage Taken"',
-    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A5支线
-])
 SHOW_FLASK_HALLOWED = True
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
@@ -123,6 +119,11 @@ NEED_CHISEL = False
 #
 
 MOVE_HAND_MAX_IL = 1  # RRG
+
+LEVELING_GEMS_BASE_TYPE = ' '.join([
+    '"Immortal Call" "Cast when Damage Taken"',
+    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
+]) if SHOW_FLASK_HALLOWED else ''
 
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
