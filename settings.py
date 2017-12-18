@@ -2,7 +2,7 @@
 
 DEBUG = False
 
-TEMP = False
+TEMP = True
 TENCENT = False or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
@@ -25,15 +25,14 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 ])
 # 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Gloves"',
-    '"Iron Ring"',
-    '"Rustic Sash"',
-    '"Leather Belt"',
+    '"Gloves"',  # 有攻速后隐藏
+    '"Iron Ring"',  # 抗性戒指有点伤后隐藏
+    '"Rustic Sash" "Leather Belt"',  # 有高血腰带后隐藏
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',
     '"Two-Stone Ring"',
     '"Siege Axe"',  # 59
     '"Amulet"',
-    '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',
 ])
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
@@ -66,7 +65,7 @@ LINKED_CLASS = ' '.join([
     '"Helmets"',
 ])
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Lapis"', ][0:])  # 80+Life
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Turquoise" "Lapis"', ][0:])  # 80+Life
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 90+Life
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
 
@@ -93,7 +92,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
     '"Siege Axe"',
 ])
-ALERT_SMALLS_RARE = True
+ALERT_RARE_ACCESSORY = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Sulphur" "Quicksilver" "Ruby" "Sapphire" "Topaz" "Amethyst"',

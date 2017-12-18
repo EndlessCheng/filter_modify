@@ -157,7 +157,7 @@ Show
 # 0212 86+ Endgame crafting rules
 Show
  ItemLevel >= 86
- BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Ruby" "Sapphire" "Topaz" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
+ BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone Ring" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Ruby Ring" "Sapphire Ring" "Topaz Ring" "Prismatic" "Unset Ring" "Gold Ring" "Citrine Amulet" "Turquoise Amulet" "Agate Amulet" "Coral Ring" "Moonstone Ring" "Leather Belt" "Heavy Belt" "Amber Amulet" "Jade Amulet" "Lapis Amulet" "Rustic Sash" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
  Rarity < Rare
  SetFontSize 42
  SetBorderColor 255 125 0 255
@@ -222,7 +222,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
- BaseType "Gloves" "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"
+ BaseType "Gloves" "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -244,17 +244,19 @@ Show
 Show
  ItemLevel >= 13
  Class Amulets
- BaseType "Lapis"
+ BaseType "Turquoise" "Lapis"
  Rarity Normal
+ SetFontSize 40
  SetTextColor 255 255 255
 Show
  ItemLevel >= 13
  Class Rings
  BaseType "Two-Stone"
  Rarity Normal
+ SetFontSize 40
  SetTextColor 255 255 255
 Hide
- ItemLevel <= 39
+ ItemLevel <= 29
  BaseType "Leather Belt"
  Rarity Normal
  SetFontSize 26
@@ -265,6 +267,7 @@ Show
  Class Belts
  BaseType "Rustic Sash" "Leather Belt"
  Rarity Normal
+ SetFontSize 40
  SetTextColor 255 255 255
 
 # 0217 Chisel recipe items
@@ -422,7 +425,7 @@ Show
 # 0601 Rare crafting bases
 Show
  ItemLevel >= 86
- BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Ruby" "Sapphire" "Topaz" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
+ BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone Ring" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Ruby Ring" "Sapphire Ring" "Topaz Ring" "Prismatic" "Unset Ring" "Gold Ring" "Citrine Amulet" "Turquoise Amulet" "Agate Amulet" "Coral Ring" "Moonstone Ring" "Leather Belt" "Heavy Belt" "Amber Amulet" "Jade Amulet" "Lapis Amulet" "Rustic Sash" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
  Rarity Rare
  SetFontSize 45
  SetTextColor 255 125 0
@@ -500,7 +503,7 @@ Hide
  SetBackgroundColor 0 0 0 75
 Hide
  Identified False
- ItemLevel >= 13
+ ItemLevel >= 65
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  SetFontSize 26
@@ -1718,7 +1721,7 @@ Show
 # 1301 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 29 0 67 255
  SetBorderColor 29 0 67 255
@@ -1726,7 +1729,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -1734,7 +1737,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Glassblower's Bauble"
+ BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Orb of Regret" "Glassblower's Bauble"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -1981,7 +1984,7 @@ Show
 
 # 1703 Tier 1 uniques
 Show
- BaseType "Arcanist Gloves" "Arcanist Slippers" "Callous Mask" "Carnal Sceptre" "Cedar Tower Shield" "Clasped Mitts" "Clutching Talisman" "Crusader Boots" "Cutlass" "Ezomyte Tower Shield" "Full Wyrmscale" "Gladiator Plate" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Legion Gloves" "Occultist's Vestment" "Prophecy Wand" "Raven Mask" "Rawhide Boots" "Rawhide Tower Shield" "Ritual Sceptre" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sanctified Mana Flask" "Sapphire Flask" "Siege Axe" "Steelhead" "Thorium Spirit Shield" "Vaal Spirit Shield" "Void Axe" "Wereclaw Talisman"
+ BaseType "Arcanist Slippers" "Callous Mask" "Carnal Sceptre" "Cedar Tower Shield" "Clasped Mitts" "Clutching Talisman" "Crusader Boots" "Cutlass" "Ezomyte Tower Shield" "Full Wyrmscale" "Gladiator Plate" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Legion Gloves" "Occultist's Vestment" "Prophecy Wand" "Raven Mask" "Rawhide Boots" "Rawhide Tower Shield" "Ritual Sceptre" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sanctified Mana Flask" "Sapphire Flask" "Siege Axe" "Steelhead" "Vaal Spirit Shield" "Void Axe" "Wereclaw Talisman"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37 255
@@ -1999,7 +2002,7 @@ Show
  SetBackgroundColor 255 255 255
  PlayAlertSound 8 300
 Show
- BaseType "Abyssal Axe" "Bismuth Flask" "Cardinal Round Shield" "Citadel Bow" "Citrine Amulet" "Demon Dagger" "Destiny Leather" "Ezomyte Burgonet" "Granite Flask" "Highborn Staff" "Imperial Maul" "Imperial Staff" "Ironscale Gauntlets" "Jasper Chopper" "Jewelled Foil" "Jingling Spirit Shield" "Maelstr" "Murder Boots" "Necromancer Silks" "Nubuck Gloves" "Penetrating Arrow Quiver" "Regicide Mask" "Sacrificial Garb" "Sharkskin Tunic" "Titan Greaves" "Titanium Spirit Shield" "Topaz Flask" "Ursine Pelt" "Vaal Mask" "Varnished Coat" "Wyrmscale Doublet" "Zealot Gloves"
+ BaseType "Abyssal Axe" "Arcanist Gloves" "Bismuth Flask" "Cardinal Round Shield" "Citadel Bow" "Citrine Amulet" "Demon Dagger" "Destiny Leather" "Ezomyte Burgonet" "Granite Flask" "Highborn Staff" "Imperial Maul" "Imperial Staff" "Ironscale Gauntlets" "Jasper Chopper" "Jewelled Foil" "Jingling Spirit Shield" "Maelstr" "Murder Boots" "Necromancer Silks" "Nubuck Gloves" "Penetrating Arrow Quiver" "Regicide Mask" "Sacrificial Garb" "Sharkskin Tunic" "Thorium Spirit Shield" "Titan Greaves" "Titanium Spirit Shield" "Topaz Flask" "Ursine Pelt" "Vaal Mask" "Varnished Coat" "Wyrmscale Doublet" "Zealot Gloves"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37
@@ -2336,6 +2339,30 @@ Show
  SetBackgroundColor 75 75 75 255
 
 # 2300 Leveling - RARES
+Hide
+ Identified False
+ ItemLevel >= 13
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Rarity = Rare
+ SetFontSize 26
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ ItemLevel >= 23
+ Class "Body Armour"
+ BaseType "Simple Robe" "Silken Vest" "Scholar's Robe" "Silken Garb" "Mage's Vestment" "Silk Robe" "Cabalist Regalia" "Sage's Robe" "Silken Wrap" "Conjurer's Vestment" "Spidersilk Robe" "Destroyer Regalia" "Savant's Robe" "Necromancer Silks" "Occultist's Vestment" "Widowsilk Robe" "Vaal Regalia"
+ Rarity = Rare
+ SetFontSize 26
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ Class 
+ Rarity = Rare
+ SetFontSize 26
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
 
 # 2301 Leveling rares - specific items
 Show
@@ -2826,7 +2853,7 @@ Show
 # 2406 Act 1
 Show
  ItemLevel <= 12
- BaseType "Iron Ring" "Rustic Sash" "Amulet"
+ BaseType "Rustic Sash" "Amulet"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2885,6 +2912,20 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
+ ItemLevel <= 6
+ BaseType "Rusted Spike"
+ Rarity <= Magic
+ SetFontSize 42
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ ItemLevel <= 10
+ BaseType "Whalebone Rapier"
+ Rarity <= Magic
+ SetFontSize 42
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
  ItemLevel <= 4
  BaseType "Rusted Hatchet"
  Rarity <= Magic
@@ -2913,20 +2954,6 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- ItemLevel <= 36
- BaseType "Spectral Axe"
- Rarity <= Magic
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
- ItemLevel <= 48
- BaseType "War Axe"
- Rarity <= Magic
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
  ItemLevel <= 57
  BaseType "Wraith Axe"
  Rarity <= Magic
@@ -2935,7 +2962,7 @@ Show
  SetBackgroundColor 0 0 0 185
 Hide
  ItemLevel >= 2
- Class "Rings" "Amulets" "Belts" "Flasks" "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Amulets" "Belts" "Rings"
  Rarity Magic
  SetFontSize 26
  SetBorderColor 0 0 0 150
@@ -2949,7 +2976,7 @@ Hide
  SetBackgroundColor 0 0 0 165
 Hide
  ItemLevel >= 2
- Class "Rings" "Amulets" "Belts" "Flasks" "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Daggers" "Sceptres" "Wands" "One Hand"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Amulets" "Belts" "Rings"
  SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
