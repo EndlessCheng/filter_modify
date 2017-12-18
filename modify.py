@@ -218,18 +218,18 @@ def modify_endgame_mix(filter_manager):
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetTextColor=COLOR_WHITE))
+            SetFontSize=40, SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetTextColor=COLOR_WHITE))
+            SetFontSize=40, SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         block_hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0].copy_modify(
             Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')  # A4左右开始堆血(T5血从30开始)
         filter_manager.append_block(block_hide_n_leather_belt)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetTextColor=COLOR_WHITE))
+            SetFontSize=40, SetTextColor=COLOR_WHITE))
 
     # NEED_CHISEL
     blocks = filter_manager.add_comment(217, 'Chisel recipe items')
@@ -581,8 +581,9 @@ def modify_leveling(filter_manager):
         blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
                           ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
-                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Spectral Axe"', 33),
-                          ('"War Axe"', 45), ('"Wraith Axe"', 54), ]
+                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]
+        if not settings.TENCENT:
+            _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3
         block_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
         block_weapon_list = [block_template.copy_modify(BaseType=leveling_base[0],
