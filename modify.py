@@ -16,10 +16,10 @@ DEBUG = SHOW if settings.DEBUG else HIDE
 CLASS_WEAPON = '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand"'
 CLASS_ACCESSORY = '"Amulets" "Belts" "Rings"'
 
-BASE_TYPE_BODY_ARMOUR_ES = '"Simple Robe" "Silken Vest" ' \
-                           '"Scholar\'s Robe" "Silken Garb" "Mage\'s Vestment" "Silk Robe" "Cabalist Regalia" ' \
-                           '"Sage\'s Robe" "Silken Wrap" "Conjurer\'s Vestment" "Spidersilk Robe" "Destroyer Regalia" ' \
-                           '"Savant\'s Robe" "Necromancer Silks" "Occultist\'s Vestment" "Widowsilk Robe" "Vaal Regalia"'
+BASE_TYPE_BODY_ES = '"Simple Robe" "Silken Vest" ' \
+                    '"Scholar\'s Robe" "Silken Garb" "Mage\'s Vestment" "Silk Robe" "Cabalist Regalia" ' \
+                    '"Sage\'s Robe" "Silken Wrap" "Conjurer\'s Vestment" "Spidersilk Robe" "Destroyer Regalia" ' \
+                    '"Savant\'s Robe" "Necromancer Silks" "Occultist\'s Vestment" "Widowsilk Robe" "Vaal Regalia"'
 
 RARITY_NORMAL = 'Normal'
 RARITY_MAGIC = 'Magic'
@@ -511,7 +511,7 @@ def modify_leveling(filter_manager):
     hide_big_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_big_rares.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
                           ItemLevel='>= 13', SetFontSize=26)
-    hide_es_body_rares = hide_big_rares.copy_modify(Class='"Body Armour"', BaseType=BASE_TYPE_BODY_ARMOUR_ES,
+    hide_es_body_rares = hide_big_rares.copy_modify(Class='"Body Armour"', BaseType=BASE_TYPE_BODY_ES,
                                                     ItemLevel='>= 23')
     hide_rares = hide_big_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
     filter_manager.extend_blocks([hide_big_rares, hide_es_body_rares, hide_rares])
