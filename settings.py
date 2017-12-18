@@ -18,11 +18,6 @@ TENCENT = False or TEMP
 # >>> r g <<<
 L3_MAX_IL = 19  # 头RRG 胸/脚RR
 
-ALERT_NORMAL_BASE_TYPE = ' '.join([
-    '"Astral Plate"',  # 62
-    '"Siege Axe"',  # 59 73
-    '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
-])
 # 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Gloves"',  # 有攻速后隐藏
@@ -33,6 +28,20 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Siege Axe"',  # 59
     '"Amulet"',
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',
+])
+
+SHOW_FLASK_HALLOWED = True
+
+# 血量够就去A5做支线
+LEVELING_GEMS_BASE_TYPE = ' '.join([
+    '"Immortal Call" "Cast when Damage Taken"',
+    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',
+])
+
+ALERT_NORMAL_BASE_TYPE = ' '.join([
+    '"Astral Plate"',  # 62
+    '"Siege Axe"',  # 59 73
+    '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
 ])
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
@@ -47,13 +56,6 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
 
-# 血量够就去A5做支线
-LEVELING_GEMS_BASE_TYPE = ' '.join([
-    '"Immortal Call" "Cast when Damage Taken"',
-    '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',
-])
-
-SHOW_FLASK_HALLOWED = True
 SHOW_N2M_ONE_HAND = True
 SHOW_FLASK_LIFE = True
 NEED_RGB = True
