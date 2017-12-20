@@ -2955,7 +2955,7 @@ Show
 Show
  SocketGroup RR
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2965,7 +2965,7 @@ Show
 Show
  SocketGroup RG
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2975,7 +2975,7 @@ Show
 Show
  SocketGroup RRG
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2985,7 +2985,7 @@ Show
 Show
  SocketGroup RRR
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2995,7 +2995,7 @@ Show
 Show
  SocketGroup RR
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3005,7 +3005,7 @@ Show
 Show
  SocketGroup RG
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3015,7 +3015,7 @@ Show
 Show
  SocketGroup RRG
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3025,7 +3025,7 @@ Show
 Show
  SocketGroup RRR
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255

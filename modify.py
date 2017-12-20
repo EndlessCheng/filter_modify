@@ -559,7 +559,7 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2403, 'Linked gear - 3links')
     if settings.LINKED_CLASS != '':
         for block in blocks[:2]:
-            block.modify(LinkedSockets=None, Class='"Helmets" "Boots" "Body Armour"', **STYLE_LINKS)
+            block.modify(LinkedSockets=None, Class=settings.LINKED_CLASS, **STYLE_LINKS)
             links_rr = block.copy_modify(SocketGroup='RR', ItemLevel='<= ' + str(settings.L2_MAX_IL),
                                          PlayAlertSound=SOUND_LEVELING)
             links_rg = block.copy_modify(SocketGroup='RG', ItemLevel='<= ' + str(settings.L2_MAX_IL),
