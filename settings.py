@@ -2,7 +2,7 @@
 
 DEBUG = False
 
-TEMP = True
+TEMP = False
 TENCENT = False or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)

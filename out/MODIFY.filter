@@ -23,6 +23,96 @@ Show
  PlayAlertSound 8 300
 
 # 0202 Shaper and Elder Items
+Show
+ ElderItem True
+ ItemLevel >= 85
+ BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Profane Wand" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ShaperItem True
+ ItemLevel >= 85
+ BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Profane Wand" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb" "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ElderItem True
+ ItemLevel >= 80
+ BaseType "Stygian Vise" "Steel Ring" "Opal Ring" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Bone Helmet" "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Crystal Belt"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ShaperItem True
+ ItemLevel >= 80
+ BaseType "Stygian Vise" "Steel Ring" "Opal Ring" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Bone Helmet" "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Crystal Belt"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ElderItem True
+ ItemLevel >= 86
+ Class "Boots" "Gloves" "Belt" "Ring" "Amulet" "Helmet" "Dagger" "Sceptre" "Wand"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ShaperItem True
+ ItemLevel >= 86
+ Class "Boots" "Gloves" "Belt" "Ring" "Amulet" "Helmet" "Dagger" "Sceptre" "Wand"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ElderItem True
+ ItemLevel >= 80
+ Rarity <= Rare
+ SetFontSize 45
+ SetBorderColor 255 255 255 255
+ SetBackgroundColor 20 110 220
+ PlayAlertSound 3 300
+Show
+ ShaperItem True
+ ItemLevel >= 80
+ Rarity <= Rare
+ SetFontSize 45
+ SetBorderColor 255 255 255 255
+ SetBackgroundColor 20 110 220
+ PlayAlertSound 3 300
+Show
+ ElderItem True
+ Rarity <= Rare
+ SetFontSize 45
+ SetBorderColor 255 255 255 255
+ SetBackgroundColor 50 130 165
+ PlayAlertSound 10 300
+Show
+ ShaperItem True
+ Rarity <= Rare
+ SetFontSize 45
+ SetBorderColor 255 255 255 255
+ SetBackgroundColor 50 130 165
+ PlayAlertSound 10 300
 
 # 0204 6-Socket Items
 Show
@@ -55,8 +145,43 @@ Show
  PlayAlertSound 1 300
 
 # 0205 Exclusive bases: Stygian Vise
+Show
+ ItemLevel >= 86
+ BaseType "Stygian Vise"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 255 255 255 255
+ SetBorderColor 255 255 255 255
+ SetBackgroundColor 255 125 0 255
+ PlayAlertSound 8 300
 
 # 0206 Abyss Jewels (Rare and Magic)
+Show
+ ItemLevel >= 84
+ Class "Abyss Jewel"
+ Rarity = Rare
+ SetFontSize 45
+ SetTextColor 255 255 0 255
+ SetBorderColor 240 30 0 255
+ SetBackgroundColor 120 120 0 255
+ PlayAlertSound 8 300
+Show
+ ItemLevel >= 84
+ Class "Abyss Jewel"
+ Rarity <= Magic
+ SetFontSize 45
+ SetTextColor 0 100 255
+ SetBorderColor 240 30 0 255
+ SetBackgroundColor 0 20 40 255
+ PlayAlertSound 8 300
+Show
+ Class "Abyss Jewel"
+ Rarity = Rare
+ SetFontSize 45
+ SetTextColor 255 255 0 255
+ SetBorderColor 75 240 75 250
+ SetBackgroundColor 120 120 0 255
+ PlayAlertSound 1 300
 
 # 0207 Exclusive bases: Atlas bases, talismans (includes Rare rarity)
 Show
@@ -258,13 +383,6 @@ Show
 Hide
  ItemLevel <= 29
  BaseType "Leather Belt"
- Rarity Normal
- SetFontSize 26
- SetBorderColor 0 0 0 150
- SetBackgroundColor 0 0 0 165
-Hide
- ItemLevel >= 30
- BaseType "Rustic Sash"
  Rarity Normal
  SetFontSize 26
  SetBorderColor 0 0 0 150
@@ -1442,6 +1560,41 @@ Show
  SetBorderColor 74 230 58
 
 # 1203 Shaped Maps
+Show
+ ShapedMap True
+ DropLevel >= 77
+ Class Maps
+ SetFontSize 45
+ SetTextColor 0 0 0 255
+ SetBorderColor 255 0 0
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ ShapedMap True
+ DropLevel >= 73
+ Class Maps
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 255 0 0
+ SetBackgroundColor 200 200 200
+ PlayAlertSound 8 300
+Show
+ ShapedMap True
+ DropLevel >= 71
+ Class Maps
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 255 255 0
+ SetBackgroundColor 200 200 200
+ PlayAlertSound 4 300
+Show
+ ShapedMap True
+ Class Maps
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 180 255 0
+ SetBackgroundColor 200 200 200
+ PlayAlertSound 4 300
 
 # 1204 Top tier maps (T15-16)
 Show
@@ -1728,7 +1881,7 @@ Show
 # 1301 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 29 0 67 255
  SetBorderColor 29 0 67 255
@@ -1736,7 +1889,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -1744,7 +1897,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Orb of Regret" "Glassblower's Bauble"
+ BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Glassblower's Bauble"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -1890,12 +2043,44 @@ Show
  PlayAlertSound 2 300
 
 # 1402 T1 - Top tier cards
+Show
+ Class "Divination"
+ BaseType "Abandoned Wealth" "House of Mirrors" "Hunter's Reward" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Brittle Emperor" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Formless Sea" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Spark and the Flame" "The Wind" "The Wolven King's Bite" "Wealth and Power"
+ SetFontSize 45
+ SetTextColor 0 0 255 255
+ SetBorderColor 0 0 255 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
 
 # 1403 T2 - Great cards
+Show
+ Class "Divination"
+ BaseType "Bowyer's Dream" "Chaotic Disposition" "Emperor of Purity" "Heterochromia" "Last Hope" "Left to Fate" "Saint's Treasure" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Hoarder" "The Offering" "The Saint's Treasure" "The Sephirot" "The Soul" "The Standoff" "The Thaumaturgist" "The Throne" "The Valkyrie" "The Vast" "The Void" "The Wolf" "Time-Lost Relic" "The Encroaching Darkness" "The Throne" 
+ SetFontSize 45
+ SetTextColor 0 0 0 255
+ SetBorderColor 255 255 0 255
+ SetBackgroundColor 100 250 250 245
+ PlayAlertSound 8 300
 
 # 1404 T3 - Decent cards
+Show
+ Class "Divination"
+ BaseType "Earth Drinker" "Humility" "Jack in the Box" "Lucky Deck" "No Traces" "Scholar of the Seas" "Standoff" "The Cursed King" "The Dark Mage" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Polymath" "The Porcupine" "The Risk" "The Trial" "The Valley of Steel Boxes" "The Warlord" "The Wrath" "The Wretched" "Valley of Steel Boxes" "Wolven King's Bite"
+ SetFontSize 45
+ SetTextColor 0 0 0 255
+ SetBorderColor 0 0 255 255
+ SetBackgroundColor 50 220 240 235
+ PlayAlertSound 1 300
 
 # 1405 T5 - Format trash tier cards... before
+Show
+ Class "Divination"
+ BaseType "A Mother's Parting Gift" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Shard of Fate" "Struck by Lightning" "The Blazing Fire" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scholar" "The Sigil" "The Sun" "The Surgeon" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+ SetFontSize 45
+ SetTextColor 0 0 0 255
+ SetBorderColor 0 0 0
+ SetBackgroundColor 175 215 230 180
+ PlayAlertSound 2 300
 
 # 1406 T4 - ...showing the remaining cards
 Show
@@ -2853,7 +3038,7 @@ Show
 # 2406 Act 1
 Show
  ItemLevel <= 12
- BaseType "Rustic Sash" "Amulet"
+ BaseType "Iron Ring" "Rustic Sash" "Amulet"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2956,6 +3141,20 @@ Show
 Show
  ItemLevel <= 57
  BaseType "Wraith Axe"
+ Rarity <= Magic
+ SetFontSize 42
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
+ Rarity <= Magic
+ SetFontSize 42
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ ItemLevel <= 48
+ BaseType "War Axe"
  Rarity <= Magic
  SetFontSize 42
  SetBorderColor 0 0 0
