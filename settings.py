@@ -61,7 +61,7 @@ LINKED_CLASS = ' '.join([
     '"Helmets"',
 ])
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Turquoise" "Lapis"', ][0:])  # 80+Life
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Turquoise"', '"Lapis"'][0:])  # 80+Life
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 90+Life
 SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
 
