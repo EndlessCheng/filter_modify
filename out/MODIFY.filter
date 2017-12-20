@@ -359,7 +359,7 @@ Show
 
 # 0216 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Astral Plate" "Siege Axe" "Royal Burgonet" "Eternal Burgonet"
+ BaseType "Amber Amulet" "Astral Plate" "Siege Axe" "Royal Burgonet" "Eternal Burgonet"
  Rarity = Normal
  SetFontSize 40
  SetTextColor 255 255 255 255
@@ -3160,14 +3160,14 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Hide
- ItemLevel >= 2
+ ItemLevel >= 6
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Amulets" "Belts" "Rings"
  Rarity Magic
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
- ItemLevel >= 5
+ ItemLevel >= 6
  Class "Helmets" "Gloves" "Boots" "Body Armour"
  Rarity Magic
  SetFontSize 26

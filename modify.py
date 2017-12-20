@@ -611,9 +611,11 @@ def modify_leveling(filter_manager):
         filter_manager.extend_blocks(weapons)
 
     hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
-    hide_m_2.modify(Class=' '.join([CLASS_WEAPON, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC, ItemLevel='>= 2')
-    hide_m_5 = hide_m_2.copy_modify(Class='"Helmets" "Gloves" "Boots" "Body Armour"', ItemLevel='>= 5')
-    hide_n_2 = hide_m_2.copy_modify(Rarity=None, SetFontSize=FONT_SIZE_MIN)
+    hide_m_2.modify(Class=' '.join([CLASS_WEAPON, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC,
+                    ItemLevel='>= {}'.format(2 if settings.TENCENT else 6))
+    hide_m_5 = hide_m_2.copy_modify(Class='"Helmets" "Gloves" "Boots" "Body Armour"',
+                                    ItemLevel='>= {}'.format(5 if settings.TENCENT else 6))
+    hide_n_2 = hide_m_2.copy_modify(Rarity=None, ItemLevel='>= 2', SetFontSize=FONT_SIZE_MIN)
     filter_manager.extend_blocks([hide_m_2, hide_m_5, hide_n_2])
 
     filter_manager.add_comment(2502, 'Progression - Part 2 30-40', ignored=True)
