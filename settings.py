@@ -16,7 +16,7 @@ TENCENT = False or TEMP
 #
 
 # >>> r g <<<
-L3_MAX_IL = 19  # 头RRG 胸/脚RR
+L3_MAX_IL = 19  # RRG+RR
 
 # 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
