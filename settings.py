@@ -15,15 +15,13 @@ TENCENT = False or TEMP
 # >>> NPC-4L <<<
 #
 
-# >>> r g <<<
 L3_MAX_IL = 19  # RRG+RR
 
-# 先找血，后期Lv6大师上点伤
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Gloves"',  # 点伤/攻速
     '"Iron Ring"',  # 抗性戒指有点伤后隐藏
     '"Rustic Sash" "Leather Belt"',  # 血抗
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',  # 血抗
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',  # 血抗，后期Lv6大师上点伤，下同
     '"Two-Stone Ring"',  # 血抗
     '"Siege Axe"',  # 59
     '"Amulet"',  # 血抗
@@ -31,6 +29,9 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 ])
 
 SHOW_FLASK_HALLOWED = True
+
+SHOW_N2M_ONE_HAND = True
+SHOW_FLASK_LIFE = True
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     '"Astral Plate"',  # 62
@@ -50,8 +51,6 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
 
-SHOW_N2M_ONE_HAND = True
-SHOW_FLASK_LIFE = True
 NEED_RGB = True
 
 LINKED_CLASS = ' '.join([

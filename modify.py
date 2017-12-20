@@ -97,7 +97,7 @@ BLOCK_ACT_1 = 2406
 BLOCK_HIDE_HIDE_REMAINING = 2600
 
 
-# 0200
+# [[0200]]
 def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(200, 'Recipes, Magic and Normal items (endgame!)', ignored=True)
 
@@ -279,7 +279,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
 
-# 0600
+# [[0600]]
 def modify_endgame_rare(filter_manager):
     filter_manager.add_comment(600, 'RARE ITEMS (ENDGAME)', ignored=True)
 
@@ -377,7 +377,7 @@ def modify_endgame_rare(filter_manager):
     filter_manager.extend_blocks(blocks)
 
 
-# 0800-1207
+# [[0800]]-[[1200]]
 def modify_gem_flask_map(filter_manager):
     filter_manager.add_comment(800, 'OVERRIDE AREA 3 - Override Map, Gem and Flask drops here', ignored=True)
 
@@ -465,7 +465,7 @@ def modify_gem_flask_map(filter_manager):
     filter_manager.extend_blocks(blocks)
 
 
-# 1900-2505
+# [[1900]]-[[2500]]
 def modify_leveling(filter_manager):
     # 后期只要42和60级的血瓶
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
@@ -632,7 +632,7 @@ def modify_leveling(filter_manager):
 def modify_filter(filter_manager):
     filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here', ignored=True)
 
-    # 0200
+    # [[0200]]
     modify_endgame_mix(filter_manager)
 
     blocks = filter_manager.add_comment(300, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
@@ -662,7 +662,7 @@ def modify_filter(filter_manager):
 
     filter_manager.add_comment(500, 'OVERRIDE AREA 2 - Override the default rare rulesets here', ignored=True)
 
-    # 0600
+    # [[0600]]
     modify_endgame_rare(filter_manager)
 
     blocks = filter_manager.add_comment(BLOCK_HIDE_RARES_65, 'HIDE LAYER 2 - RARE ITEMS (65+)')
@@ -670,7 +670,7 @@ def modify_filter(filter_manager):
         block.status = DEBUG
     filter_manager.extend_blocks(blocks)
 
-    # 0800-1207
+    # [[0800]]-[[1200]]
     modify_gem_flask_map(filter_manager)
 
     filter_manager.add_comment(1300, 'Currency - PART 2 - Rare currency', ignored=True)
@@ -808,7 +808,7 @@ def modify_filter(filter_manager):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 1900-2505
+    # [[1900]]-[[2500]]
     modify_leveling(filter_manager)
 
     blocks = filter_manager.add_comment(BLOCK_HIDE_HIDE_REMAINING, 'HIDE LAYER 5 - Remaining Items')
