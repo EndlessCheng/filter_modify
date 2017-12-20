@@ -127,8 +127,8 @@ def modify_endgame_mix(filter_manager):
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示
-    blocks[2].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE,
-                     PlayAlertSound=SOUND_MID_VALUE)
+    blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE,
+                      PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 8 只留第一个
@@ -499,11 +499,13 @@ def modify_leveling(filter_manager):
         filter_manager.extend_blocks(blocks[:2])
 
     # 8
-    blocks = filter_manager.add_comment(2100, 'Leveling - Merged Rules')  # 包含 4L RGB
+    blocks = filter_manager.add_comment(2100, 'Leveling - Merged Rules')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    if settings.LINKED_CLASS == '':
-        del blocks[1:]
-    filter_manager.extend_blocks(blocks)
+    filter_manager.append_block(blocks[0])
+    if settings.LINKED_CLASS != '':
+        for block in blocks[1:]:  # 4L RGB
+            block.Class = settings.LINKED_CLASS
+        filter_manager.extend_blocks(blocks[1:])
 
     # NEED_RGB
     blocks = filter_manager.add_comment(2200, 'Leveling - RGB Recipes')
@@ -524,17 +526,17 @@ def modify_leveling(filter_manager):
 
     # Rare: 4L RRG RRR L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下跑鞋
     blocks = filter_manager.add_comment(2301, 'Leveling rares - specific items')
+    if settings.LINKED_CLASS != '':
+        blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
+        rare_rrg = blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
+                                         ItemLevel='<= ' + str(settings.L3_MAX_IL))
+        rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
+        filter_manager.extend_blocks([blocks[0], rare_rrg, rare_rrr])
     if not settings.ALERT_RARE_ACCESSORY:
         blocks[1].PlayAlertSound = None
     blocks[2].PlayAlertSound = SOUND_LEVELING
-    if settings.LINKED_CLASS != '':
-        blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
-        blocks.insert(1, blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
-                                               ItemLevel='<= ' + str(settings.L3_MAX_IL)))
-        blocks.insert(2, blocks[1].copy_modify(SocketGroup='RRR'))
-    else:
-        del blocks[0]
-    filter_manager.extend_blocks(blocks)
+    blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
+    filter_manager.extend_blocks(blocks[1:-1])
 
     blocks = filter_manager.add_comment(2302, 'Leveling rares - Progression')
     filter_manager.extend_blocks(blocks)

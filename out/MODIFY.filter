@@ -2485,7 +2485,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Gloves" "Boots" "Helmets" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2495,7 +2495,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Gloves" "Boots" "Helmets" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -2505,7 +2505,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Gloves" "Boots" "Helmets" "Body Armour"
+ Class "Body Armour" "Gloves" "Boots" "Helmets"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 0 140 240 255
@@ -2603,17 +2603,10 @@ Show
  SetBackgroundColor 35 100 20 255
  PlayAlertSound 12 300
 Show
- Height = 2
- Class "Boots" "Helmets" "Gloves" "Shields"
+ Class "Boots" "Helmets" "Gloves"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 220 220 220
- SetBackgroundColor 35 100 20 255
-Show
- Class "Sceptres" "Daggers" "Wands"
- Rarity Rare
- SetFontSize 42
- SetBorderColor 150 150 150
  SetBackgroundColor 35 100 20 255
 
 # 2302 Leveling rares - Progression
