@@ -12,7 +12,7 @@ TENCENT = False or TEMP
 #
 # Part 1 - A1-10
 #
-# >>> NPC-3L/4L <<<
+# >>> NPC-4L <<<
 #
 
 # >>> r g <<<
