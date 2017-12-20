@@ -220,8 +220,8 @@ def modify_endgame_mix(filter_manager):
         normals = filter_manager.get_blocks(BLOCK_ACT_1)[0]
         normals.modify(BaseType=settings.ALERT_NORMAL_BASE_TYPE, ItemLevel=None,
                        SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
-        amber_amulet_n = normals.copy_modify(BaseType='"Amber Amulet"', ItemLevel='<= 12')
-        filter_manager.extend_blocks([amber_amulet_n, normals])
+        str_n = normals.copy_modify(BaseType='"Amber Amulet" "Heavy Belt"', ItemLevel='<= 12')
+        filter_manager.extend_blocks([str_n, normals])
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',

@@ -360,7 +360,7 @@ Show
 # 0216 Remaining crafting rules - add your own bases here!
 Show
  ItemLevel <= 12
- BaseType "Amber Amulet"
+ BaseType "Amber Amulet" "Heavy Belt"
  Rarity = Normal
  SetFontSize 40
  SetTextColor 255 255 255 255
