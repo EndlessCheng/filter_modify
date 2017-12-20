@@ -220,7 +220,8 @@ def modify_endgame_mix(filter_manager):
         normals = filter_manager.get_blocks(BLOCK_ACT_1)[0]
         normals.modify(BaseType=settings.ALERT_NORMAL_BASE_TYPE, ItemLevel=None,
                        SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
-        filter_manager.append_block(normals)
+        amber_amulet_n = normals.copy_modify(BaseType='"Amber Amulet"', ItemLevel='<= 12')
+        filter_manager.extend_blocks([amber_amulet_n, normals])
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
@@ -597,10 +598,9 @@ def modify_leveling(filter_manager):
     # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
     if settings.SHOW_N2M_ONE_HAND:
         blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
-        _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Copper Sword"', 5), ('"Sabre"', 10),
-                          ('"Rusted Spike"', 3), ('"Whalebone Rapier"', 7),
-                          ('"Rusted Hatchet"', 1), ('"Jade Hatchet"', 6),
-                          ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]
+        _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
+                          ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
+                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]
         if not settings.TENCENT:
             _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3

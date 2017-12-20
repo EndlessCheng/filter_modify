@@ -33,7 +33,6 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 SHOW_FLASK_HALLOWED = True
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
-    '"Amber Amulet"',  # 5
     '"Astral Plate"',  # 62
     '"Siege Axe"',  # 59 73
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69

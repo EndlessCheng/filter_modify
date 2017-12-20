@@ -359,7 +359,16 @@ Show
 
 # 0216 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Amber Amulet" "Astral Plate" "Siege Axe" "Royal Burgonet" "Eternal Burgonet"
+ ItemLevel <= 12
+ BaseType "Amber Amulet"
+ Rarity = Normal
+ SetFontSize 40
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ BaseType "Astral Plate" "Siege Axe" "Royal Burgonet" "Eternal Burgonet"
  Rarity = Normal
  SetFontSize 40
  SetTextColor 255 255 255 255
@@ -3083,22 +3092,15 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- ItemLevel <= 8
- BaseType "Copper Sword"
- Rarity <= Magic
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
- ItemLevel <= 13
- BaseType "Sabre"
- Rarity <= Magic
- SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
-Show
  ItemLevel <= 6
  BaseType "Rusted Spike"
+ Rarity <= Magic
+ SetFontSize 42
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
+Show
+ ItemLevel <= 8
+ BaseType "Copper Sword"
  Rarity <= Magic
  SetFontSize 42
  SetBorderColor 0 0 0
@@ -3111,8 +3113,8 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
- ItemLevel <= 4
- BaseType "Rusted Hatchet"
+ ItemLevel <= 13
+ BaseType "Sabre"
  Rarity <= Magic
  SetFontSize 42
  SetBorderColor 0 0 0
