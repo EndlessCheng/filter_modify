@@ -91,7 +91,8 @@ T1_RARE_BASE_TYPE = ' '.join([
 ALERT_RARE_ACCESSORY = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Sulphur" "Quicksilver" "Ruby" "Sapphire" "Topaz" "Amethyst"',
+    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"'
+    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Stibnite" "Granite" "Basalt"',
 ])
 
