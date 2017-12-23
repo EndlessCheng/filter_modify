@@ -16,7 +16,6 @@ Show
 # 0203 5-Linked items
 Show
  LinkedSockets 5
- ItemLevel >= 65
  Rarity < Unique
  SetFontSize 45
  SetBorderColor 0 255 255 255
@@ -252,7 +251,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver""Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt"
+ BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" 
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -347,7 +346,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
- BaseType "Gloves" "Rustic Sash" "Leather Belt" "Iron Ring" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"
+ BaseType "Gloves" "Amulet" "Rustic Sash" "Leather Belt" "Iron Ring" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -375,20 +374,6 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
-Show
- ItemLevel >= 13
- Class Amulets
- BaseType "Turquoise" "Lapis"
- Rarity Normal
- SetFontSize 36
- SetTextColor 255 255 255
-Show
- ItemLevel >= 13
- Class Rings
- BaseType "Two-Stone"
- Rarity Normal
- SetFontSize 36
- SetTextColor 255 255 255
 Hide
  ItemLevel <= 29
  BaseType "Leather Belt"
@@ -401,7 +386,18 @@ Show
  Class Belts
  BaseType "Rustic Sash" "Leather Belt"
  Rarity Normal
- SetFontSize 36
+ SetTextColor 255 255 255
+Show
+ ItemLevel >= 13
+ Class Amulets
+ BaseType "Turquoise" "Lapis"
+ Rarity Normal
+ SetTextColor 255 255 255
+Show
+ ItemLevel >= 13
+ Class Rings
+ BaseType "Two-Stone"
+ Rarity Normal
  SetTextColor 255 255 255
 
 # 0217 Chisel recipe items
@@ -1518,7 +1514,7 @@ Show
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver""Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt"
+ BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" 
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -3068,13 +3064,6 @@ Show
 # 2412 20% quality items for those strange people who want them
 
 # 2500 Levelling - normal and magic item progression
-Show
- SocketGroup RRG
- ItemLevel <= 1
- Class  "One Hand" "Claws" "Sceptres" "Daggers" 
- SetFontSize 42
- SetBorderColor 0 255 255
- PlayAlertSound 1 300
 
 # 2501 Progression - Part 1 1-30
 Show

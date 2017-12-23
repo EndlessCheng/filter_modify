@@ -13,23 +13,19 @@ TENCENT = False or TEMP
 # Part 1 - A1-10
 #
 
-L3_MAX_IL = 19  # RRG+RR
-
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Gloves"',  # 攻速/点伤(12+)
+    '"Amulet"',  # 智敏有用的
     '"Rustic Sash" "Leather Belt"',  # 血抗 / 深渊腰带有抗
     '"Iron Ring"',  # 血抗 / 抗性戒指有点伤
 
+    '"Siege Axe"',
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',  # 血抗，后期Lv6大师上点伤，下同
     '"Two-Stone Ring"',  # 血抗
-    '"Siege Axe"',  # 59
-    '"Amulet"',  # 血抗
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
 ])
 
 SHOW_FLASK_HALLOWED = True
-
-SHOW_N2M_ONE_HAND = True
 SHOW_FLASK_LIFE = True
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
@@ -40,17 +36,14 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Body Armour"',  # 血量精华
-    # '"Sceptres" "Claws"',
-    # '"One Hand Swords"',
-    # '"One Hand"',
+    # '"Sceptres" "Claws" "One Hand"',  # 双高抗/智力
+
     # '"Helmets"',
     # '"Boots"',
     # '"Gloves"',  # 高血+点伤/攻速
     # '"Daggers" "Wands"',
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
-
-NEED_RGB = True
 
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
@@ -59,16 +52,15 @@ LINKED_CLASS = ' '.join([
     '"Helmets"',
 ])
 
-SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Turquoise"', '"Lapis"'][0:])  # 80+Life
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][0:])  # 90+Life
-SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])  # 70+Life
-
-CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][0]
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1):])
+SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Turquoise"', '"Lapis"'][max(0, 0 if SHOW_FLASK_LIFE else 1):])
+SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])
 
 #
 # Part 2 - Maps
 #
 
+CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 1)]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
 CURRENCY_ALERT_TRANSMUTATION = True
 
@@ -81,6 +73,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
     '"Titan Greaves" "Vaal Greaves"',
     '"Titan Gauntlets" "Vaal Gauntlets"',
+
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
@@ -89,10 +82,11 @@ T1_RARE_BASE_TYPE = ' '.join([
 ALERT_RARE_ACCESSORY = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"'
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Stibnite" "Granite" "Basalt"',
 ])
+if SHOW_FLASK_LIFE:
+    ALERT_UTILITY_FLASK_BASE_TYPE += ' "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" '
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt"',
@@ -117,19 +111,20 @@ NEED_CHISEL = False
 # Part 3 - Others
 #
 
-MOVE_HAND_MAX_IL = 1  # RRG
+L3_MAX_IL = 19  # RRG+RR
+L2_MAX_IL = min(4, L3_MAX_IL)
 
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
 ]) if SHOW_FLASK_HALLOWED else ''
 
+NEED_RGB = True and SHOW_FLASK_LIFE
+SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
+SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
+
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
-
-L2_MAX_IL = min(4, L3_MAX_IL)
-
-SHOW_FLASK_MANA = SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 
 SHOW_ENDGAME_4L = False
 

@@ -109,7 +109,7 @@ def modify_endgame_mix(filter_manager):
 
     # 8
     blocks = filter_manager.add_comment(203, '5-Linked items')
-    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[0].modify(ItemLevel=None, SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     filter_manager.extend_blocks(blocks)
 
     # 8 13 10
@@ -223,14 +223,6 @@ def modify_endgame_mix(filter_manager):
                        SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
         str_n = normals.copy_modify(BaseType='"Amber Amulet" "Heavy Belt"', ItemLevel='<= 12')
         filter_manager.extend_blocks([str_n, normals])
-    if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=36, SetTextColor=COLOR_WHITE))
-    if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
-        filter_manager.append_block(FilterBlock(
-            Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=36, SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
         hide_n_leather_belt.modify(Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')
@@ -240,7 +232,15 @@ def modify_endgame_mix(filter_manager):
             filter_manager.append_block(hide_n_rustic_sash)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=36, SetTextColor=COLOR_WHITE))
+            SetTextColor=COLOR_WHITE))
+    if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
+            SetTextColor=COLOR_WHITE))
+    if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
+        filter_manager.append_block(FilterBlock(
+            Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
+            SetTextColor=COLOR_WHITE))
 
     # NEED_CHISEL
     blocks = filter_manager.add_comment(217, 'Chisel recipe items')
@@ -592,12 +592,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2412, '20% quality items for those strange people who want them', ignored=True)
 
-    # MOVE_HAND_MAX_IL
     filter_manager.add_comment(2500, 'Levelling - normal and magic item progression', ignored=True)
-    rrg_weapon = FilterBlock(SocketGroup='RRG', Class=' "One Hand" "Claws" "Sceptres" "Daggers" ',
-                             ItemLevel='<= ' + str(settings.MOVE_HAND_MAX_IL),
-                             SetFontSize=42, PlayAlertSound=SOUND_MID_VALUE, **STYLE_LINKS)
-    filter_manager.append_block(rrg_weapon)
 
     # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
     if settings.SHOW_N2M_ONE_HAND:
