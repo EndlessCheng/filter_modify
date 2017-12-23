@@ -45,7 +45,6 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Daggers" "Wands"',
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
-
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
     '"Gloves"',
@@ -84,10 +83,10 @@ CURRENCY_ALERT_TRANSMUTATION = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Stibnite" "Granite" "Basalt"',
+    '"Stibnite" "Granite" "Basalt" "Quicksilver"',
 ])
 if SHOW_FLASK_LIFE:
-    ALERT_UTILITY_FLASK_BASE_TYPE += ' "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" '
+    ALERT_UTILITY_FLASK_BASE_TYPE += ' "Bismuth" "Silver" "Jade" "Quartz" "Sulphur"'
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt"',

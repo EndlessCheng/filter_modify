@@ -251,7 +251,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" 
+ BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Quicksilver" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -1514,7 +1514,7 @@ Show
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver" 
+ BaseType "Ruby" "Sapphire" "Topaz" "Amethyst" "Stibnite" "Granite" "Basalt" "Quicksilver" "Bismuth" "Silver" "Jade" "Quartz" "Sulphur"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
