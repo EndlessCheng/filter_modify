@@ -36,11 +36,12 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 # Life: 70+(Rings), 80+(Gloves, Boots, Amulets), 90+(Helmets, Belts), 90-100+(Body Armour, Shields)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Body Armour"',  # 血量精华
-    # '"Sceptres" "Claws" "One Hand"',  # 双高抗/智力
 
-    # '"Helmets"',
-    # '"Boots"',
+    # '"Sceptres" "Claws" "One Hand"',  # 双高抗/智力
+    # '"Helmets"',  # 高血
+    # '"Boots"',  # 高血
     # '"Gloves"',  # 高血+点伤/攻速
+
     # '"Daggers" "Wands"',
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
@@ -60,10 +61,6 @@ SSF_CRAFT_RINGS_BASE_TYPE = ' '.join(['"Two-Stone"'][0:])
 # Part 2 - Maps
 #
 
-CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 1)]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
-CURRENCY_ALERT_TRANSMUTATION = True
-
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets), 90-100+(Body Armour, Shields), 125+(Belts)
 # 参考T1T2
 T1_RARE_BASE_TYPE = ' '.join([
@@ -80,6 +77,10 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Siege Axe"',
 ])
 ALERT_RARE_ACCESSORY = True
+
+CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 1)]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
+CURRENCY_ALERT_TRANSMUTATION = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
