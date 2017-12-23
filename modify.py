@@ -22,7 +22,6 @@ BASE_TYPE_BODY_ES = '"Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Si
 BASE_TYPE_BODY_EE = '"Padded Vest" "Oiled Vest" "Jacket" "Oiled Coat" "Sleek Coat" "Varnished Coat" "Raiment" ' \
                     '"Waxed Garb" "Lacquered Garb" "Sadist Garb" "Bone Armour" "Crypt Armour" "Carnal Armour"'
 
-
 RARITY_NORMAL = 'Normal'
 RARITY_MAGIC = 'Magic'
 RARITY_RARE = 'Rare'
