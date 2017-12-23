@@ -347,7 +347,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
- BaseType "Gloves" "Iron Ring" "Rustic Sash" "Leather Belt" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"
+ BaseType "Gloves" "Rustic Sash" "Leather Belt" "Iron Ring" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe" "Amulet" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -380,14 +380,14 @@ Show
  Class Amulets
  BaseType "Turquoise" "Lapis"
  Rarity Normal
- SetFontSize 40
+ SetFontSize 36
  SetTextColor 255 255 255
 Show
  ItemLevel >= 13
  Class Rings
  BaseType "Two-Stone"
  Rarity Normal
- SetFontSize 40
+ SetFontSize 36
  SetTextColor 255 255 255
 Hide
  ItemLevel <= 29
@@ -401,7 +401,7 @@ Show
  Class Belts
  BaseType "Rustic Sash" "Leather Belt"
  Rarity Normal
- SetFontSize 40
+ SetFontSize 36
  SetTextColor 255 255 255
 
 # 0217 Chisel recipe items
@@ -2552,7 +2552,7 @@ Hide
  Identified False
  ItemLevel >= 23
  Class "Body Armour"
- BaseType "Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" "Thief's Garb" "Cutthroat's Garb" "Assassin's Garb" "Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks"
+ BaseType "Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" "Thief's Garb" "Cutthroat's Garb" "Assassin's Garb" "Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks" "Padded Vest" "Oiled Vest" "Jacket" "Oiled Coat" "Sleek Coat" "Varnished Coat" "Raiment" "Waxed Garb" "Lacquered Garb" "Sadist Garb" "Bone Armour" "Crypt Armour" "Carnal Armour"
  Rarity = Rare
  SetFontSize 26
  SetBorderColor 0 0 0 100

@@ -19,7 +19,9 @@ CLASS_ACCESSORY = '"Amulets" "Belts" "Rings"'
 BASE_TYPE_BODY_EVA = '"Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" ' \
                      '"Thief\'s Garb" "Cutthroat\'s Garb" "Assassin\'s Garb"'
 BASE_TYPE_BODY_ES = '"Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks"'
-BASE_TYPE_BODY_EE = ''
+BASE_TYPE_BODY_EE = '"Padded Vest" "Oiled Vest" "Jacket" "Oiled Coat" "Sleek Coat" "Varnished Coat" "Raiment" ' \
+                    '"Waxed Garb" "Lacquered Garb" "Sadist Garb" "Bone Armour" "Crypt Armour" "Carnal Armour"'
+
 
 RARITY_NORMAL = 'Normal'
 RARITY_MAGIC = 'Magic'
@@ -225,11 +227,11 @@ def modify_endgame_mix(filter_manager):
     if settings.SSF_CRAFT_AMULETS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Amulets', BaseType=settings.SSF_CRAFT_AMULETS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=40, SetTextColor=COLOR_WHITE))
+            SetFontSize=36, SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_RINGS_BASE_TYPE != '':
         filter_manager.append_block(FilterBlock(
             Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=40, SetTextColor=COLOR_WHITE))
+            SetFontSize=36, SetTextColor=COLOR_WHITE))
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
         hide_n_leather_belt.modify(Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')
@@ -239,7 +241,7 @@ def modify_endgame_mix(filter_manager):
             filter_manager.append_block(hide_n_rustic_sash)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
-            SetFontSize=40, SetTextColor=COLOR_WHITE))
+            SetFontSize=36, SetTextColor=COLOR_WHITE))
 
     # NEED_CHISEL
     blocks = filter_manager.add_comment(217, 'Chisel recipe items')
@@ -517,8 +519,9 @@ def modify_leveling(filter_manager):
     hide_big_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_big_rares.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
                           ItemLevel='>= 13', SetFontSize=26)
-    hide_some_body_rares = hide_big_rares.copy_modify(ItemLevel='>= 23', Class='"Body Armour"',
-                                                      BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES]))
+    hide_some_body_rares = hide_big_rares.copy_modify(
+        ItemLevel='>= 23', Class='"Body Armour"',
+        BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
     filter_manager.extend_blocks([hide_big_rares, hide_some_body_rares])
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_rares = hide_big_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)

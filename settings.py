@@ -12,15 +12,13 @@ TENCENT = False or TEMP
 #
 # Part 1 - A1-10
 #
-# >>> NPC-4L <<<
-#
 
 L3_MAX_IL = 19  # RRG+RR
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Gloves"',  # 攻速/点伤(12+)
+    '"Rustic Sash" "Leather Belt"',  # 血抗 / 深渊腰带有抗
     '"Iron Ring"',  # 血抗 / 抗性戒指有点伤
-    '"Rustic Sash" "Leather Belt"',  # 血抗
 
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring"',  # 血抗，后期Lv6大师上点伤，下同
     '"Two-Stone Ring"',  # 血抗
