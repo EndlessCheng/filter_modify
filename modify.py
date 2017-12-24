@@ -717,12 +717,13 @@ def modify_filter(filter_manager):
     filter_manager.add_comment(1400, 'Currency - PART 3 - Divination cards', ignored=True)
 
     blocks = filter_manager.add_comment(1401, 'Exceptions to prevent ident. mistakes')
+    blocks[0].SetFontSize = FONT_SIZE_MAX  # T4
     filter_manager.extend_blocks(blocks)
 
     # 8
     blocks = filter_manager.add_comment(1402, 'T1 - Top tier cards', ignored=settings.TEMP)
     if blocks:
-        blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
+        blocks[0].PlayAlertSound = SOUND_TOP_VALUE
         filter_manager.extend_blocks(blocks)
 
     # 8
@@ -741,12 +742,11 @@ def modify_filter(filter_manager):
     # 2
     blocks = filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before', ignored=settings.TEMP)
     if blocks:
-        blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
+        blocks[0].modify(SetFontSize=40, PlayAlertSound=SOUND_LOW_VALUE)
         filter_manager.extend_blocks(blocks)
 
-    # 2
     blocks = filter_manager.add_comment(1406, 'T4 - ...showing the remaining cards')
-    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
+    blocks[0].SetFontSize = FONT_SIZE_MAX
     filter_manager.extend_blocks(blocks)
 
     # CATCHALL
