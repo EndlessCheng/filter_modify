@@ -113,15 +113,14 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 8 13 10
-    blocks = filter_manager.add_comment(202, 'Shaper and Elder Items', ignored=settings.TEMP)
-    if blocks:
-        for block in blocks[:-4]:
-            block.PlayAlertSound = SOUND_TOP_VALUE
-        for block in blocks[-4:-2]:
-            block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER_80)
-        for block in blocks[-2:]:
-            block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER)
-        filter_manager.extend_blocks(blocks)
+    blocks = filter_manager.add_comment(202, 'Shaper and Elder Items')
+    for block in blocks[:-4]:
+        block.PlayAlertSound = SOUND_TOP_VALUE
+    for block in blocks[-4:-2]:
+        block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER_80)
+    for block in blocks[-2:]:
+        block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER)
+    filter_manager.extend_blocks(blocks)
 
     # 8 1 样式改掉
     blocks = filter_manager.add_comment(204, '6-Socket Items')
@@ -133,18 +132,16 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # 8 只留第一个
-    blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise', ignored=settings.TEMP)
-    if blocks:
-        blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-        filter_manager.append_block(blocks[0])
+    blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.append_block(blocks[0])
 
     # 8 8 1 去掉最后一个
-    blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)', ignored=settings.TEMP)
-    if blocks:
-        blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-        blocks[1].PlayAlertSound = SOUND_TOP_VALUE
-        blocks[2].PlayAlertSound = SOUND_MID_VALUE
-        filter_manager.extend_blocks(blocks[:3])
+    blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[2].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks[:3])
 
     # 8 1 ALERT_ATLAS_BASE_TYPE
     blocks = filter_manager.add_comment(207, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
@@ -421,13 +418,12 @@ def modify_gem_flask_map(filter_manager):
     blocks = filter_manager.add_comment(1202, 'Labyrinth items, Offerings')
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(1203, 'Shaped Maps', ignored=settings.TEMP)
-    if blocks:
-        blocks[0].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
-        blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
-        blocks[2].modify(DropLevel='>= 71', **STYLE_MAP_MID_9_10)
-        blocks.append(blocks[2].copy_modify(DropLevel=None, **STYLE_MAP_MID_6_8))
-        filter_manager.extend_blocks(blocks)
+    blocks = filter_manager.add_comment(1203, 'Shaped Maps')
+    blocks[0].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
+    blocks[2].modify(DropLevel='>= 71', **STYLE_MAP_MID_9_10)
+    blocks.append(blocks[2].copy_modify(DropLevel=None, **STYLE_MAP_MID_6_8))
+    filter_manager.extend_blocks(blocks)
 
     # T15加红边
     blocks = filter_manager.add_comment(1204, 'Top tier maps (T15-16)')
@@ -495,7 +491,8 @@ def modify_leveling(filter_manager):
 
     # 15改成10  CURRENCY_ALERT_BLACKSMITH
     blocks = filter_manager.add_comment(2005, 'Show remaining flasks')
-    blocks[1].Quality = '>= 10'
+    blocks[0].SetFontSize = FONT_SIZE_MAX
+    blocks[1].modify(SetFontSize=FONT_SIZE_MAX, Quality='>= 10')
     if settings.CURRENCY_ALERT_BLACKSMITH:
         filter_manager.extend_blocks(blocks[:2])
 
@@ -790,17 +787,17 @@ def modify_filter(filter_manager):
 
     # 6
     blocks = filter_manager.add_comment(1705, 'Multi-Unique bases')
-    blocks[0].PlayAlertSound = SOUND_UNIQUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
     # 6
     blocks = filter_manager.add_comment(1706, 'Prophecy-Material Uniques')
-    blocks[0].PlayAlertSound = SOUND_UNIQUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
     # 6
     blocks = filter_manager.add_comment(1707, 'Random Uniques')
-    blocks[0].PlayAlertSound = SOUND_UNIQUE
+    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
     # 1

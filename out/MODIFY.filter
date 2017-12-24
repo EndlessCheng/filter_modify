@@ -2211,7 +2211,7 @@ Show
 Show
  BaseType "Carved Wand" "Ebony Tower Shield" "Exquisite Leather" "Goathide Boots" "Gold Amulet" "Gold Ring" "Imperial Bow" "Nightmare Bascinet" "Onyx Amulet" "Sorcerer Boots" "Stibnite Flask" "Unset Ring"
  Rarity Unique
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 175 96 37 255
@@ -2221,7 +2221,7 @@ Show
 Show
  BaseType "Coral Amulet" "Coral Ring" "Crude Bow" "Death Bow" "Fire Arrow Quiver" "Gilded Sallet" "Goathide Gloves" "Iron Hat" "Iron Ring" "Iron Staff" "Jade Amulet" "Jade Hatchet" "Long Bow" "Ornate Sword" "Painted Buckler" "Plank Kite Shield" "Plate Vest" "Royal Bow" "Scholar Boots" "Serrated Arrow Quiver" "Sledgehammer" "Spiraled Wand" "Vine Circlet" "War Buckler" "Woodsplitter"
  Rarity Unique
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 175 96 37 255
  SetBorderColor 100 37 255 200
  SetBackgroundColor 15 0 25 255
@@ -2230,7 +2230,7 @@ Show
 # 1707 Random Uniques
 Show
  Rarity Unique
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 175 96 37 255
  SetBorderColor 175 96 37 255
  SetBackgroundColor 0 0 0 255
@@ -2458,7 +2458,7 @@ Show
  ItemLevel <= 65
  BaseType "Flask"
  Rarity <= Magic
- SetFontSize 42
+ SetFontSize 45
  SetBorderColor 250 250 250
  SetBackgroundColor 75 75 75 255
 Show
@@ -2466,7 +2466,7 @@ Show
  ItemLevel <= 65
  BaseType "Flask"
  Rarity <= Magic
- SetFontSize 42
+ SetFontSize 45
  SetBorderColor 150 150 150
  SetBackgroundColor 75 75 75 255
 
