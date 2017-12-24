@@ -776,7 +776,7 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1703, 'Tier 1 uniques')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Basket Rapier"'
+    blocks[0].BaseType += ' "Basket Rapier" "Twilight Blade"'
     filter_manager.extend_blocks(blocks)
 
     # 改成T1
