@@ -260,10 +260,7 @@ def modify_endgame_mix(filter_manager):
     if settings.NEED_RGB:
         filter_manager.extend_blocks(blocks)
 
-    # SHOW_ENDGAME_4L
-    blocks = filter_manager.add_comment(221, 'Endgame-start 4-links')
-    if settings.SHOW_ENDGAME_4L:
-        filter_manager.extend_blocks(blocks)
+    filter_manager.add_comment(221, 'Endgame-start 4-links', ignored=True)
 
     filter_manager.add_comment(222, 'Animate Weapon script - deactivated by default', ignored=True)
 
