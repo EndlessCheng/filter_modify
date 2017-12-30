@@ -589,19 +589,21 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2500, 'Levelling - normal and magic item progression', ignored=True)
 
     # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
+    filter_manager.add_comment(2501, 'Progression - Part 1 1-30', ignored=True)
     if settings.SHOW_N2M_ONE_HAND:
-        blocks = filter_manager.add_comment(2501, 'Progression - Part 1 1-30')
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
                           ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
-                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]
+                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11),
+                          ('"Broad Axe"', 21 + 1), ('"Arming Axe"', 25 + 1), ('"Wraith Axe"', 54), ]
         if not settings.TENCENT:
             _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3
-        weapon_template = blocks[0].copy_modify(DropLevel=None, Class=None, SetFontSize=42)
-        weapons = [weapon_template.copy_modify(BaseType=leveling_base[0],
-                                               ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
-                   for leveling_base in _LEVELING_BASE]
-        filter_manager.extend_blocks(weapons)
+        for weapon_template in filter_manager.get_blocks(BLOCK_ACT_1)[:2]:
+            weapon_template.FontSize = 42
+            weapons = [weapon_template.copy_modify(BaseType=leveling_base[0],
+                                                   ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
+                       for leveling_base in _LEVELING_BASE]
+            filter_manager.extend_blocks(weapons)
 
     hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
     hide_m_2.modify(Class=' '.join([CLASS_WEAPON, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC,

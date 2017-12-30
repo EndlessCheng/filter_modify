@@ -3069,80 +3069,195 @@ Show
 Show
  ItemLevel <= 4
  BaseType "Rusted Sword"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 6
  BaseType "Rusted Spike"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 8
  BaseType "Copper Sword"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 10
  BaseType "Whalebone Rapier"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 13
  BaseType "Sabre"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 9
  BaseType "Jade Hatchet"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 14
  BaseType "Boarding Axe"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
- ItemLevel <= 24
+ ItemLevel <= 25
  BaseType "Broad Axe"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 29
+ BaseType "Arming Axe"
+ Rarity = Normal
+ SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 57
  BaseType "Wraith Axe"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 36
  BaseType "Spectral Axe"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Show
  ItemLevel <= 48
  BaseType "War Axe"
- Rarity <= Magic
+ Rarity = Normal
  SetFontSize 42
- SetBorderColor 0 0 0
- SetBackgroundColor 0 0 0 185
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 4
+ BaseType "Rusted Sword"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 6
+ BaseType "Rusted Spike"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 8
+ BaseType "Copper Sword"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 10
+ BaseType "Whalebone Rapier"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 13
+ BaseType "Sabre"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 9
+ BaseType "Jade Hatchet"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 14
+ BaseType "Boarding Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 25
+ BaseType "Broad Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 29
+ BaseType "Arming Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 57
+ BaseType "Wraith Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 48
+ BaseType "War Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Hide
  ItemLevel >= 6
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Amulets" "Belts" "Rings"
