@@ -816,8 +816,6 @@ def modify_filter(filter_manager):
 
 
 def main():
-    start_time = time.time()
-
     filter_name = 'res' + os.sep + 'NeverSink\'s filter - 1-REGULAR.filter'
     with open(filter_name) as f:
         fm = FilterManager(f.readlines())
@@ -830,8 +828,8 @@ def main():
     if platform.system() == 'Windows':
         shutil.copyfile(out_file_path, os.path.expanduser('~') + "\Documents\My Games\Path of Exile\MODIFY.filter")
 
-    print("Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time)))
-
 
 if __name__ == '__main__':
+    start_time = time.time()
     main()
+    print("Modify success, time cost: {:.0f}ms".format(1000 * (time.time() - start_time)))
