@@ -194,13 +194,12 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(213, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(blocks)
 
-    # 只留第一个 ALERT_JEWEL_BASE_TYPE
     # ALERT_MAGIC_BASE_TYPE
     blocks = filter_manager.add_comment(214, 'Magic jewel and others')
     if settings.ALERT_JEWEL_BASE_TYPE != '':
         magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(magic_jewels)
-    filter_manager.append_block(blocks[0])
+        filter_manager.append_block(blocks[0])
 
     if settings.ALERT_MAGIC_BASE_TYPE != '':
         magics = filter_manager.get_blocks(BLOCK_ACT_1)[1]
@@ -297,11 +296,13 @@ def modify_endgame_rare(filter_manager):
     for block in hide_blocks[-2:]:
         block.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
                      SetFontSize=26)
-    filter_manager.extend_blocks(hide_blocks[-2:])
+    if settings.NEED_REGAL:
+        hide_blocks[-1].ItemLevel = '<= 74'
+    filter_manager.extend_blocks(hide_blocks[-1 if settings.NEED_REGAL else -2:])
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_blocks[-2].Class = settings.HIDE_BELOW_T1_RARE_CLASS
         hide_blocks[-1].Class = settings.HIDE_BELOW_T1_RARE_CLASS
-        filter_manager.extend_blocks(hide_blocks[-2:])
+        filter_manager.extend_blocks(hide_blocks[-1 if settings.NEED_REGAL else -2:])
 
     filter_manager.extend_blocks(blocks)
 
@@ -588,7 +589,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2500, 'Levelling - normal and magic item progression', ignored=True)
 
-    # 蓝白武器，提取模板  HIDE_NORMAL_MAGIC_CLASS
+    # 蓝白武器  HIDE_NORMAL_MAGIC_CLASS
     filter_manager.add_comment(2501, 'Progression - Part 1 1-30', ignored=True)
     if settings.SHOW_N2M_ONE_HAND:
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
