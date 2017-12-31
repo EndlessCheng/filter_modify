@@ -22,7 +22,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Siege Axe"',  # ~100%
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗，后期Lv6大师上点伤，下同
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗
-]).strip()
+])
 
 SHOW_FLASK_HALLOWED = True
 SHOW_FLASK_LIFE = True
@@ -33,7 +33,7 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
     '"Siege Axe"',  # 59 73
     '"Titan Greaves" "Vaal Greaves"',  # 62 68
     '"Royal Burgonet" "Eternal Burgonet"',  # 65 69
-]).strip()
+])
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Sceptres" "Claws" "One Hand"',  # 双高抗/智力
     # '"Helmets"',  # 高血
@@ -43,18 +43,31 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Daggers" "Wands"',
     # '"Body Armour"',  # 血量精华
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
-]).strip()
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][0]
+])
 LINKED_CLASS = ' '.join([
     '"Helmets"',
     '"Boots"',
     '"Body Armour"',
     '"Gloves"',
+])
+
+CURRENCY_ALERT_TRANSMUTATION = True
+
+ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
+    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
+    '"Stibnite" "Granite" "Basalt" "Quicksilver"',
+    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
 #
 # Part 2 - Maps
 #
+
+ALERT_JEWEL_BASE_TYPE = ' '.join([
+    '"Crimson" "Viridian" "Cobalt"',
+    '"Murderous Eye" "Searching Eye"',  # 找血，抗性，点伤
+    '"Eye"' if SHOW_FLASK_LIFE else '',
+]).strip()
 
 # 参考T1T2
 T1_RARE_BASE_TYPE = ' '.join([
@@ -67,22 +80,8 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Titan Gauntlets" "Vaal Gauntlets"',
     '"Siege Axe"',
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
-]).strip()
+])
 ALERT_RARE_ACCESSORY = True  # 血+抗性+攻速
-
-CURRENCY_ALERT_TRANSMUTATION = True
-
-ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Stibnite" "Granite" "Basalt" "Quicksilver"',
-    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur"' if SHOW_FLASK_LIFE else '',
-]).strip()
-
-ALERT_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt"',
-    '"Murderous Eye" "Searching Eye"',  # 找血，抗性，点伤
-    '"Eye"' if SHOW_FLASK_LIFE else '',
-]).strip()
 
 ALERT_ATLAS_BASE_TYPE = ' '.join([
     '"Gripped Gloves" "Fingerless Silk Gloves"',
@@ -90,7 +89,7 @@ ALERT_ATLAS_BASE_TYPE = ' '.join([
     '"Spiked Gloves"',
     '"Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt"',
     '"Two-Toned Boots"',
-]).strip()
+])
 
 CURRENCY_ALERT_CHANCE = True
 
@@ -105,19 +104,20 @@ L3_MAX_IL = 19  # RRG+RR
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
-]).strip() if SHOW_FLASK_HALLOWED else ''
+]) if SHOW_FLASK_HALLOWED else ''
 NEED_RGB = True and SHOW_FLASK_LIFE
 SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if CURRENCY_ALERT_TRANSMUTATION else 2)]
 CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][max(0, 0 if CURRENCY_ALERT_TRANSMUTATION else 1)]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][max(0, 0 if CURRENCY_ALERT_TRANSMUTATION else 1)]
 ALERT_LOW_CURRENCY = '"Siege Axe"' in ALERT_MAGIC_BASE_TYPE
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
-    [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):]).strip()
+    [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(  # 深渊赛季结束后去掉 0 if SHOW_FLASK_LIFE else 2
-    ['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1, 0 if SHOW_FLASK_LIFE else 2):]).strip()
+    ['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1, 0 if SHOW_FLASK_LIFE else 2):])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
 
 ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
@@ -132,7 +132,7 @@ L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = ''
 if not CURRENCY_ALERT_CHANCE:
-    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Full Wyrmscale"'][1:]).strip()
+    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Full Wyrmscale"'][1:])
 
 if TENCENT and '"Astral Plate"' not in ALERT_NORMAL_BASE_TYPE:
     HIDE_BELOW_T1_RARE_CLASS += ' "Body Armour" '
