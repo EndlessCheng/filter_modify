@@ -55,8 +55,8 @@ CURRENCY_ALERT_TRANSMUTATION = True
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Stibnite" "Granite" "Basalt" "Quicksilver"',
-    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur"' if SHOW_FLASK_LIFE else '',
+    '"Stibnite" "Granite" "Basalt"',
+    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
 #
