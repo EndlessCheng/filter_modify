@@ -9,7 +9,7 @@ _type_list = ['normal', 'cruel', 'merciless', 'uber'][:3]
 
 
 def fetch_image(type_):
-    url = "http://www.poelab.com/wp-content/uploads/{year}/{month}/{year}-{month}-{day}_{type}.jpg".format(
+    url = "http://www.poelab.com/wp-content/uploads/{year}/{month:02}/{year}-{month:02}-{day:02}_{type}.jpg".format(
         year=_now.year, month=_now.month, day=_now.day, type=type_)
     print(url)
     r = requests.get(url)
