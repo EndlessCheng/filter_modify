@@ -265,6 +265,8 @@ def modify_endgame_mix(filter_manager):
 
     # 8，改稀有度，高亮边框
     blocks = filter_manager.add_comment(223, 'W-soc offhand weapons')
+    for block in blocks:
+        block.Class = '"Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"'
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
     blocks[1].modify(Rarity=RARITY_N2R, SetFontSize=38, SetBorderColor=COLOR_WHITE)
     filter_manager.extend_blocks(blocks)

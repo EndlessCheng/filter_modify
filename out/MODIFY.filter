@@ -481,7 +481,7 @@ Show
 Show
  Sockets >= 3
  SocketGroup WWW
- Class Wands Daggers One Hand Shields Thrusting Sceptre Claws
+ Class "Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"
  Rarity <= Rare
  SetFontSize 45
  SetBorderColor 255 255 255
@@ -489,7 +489,7 @@ Show
 Show
  Sockets >= 3
  SocketGroup W
- Class Wands Daggers One Hand Shields Thrusting Sceptre Claws
+ Class "Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"
  Rarity <= Rare
  SetFontSize 38
  SetBorderColor 255 255 255
