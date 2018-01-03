@@ -3,7 +3,7 @@
 DEBUG = False
 
 TEMP = False
-TENCENT = False or TEMP
+TENCENT = True or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-60), A9(61-64), A10(64-67)
@@ -64,8 +64,8 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
 #
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt"',
-    '"Murderous Eye" "Searching Eye"',  # 找血，抗性，点伤
+    '"Crimson" "Viridian" "Cobalt" "Searching Eye"',
+    '"Murderous Eye"',  # 找血，抗性，点伤
     '"Eye"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
