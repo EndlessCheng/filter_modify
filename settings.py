@@ -15,13 +15,13 @@ TENCENT = True or TEMP
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Gloves"',  # 攻速/点伤(IL 12+)
-    '"Amulet"',  # 智敏有用的
-    '"Iron Ring"',  # 血抗 / 抗性戒指有点伤
-    '"Rustic Sash" "Leather Belt"',  # 血抗 / 深渊珠宝有血/点伤
-
+    '"Leather Belt"',  # 血抗 / 深渊珠宝有血抗
     '"Siege Axe"',  # ~100%
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗，后期Lv6大师上点伤，下同
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗
+    '"Amulet"',  # Hide >=20 敏+智
+    '"Iron Ring"',  # Hide >=20 血抗 / 抗性戒指有点伤
+    '"Rustic Sash"',  # Hide >= 30
 ])
 
 SHOW_FLASK_HALLOWED = True
@@ -56,7 +56,7 @@ CURRENCY_ALERT_TRANSMUTATION = True
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Stibnite" "Granite" "Basalt"',
-    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"' if SHOW_FLASK_LIFE else '',
+    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"' if SHOW_FLASK_HALLOWED else '',
 ]).strip()
 
 #

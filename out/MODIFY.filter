@@ -337,22 +337,6 @@ Show
  SetTextColor 0 100 255
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
-Show
- Class "Gloves"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 12 300
-Show
- BaseType "Gloves" "Amulet" "Iron Ring" "Rustic Sash" "Leather Belt" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 12 300
 
 # 0215 Warband items
 
@@ -378,14 +362,14 @@ Hide
  ItemLevel <= 29
  BaseType "Leather Belt"
  Rarity Normal
- SetFontSize 26
+ SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
  ItemLevel >= 30
  BaseType "Rustic Sash"
  Rarity Normal
- SetFontSize 26
+ SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Show
@@ -406,6 +390,45 @@ Show
  BaseType "Two-Stone"
  Rarity Normal
  SetTextColor 255 255 255
+Hide
+ ItemLevel >= 30
+ BaseType "Rustic Sash"
+ Rarity Magic
+ SetFontSize 18
+ SetBorderColor 0 0 0 150
+ SetBackgroundColor 0 0 0 165
+Hide
+ ItemLevel >= 20
+ BaseType "Iron Ring"
+ Rarity Magic
+ SetFontSize 18
+ SetBorderColor 0 0 0 150
+ SetBackgroundColor 0 0 0 165
+Show
+ ItemLevel <= 19
+ BaseType "Amulet"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ Class "Gloves"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ BaseType "Gloves" "Leather Belt" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"  "Iron Ring" "Rustic Sash"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
 
 # 0217 Chisel recipe items
 Show
@@ -3146,6 +3169,14 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
+ Rarity = Normal
+ SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
  ItemLevel <= 57
  BaseType "Wraith Axe"
  Rarity = Normal
@@ -3220,6 +3251,14 @@ Show
 Show
  ItemLevel <= 29
  BaseType "Arming Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255

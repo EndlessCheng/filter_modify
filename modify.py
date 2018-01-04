@@ -95,7 +95,7 @@ STYLE_NONE = {'SetFontSize': None, 'SetTextColor': None, 'SetBorderColor': None,
 
 BLOCK_HIDE_RARES_65 = 700
 BLOCK_ACT_1 = 2406
-BLOCK_HIDE_HIDE_REMAINING = 2600
+BLOCK_HIDE_REMAINING = 2600  # SetFontSize=FONT_SIZE_MIN
 
 
 # [[0200]]
@@ -194,24 +194,17 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(213, '83/84+ Endgame crafting rules')
     filter_manager.extend_blocks(blocks)
 
-    # ALERT_MAGIC_BASE_TYPE
+    # 12
     blocks = filter_manager.add_comment(214, 'Magic jewel and others')
     if settings.ALERT_JEWEL_BASE_TYPE != '':
         magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(magic_jewels)
         filter_manager.append_block(blocks[0])
 
-    if settings.ALERT_MAGIC_BASE_TYPE != '':
-        magics = filter_manager.get_blocks(BLOCK_ACT_1)[1]
-        magics.modify(BaseType=settings.ALERT_MAGIC_BASE_TYPE, ItemLevel=None, PlayAlertSound=SOUND_LEVELING)
-        if '"Gloves"' in settings.ALERT_MAGIC_BASE_TYPE:
-            magic_gloves = magics.copy_modify(Class='"Gloves"', BaseType=None)
-            filter_manager.append_block(magic_gloves)
-        filter_manager.append_block(magics)
-
     filter_manager.add_comment(215, 'Warband items', ignored=True)
 
-    # SSF_CRAFT_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
+    # ALERT_NORMAL_BASE_TYPE, SSF_CRAFT_AMULETS_BASE_TYPE, SSF_CRAFT_RINGS_BASE_TYPE, SSF_CRAFT_BELTS_BASE_TYPE
+    # ALERT_MAGIC_BASE_TYPE
     filter_manager.add_comment(216, 'Remaining crafting rules - add your own bases here!', ignored=True)
     if settings.ALERT_NORMAL_BASE_TYPE != '':
         normals = filter_manager.get_blocks(BLOCK_ACT_1)[0]
@@ -219,13 +212,14 @@ def modify_endgame_mix(filter_manager):
                        SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
         str_n = normals.copy_modify(BaseType='"Amber Amulet" "Heavy Belt"', ItemLevel='<= 12')
         filter_manager.extend_blocks([str_n, normals])
+
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        hide_n_leather_belt = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
-        hide_n_leather_belt.modify(Class=None, BaseType='"Leather Belt"', Rarity=RARITY_NORMAL, ItemLevel='<= 29')
-        filter_manager.append_block(hide_n_leather_belt)  # A4左右开始堆血(T5血从30开始)
-        if settings.TENCENT:
-            hide_n_rustic_sash = hide_n_leather_belt.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
-            filter_manager.append_block(hide_n_rustic_sash)
+        hide_normals = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
+        hide_normals.modify(Class=None, Rarity=RARITY_NORMAL, SetFontSize=FONT_SIZE_MIN)
+        hide_n_leather_belt = hide_normals.copy_modify(BaseType='"Leather Belt"', ItemLevel='<= 29')
+        hide_n_rustic_sash = hide_normals.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
+        filter_manager.extend_blocks([hide_n_leather_belt, hide_n_rustic_sash])  # A4左右开始堆血(T5血从30开始)
+
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
@@ -237,6 +231,26 @@ def modify_endgame_mix(filter_manager):
         filter_manager.append_block(FilterBlock(
             Class='Rings', BaseType=settings.SSF_CRAFT_RINGS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
+
+    if settings.ALERT_MAGIC_BASE_TYPE != '':
+        hide_magics = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
+        hide_magics.modify(Class=None, Rarity=RARITY_MAGIC, SetFontSize=FONT_SIZE_MIN)
+        hide_m_rustic_sash = hide_magics.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
+        hide_m_iron_ring = hide_magics.copy_modify(BaseType='"Iron Ring"', ItemLevel='>= 20')
+        filter_manager.extend_blocks([hide_m_rustic_sash, hide_m_iron_ring])
+
+        alert_m_amulets = '"Amulet"' in settings.ALERT_MAGIC_BASE_TYPE
+        if alert_m_amulets:
+            settings.ALERT_MAGIC_BASE_TYPE = settings.ALERT_MAGIC_BASE_TYPE.replace('"Amulet"', '')
+        magics = filter_manager.get_blocks(BLOCK_ACT_1)[1]
+        magics.modify(BaseType=settings.ALERT_MAGIC_BASE_TYPE, ItemLevel=None, PlayAlertSound=SOUND_LEVELING)
+        if alert_m_amulets:
+            magic_amulets = magics.copy_modify(BaseType='"Amulet"', ItemLevel='<= 19')
+            filter_manager.append_block(magic_amulets)
+        if '"Gloves"' in settings.ALERT_MAGIC_BASE_TYPE:
+            magic_gloves = magics.copy_modify(Class='"Gloves"', BaseType=None)
+            filter_manager.append_block(magic_gloves)
+        filter_manager.append_block(magics)
 
     # NEED_CHISEL
     blocks = filter_manager.add_comment(217, 'Chisel recipe items')
@@ -596,10 +610,10 @@ def modify_leveling(filter_manager):
     if settings.SHOW_N2M_ONE_HAND:
         _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
                           ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
-                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11),
-                          ('"Broad Axe"', 21 + 1), ('"Arming Axe"', 25 + 1), ('"Wraith Axe"', 54), ]
+                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21 + 1),
+                          ('"Arming Axe"', 25 + 1), ('"Spectral Axe"', 33), ('"Wraith Axe"', 54), ]
         if not settings.TENCENT:
-            _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
+            _LEVELING_BASE.extend([('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3
         for weapon_template in filter_manager.get_blocks(BLOCK_ACT_1)[:2]:
             weapon_template.FontSize = 42
@@ -608,7 +622,7 @@ def modify_leveling(filter_manager):
                        for leveling_base in _LEVELING_BASE]
             filter_manager.extend_blocks(weapons)
 
-    hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_HIDE_REMAINING)[0]
+    hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
     hide_m_2.modify(Class=' '.join([CLASS_WEAPON, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC,
                     ItemLevel='>= {}'.format(2 if settings.TENCENT else 6))
     hide_m_5 = hide_m_2.copy_modify(Class='"Helmets" "Gloves" "Boots" "Body Armour"',
@@ -810,7 +824,7 @@ def modify_filter(filter_manager):
     # [[1900]]-[[2500]]
     modify_leveling(filter_manager)
 
-    blocks = filter_manager.add_comment(BLOCK_HIDE_HIDE_REMAINING, 'HIDE LAYER 5 - Remaining Items')
+    blocks = filter_manager.add_comment(BLOCK_HIDE_REMAINING, 'HIDE LAYER 5 - Remaining Items')
     blocks[0].modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     filter_manager.extend_blocks(blocks)
 
