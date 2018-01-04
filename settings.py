@@ -100,7 +100,7 @@ NEED_CHISEL = False
 # Part 3 - Others
 #
 
-L3_MAX_IL = 19  # RRG+RR
+L3_MAX_IL = 19  # RRG 头/脚
 LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
