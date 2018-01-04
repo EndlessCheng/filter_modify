@@ -13,7 +13,7 @@ def fetch_image(type_):
         year=_now.year, month=_now.month, day=_now.day, type=type_)
     print(url)
     r = requests.get(url)
-    with open('{}.jpg'.format(type_), 'wb') as img:
+    with open('{}.jpg'.format(_type_list.index(type_) + 1), 'wb') as img:
         img.write(r.content)
 
 
