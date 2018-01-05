@@ -174,7 +174,7 @@ def modify_endgame_mix(filter_manager):
     # CURRENCY_ALERT_BLACKSMITH
     blocks = filter_manager.add_comment(210, 'FLASKS (Endgame rules)')
     for block in blocks:
-        block.SetFontSize = 45
+        block.SetFontSize = FONT_SIZE_MAX
     if settings.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         utility_flasks = blocks[-1].copy_modify(BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE,
                                                 PlayAlertSound=SOUND_LEVELING)
