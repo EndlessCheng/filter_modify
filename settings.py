@@ -14,13 +14,13 @@ TENCENT = True or TEMP
 #
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Gloves"',  # 攻速/点伤(IL 12+)
     '"Leather Belt"',  # 血抗 / 深渊珠宝有血抗
     '"Siege Axe"',  # ~100%
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗，后期Lv6大师上点伤，下同
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗
     '"Amulet"',  # Hide >=20 敏+智
     '"Iron Ring"',  # Hide >=20 血抗 / 抗性戒指有点伤
+    '"Gloves"',  # Hide >=25 攻速/点伤(IL 12+)
     '"Rustic Sash"',  # Hide >= 30
 ])
 

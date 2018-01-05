@@ -406,7 +406,7 @@ Hide
  SetBackgroundColor 0 0 0 165
 Show
  ItemLevel <= 19
- BaseType "Amulet"
+ Class "Amulets"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -414,6 +414,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
+ ItemLevel <= 24
  Class "Gloves"
  Rarity = Magic
  SetFontSize 42
@@ -422,7 +423,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
- BaseType "Gloves" "Leather Belt" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"  "Iron Ring" "Rustic Sash"
+ BaseType "Leather Belt" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"  "Iron Ring"  "Rustic Sash"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
