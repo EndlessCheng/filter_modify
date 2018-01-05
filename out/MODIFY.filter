@@ -2273,7 +2273,7 @@ Show
  BaseType "Shaper's Orb"
  SetFontSize 45
  SetBorderColor 74 230 58
- PlayAlertSound 1 300
+ PlayAlertSound 2 300
 Show
  Class Quest
  SetFontSize 45
@@ -3098,7 +3098,7 @@ Show
 
 # 2501 Progression - Part 1 1-30
 Show
- ItemLevel <= 4
+ ItemLevel <= 3
  BaseType "Rusted Sword"
  Rarity = Normal
  SetFontSize 42
@@ -3186,7 +3186,7 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
- ItemLevel <= 4
+ ItemLevel <= 3
  BaseType "Rusted Sword"
  Rarity = Magic
  SetFontSize 42

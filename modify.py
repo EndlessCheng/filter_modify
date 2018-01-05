@@ -608,7 +608,7 @@ def modify_leveling(filter_manager):
     # 蓝白武器  HIDE_NORMAL_MAGIC_CLASS
     filter_manager.add_comment(2501, 'Progression - Part 1 1-30', ignored=True)
     if settings.SHOW_N2M_ONE_HAND:
-        _LEVELING_BASE = [('"Rusted Sword"', 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
+        _LEVELING_BASE = [('"Rusted Sword"', 1 - 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
                           ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
                           ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21 + 1),
                           ('"Arming Axe"', 25 + 1), ('"Spectral Axe"', 33), ('"Wraith Axe"', 54), ]
@@ -816,9 +816,7 @@ def modify_filter(filter_manager):
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
     filter_manager.extend_blocks(blocks)
 
-    # 1
     blocks = filter_manager.add_comment(1800, 'Quest Items and Shaper Orbs')
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     # [[1900]]-[[2500]]
