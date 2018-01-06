@@ -131,10 +131,12 @@ def modify_endgame_mix(filter_manager):
                       PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 8 只留第一个
+    # 8 1 12
     blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    filter_manager.append_block(blocks[0])
+    blocks[1].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_MID_VALUE)
+    blocks[2].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_LEVELING)
+    filter_manager.extend_blocks(blocks)
 
     # 8 8 1 去掉最后一个
     blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)')
@@ -336,7 +338,10 @@ def modify_endgame_rare(filter_manager):
     for block in blocks:
         block.SetFontSize = FONT_SIZE_MAX
     blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
-    if settings.ALERT_RARE_ACCESSORY:
+
+    if settings.ALERT_RARE_ACCESSORY != '':
+        for block in blocks[1:]:
+            block.Class = settings.ALERT_RARE_ACCESSORY
         blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)
         blocks[2].PlayAlertSound = SOUND_LEVELING
         blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)
@@ -425,9 +430,8 @@ def modify_gem_flask_map(filter_manager):
 
     # 8
     blocks = filter_manager.add_comment(1201, 'Unique Maps')
-    blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
-    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
-    filter_manager.extend_blocks(blocks)
+    blocks[0].modify(BaseType=None, PlayAlertSound=SOUND_TOP_VALUE)
+    filter_manager.append_block(blocks[0])
 
     blocks = filter_manager.add_comment(1202, 'Labyrinth items, Offerings')
     filter_manager.extend_blocks(blocks)
@@ -527,7 +531,8 @@ def modify_leveling(filter_manager):
     # hide_leveling_rares hide_some_body_rares  HIDE_BELOW_T1_RARE_CLASS
     filter_manager.add_comment(2300, 'Leveling - RARES', ignored=True)
     hide_big_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
-    hide_big_rares.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
+    hide_big_rares.modify(status=DEBUG, Identified=False,
+                          Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Wands"',
                           ItemLevel='>= 13', SetFontSize=26)
     hide_some_body_rares = hide_big_rares.copy_modify(
         ItemLevel='>= 23', Class='"Body Armour"',
@@ -545,7 +550,7 @@ def modify_leveling(filter_manager):
                                          ItemLevel='<= ' + str(settings.L3_MAX_IL))
         rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
         filter_manager.extend_blocks([blocks[0], rare_rrg, rare_rrr])
-    if not settings.ALERT_RARE_ACCESSORY:
+    if settings.ALERT_RARE_ACCESSORY == '':
         blocks[1].PlayAlertSound = None
     blocks[2].PlayAlertSound = SOUND_LEVELING
     blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
@@ -610,10 +615,10 @@ def modify_leveling(filter_manager):
     if settings.SHOW_N2M_ONE_HAND:
         _LEVELING_BASE = [('"Rusted Sword"', 1 - 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
                           ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
-                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21 + 1),
-                          ('"Arming Axe"', 25 + 1), ('"Spectral Axe"', 33), ('"Wraith Axe"', 54), ]
+                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21),
+                          ('"Wraith Axe"', 54), ]  # ('"Arming Axe"', 25 + 1),
         if not settings.TENCENT:
-            _LEVELING_BASE.extend([('"War Axe"', 45)])
+            _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3
         for weapon_template in filter_manager.get_blocks(BLOCK_ACT_1)[:2]:
             weapon_template.FontSize = 42
@@ -755,6 +760,8 @@ def modify_filter(filter_manager):
     # 2
     blocks = filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before', ignored=settings.TEMP)
     if blocks:
+        hide_cards = blocks[0].copy_modify(status=DEBUG, BaseType='"Carrion Crow"', SetFontSize=FONT_SIZE_MIN)
+        filter_manager.append_block(hide_cards)
         blocks[0].modify(SetFontSize=40, PlayAlertSound=SOUND_LOW_VALUE)
         filter_manager.extend_blocks(blocks)
 

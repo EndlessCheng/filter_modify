@@ -153,6 +153,22 @@ Show
  SetBorderColor 255 255 255 255
  SetBackgroundColor 255 125 0 255
  PlayAlertSound 8 300
+Show
+ ItemLevel >= 75
+ BaseType "Stygian Vise"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 255 190 0
+ SetBorderColor 25 235 25
+ SetBackgroundColor 35 100 20 255
+ PlayAlertSound 1 300
+Show
+ BaseType "Stygian Vise"
+ Rarity <= Rare
+ SetFontSize 42
+ SetBorderColor 25 235 25
+ SetBackgroundColor 35 100 20 255
+ PlayAlertSound 12 300
 
 # 0206 Abyss Jewels (Rare and Magic)
 Show
@@ -837,7 +853,7 @@ Show
  PlayAlertSound 1 300
 Show
  ItemLevel >= 75
- Class Rings Amulets Belts
+ Class "Rings""Amulets""Belts"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  SetFontSize 45
@@ -847,7 +863,7 @@ Show
  PlayAlertSound 1 300
 Show
  ItemLevel >= 65
- Class Rings Amulets Belts
+ Class "Rings""Amulets""Belts"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  SetFontSize 45
@@ -856,7 +872,7 @@ Show
  PlayAlertSound 12 300
 Show
  ItemLevel >= 75
- Class Rings Amulets Belts
+ Class "Rings""Amulets""Belts"
  Rarity Rare
  SetFontSize 45
  SetTextColor 255 190 0
@@ -865,7 +881,7 @@ Show
  PlayAlertSound 1 300
 Show
  ItemLevel >= 65
- Class Rings Amulets Belts
+ Class "Rings""Amulets""Belts"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 25 235 25 255
@@ -1565,20 +1581,11 @@ Hide
 # 1201 Unique Maps
 Show
  Class Maps
- BaseType "Chateau Map" "Museum Map" "Courtyard Map"
  Rarity Unique
  SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
- PlayAlertSound 8 300
-Show
- Class Maps
- Rarity Unique
- SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
+ SetTextColor 175 96 37 255
+ SetBorderColor 175 96 37 255
+ SetBackgroundColor 255 255 255 255
  PlayAlertSound 8 300
 
 # 1202 Labyrinth items, Offerings
@@ -2109,6 +2116,13 @@ Show
  PlayAlertSound 1 300
 
 # 1405 T5 - Format trash tier cards... before
+Hide
+ Class "Divination"
+ BaseType "Carrion Crow"
+ SetFontSize 18
+ SetTextColor 0 0 0 255
+ SetBorderColor 0 0 0
+ SetBackgroundColor 175 215 230 180
 Show
  Class "Divination"
  BaseType "A Mother's Parting Gift" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Shard of Fate" "Struck by Lightning" "The Blazing Fire" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scholar" "The Sigil" "The Sun" "The Surgeon" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
@@ -2512,7 +2526,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2522,7 +2536,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -2532,7 +2546,7 @@ Show
 Show
  LinkedSockets = 4
  SocketGroup RGB
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 0 140 240 255
@@ -2570,7 +2584,7 @@ Show
 Hide
  Identified False
  ItemLevel >= 13
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Wands"
  Rarity = Rare
  SetFontSize 26
  SetBorderColor 0 0 0 100
@@ -2588,7 +2602,7 @@ Hide
 # 2301 Leveling rares - specific items
 Show
  LinkedSockets >= 4
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2598,7 +2612,7 @@ Show
  LinkedSockets >= 3
  SocketGroup RRG
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2608,7 +2622,7 @@ Show
  LinkedSockets >= 3
  SocketGroup RRR
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity Rare
  SetFontSize 45
  SetBorderColor 0 255 255
@@ -2958,7 +2972,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2968,7 +2982,7 @@ Show
 Show
  LinkedSockets >= 4
  SocketGroup RR
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -2982,7 +2996,7 @@ Show
 Show
  SocketGroup RR
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -2992,7 +3006,7 @@ Show
 Show
  SocketGroup RG
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3002,7 +3016,7 @@ Show
 Show
  SocketGroup RRG
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3012,7 +3026,7 @@ Show
 Show
  SocketGroup RRR
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3022,7 +3036,7 @@ Show
 Show
  SocketGroup RR
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3032,7 +3046,7 @@ Show
 Show
  SocketGroup RG
  ItemLevel <= 4
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3042,7 +3056,7 @@ Show
 Show
  SocketGroup RRG
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3052,7 +3066,7 @@ Show
 Show
  SocketGroup RRR
  ItemLevel <= 19
- Class "Helmets" "Boots" "Body Armour" "Gloves"
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -3154,24 +3168,8 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
- ItemLevel <= 25
+ ItemLevel <= 24
  BaseType "Broad Axe"
- Rarity = Normal
- SetFontSize 42
- SetTextColor 255 255 255 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 29
- BaseType "Arming Axe"
- Rarity = Normal
- SetFontSize 42
- SetTextColor 255 255 255 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 36
- BaseType "Spectral Axe"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3242,24 +3240,8 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
- ItemLevel <= 25
+ ItemLevel <= 24
  BaseType "Broad Axe"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 29
- BaseType "Arming Axe"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 36
- BaseType "Spectral Axe"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
