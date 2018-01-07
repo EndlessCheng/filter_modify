@@ -35,7 +35,7 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Helmets"',  # 90+血
     # '"Gloves"',  # 80+血，有点伤/攻速更好
 
-    # '"Daggers" "Wands"',
+    # '"Daggers" "Wands"',  # 到异界hide
     # '"Body Armour"',  # 血量精华
     # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
@@ -64,8 +64,11 @@ ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Eye"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
-ALERT_RARE_ACCESSORY = ''.join(['"Rings"', '"Amulets"', '"Belts"'][:3])
+SHOW_RARE_ACCESSORY = ''.join(['"Rings"', '"Amulets"', '"Belts"'][:3])
 T1_RARE_BASE_TYPE = ' '.join([
+    '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',
+
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
@@ -78,13 +81,11 @@ T1_RARE_BASE_TYPE = ' '.join([
 ])
 
 ALERT_ATLAS_BASE_TYPE = ' '.join([
-    '"Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"',
-    '"Spiked Gloves"',
+    # '"Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"',
+    '"Spiked Gloves"',  # 攻速精华
     '"Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt"',
     '"Two-Toned Boots"',
 ])
-
-CURRENCY_PORTAL_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 0)]
 
 NEED_REGAL = False
 NEED_CHISEL = False
@@ -110,7 +111,8 @@ NEED_RGB = True and SHOW_FLASK_LIFE
 SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
 CURRENCY_ALERT_TRANSMUTATION = True and SHOW_FLASK_LIFE
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
-CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
+CURRENCY_PORTAL_FONT_SIZE = [40, 36, 33][max(0, 0 if SHOW_FLASK_LIFE else 1)]
+CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
     class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Helmets"', '"Boots"', '"Gloves"']) else 2)]
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''

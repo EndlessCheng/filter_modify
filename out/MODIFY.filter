@@ -141,7 +141,7 @@ Show
  SetTextColor 255 255 255
  SetBorderColor 0 0 0
  SetBackgroundColor 213 159 0
- PlayAlertSound 1 300
+ PlayAlertSound 2 300
 
 # 0205 Exclusive bases: Stygian Vise
 Show
@@ -233,7 +233,7 @@ Show
  SetBackgroundColor 100 75 0
  PlayAlertSound 1 300
 Show
- BaseType "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet" "Spiked Gloves" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt" "Two-Toned Boots"
+ BaseType "Spiked Gloves" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt" "Two-Toned Boots"
  Rarity <= Rare
  SetFontSize 45
  SetBorderColor 255 125 0
@@ -655,7 +655,7 @@ Show
 # 0602 T1 rare items
 Show
  ItemLevel >= 75
- BaseType "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Vaal Hatchet" "Runic Hatchet" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Titan Gauntlets" "Vaal Gauntlets" "Siege Axe" "Astral Plate" "Glorious Plate" "Gladiator Plate"
+ BaseType "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Vaal Hatchet" "Runic Hatchet" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Titan Gauntlets" "Vaal Gauntlets" "Siege Axe" "Astral Plate" "Glorious Plate" "Gladiator Plate"
  Rarity Rare
  SetFontSize 42
  SetTextColor 255 190 0
@@ -663,7 +663,7 @@ Show
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
 Show
- BaseType "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Vaal Hatchet" "Runic Hatchet" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Titan Gauntlets" "Vaal Gauntlets" "Siege Axe" "Astral Plate" "Glorious Plate" "Gladiator Plate"
+ BaseType "Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace" "Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe" "Behemoth Mace" "Vaal Hatchet" "Runic Hatchet" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Titan Gauntlets" "Vaal Gauntlets" "Siege Axe" "Astral Plate" "Glorious Plate" "Gladiator Plate"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 255 125 0
@@ -830,7 +830,7 @@ Show
  Class Rings
  BaseType "Breach"
  Rarity <= Rare
- SetFontSize 45
+ SetFontSize 36
  SetTextColor 255 190 0
  SetBorderColor 130 25 255 255
  SetBackgroundColor 65 20 80
@@ -838,7 +838,7 @@ Show
  Class Rings
  BaseType "Breach"
  Rarity <= Rare
- SetFontSize 45
+ SetFontSize 36
  SetBorderColor 130 25 255 255
  SetBackgroundColor 65 20 80
 
@@ -856,37 +856,33 @@ Show
  Class "Rings""Amulets""Belts"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
- SetFontSize 45
+ SetFontSize 36
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
- SetBackgroundColor 213 159 0
- PlayAlertSound 1 300
+ SetBackgroundColor 10 60 25 255
 Show
  ItemLevel >= 65
  Class "Rings""Amulets""Belts"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
- SetFontSize 45
+ SetFontSize 36
  SetBorderColor 25 235 25 255
  SetBackgroundColor 10 60 25 255
- PlayAlertSound 12 300
 Show
  ItemLevel >= 75
  Class "Rings""Amulets""Belts"
  Rarity Rare
- SetFontSize 45
+ SetFontSize 42
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
- SetBackgroundColor 213 159 0
- PlayAlertSound 1 300
+ SetBackgroundColor 35 100 20 255
 Show
  ItemLevel >= 65
  Class "Rings""Amulets""Belts"
  Rarity Rare
- SetFontSize 45
+ SetFontSize 42
  SetBorderColor 25 235 25 255
  SetBackgroundColor 35 100 20 255
- PlayAlertSound 12 300
 
 # 0606 1H Daggers
 Show

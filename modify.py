@@ -127,8 +127,7 @@ def modify_endgame_mix(filter_manager):
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示
-    blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE,
-                      PlayAlertSound=SOUND_MID_VALUE)
+    blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE)
     filter_manager.extend_blocks(blocks)
 
     # 8 1 12
@@ -328,24 +327,20 @@ def modify_endgame_rare(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(604, 'Breach Rings')
-    for block in blocks:
-        block.SetFontSize = FONT_SIZE_MAX
     filter_manager.extend_blocks(blocks)
 
     # ALERT_RARE_ACCESSORY
     # 1, 1, 12, 1, 12
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
-    for block in blocks:
-        block.SetFontSize = FONT_SIZE_MAX
     blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
-
-    if settings.ALERT_RARE_ACCESSORY != '':
+    blocks[1].SetFontSize = 36
+    blocks[2].SetFontSize = 36
+    if settings.NEED_REGAL:
+        blocks[1].PlayAlertSound = SOUND_MID_VALUE
+        blocks[3].PlayAlertSound = SOUND_MID_VALUE
+    if settings.SHOW_RARE_ACCESSORY != '':
         for block in blocks[1:]:
-            block.Class = settings.ALERT_RARE_ACCESSORY
-        blocks[1].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)
-        blocks[2].PlayAlertSound = SOUND_LEVELING
-        blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, SetBackgroundColor=COLOR_TANGERINE)
-        blocks[4].PlayAlertSound = SOUND_LEVELING
+            block.Class = settings.SHOW_RARE_ACCESSORY
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(606, '1H Daggers', ignored=settings.IGNORE_RARE_UNDER_T2)
@@ -550,7 +545,7 @@ def modify_leveling(filter_manager):
                                          ItemLevel='<= ' + str(settings.L3_MAX_IL))
         rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
         filter_manager.extend_blocks([blocks[0], rare_rrg, rare_rrr])
-    if settings.ALERT_RARE_ACCESSORY == '':
+    if settings.SHOW_RARE_ACCESSORY == '':
         blocks[1].PlayAlertSound = None
     blocks[2].PlayAlertSound = SOUND_LEVELING
     blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
