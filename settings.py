@@ -64,7 +64,7 @@ ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Eye"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
-SHOW_RARE_ACCESSORY = ''.join(['"Rings"', '"Amulets"', '"Belts"'][:3])
+SHOW_RARE_ACCESSORY = ''.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
 T1_RARE_BASE_TYPE = ' '.join([
     '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',
@@ -89,6 +89,7 @@ ALERT_ATLAS_BASE_TYPE = ' '.join([
 
 NEED_REGAL = False
 NEED_CHISEL = False
+NEED_CHAOS = False  # 一个 <=74 的就行，然后可以用 NEED_REGAL = True
 
 CURRENCY_ALERT_CHANCE = True
 

@@ -14,7 +14,7 @@ HIDE = 'Hide'
 DEBUG = SHOW if settings.DEBUG else HIDE
 
 CLASS_WEAPON = '"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand"'
-CLASS_ACCESSORY = '"Amulets" "Belts" "Rings"'
+CLASS_ACCESSORY = '"Belts" "Amulets" "Rings"'
 
 BASE_TYPE_BODY_EVA = '"Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" ' \
                      '"Thief\'s Garb" "Cutthroat\'s Garb" "Assassin\'s Garb"'
@@ -122,7 +122,7 @@ def modify_endgame_mix(filter_manager):
         block.modify(SetTextColor=None, PlayAlertSound=SOUND_SHAPER_ELDER)
     filter_manager.extend_blocks(blocks)
 
-    # 8 1 样式改掉
+    # 8 样式改掉
     blocks = filter_manager.add_comment(204, '6-Socket Items')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
@@ -130,27 +130,27 @@ def modify_endgame_mix(filter_manager):
     blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE)
     filter_manager.extend_blocks(blocks)
 
-    # 8 1 12
+    # 8 12
     blocks = filter_manager.add_comment(205, 'Exclusive bases: Stygian Vise')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_MID_VALUE)
+    blocks[1].modify(SetBorderColor='25 235 25')
     blocks[2].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_LEVELING)
     filter_manager.extend_blocks(blocks)
 
-    # 8 8 1 去掉最后一个
+    # 8 8 2 去掉最后一个
     blocks = filter_manager.add_comment(206, 'Abyss Jewels (Rare and Magic)')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[2].PlayAlertSound = SOUND_MID_VALUE
+    blocks[2].PlayAlertSound = SOUND_LOW_VALUE
     filter_manager.extend_blocks(blocks[:3])
 
-    # 8 1 ALERT_ATLAS_BASE_TYPE
+    # 8 1 2 ALERT_ATLAS_BASE_TYPE
     blocks = filter_manager.add_comment(207, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     blocks[3].modify(ItemLevel=None, SetTextColor=None, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[4].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[4].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_LOW_VALUE, **STYLE_TOP_RARE)
 
     filter_manager.extend_blocks(blocks)
 
@@ -332,17 +332,20 @@ def modify_endgame_rare(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     # ALERT_RARE_ACCESSORY
-    # 1, 1, 12, 1, 12
+    # 2
     blocks = filter_manager.add_comment(605, 'Amulets, Jewels, Rings, Belts')
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE  # rare jewel
+    blocks[0].PlayAlertSound = SOUND_LOW_VALUE  # rare jewel
     blocks[1].SetFontSize = 36
     blocks[2].SetFontSize = 36
-    if settings.NEED_REGAL:
-        blocks[1].PlayAlertSound = SOUND_MID_VALUE
-        blocks[3].PlayAlertSound = SOUND_MID_VALUE
     if settings.SHOW_RARE_ACCESSORY != '':
         for block in blocks[1:]:
             block.Class = settings.SHOW_RARE_ACCESSORY
+    if settings.NEED_REGAL:
+        blocks[1].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+        blocks[3].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+    if settings.NEED_CHAOS:
+        blocks[2].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+        blocks[4].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(606, '1H Daggers', ignored=settings.IGNORE_RARE_UNDER_T2)
@@ -397,13 +400,13 @@ def modify_gem_flask_map(filter_manager):
 
     filter_manager.add_comment(900, 'Gems', ignored=True)
 
-    # 8, 1  LEVELING_GEMS_BASE_TYPE
+    # 8 LEVELING_GEMS_BASE_TYPE 1
     blocks = filter_manager.add_comment(901, 'Value gems')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].modify(Quality='>= 15', PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
     blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap" ' + settings.LEVELING_GEMS_BASE_TYPE
-    blocks[3].modify(Quality='>= 10', PlayAlertSound=SOUND_MID_VALUE)
+    blocks[3].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     # 前两个换位，改成1和2   LEVELING_GEMS_BASE_TYPE
@@ -415,6 +418,7 @@ def modify_gem_flask_map(filter_manager):
         blocks[-1].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
+    # ALERT_UTILITY_FLASK_BASE_TYPE
     blocks = filter_manager.add_comment(1000, 'UTILITY FLASKS (Levelling Rules)')
     if settings.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         blocks[1].modify(Class='"Utility Flasks"', BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE)
@@ -483,7 +487,7 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(1900, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
     hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
                                         BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
-    filter_manager.extend_blocks([hide_some_life_flasks])
+    filter_manager.append_block(hide_some_life_flasks)
 
     filter_manager.add_comment(2000, 'Leveling - Flasks', ignored=True)
 
@@ -528,9 +532,8 @@ def modify_leveling(filter_manager):
     # hide_leveling_rares hide_some_body_rares  HIDE_BELOW_T1_RARE_CLASS
     filter_manager.add_comment(2300, 'Leveling - RARES', ignored=True)
     hide_big_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
-    hide_big_rares.modify(status=DEBUG, Identified=False,
-                          Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Wands"',
-                          ItemLevel='>= 13', SetFontSize=26)
+    hide_big_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
+                          Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Wands"', SetFontSize=26)
     hide_some_body_rares = hide_big_rares.copy_modify(
         ItemLevel='>= 23', Class='"Body Armour"',
         BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
