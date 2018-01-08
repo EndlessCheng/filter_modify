@@ -193,7 +193,9 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(213, '83/84+ Endgame crafting rules')
-    filter_manager.extend_blocks(blocks)
+    filter_manager.append_block(blocks[0])
+    blocks[2].BaseType = '"Siege Axe"'
+    filter_manager.append_block(blocks[2])
 
     # 12
     blocks = filter_manager.add_comment(214, 'Magic jewel and others')
@@ -755,7 +757,15 @@ def modify_filter(filter_manager):
     # 2
     blocks = filter_manager.add_comment(1405, 'T5 - Format trash tier cards... before', ignored=settings.TEMP)
     if blocks:
-        hide_cards = blocks[0].copy_modify(status=DEBUG, BaseType='"Carrion Crow"', SetFontSize=FONT_SIZE_MIN)
+        hide_cards = blocks[0].copy_modify(status=DEBUG, BaseType='"Carrion Crow" '  # Shit
+                                                                  '"King\'s Blade" '  # (110-134)% 物理 永恒之剑
+                                                                  '"Prosperity" '  # T1 稀有度 金光戒指
+                                                                  '"Struck by Lightning" '  # 点电伤 宝石
+                                                                  '"The Rabid Rhoa" '  # 混沌伤 双子战爪
+                                                                  '"The Sigil" '  # T1 ES% 项链
+                                                                  '"The Surgeon" '  # 暴击充能 药剂
+                                                                  '"The Twins"',  # T1 攻速 双子战爪
+                                           SetFontSize=FONT_SIZE_MIN)
         filter_manager.append_block(hide_cards)
         blocks[0].modify(SetFontSize=40, PlayAlertSound=SOUND_LOW_VALUE)
         filter_manager.extend_blocks(blocks)

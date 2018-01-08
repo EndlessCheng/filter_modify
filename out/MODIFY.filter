@@ -311,27 +311,8 @@ Show
  SetFontSize 40
  SetBorderColor 255 255 0 255
 Show
- ItemLevel >= 84
- Class Rings Amulet Belts
- BaseType "Ruby" "Sapphire" "Topaz" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash"
- Rarity < Rare
- SetFontSize 38
- SetBorderColor 255 255 0 190
-Show
  ItemLevel >= 83
- BaseType "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Harpy Rapier" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil"
- Rarity < Rare
- SetFontSize 36
- SetBorderColor 255 255 0 190
-Show
- ItemLevel >= 84
- BaseType "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb"
- Rarity < Rare
- SetFontSize 36
- SetBorderColor 255 255 0 190
-Show
- ItemLevel >= 84
- BaseType "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
+ BaseType "Siege Axe"
  Rarity < Rare
  SetFontSize 36
  SetBorderColor 255 255 0 190
@@ -2114,7 +2095,7 @@ Show
 # 1405 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow"
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "Struck by Lightning" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins"
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
