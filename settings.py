@@ -102,7 +102,7 @@ LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
 ]) if SHOW_FLASK_HALLOWED else ''
 LINKED_CLASS = ' '.join([
-    '"Body Armour"' if SHOW_FLASK_LIFE else '',
+    '"Body Armour"',
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Helmets"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Gloves"' if '"Gloves"' not in HIDE_BELOW_T1_RARE_CLASS else '',
@@ -140,5 +140,4 @@ if not CURRENCY_ALERT_CHANCE:
 
 if TENCENT and '"Astral Plate"' not in ALERT_NORMAL_BASE_TYPE:
     HIDE_BELOW_T1_RARE_CLASS += ' "Body Armour" '
-    LINKED_CLASS = LINKED_CLASS.replace('"Body Armour"', '')  # .replace('"Gloves"', '')
     T1_RARE_BASE_TYPE = T1_RARE_BASE_TYPE.replace('"Astral Plate" "Glorious Plate" "Gladiator Plate"', '')
