@@ -614,9 +614,8 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2501, 'Progression - Part 1 1-30', ignored=True)
     if settings.SHOW_N2M_ONE_HAND:
         _LEVELING_BASE = [('"Rusted Sword"', 1 - 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
-                          ('"Whalebone Rapier"', 7), ('"Sabre"', 10),
-                          ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11), ('"Broad Axe"', 21),
-                          ('"Wraith Axe"', 54), ]  # ('"Arming Axe"', 25 + 1),
+                          ('"Whalebone Rapier"', 7), ('"Sabre"', 10), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11),
+                          ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]  # ('"Arming Axe"', 25 + 1),
         if not settings.TENCENT:
             _LEVELING_BASE.extend([('"Spectral Axe"', 33), ('"War Axe"', 45)])
         _LEVELING_BASE_IL_GAP = 3

@@ -233,7 +233,7 @@ Show
  SetBackgroundColor 100 75 0
  PlayAlertSound 1 300
 Show
- BaseType "Spiked Gloves" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt" "Two-Toned Boots"
+ BaseType "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet" "Spiked Gloves" "Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt" "Two-Toned Boots"
  Rarity <= Rare
  SetFontSize 45
  SetBorderColor 255 125 0

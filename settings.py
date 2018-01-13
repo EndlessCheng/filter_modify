@@ -81,7 +81,7 @@ T1_RARE_BASE_TYPE = ' '.join([
 ])
 
 ALERT_ATLAS_BASE_TYPE = ' '.join([
-    # '"Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"',
+    '"Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"',  # 1C一个批发
     '"Spiked Gloves"',  # 攻速精华
     '"Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt"',
     '"Two-Toned Boots"',
