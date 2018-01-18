@@ -93,6 +93,8 @@ STYLE_MAP_LOW_1_2 = {**_STYLE_MAP_BASE, 'SetBorderColor': COLOR_WHITE}
 STYLE_LINKS = {'SetBorderColor': COLOR_AQUA}
 STYLE_NONE = {'SetFontSize': None, 'SetTextColor': None, 'SetBorderColor': None, 'SetBackgroundColor': None}
 
+BLOCK_5L = 401
+BLOCK_6S = 402
 BLOCK_HIDE_RARES_65 = 900
 BLOCK_ACT_1 = 2606
 BLOCK_HIDE_REMAINING = 2800  # SetFontSize=FONT_SIZE_MIN
@@ -105,11 +107,18 @@ def modify_endgame_mix(filter_manager):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 8
-    blocks = filter_manager.add_comment(401, '5-Linked items')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
-    filter_manager.extend_blocks(blocks)
+    # blocks_5l
+    blocks_5l = filter_manager.get_blocks(BLOCK_5L)
+    blocks_5l[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks_5l[1].PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.extend_blocks(blocks_5l)
+
+    # block_6s_body
+    if not settings.TENCENT:
+        block_6s_body = filter_manager.get_blocks(BLOCK_6S)[0]
+        block_6s_body.modify(ItemLevel=None, BaseType='"Astral Plate" "Glorious Plate" "Gladiator Plate"',
+                             PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
+        filter_manager.extend_blocks(block_6s_body)
 
     filter_manager.add_comment(200, 'SHAPER ITEMS', ignored=True)
 
@@ -161,8 +170,10 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(400, 'Recipes, Magic and Normal items (endgame!)', ignored=True)
 
+    filter_manager.add_comment(BLOCK_5L, '5-Linked items', ignored=True)
+
     # 8 样式改掉
-    blocks = filter_manager.add_comment(402, '6-Socket Items')
+    blocks = filter_manager.add_comment(BLOCK_6S, '6-Socket Items')
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示

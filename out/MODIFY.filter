@@ -8,8 +8,6 @@ Show
  SetBorderColor 255 0 0 255
  SetBackgroundColor 255 255 255 255
  PlayAlertSound 8 300
-
-# 0401 5-Linked items
 Show
  LinkedSockets 5
  ItemLevel >= 65
@@ -362,6 +360,8 @@ Show
  PlayAlertSound 10 300
 
 # 0400 Recipes, Magic and Normal items (endgame!)
+
+# 0401 5-Linked items
 
 # 0402 6-Socket Items
 Show
