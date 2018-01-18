@@ -125,8 +125,8 @@ def modify_endgame_mix(filter_manager):
     # 8 10 10
     blocks = filter_manager.add_comment(201, 'Exception Handling - Rings, Amulets, Belts')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].PlayAlertSound = SOUND_SHAPER_ELDER
-    blocks[0].PlayAlertSound = SOUND_SHAPER_ELDER
+    blocks[1].PlayAlertSound = SOUND_SHAPER_ELDER
+    blocks[2].PlayAlertSound = SOUND_SHAPER_ELDER
     filter_manager.extend_blocks(blocks)
 
     # 8
@@ -149,8 +149,8 @@ def modify_endgame_mix(filter_manager):
     # 8 10 10
     blocks = filter_manager.add_comment(301, 'Exception Handling - Rings, Amulets, Belts')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].PlayAlertSound = SOUND_SHAPER_ELDER
-    blocks[0].PlayAlertSound = SOUND_SHAPER_ELDER
+    blocks[1].PlayAlertSound = SOUND_SHAPER_ELDER
+    blocks[2].PlayAlertSound = SOUND_SHAPER_ELDER
     filter_manager.extend_blocks(blocks)
 
     # 8
