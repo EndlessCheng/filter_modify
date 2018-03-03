@@ -1,5 +1,3 @@
-# -*- coding:utf-8 -*-
-
 import time
 import os
 import platform
@@ -207,7 +205,7 @@ def modify_endgame_mix(filter_manager):
     # 改稀有度
     # 项链：+1诅咒，+1球，抗性上限；  腰带：+1球
     # 手：击中附加诅咒；  脚：+1球；  箭袋：+1箭；  爪匕剑：3-6%格挡
-    filter_manager.add_comment(406, 'Corrupted items', ignored=True)
+    filter_manager.add_comment(406, 'Corrupted Amulets', ignored=True)
     accessories = FilterBlock(Corrupted=True, Class='"Amulets" "Belts"', Rarity=RARITY_N2R,
                               SetFontSize=36, SetBorderColor=COLOR_MAGENTA_DARK)
     others = accessories.copy_modify(Class='"Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"',
@@ -248,7 +246,7 @@ def modify_endgame_mix(filter_manager):
     filter_manager.append_block(blocks[2])
 
     # 12
-    blocks = filter_manager.add_comment(412, 'Magic jewel and others')
+    blocks = filter_manager.add_comment(412, '60+ Crafting rules for 60++ trinkets')
     if settings.ALERT_JEWEL_BASE_TYPE != '':
         magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(magic_jewels)
@@ -534,7 +532,7 @@ def modify_gem_flask_map(filter_manager):
 # [[2100]]-[[2700]]
 def modify_leveling(filter_manager):
     # 后期只要42和60级的血瓶
-    filter_manager.add_comment(2100, 'OVERRIDE AREA 4 - Insert your custom leveling adjustments here', ignored=True)
+    filter_manager.add_comment(2100, 'OVERRIDE AREA 4 - Insert your custom Leveling adjustments here', ignored=True)
     hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
                                         BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
     filter_manager.append_block(hide_some_life_flasks)
@@ -656,7 +654,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2612, '20% quality items for those strange people who want them', ignored=True)
 
-    filter_manager.add_comment(2700, 'Levelling - normal and magic item progression', ignored=True)
+    filter_manager.add_comment(2700, 'Leveling - normal and magic item progression', ignored=True)
 
     # 蓝白武器  HIDE_NORMAL_MAGIC_CLASS
     filter_manager.add_comment(2701, 'Progression - Part 1 1-30', ignored=True)
@@ -686,7 +684,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2703, 'Progression - Part 4 40-65', ignored=True)
 
-    blocks = filter_manager.add_comment(2704, 'Normal items - First 4 levels - exceptions')
+    blocks = filter_manager.add_comment(2704, 'Normal items - First 12 levels - exceptions')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2705, 'Magic items - general highlight')
