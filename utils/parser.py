@@ -1,3 +1,4 @@
+import os
 import re
 
 
@@ -9,6 +10,17 @@ class BasicParser:
     def _read(self):
         with open(self.filter_path) as f:
             return f.readlines()
+
+    def remove_comments(self):
+        new_text = list(self.raw_text)
+        for no, line in enumerate(new_text, 1):
+            if line and line[0] != '#':
+                new_text[no - 1] = line.split('#')[0].rstrip() + '\n'
+
+        new_file_path, ext = os.path.splitext(self.filter_path)
+        new_file_path += '-no-comments' + ext
+        with open(new_file_path, 'w') as f:
+            return f.write(''.join(new_text))
 
     # TODO
     def gen_template(self):
