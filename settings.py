@@ -1,7 +1,7 @@
 DEBUG = False
 
 TEMP = False
-TENCENT = True or TEMP
+TENCENT = False or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-60), A9(61-64), A10(64-67)

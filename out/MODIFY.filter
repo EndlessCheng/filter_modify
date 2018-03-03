@@ -24,6 +24,15 @@ Show
  SetBorderColor 0 255 255 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 8 300
+Show
+ Sockets 6
+ BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 255 0 0
+ SetBorderColor 255 0 0
+ SetBackgroundColor 255 255 255
+ PlayAlertSound 8 300
 
 # 0300 SHAPER ITEMS
 
@@ -2155,7 +2164,7 @@ Show
 # 1601 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Orb of Annulment" "Ancient Orb" "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 29 0 67 255
  SetBorderColor 29 0 67 255
@@ -2163,7 +2172,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Regal Orb"  "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
+ BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Scouring" "Orb of Chance"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -2171,7 +2180,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Bestiary Orb" "Orb of Regret" "Glassblower's Bauble"
+ BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Bestiary Orb" "Glassblower's Bauble"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -3339,7 +3348,7 @@ Show
 # 2706 Act 1
 Show
  ItemLevel <= 12
- BaseType "Rustic Sash" "Amulet"
+ BaseType "Iron Ring" "Rustic Sash" "Amulet"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3442,6 +3451,22 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
+ Rarity = Normal
+ SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 48
+ BaseType "War Axe"
+ Rarity = Normal
+ SetFontSize 42
+ SetTextColor 255 255 255 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
  ItemLevel <= 3
  BaseType "Rusted Sword"
  Rarity = Magic
@@ -3513,15 +3538,31 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 36
+ BaseType "Spectral Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 48
+ BaseType "War Axe"
+ Rarity = Magic
+ SetFontSize 42
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
 Hide
- ItemLevel >= 2
+ ItemLevel >= 6
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Belts" "Amulets" "Rings"
  Rarity Magic
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
- ItemLevel >= 5
+ ItemLevel >= 6
  Class "Helmets" "Gloves" "Boots" "Body Armour"
  Rarity Magic
  SetFontSize 26

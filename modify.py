@@ -118,7 +118,7 @@ def modify_endgame_mix(filter_manager):
         block_6s_body = filter_manager.get_blocks(BLOCK_6S)[0]
         block_6s_body.modify(ItemLevel=None, BaseType='"Astral Plate" "Glorious Plate" "Gladiator Plate"',
                              PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
-        filter_manager.extend_blocks(block_6s_body)
+        filter_manager.append_block(block_6s_body)
 
     filter_manager.add_comment(300, 'SHAPER ITEMS', ignored=True)
 
