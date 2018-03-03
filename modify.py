@@ -100,8 +100,10 @@ BLOCK_HIDE_REMAINING = 2900  # SetFontSize=FONT_SIZE_MIN
 
 # [[0100 - 0400]]
 def modify_endgame_mix(filter_manager):
+    filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here', ignored=True)
+
     # 8
-    blocks = filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here')
+    blocks = filter_manager.add_comment(200, '6 LINKS')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
@@ -178,18 +180,18 @@ def modify_endgame_mix(filter_manager):
     blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE)
     filter_manager.extend_blocks(blocks)
 
-    # 8 2 12
+    # 8 1 1
     blocks = filter_manager.add_comment(503, 'Exclusive bases: Stygian Vise')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_LOW_VALUE)
-    blocks[2].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_LEVELING)
+    blocks[1].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_MID_VALUE)
+    blocks[2].modify(SetBorderColor='25 235 25', PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
-    # 8 8 2 去掉最后一个
+    # 8 8 1 去掉最后一个
     blocks = filter_manager.add_comment(504, 'Abyss Jewels (Rare and Magic)')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[2].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[2].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks[:3])
 
     # 8 1 2 ALERT_ATLAS_BASE_TYPE
@@ -755,8 +757,16 @@ def modify_filter(filter_manager):
     blocks[2].BaseType += ' "Glassblower\'s Bauble"'
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     blocks.insert(3, blocks[2].copy_modify(BaseType='"Silver Coin"', SetBackgroundColor='190 178 135'))  # Pavlova
-    blocks[-2].BaseType += ' "Horizon Shard"'
-    blocks[-2].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks)
+
+    blocks = filter_manager.add_comment(1602, 'Harbinger Currency')
+    blocks[0].BaseType += ' "Horizon Shard"'
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    filter_manager.extend_blocks(blocks)
+
+    blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     filter_manager.extend_blocks(blocks)
 
     # ALERT_ESSENCE_BASE_TYPE, 8, 1
