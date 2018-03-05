@@ -489,9 +489,10 @@ def modify_gem_flask_map(filter_manager):
 
     blocks = filter_manager.add_comment(1503, 'Shaped Maps')
     blocks[0].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
-    blocks[2].modify(DropLevel='>= 71', **STYLE_MAP_MID_9_10)
-    blocks.append(blocks[2].copy_modify(DropLevel=None, **STYLE_MAP_MID_6_8))
+    blocks[1].modify(SetBorderColor=COLOR_RED, PlayAlertSound=SOUND_TOP_VALUE)
+    blocks[2].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_MAP_HIGH_11_14)
+    blocks[3].modify(DropLevel='>= 71', **STYLE_MAP_MID_9_10)
+    blocks.append(blocks[3].copy_modify(DropLevel=None, **STYLE_MAP_MID_6_8))
     filter_manager.extend_blocks(blocks)
 
     # T15加红边

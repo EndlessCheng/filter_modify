@@ -9,7 +9,7 @@ class FilterBlock:
         'LinkedSockets',
         'Sockets',
         'Quality',
-        'ElderItem', 'ShaperItem', 'ShapedMap',
+        'ElderItem', 'ShaperItem', 'ElderMap', 'ShapedMap',
         'Corrupted',
         'Identified',
         'SocketGroup',
