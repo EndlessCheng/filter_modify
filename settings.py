@@ -48,8 +48,8 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Stibnite" "Granite" "Basalt"',
-    '"Bismuth" "Silver" "Jade" "Quartz" "Sulphur" "Quicksilver"' if SHOW_FLASK_HALLOWED else '',
+    '"Granite" "Basalt" "Silver" "Diamond"',
+    '"Bismuth" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
 ]).strip()
 
 #
@@ -57,9 +57,9 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
 #
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt" "Searching Eye"',
+    '"Crimson" "Viridian" "Cobalt"',
+    '"Eye"',  # "Searching Eye"
     '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
-    '"Eye"' if SHOW_FLASK_LIFE else '',
 ]).strip()
 
 SHOW_RARE_ACCESSORY = ''.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
@@ -119,11 +119,11 @@ ALERT_LOW_CURRENCY = '"Siege Axe"' in ALERT_MAGIC_BASE_TYPE
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
     [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(  # 深渊赛季结束后修改下
-    ['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 2, 0 if SHOW_FLASK_LIFE else 2):])
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1):])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
 
-ALERT_ESSENCE_BASE_TYPE = ' ' + '"Essence of Greed" "Essence of Zeal" "Essence of Contempt"'
+ALERT_ESSENCE_BASE_TYPE = ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" ' \
+                          ' "Essence of Loathing" "Essence of Scorn" '
 IGNORE_RARE_UNDER_T2 = False
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)

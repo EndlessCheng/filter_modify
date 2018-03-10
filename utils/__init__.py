@@ -2,8 +2,10 @@ import copy
 
 
 class FilterBlock:
-    # See http://pathofexile.gamepedia.com/Item_filter
-    # See https://dd.reddit.com/r/pathofexile/comments/5ftpbg/lootfilter_performance_tips_thanks_to_the/
+    """
+    http://pathofexile.gamepedia.com/Item_filter
+    https://dd.reddit.com/r/pathofexile/comments/5ftpbg/lootfilter_performance_tips_thanks_to_the/
+    """
     _FILTER_ORDER = [
         # Conditions
         'LinkedSockets',
@@ -27,9 +29,12 @@ class FilterBlock:
 
     def __init__(self, raw_text=None, status='Show', **kwargs):
         # self.SetFontSize = 33  # default
-        if raw_text is None:
+        if not raw_text:
             self.status = status
         else:
+            if isinstance(raw_text, str):
+                raw_text = raw_text.split('\n')
+            # self.remove_comments()
             text = [line.split('#')[0].strip() for line in raw_text]
             self.status = text[0]
             for line in text[1:]:
@@ -45,10 +50,11 @@ class FilterBlock:
         for k, v in kwargs.items():
             setattr(self, k, v)
 
+    # TODO: 现在属性都是字符串所以 OK，后续优化
     def copy_modify(self, **kwargs):
         block = copy.copy(self)
         for k, v in kwargs.items():
-            setattr(block, k, v)
+            setattr(block, k, v)  # 也可以 update __dict__
         return block
 
     def generate(self):
