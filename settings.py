@@ -12,7 +12,7 @@ TENCENT = False or TEMP
 #
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Leather Belt"',  # 血抗 / 深渊珠宝有血抗
+    '"Leather Belt"',  # 血抗
     '"Siege Axe"',  # ~100%
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗，点精华试试
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗，点精华试试

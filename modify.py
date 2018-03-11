@@ -768,8 +768,8 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    # for block in blocks[2:]:
-    #     block.status = HIDE
+    for block in blocks[3:]:
+        block.status = HIDE
     filter_manager.extend_blocks(blocks)
 
     # ALERT_ESSENCE_BASE_TYPE, 8, 1
@@ -820,7 +820,7 @@ def modify_filter(filter_manager):
                                                                   '"King\'s Blade" '  # (110-134)% 物理 永恒之剑
                                                                   '"Prosperity" '  # T1 稀有度 金光戒指
                                                                   '"Struck by Lightning" '  # 点电伤 宝石
-                                                                  '"The Inoculated " '  # T1 混合 ES% 护甲
+                                                                  '"The Inoculated" '  # T1 混合 ES% 护甲
                                                                   '"The Rabid Rhoa" '  # 混沌伤 双子战爪
                                                                   '"The Sigil" '  # T1 ES% 项链
                                                                   '"The Surgeon" '  # 暴击充能 药剂
