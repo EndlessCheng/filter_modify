@@ -768,8 +768,8 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    for block in blocks[3:]:
-        block.status = HIDE
+    # for block in blocks[3:]:
+    #     block.status = HIDE
     filter_manager.extend_blocks(blocks)
 
     # ALERT_ESSENCE_BASE_TYPE, 8, 1

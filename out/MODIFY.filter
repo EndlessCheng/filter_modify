@@ -2244,14 +2244,14 @@ Show
  SetTextColor 155 210 135 255
  SetBorderColor 0 120 16 255
  SetBackgroundColor 0 0 0 255
-Hide
+Show
  Class Currency
  BaseType "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net"
  SetFontSize 42
  SetTextColor 155 210 135 255
  SetBorderColor 110 110 110 255
  SetBackgroundColor 0 0 0 255
-Hide
+Show
  Class Currency
  BaseType "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"
  SetFontSize 42
