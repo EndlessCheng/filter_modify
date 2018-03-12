@@ -18,7 +18,8 @@ def fetch_image(type_):
 
 
 def main():
-    with Pool(len(_type_list)) as p:
+    pool_size = [len(_type_list), 1][1]
+    with Pool(pool_size) as p:
         p.map(fetch_image, _type_list)
 
 
