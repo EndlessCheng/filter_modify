@@ -1,7 +1,7 @@
 DEBUG = False
 
 TEMP = False
-TENCENT = False or TEMP
+TENCENT = True or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-60), A9(61-64), A10(64-67)
@@ -97,6 +97,7 @@ CURRENCY_ALERT_CHANCE = True
 
 L3_MAX_IL = 19  # RRG 头/脚
 LEVELING_GEMS_BASE_TYPE = ' '.join([
+    '"Arctic Armour"',
     '"Immortal Call" "Cast when Damage Taken"',
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
 ]) if SHOW_FLASK_HALLOWED else ''

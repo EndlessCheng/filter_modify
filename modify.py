@@ -263,8 +263,8 @@ def modify_endgame_mix(filter_manager):
         normals = filter_manager.get_blocks(BLOCK_ACT_1)[0]
         normals.modify(BaseType=settings.ALERT_NORMAL_BASE_TYPE, ItemLevel=None,
                        SetFontSize=40, PlayAlertSound=SOUND_LEVELING)
-        str_n = normals.copy_modify(BaseType='"Amber Amulet" "Heavy Belt"', ItemLevel='<= 12')
-        filter_manager.extend_blocks([str_n, normals])
+        # str_n = normals.copy_modify(BaseType='"Amber Amulet" "Heavy Belt"', ItemLevel='<= 12')
+        filter_manager.extend_blocks([normals])
 
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
         hide_normals = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
@@ -768,8 +768,8 @@ def modify_filter(filter_manager):
     blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].PlayAlertSound = SOUND_LOW_VALUE
-    # for block in blocks[3:]:
-    #     block.status = HIDE
+    for block in blocks[3:]:
+        block.status = HIDE
     filter_manager.extend_blocks(blocks)
 
     # ALERT_ESSENCE_BASE_TYPE, 8, 1
