@@ -141,3 +141,5 @@ if not CURRENCY_ALERT_CHANCE:
 if TENCENT and '"Astral Plate"' not in ALERT_NORMAL_BASE_TYPE:
     HIDE_BELOW_T1_RARE_CLASS += ' "Body Armour" '
     T1_RARE_BASE_TYPE = T1_RARE_BASE_TYPE.replace('"Astral Plate" "Glorious Plate" "Gladiator Plate"', '')
+
+# SHOW_FLASK_LIFE = True

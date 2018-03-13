@@ -1,18 +1,30 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from multiprocessing.pool import Pool
 import time
 
 import requests
 
-_now = datetime.now()
 _type_list = ['normal', 'cruel', 'merciless', 'uber'][:3]
 
 
-def fetch_image(type_):
-    url = "http://www.poelab.com/wp-content/uploads/{year}/{month:02}/{year}-{month:02}-{day:02}_{type}.jpg".format(
-        year=_now.year, month=_now.month, day=_now.day, type=type_)
+def gen_url(dt, type_):
+    return "http://www.poelab.com/wp-content/uploads/{year}/{month:02}/{year}-{month:02}-{day:02}_{type}.jpg".format(
+        year=dt.year, month=dt.month, day=dt.day, type=type_)
+
+
+def fetch_image(dt, type_):
+    url = gen_url(dt, type_)
     print(url)
     r = requests.get(url)
+    return r
+
+
+def fetch_image_file(type_):
+    now = datetime.now()
+    r = fetch_image(now, type_)
+    if r.status_code == 404:
+        now -= timedelta(days=1)
+        r = fetch_image(now, type_)
     with open('{}.jpg'.format(_type_list.index(type_) + 1), 'wb') as img:
         img.write(r.content)
 
@@ -20,7 +32,7 @@ def fetch_image(type_):
 def main():
     pool_size = [len(_type_list), 1][1]
     with Pool(pool_size) as p:
-        p.map(fetch_image, _type_list)
+        p.map(fetch_image_file, _type_list)
 
 
 if __name__ == '__main__':
