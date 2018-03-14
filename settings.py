@@ -14,8 +14,8 @@ TENCENT = True or TEMP
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Leather Belt"',  # 血抗
     '"Siege Axe"',  # ~100%
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗，点精华试试
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗，点精华试试
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗
 
     '"Amulet"',  # Hide >=20 敏+智
     '"Iron Ring"',  # Hide >=20 血抗 / 抗性戒指有点伤
@@ -48,7 +48,7 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Ruby" "Sapphire" "Topaz" "Amethyst"',
-    '"Granite" "Basalt" "Silver" "Diamond"',
+    '"Diamond" "Granite" "Basalt" "Silver"',
     '"Bismuth" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
 ]).strip()
 

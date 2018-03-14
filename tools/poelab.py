@@ -23,6 +23,7 @@ def fetch_image_file(type_):
     now = datetime.now()
     r = fetch_image(now, type_)
     if r.status_code == 404:
+        print(f'{type_} 404')
         now -= timedelta(days=1)
         r = fetch_image(now, type_)
     with open('{}.jpg'.format(_type_list.index(type_) + 1), 'wb') as img:
