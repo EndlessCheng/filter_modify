@@ -1,21 +1,21 @@
 DEBUG = False
 
 TEMP = False
-TENCENT = True or TEMP
+TENCENT = False or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-60), A9(61-64), A10(64-67)
 # Socket = 2 25 35 50(A7+)
 
 #
-# Part 1 - A1-10
+# Part 1 - A1-A10
 #
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Leather Belt"',  # 血抗
+    '"Leather Belt"',  # 简单血抗
     '"Siege Axe"',  # ~100%
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 血抗
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 血抗
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 简单血抗
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 简单血抗
 
     '"Amulet"',  # Hide >=20 敏+智
     '"Iron Ring"',  # Hide >=20 血抗 / 抗性戒指有点伤
@@ -33,9 +33,7 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Helmets"',  # 90+血
     # '"Gloves"',  # 80+血，有点伤/攻速更好
 
-    # '"Daggers" "Wands"',  # 到异界hide
     # '"Body Armour"',  # 血量精华
-    # '"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
 ])
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
@@ -47,14 +45,15 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Ruby" "Sapphire" "Topaz" "Amethyst"',
     '"Diamond" "Granite" "Basalt" "Silver"',
-    '"Bismuth" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
-]).strip()
+    '"Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
+]).strip()  # '"Ruby" "Sapphire" "Topaz" "Amethyst"',
 
 #
-# Part 2 - Maps
+# Part 2 - Atlas
 #
+
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1):])
 
 ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt"',
@@ -62,14 +61,13 @@ ALERT_JEWEL_BASE_TYPE = ' '.join([
     '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
 ]).strip()
 
-SHOW_RARE_ACCESSORY = ''.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
 T1_RARE_BASE_TYPE = ' '.join([
-    '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',
-
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
+
+    '"Lapis Amulet" "Agate Amulet" "Turquoise Amulet" "Onyx Amulet"',
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',
 
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
     '"Titan Greaves" "Vaal Greaves"',
@@ -78,17 +76,18 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
 ])
 
+# TODO： 备注地图八向分类
 ALERT_ATLAS_BASE_TYPE = ' '.join([
-    '"Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"',  # 1C一个批发
-    '"Spiked Gloves"',  # 攻速精华
-    '"Blue Pearl Amulet" "Marble Amulet" "Vanguard Belt" "Crystal Belt"',
     '"Two-Toned Boots"',
+    '"Spiked Gloves"',  # 攻速精华
 ])
 
+HIDE_NETS = ' '.join(['"Simple Steel Net"', '"Reinforced Steel Net"', '"Strong Steel Net"'][:0])
+NEED_RGB = True and SHOW_FLASK_LIFE
 NEED_REGAL = False
-NEED_CHISEL = False
 NEED_CHAOS = False  # 一个 <=74 的就行，然后可以用 NEED_REGAL = True
 
+NEED_CHISEL = False
 CURRENCY_ALERT_CHANCE = True
 
 #
@@ -101,30 +100,34 @@ LEVELING_GEMS_BASE_TYPE = ' '.join([
     '"Immortal Call" "Cast when Damage Taken"',
     '"Fortify" "Blood Magic" "Increased Duration" "Concentrated Effect" "Enfeeble"',  # A6支线
 ]) if SHOW_FLASK_HALLOWED else ''
+
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Helmets"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Gloves"' if '"Gloves"' not in HIDE_BELOW_T1_RARE_CLASS else '',
 ]).strip() if SHOW_FLASK_LIFE else ''
-NEED_RGB = True and SHOW_FLASK_LIFE
 SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
-CURRENCY_ALERT_TRANSMUTATION = True and SHOW_FLASK_LIFE
+
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
-CURRENCY_PORTAL_FONT_SIZE = [40, 36, 33][max(0, 0 if SHOW_FLASK_LIFE else 1)]
+CURRENCY_PORTAL_FONT_SIZE = 40  # [40, 36, 33][max(0, 0 if SHOW_FLASK_LIFE else 1)]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
-    class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Helmets"', '"Boots"', '"Gloves"']) else 2)]
+    class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Boots"', '"Helmets"']) else 2)]
+
+CURRENCY_ALERT_TRANSMUTATION = True and SHOW_FLASK_LIFE
 CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
 CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
-ALERT_LOW_CURRENCY = '"Siege Axe"' in ALERT_MAGIC_BASE_TYPE
+ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
+
 SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
     [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1):])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
 
 ALERT_ESSENCE_BASE_TYPE = ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" ' \
                           ' "Essence of Loathing" "Essence of Scorn" '
+
+SHOW_RARE_ACCESSORY = ''.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
 IGNORE_RARE_UNDER_T2 = False
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
@@ -135,11 +138,12 @@ IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = ''
-if not CURRENCY_ALERT_CHANCE:
-    CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Full Wyrmscale"'][1:])
+# if not CURRENCY_ALERT_CHANCE:
+#     CHANCING_BASE_TYPE += ' '.join(['"Glorious Plate"', '"Full Wyrmscale"'][1:])
 
 if TENCENT and '"Astral Plate"' not in ALERT_NORMAL_BASE_TYPE:
     HIDE_BELOW_T1_RARE_CLASS += ' "Body Armour" '
     T1_RARE_BASE_TYPE = T1_RARE_BASE_TYPE.replace('"Astral Plate" "Glorious Plate" "Gladiator Plate"', '')
 
+# SHOW_FLASK_HALLOWED = True
 # SHOW_FLASK_LIFE = True

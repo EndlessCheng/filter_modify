@@ -25,6 +25,7 @@ class FilterBlock:
         # Actions(Styles)
         'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
         'PlayAlertSound',
+        'DisableDropSound',
     ]
 
     def __init__(self, raw_text=None, status='Show', **kwargs):
@@ -41,6 +42,7 @@ class FilterBlock:
                 if line == '':
                     continue
                 attr_name, attr_value = line.split(' ', 1)
+                assert attr_name in FilterBlock._FILTER_ORDER
                 if attr_name == 'ItemLevel' and getattr(self, 'ItemLevel', None) is not None:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
                 setattr(self, attr_name, attr_value)
@@ -59,7 +61,7 @@ class FilterBlock:
 
     def generate(self):
         new_text = [self.status + '\n']
-        for attr in self._FILTER_ORDER:
+        for attr in FilterBlock._FILTER_ORDER:
             if getattr(self, attr, None) is not None:
                 new_text.append(" {} {}\n".format(attr, getattr(self, attr)))
         assert len(new_text) > 1
