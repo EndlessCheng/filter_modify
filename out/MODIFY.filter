@@ -394,13 +394,14 @@ Show
 Show
  Corrupted True
  Class "Amulets" "Belts"
- Rarity <= Rare
+ Rarity Magic
  SetFontSize 36
  SetBorderColor 255 125 0
 Show
  Corrupted True
- Class "Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"
- Rarity <= Rare
+ Class "Gloves" "Boots" "Quivers"
+ Rarity Magic
+ SetFontSize 36
  SetBorderColor 255 125 0
 
 # 0507 Chancing items
@@ -657,7 +658,7 @@ Show
 Show
  Sockets >= 3
  SocketGroup WWW
- Class "Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"
+ Class "Wands" "Daggers" "Sceptres" "Claws" "One Hand" "Shields"
  Rarity <= Rare
  SetFontSize 45
  SetBorderColor 0 240 190 240
@@ -665,9 +666,8 @@ Show
 Show
  Sockets >= 3
  SocketGroup W
- Class "Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"
- Rarity <= Rare
- SetFontSize 38
+ Class "Wands" "Daggers" "Sceptres" "Claws" "One Hand" "Shields"
+ Rarity < Rare
  SetBorderColor 255 255 255
  SetBackgroundColor 0 0 0 185
 

@@ -201,14 +201,13 @@ def modify_endgame_mix(filter_manager):
     blocks[-2].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_LOW_VALUE, **STYLE_TOP_RARE)
     filter_manager.extend_blocks(blocks)
 
-    # 改稀有度
+    # RARITY_MAGIC
     # 项链：+1诅咒，+1球，抗性上限；  腰带：+1球
-    # 手：击中附加诅咒；  脚：+1球；  箭袋：+1箭；  爪匕剑：3-6%格挡
+    # 手：击中附加诅咒；  脚：+1球；  箭袋：+1箭
     filter_manager.add_comment(506, 'Corrupted Amulets', ignored=True)
-    accessories = FilterBlock(Corrupted=True, Class='"Amulets" "Belts"', Rarity=RARITY_N2R,
+    accessories = FilterBlock(Corrupted=True, Class='"Amulets" "Belts"', Rarity=RARITY_MAGIC,
                               SetFontSize=36, SetBorderColor=COLOR_ORANGE)
-    others = accessories.copy_modify(Class='"Gloves" "Boots" "Quivers" "Claws" "Daggers" "One Hand Swords"',
-                                     SetFontSize=None)
+    others = accessories.copy_modify(Class='"Gloves" "Boots" "Quivers"')
     filter_manager.extend_blocks([accessories, others])
 
     # CHANCING_BASE_TYPE
@@ -328,12 +327,12 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(520, 'Animate Weapon script - deactivated by default', ignored=True)
 
-    # 8，改稀有度，高亮边框
+    # 8 高亮边框
     blocks = filter_manager.add_comment(521, 'W-soc offhand weapons')
     for block in blocks:
-        block.Class = '"Wands" "Daggers" "One Hand" "Shields" "Sceptres" "Claws"'
+        block.Class = '"Wands" "Daggers" "Sceptres" "Claws" "One Hand" "Shields"'
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].modify(Rarity=RARITY_N2R, SetFontSize=38, SetBorderColor=COLOR_WHITE)
+    blocks[1].SetBorderColor = COLOR_WHITE
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(522, 'Sacrificial Garb')
