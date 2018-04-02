@@ -84,8 +84,6 @@ ALERT_ATLAS_BASE_TYPE = ' '.join([
 
 HIDE_NETS = ' '.join(['"Simple Steel Net"', '"Reinforced Steel Net"', '"Strong Steel Net"'][:0])
 NEED_RGB = True and SHOW_FLASK_LIFE
-NEED_REGAL = False
-NEED_CHAOS = False  # 一个 <=74 的就行，然后可以用 NEED_REGAL = True
 
 NEED_CHISEL = False
 CURRENCY_ALERT_CHANCE = True
@@ -144,6 +142,9 @@ CHANCING_BASE_TYPE = ''
 if TENCENT and '"Astral Plate"' not in ALERT_NORMAL_BASE_TYPE:
     HIDE_BELOW_T1_RARE_CLASS += ' "Body Armour" '
     T1_RARE_BASE_TYPE = T1_RARE_BASE_TYPE.replace('"Astral Plate" "Glorious Plate" "Gladiator Plate"', '')
+
+# NEED_REGAL = False
+# NEED_CHAOS = False  # 一个 <=74 的就行，然后可以用 NEED_REGAL = True
 
 # SHOW_FLASK_HALLOWED = True
 # SHOW_FLASK_LIFE = True

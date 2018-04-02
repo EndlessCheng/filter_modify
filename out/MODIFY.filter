@@ -836,19 +836,61 @@ Show
  SetBackgroundColor 35 100 20 255
 Hide
  Identified False
+ Height <= 4
+ Width <= 1
  ItemLevel >= 75
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
  Rarity = Rare
- SetFontSize 26
+ SetFontSize 24
+ SetTextColor 255 190 0
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ Height <= 4
+ Width <= 1
+ ItemLevel >= 65
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
+ Rarity = Rare
+ SetFontSize 24
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ Height <= 2
+ Width <= 2
+ ItemLevel >= 75
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
+ Rarity = Rare
+ SetFontSize 24
+ SetTextColor 255 190 0
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ Height <= 2
+ Width <= 2
+ ItemLevel >= 65
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
+ Rarity = Rare
+ SetFontSize 24
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
+ ItemLevel >= 75
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
+ Rarity = Rare
+ SetFontSize 20
  SetTextColor 255 190 0
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
 Hide
  Identified False
  ItemLevel >= 65
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" 
  Rarity = Rare
- SetFontSize 26
+ SetFontSize 20
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
 Show

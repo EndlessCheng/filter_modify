@@ -354,7 +354,7 @@ def modify_endgame_rare(filter_manager):
 
     # T1_RARE_BASE_TYPE
     # block_1_3
-    # HIDE_BELOW_T1_RARE_CLASS
+    # HIDE_BELOW_T1_RARE_CLASS with Identified=False
     blocks = filter_manager.add_comment(903, 'T1 rare items')
     if settings.T1_RARE_BASE_TYPE != '':
         filter_manager.append_block(blocks[0].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE,
@@ -367,16 +367,14 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(block_1_3)
 
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
-    for block in hide_blocks[-2:]:
-        block.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"',
-                     SetFontSize=26)
-    if settings.NEED_REGAL:
-        hide_blocks[-1].ItemLevel = '<= 74'
-    filter_manager.extend_blocks(hide_blocks[-1 if settings.NEED_REGAL else -2:])
+    for block in hide_blocks:
+        block.modify(status=DEBUG, Identified=False, Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" ')
+    # if settings.NEED_REGAL:
+    #     hide_blocks[1].ItemLevel = '<= 74'
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
-        hide_blocks[-2].Class = settings.HIDE_BELOW_T1_RARE_CLASS
-        hide_blocks[-1].Class = settings.HIDE_BELOW_T1_RARE_CLASS
-        filter_manager.extend_blocks(hide_blocks[-1 if settings.NEED_REGAL else -2:])
+        for block in hide_blocks:
+            block.Class += settings.HIDE_BELOW_T1_RARE_CLASS
+    filter_manager.extend_blocks(hide_blocks)  # [1 if settings.NEED_REGAL else 0:]
 
     filter_manager.extend_blocks(blocks)
 
@@ -394,12 +392,12 @@ def modify_endgame_rare(filter_manager):
     if settings.SHOW_RARE_ACCESSORY != '':
         for block in blocks[1:]:
             block.Class = settings.SHOW_RARE_ACCESSORY
-    if settings.NEED_REGAL:
-        blocks[1].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
-        blocks[3].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
-    if settings.NEED_CHAOS:
-        blocks[2].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
-        blocks[4].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+    # if settings.NEED_REGAL:
+    #     blocks[1].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+    #     blocks[3].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+    # if settings.NEED_CHAOS:
+    #     blocks[2].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+    #     blocks[4].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(907, '1H Daggers', ignored=settings.IGNORE_RARE_UNDER_T2)
