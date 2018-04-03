@@ -19,7 +19,6 @@ class NSUpdater(BasicUpdater):
                 desc = splits[1].strip()
                 yield no, index_s, desc
 
-    # TODO: 提醒双方各缺/多的部分
     def _modify_indexes(self):
         cnt, width = 0, 10
         errors = []
@@ -33,24 +32,34 @@ class NSUpdater(BasicUpdater):
             line = self.raw_text[no - 1]
 
             if not index_s.isdigit():
-                print('W', end=end)  # Words
+                # 检测到常量字段，需要手动修改
+                print('W', end=end)
                 # errors.append(('non-index', no, line))
                 continue
 
-            sub_times = sum(desc == v for _, v in self.ns_block_indexes.items())
-            if sub_times > 1:
-                print(min(sub_times, 9), end=end)
+            ns_indexes = [k for k, v in self.ns_block_indexes.items() if desc == v]
+
+            if len(ns_indexes) > 1:
+                # 检测到该 desc 在 NS 中出现了多次，需要手动修改
+                print(len(ns_indexes), end=end)
                 errors.append(('multi-desc', no, line))
                 continue
 
-            for k, v in self.ns_block_indexes.items():
-                if desc == v:
-                    new_text[no - 1] = line.replace(index_s, str(k))
-                    print('.', end=end)
-                    break
-            else:
+            if len(ns_indexes) == 0:
+                # 未在 NS 中找到，请检查代码
                 print('M', end=end)
                 errors.append((f'miss', no, line))
+                continue
+
+            ns_index = ns_indexes[0]
+
+            if int(index_s) == ns_index:
+                # 无需修改（忽略）
+                print('.', end=end)
+            else:
+                # 更新 desc 唯一相同但 index 不同的代码
+                new_text[no - 1] = line.replace(index_s, str(ns_index))
+                print('U', end=end)
 
         print()
 
