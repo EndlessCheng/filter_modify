@@ -1,8 +1,7 @@
-import time
 import os
 import platform
-
 import shutil
+import time
 
 from utils import FilterBlock, FilterManager
 import settings
