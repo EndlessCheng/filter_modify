@@ -53,11 +53,10 @@ class FilterBlock:
         for k, v in kwargs.items():
             setattr(self, k, v)
 
-    # TODO: 现在属性都是字符串所以 OK，后续优化
     def copy_modify(self, **kwargs):
         block = copy.copy(self)
         for k, v in kwargs.items():
-            setattr(block, k, v)  # 也可以 update __dict__
+            setattr(block, k, v)
         return block
 
     def generate(self):

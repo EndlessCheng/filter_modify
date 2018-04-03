@@ -3,9 +3,11 @@ import re
 
 
 class BasicParser:
-    def __init__(self, filter_path):
+    def __init__(self, filter_path, first_index):
         self.filter_path = filter_path
         self.raw_text = self._read()
+
+        self.first_index = first_index
 
     def _read(self):
         with open(self.filter_path) as f:
@@ -30,7 +32,7 @@ class BasicParser:
 class NSParser(BasicParser):
     def _extract_block_indexes(self):
         for no, l in enumerate(self.raw_text):
-            if '0100' in l:
+            if self.first_index in l:
                 start_no = no
                 for line in self.raw_text[start_no:]:
                     m = re.search(r'\[?\[[0-9]{4}\]\]?', line)
