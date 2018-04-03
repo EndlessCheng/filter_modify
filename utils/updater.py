@@ -34,16 +34,14 @@ class NSUpdater(BasicUpdater):
                 for stmt in py_ast.body:
                     if isinstance(stmt, (ast.Expr, ast.Assign)) \
                             and isinstance(stmt.value, ast.Call) \
-                            and isinstance(stmt.value.func, ast.Attribute):
-                        value = stmt.value
-                        func = value.func
-                        if func.attr == NSUpdater.TARGET_FUNC_NAME:
-                            index_expr, desc_expr = value.args
-                            assert isinstance(index_expr, (ast.Num, ast.Name))
-                            assert isinstance(desc_expr, ast.Str)
-                            index_s = str(index_expr.n) if isinstance(index_expr, ast.Num) else index_expr.id
-                            desc = desc_expr.s
-                            yield stmt.lineno, index_s, desc
+                            and isinstance(stmt.value.func, ast.Attribute) \
+                            and stmt.value.func.attr == NSUpdater.TARGET_FUNC_NAME:
+                        index_expr, desc_expr = stmt.value.args
+                        assert isinstance(index_expr, (ast.Num, ast.Name))
+                        assert isinstance(desc_expr, ast.Str)
+                        index_s = str(index_expr.n) if isinstance(index_expr, ast.Num) else index_expr.id
+                        desc = desc_expr.s
+                        yield stmt.lineno, index_s, desc
 
     def _modify_indexes(self):
         cnt, width = 0, 10
