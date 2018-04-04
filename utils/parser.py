@@ -3,7 +3,7 @@ import re
 
 
 class BasicParser:
-    def __init__(self, filter_path, first_index):
+    def __init__(self, filter_path, first_index='0100'):
         self.filter_path = filter_path
         self.raw_text = self._read()
 
