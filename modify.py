@@ -194,10 +194,12 @@ def modify_endgame_mix(filter_manager):
     for block in blocks[:2]:
         block.BaseType += ' "Marble Amulet" '
         block.modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
-    blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[4].modify(ItemLevel=None, SetTextColor=None, PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[-2].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_LOW_VALUE, **STYLE_TOP_RARE)
+    blocks[2].PlayAlertSound = SOUND_MID_VALUE
+    blocks[3].PlayAlertSound = SOUND_MID_VALUE
+    blocks[4].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[5].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
+    blocks[-3].modify(BaseType=settings.ALERT_ATLAS_BASE_TYPE, PlayAlertSound=SOUND_LOW_VALUE, **STYLE_TOP_RARE)
+    del blocks[-2]
     filter_manager.extend_blocks(blocks)
 
     # RARITY_MAGIC
@@ -758,7 +760,7 @@ def modify_filter(filter_manager):
     # 1 2 HIDE_NETS
     blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
-    blocks[1].PlayAlertSound = SOUND_LOW_VALUE
+    blocks[1].modify(PlayAlertSound=SOUND_LOW_VALUE, DisableDropSound=None)
     for block in blocks[3:]:
         block.status = HIDE
     if settings.HIDE_NETS:
