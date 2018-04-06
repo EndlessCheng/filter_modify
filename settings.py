@@ -73,8 +73,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Titan Greaves" "Vaal Greaves"',
     '"Titan Gauntlets" "Vaal Gauntlets"',
     '"Siege Axe"',
-    '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
-])
+])  # '"Astral Plate" "Glorious Plate" "Gladiator Plate"',
 
 # TODO： 备注地图八向分类
 ALERT_ATLAS_BASE_TYPE = ' '.join([
