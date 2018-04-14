@@ -32,15 +32,6 @@ Show
  SetBorderColor 0 240 190 240
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 8 300
-Show
- Sockets 6
- BaseType "Astral Plate" "Glorious Plate" "Gladiator Plate"
- Rarity <= Rare
- SetFontSize 45
- SetTextColor 255 0 0
- SetBorderColor 255 0 0
- SetBackgroundColor 255 255 255
- PlayAlertSound 8 300
 
 # 0300 SHAPER ITEMS
 
@@ -1062,36 +1053,40 @@ Show
  PlayAlertSound 2 300
 Show
  ItemLevel >= 75
- Class "Belts""Amulets""Rings"
+ Class "Belts" "Amulets" "Rings"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  SetFontSize 36
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
  SetBackgroundColor 10 60 25 255
+ PlayAlertSound 1 300
 Show
- ItemLevel >= 65
- Class "Belts""Amulets""Rings"
+ ItemLevel >= 60
+ Class "Belts" "Amulets" "Rings"
  BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
  Rarity Rare
  SetFontSize 36
  SetBorderColor 25 235 25 255
  SetBackgroundColor 10 60 25 255
+ PlayAlertSound 1 300
 Show
  ItemLevel >= 75
- Class "Belts""Amulets""Rings"
+ Class "Belts" "Amulets" "Rings"
  Rarity Rare
  SetFontSize 42
  SetTextColor 255 190 0
  SetBorderColor 25 235 25 255
  SetBackgroundColor 35 100 20 255
+ PlayAlertSound 1 300
 Show
  ItemLevel >= 65
- Class "Belts""Amulets""Rings"
+ Class "Belts" "Amulets" "Rings"
  Rarity Rare
  SetFontSize 42
  SetBorderColor 25 235 25 255
  SetBackgroundColor 35 100 20 255
+ PlayAlertSound 1 300
 
 # 0907 1H Daggers
 Show
@@ -3385,7 +3380,7 @@ Show
 # 2706 Act 1
 Show
  ItemLevel <= 12
- BaseType "Iron Ring" "Rustic Sash" "Amulet"
+ BaseType "Rustic Sash" "Amulet"
  Rarity = Normal
  SetFontSize 42
  SetTextColor 255 255 255 255
@@ -3488,22 +3483,6 @@ Show
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
 Show
- ItemLevel <= 36
- BaseType "Spectral Axe"
- Rarity = Normal
- SetFontSize 42
- SetTextColor 255 255 255 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 48
- BaseType "War Axe"
- Rarity = Normal
- SetFontSize 42
- SetTextColor 255 255 255 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
  ItemLevel <= 3
  BaseType "Rusted Sword"
  Rarity = Magic
@@ -3575,31 +3554,15 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
  SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 36
- BaseType "Spectral Axe"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 48
- BaseType "War Axe"
- Rarity = Magic
- SetFontSize 42
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
 Hide
- ItemLevel >= 6
+ ItemLevel >= 2
  Class "Bows" "Quivers" "Two Hand" "Staves" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand" "Flasks" "Belts" "Amulets" "Rings"
  Rarity Magic
  SetFontSize 26
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 165
 Hide
- ItemLevel >= 6
+ ItemLevel >= 5
  Class "Helmets" "Gloves" "Boots" "Body Armour"
  Rarity Magic
  SetFontSize 26

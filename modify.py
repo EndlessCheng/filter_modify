@@ -391,7 +391,9 @@ def modify_endgame_rare(filter_manager):
     blocks[2].SetFontSize = 36
     if settings.SHOW_RARE_ACCESSORY != '':
         for block in blocks[1:]:
-            block.Class = settings.SHOW_RARE_ACCESSORY
+            block.modify(Class=settings.SHOW_RARE_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+        blocks[2].ItemLevel = ITEM_LEVEL_CHAOS
+        blocks[2].ItemLevel = ITEM_LEVEL_CHAOS
     # if settings.NEED_REGAL:
     #     blocks[1].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     #     blocks[3].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)

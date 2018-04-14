@@ -1,7 +1,7 @@
 DEBUG = False
 
 TEMP = False
-TENCENT = False or TEMP
+TENCENT = True or TEMP
 
 # A1(1-13), A2(13-23), A3(23-33), A4(33-40), A5(41-45)
 # A6(45-50), A7(50-55), A8(55-60), A9(61-64), A10(64-67)
@@ -124,7 +124,7 @@ SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_B
 ALERT_ESSENCE_BASE_TYPE = ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" ' \
                           ' "Essence of Loathing" "Essence of Scorn" '
 
-SHOW_RARE_ACCESSORY = ''.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
+SHOW_RARE_ACCESSORY = ' '.join(['"Belts"', '"Amulets"', '"Rings"'][0:])
 IGNORE_RARE_UNDER_T2 = False
 
 # Ring-Amulet-Belt's T1-Life >= 44(A6), 54(A8), 64(A10)
