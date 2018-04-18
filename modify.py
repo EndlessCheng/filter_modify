@@ -362,9 +362,8 @@ def modify_endgame_rare(filter_manager):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    for block in blocks[:2]:
-        block_1_3 = block.copy_modify(BaseType=None, Width='<= 1', Height='<= 3')
-        filter_manager.append_block(block_1_3)
+    filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
+    filter_manager.append_block(blocks[1].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
 
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
     for block in hide_blocks:
@@ -387,20 +386,22 @@ def modify_endgame_rare(filter_manager):
     # 2 SHOW_RARE_ACCESSORY
     blocks = filter_manager.add_comment(906, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE  # rare jewel
+    filter_manager.append_block(blocks[0])
     blocks[1].SetFontSize = 36
     blocks[2].SetFontSize = 36
     if settings.SHOW_RARE_ACCESSORY != '':
         for block in blocks[1:]:
-            block.modify(Class=settings.SHOW_RARE_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
+            block.modify(Class=settings.SHOW_RARE_ACCESSORY, SetBorderColor=COLOR_YELLOW,
+                         PlayAlertSound=SOUND_MID_VALUE)
         blocks[2].ItemLevel = ITEM_LEVEL_CHAOS
-        blocks[2].ItemLevel = ITEM_LEVEL_CHAOS
+        blocks[4].ItemLevel = ITEM_LEVEL_CHAOS
     # if settings.NEED_REGAL:
     #     blocks[1].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     #     blocks[3].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     # if settings.NEED_CHAOS:
     #     blocks[2].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
     #     blocks[4].modify(Class=CLASS_ACCESSORY, PlayAlertSound=SOUND_MID_VALUE)
-    filter_manager.extend_blocks(blocks)
+    filter_manager.extend_blocks(blocks[3:])
 
     blocks = filter_manager.add_comment(907, '1H Daggers', ignored=settings.IGNORE_RARE_UNDER_T2)
     filter_manager.extend_blocks(blocks)
