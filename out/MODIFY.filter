@@ -503,7 +503,7 @@ Hide
 Show
  ItemLevel >= 13
  Class Belts
- BaseType "Rustic Sash" "Leather Belt"
+ BaseType "Leather Belt"
  Rarity Normal
  SetTextColor 255 255 255
 Show
@@ -518,23 +518,9 @@ Show
  BaseType "Two-Stone"
  Rarity Normal
  SetTextColor 255 255 255
-Hide
- ItemLevel >= 30
- BaseType "Rustic Sash"
- Rarity Magic
- SetFontSize 18
- SetBorderColor 0 0 0 150
- SetBackgroundColor 0 0 0 165
-Hide
- ItemLevel >= 20
- BaseType "Iron Ring"
- Rarity Magic
- SetFontSize 18
- SetBorderColor 0 0 0 150
- SetBackgroundColor 0 0 0 165
 Show
- ItemLevel <= 19
- Class "Amulets"
+ ItemLevel <= 20
+ BaseType "Iron Ring"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255
@@ -551,7 +537,7 @@ Show
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
 Show
- BaseType "Leather Belt" "Siege Axe" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"  "Iron Ring"  "Rustic Sash"
+ BaseType "Leather Belt" "Lapis Amulet" "Turquoise Amulet" "Onyx Amulet" "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Siege Axe"
  Rarity = Magic
  SetFontSize 42
  SetTextColor 25 95 235 255

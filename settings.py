@@ -9,20 +9,15 @@ SSF = False
 # Part 1 - A1-A10
 #
 
-ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Leather Belt"',  # 简单血抗
-    '"Siege Axe"',  # ~100%
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 简单血抗
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 简单血抗
-
-    '"Amulet"',  # Hide >=20 敏+智
-    '"Iron Ring"',  # Hide >=20 血抗 / 抗性戒指有点伤
-    '"Gloves"',  # Hide >=25 攻速/点伤(IL 12+)
-    '"Rustic Sash"',  # Hide >= 30
-])
-
 SHOW_FLASK_HALLOWED = True
 SHOW_FLASK_LIFE = True
+
+ALERT_MAGIC_BASE_TYPE = ' '.join([
+    '"Leather Belt"' if SHOW_FLASK_LIFE else '',
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 点伤抗性
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤抗性
+    '"Siege Axe"',  # ~100%
+]).strip()
 
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
@@ -42,7 +37,7 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Silver"',
+    '"Silver"',  # if SHOW_FLASK_LIFE else '',
     '"Diamond"',
     '"Granite"',
     '"Basalt"',
@@ -53,17 +48,9 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
 # Part 2 - Atlas
 #
 
-# 进异界 -> 1, 进 T6 -> 2
-HIDE_NETS = ' '.join(['"Simple Steel Net"', '"Reinforced Steel Net"', '"Strong Steel Net"'][:0])
-
-CURRENCY_ALERT_CHANCE = True
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Rustic Sash"', '"Leather Belt"'][max(0, 0 if SHOW_FLASK_HALLOWED else 1):])
-
-ALERT_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt"',
-    '"Eye"',  # "Searching Eye"
-    '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
-]).strip()
+MAP_WHITE = False
+MAP_YELLOW = False
+MAP_RED = False
 
 T1_RARE_BASE_TYPE = ' '.join([
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
@@ -74,13 +61,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Titan Greaves" "Vaal Greaves"',
     '"Titan Gauntlets" "Vaal Gauntlets"',
     '"Siege Axe"',
-])
-
-# TODO： 备注地图八向分类
-ALERT_ATLAS_BASE_TYPE = ' '.join([
-    # '"Two-Toned Boots"',
-    '"Spiked Gloves"',  # 攻速精华
-])
+]).strip()
 
 #
 # Part 3 - Others
@@ -101,10 +82,11 @@ CURRENCY_PORTAL_FONT_SIZE = 40  # [40, 36, 33][max(0, 0 if SHOW_FLASK_LIFE else 
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
     class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Boots"', '"Helmets"']) else 2)]
 
-CURRENCY_ALERT_TRANSMUTATION = True and SHOW_FLASK_LIFE
-CURRENCY_ALERT_BLACKSMITH = True and ALERT_UTILITY_FLASK_BASE_TYPE != ''  # Trade 8 for 1 glass
-CURRENCY_ALERT_AUGMENTATION = True and ALERT_JEWEL_BASE_TYPE != ''
 NEED_RGB = True and SHOW_FLASK_LIFE
+CURRENCY_ALERT_TRANSMUTATION = True and SHOW_FLASK_LIFE
+CURRENCY_ALERT_BLACKSMITH = True and '"Siege Axe"' in ALERT_NORMAL_BASE_TYPE  # Trade 8 for 1 glass
+CURRENCY_ALERT_AUGMENTATION = True and not MAP_YELLOW
+CURRENCY_ALERT_CHANCE = True and not MAP_YELLOW
 ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
 NEED_CHISEL = False
 
@@ -112,6 +94,7 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
     [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
+SSF_CRAFT_BELTS_BASE_TYPE = '"Leather Belt"' if SHOW_FLASK_LIFE else ''  # ' '.join(['"Leather Belt"'][0:])
 
 ALERT_ESSENCE_BASE_TYPE = ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" ' \
                           ' "Essence of Loathing" "Essence of Scorn" '
@@ -120,6 +103,25 @@ IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = '' if CURRENCY_ALERT_CHANCE else ''
+
+ALERT_JEWEL_BASE_TYPE = ' '.join([
+    '"Crimson" "Viridian" "Cobalt" "Eye"',
+    '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
+]).strip() if not MAP_YELLOW else ''
+
+# TODO： 备注地图八向分类
+ALERT_ATLAS_BASE_TYPE = ' '.join([
+    # '"Two-Toned Boots"',
+    '"Spiked Gloves"',  # 攻速精华
+]).strip()
+
+HIDE_NETS = ''
+if MAP_WHITE:
+    HIDE_NETS += '"Simple Steel Net"'
+if MAP_YELLOW:
+    HIDE_NETS += ' "Reinforced Steel Net"'
+if MAP_RED:
+    HIDE_NETS += ' "Strong Steel Net"'
 
 # SHOW_FLASK_HALLOWED = True
 # SHOW_FLASK_LIFE = True

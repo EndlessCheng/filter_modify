@@ -274,23 +274,13 @@ def modify_endgame_mix(filter_manager):
             SetTextColor=COLOR_WHITE))
 
     if settings.ALERT_MAGIC_BASE_TYPE != '':
-        hide_magics = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
-        hide_magics.modify(Class=None, Rarity=RARITY_MAGIC, SetFontSize=FONT_SIZE_MIN)
-        hide_m_rustic_sash = hide_magics.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
-        hide_m_iron_ring = hide_magics.copy_modify(BaseType='"Iron Ring"', ItemLevel='>= 20')
-        filter_manager.extend_blocks([hide_m_rustic_sash, hide_m_iron_ring])
-
         alert_magics = filter_manager.get_blocks(BLOCK_ACT_1)[1]
-        alert_magics.PlayAlertSound = SOUND_LEVELING
-        if '"Amulet"' in settings.ALERT_MAGIC_BASE_TYPE:
-            settings.ALERT_MAGIC_BASE_TYPE = settings.ALERT_MAGIC_BASE_TYPE.replace('"Amulet"', '')
-            alert_magic_amulets = alert_magics.copy_modify(Class='"Amulets"', BaseType=None, ItemLevel='<= 19')
-            filter_manager.append_block(alert_magic_amulets)
-        if '"Gloves"' in settings.ALERT_MAGIC_BASE_TYPE:
-            settings.ALERT_MAGIC_BASE_TYPE = settings.ALERT_MAGIC_BASE_TYPE.replace('"Gloves"', '')
-            alert_magic_gloves = alert_magics.copy_modify(Class='"Gloves"', BaseType=None, ItemLevel='<= 24')
-            filter_manager.append_block(alert_magic_gloves)
-        alert_magics.modify(BaseType=settings.ALERT_MAGIC_BASE_TYPE, ItemLevel=None)
+        alert_magics.modify(ItemLevel=None, BaseType=None, PlayAlertSound=SOUND_LEVELING)
+        alert_m_iron_ring = alert_magics.copy_modify(BaseType='"Iron Ring"', ItemLevel='<= 20')
+        alert_magic_gloves = alert_magics.copy_modify(Class='"Gloves"', ItemLevel='<= 24')
+        filter_manager.extend_blocks([alert_m_iron_ring, alert_magic_gloves])
+
+        alert_magics.BaseType = settings.ALERT_MAGIC_BASE_TYPE
         filter_manager.append_block(alert_magics)
 
     # NEED_CHISEL
