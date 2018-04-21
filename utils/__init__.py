@@ -69,10 +69,10 @@ class FilterBlock:
 
 
 class FilterManager:
-    new_text = []
-
     def __init__(self, raw_text):
         self.raw_text = raw_text
+
+        self.new_text = []
 
     def _get_small_block(self, start_index):
         block = []
@@ -127,3 +127,6 @@ class FilterManager:
     def add_comment(self, block_number, comment, ignored=False):
         self.new_text.append("\n# {:0>4} {}\n".format(block_number, comment))
         return self.get_blocks(block_number) if not ignored else []
+
+    def clear(self):
+        self.new_text = []
