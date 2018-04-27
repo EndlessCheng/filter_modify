@@ -38,16 +38,24 @@ Show
 # 0301 Exception Handling - Rings, Amulets, Belts
 Show
  ShaperItem True
- ItemLevel >= 84
  BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
  Rarity <= Rare
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 8 300
+ PlayAlertSound 3 300
 
 # 0302 Shaper Item Layers - T1
+Show
+ ShaperItem True
+ Class "Daggers" "Sceptres" "Thrusting One Hand Swords" "Amulets" "Rings"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
 Show
  ShaperItem True
  BaseType "Opal Ring" "Steel Ring" "Stygian Vise" "Crystal Belt" "Vanguard Belt"
@@ -145,16 +153,24 @@ Show
 # 0401 Exception Handling - Rings, Amulets, Belts
 Show
  ElderItem True
- ItemLevel >= 84
  BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
  Rarity <= Rare
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 8 300
+ PlayAlertSound 3 300
 
 # 0402 Elder Item Layers - T1
+Show
+ ElderItem True
+ Class "Amulets"
+ Rarity <= Rare
+ SetFontSize 45
+ SetTextColor 50 130 165 255
+ SetBorderColor 50 130 165 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
 Show
  ElderItem True
  BaseType "Opal Ring" "Steel Ring" "Stygian Vise" "Crystal Belt" "Vanguard Belt"
@@ -403,7 +419,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Silver" "Diamond" "Granite" "Basalt" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
+ BaseType "Silver" "Basalt" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -431,31 +447,6 @@ Show
  PlayAlertSound 8 300
 
 # 0511 83/84+ Endgame crafting rules
-Show
- ItemLevel >= 84
- BaseType "Onyx Amulet" "Diamond Ring" "Two-Stone" "Eternal Burgonet"
- Rarity < Rare
- SetFontSize 36
- SetBorderColor 200 200 0 255
-Show
- ItemLevel >= 84
- BaseType "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet"
- Rarity < Rare
- SetBorderColor 200 200 0 190
- SetBackgroundColor 0 0 0 185
-Show
- ItemLevel >= 84
- Class Rings Amulet Belts
- BaseType "Ruby" "Sapphire" "Topaz" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash"
- Rarity < Rare
- SetBorderColor 200 200 0 190
- SetBackgroundColor 0 0 0 185
-Show
- ItemLevel >= 83
- BaseType "Siege Axe"
- Rarity < Rare
- SetBorderColor 200 200 0 190
- SetBackgroundColor 0 0 0 185
 
 # 0512 60+ Crafting rules for 60++ trinkets
 Show
@@ -555,7 +546,7 @@ Show
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 1 300
 Show
- Quality >= 14
+ Quality >= 18
  Corrupted False
  BaseType "Gavel" "Rock Breaker" "Stone Hammer"
  Rarity Magic
@@ -564,7 +555,7 @@ Show
  SetBackgroundColor 75 75 75 255
  PlayAlertSound 1 300
 Show
- Quality >= 5
+ Quality >= 15
  Corrupted False
  BaseType "Gavel" "Rock Breaker" "Stone Hammer"
  Rarity Normal
@@ -631,13 +622,6 @@ Show
  SetFontSize 45
  SetBorderColor 0 240 190 240
  PlayAlertSound 8 300
-Show
- Sockets >= 3
- SocketGroup W
- Class "Wands" "Daggers" "Sceptres" "Claws" "One Hand" "Shields"
- Rarity < Rare
- SetBorderColor 255 255 255
- SetBackgroundColor 0 0 0 185
 
 # 0522 Sacrificial Garb
 Show
@@ -726,47 +710,6 @@ Show
  PlayAlertSound 8 300
 
 # 0902 Rare crafting bases 83+
-Show
- ItemLevel >= 84
- BaseType "Onyx Amulet" "Diamond" "Titan Gauntlets" "Slink Gloves" "Royal Burgonet" "Lion Pelt" "Titan Greaves" "Slink Boots" "Hubris Circlet" "Two-Stone Ring" "Eternal Burgonet"
- Rarity Rare
- SetFontSize 42
- SetTextColor 255 190 0
- SetBorderColor 255 255 0 255
- SetBackgroundColor 35 100 20 255
-Show
- ItemLevel >= 84
- Class Rings Amulet Belts
- BaseType "Ruby" "Sapphire" "Topaz" "Diamond" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash"
- Rarity Rare
- SetFontSize 42
- SetTextColor 255 190 0
- SetBorderColor 200 200 0 190
- SetBackgroundColor 35 100 20 255
-Show
- ItemLevel >= 84
- BaseType "Saintly Chainmail" "Harmonic Spirit Shield" "Fossilised Spirit Shield" "Titanium Spirit Shield" "Sorcerer Boots" "Sorcerer Gloves" "Vaal Regalia"
- Rarity Rare
- SetFontSize 42
- SetTextColor 255 190 0
- SetBorderColor 200 200 0 190
- SetBackgroundColor 35 100 20 255
-Show
- ItemLevel >= 84
- BaseType "Profane Wand" "Sambar Sceptre" "Void Sceptre" "Imbued Wand" "Pinnacle Tower Shield" "Kris" "Prismatic" "Astral Plate" "Assassin's Garb"
- Rarity Rare
- SetFontSize 42
- SetTextColor 255 190 0
- SetBorderColor 200 200 0 190
- SetBackgroundColor 35 100 20 255
-Show
- ItemLevel >= 83
- BaseType "Vaal Axe" "Coronal Maul" "Exquisite Blade" "Fleshripper" "Harbinger Bow" "Gemini Claw" "Ambusher" "Siege Axe" "Demon Dagger" "Skean" "Spiraled Foil" "Jewelled Foil" "Imperial Claw"
- Rarity Rare
- SetFontSize 42
- SetTextColor 255 190 0
- SetBorderColor 200 200 0 190
- SetBackgroundColor 35 100 20 255
 
 # 0903 T1 rare items
 Show
@@ -1786,7 +1729,7 @@ Hide
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Silver" "Diamond" "Granite" "Basalt" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
+ BaseType "Silver" "Basalt" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -2379,7 +2322,7 @@ Show
 # 1705 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow" "King's Blade" "Prosperity" "Struck by Lightning" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins"
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "Struck by Lightning" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2387,10 +2330,11 @@ Hide
 Show
  Class "Divination"
  BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
- SetFontSize 18
+ SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 175 215 230 180
+ PlayAlertSound 2 300
 
 # 1706 T4 - ...showing the remaining cards
 Show

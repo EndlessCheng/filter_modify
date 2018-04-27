@@ -4,7 +4,9 @@ import time
 
 import requests
 
-_type_list = ['normal', 'cruel', 'merciless', 'uber'][:3]
+TYPE_LIST = ['normal', 'cruel', 'merciless', 'uber']
+
+_type_list = ['normal', 'cruel', 'merciless', 'uber'][3:]
 
 
 def gen_url(dt, type_):
@@ -26,7 +28,7 @@ def fetch_image_file(type_):
         print(f'{type_} 404')
         now -= timedelta(days=1)
         r = fetch_image(now, type_)
-    with open('{}.jpg'.format(_type_list.index(type_) + 1), 'wb') as img:
+    with open('{}.jpg'.format(TYPE_LIST.index(type_) + 1), 'wb') as img:
         img.write(r.content)
 
 

@@ -114,15 +114,17 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(300, 'SHAPER ITEMS', ignored=True)
 
-    # 8
     blocks = filter_manager.add_comment(301, 'Exception Handling - Rings, Amulets, Belts')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].ItemLevel = None
     filter_manager.extend_blocks(blocks)
 
-    # 8
+    # 8 shaper_alerts
     blocks = filter_manager.add_comment(302, 'Shaper Item Layers - T1')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
+    shaper_alerts = blocks[0].copy_modify(Class='"Daggers" "Sceptres" "Thrusting One Hand Swords" "Amulets" "Rings"',
+                                          BaseType=None)
+    filter_manager.append_block(shaper_alerts)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(303, 'Shaper Item Layers - T2')
@@ -136,15 +138,16 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(400, 'ELDER ITEMS', ignored=True)
 
-    # 8
     blocks = filter_manager.add_comment(401, 'Exception Handling - Rings, Amulets, Belts')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[0].ItemLevel = None
     filter_manager.extend_blocks(blocks)
 
-    # 8
+    # 8 elder_alerts
     blocks = filter_manager.add_comment(402, 'Elder Item Layers - T1')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
+    elder_alerts = blocks[0].copy_modify(Class='"Amulets"', BaseType=None)
+    filter_manager.append_block(elder_alerts)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(403, 'Elder Item Layers - T2')
@@ -229,16 +232,14 @@ def modify_endgame_mix(filter_manager):
         block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 前三个 & Siege Axe
-    blocks = filter_manager.add_comment(511, '83/84+ Endgame crafting rules')
-    filter_manager.extend_blocks(blocks[:3])
-    blocks[3].BaseType = '"Siege Axe"'
-    filter_manager.append_block(blocks[3])
+    # Hide
+    filter_manager.add_comment(511, '83/84+ Endgame crafting rules', ignored=True)
 
-    # ALERT_JEWEL_BASE_TYPE 12
+    # ALERT_MAGIC_JEWEL_BASE_TYPE 12
     blocks = filter_manager.add_comment(512, '60+ Crafting rules for 60++ trinkets')
-    if settings.ALERT_JEWEL_BASE_TYPE != '':
-        magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_JEWEL_BASE_TYPE, PlayAlertSound=SOUND_LEVELING)
+    if settings.ALERT_MAGIC_JEWEL_BASE_TYPE != '':
+        magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_MAGIC_JEWEL_BASE_TYPE,
+                                             PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(magic_jewels)
         filter_manager.append_block(blocks[0])
 
@@ -287,8 +288,8 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(515, 'Chisel recipe items')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
-    blocks[1].Quality = '>= 10' if settings.NEED_CHISEL else '>= 14'
-    blocks[2].Quality = '>= 0' if settings.NEED_CHISEL else '>= 5'
+    blocks[1].Quality = '>= 10' if settings.NEED_CHISEL else '>= 18'
+    blocks[2].Quality = '>= 0' if settings.NEED_CHISEL else '>= 15'
     filter_manager.extend_blocks(blocks[:3])
 
     # 8
@@ -307,13 +308,12 @@ def modify_endgame_mix(filter_manager):
 
     filter_manager.add_comment(520, 'Animate Weapon script - deactivated by default', ignored=True)
 
-    # 8 高亮边框
+    # 8
     blocks = filter_manager.add_comment(521, 'W-soc offhand weapons')
     for block in blocks:
         block.Class = '"Wands" "Daggers" "Sceptres" "Claws" "One Hand" "Shields"'
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[1].SetBorderColor = COLOR_WHITE
-    filter_manager.extend_blocks(blocks)
+    filter_manager.append_block(blocks[0])
 
     blocks = filter_manager.add_comment(522, 'Sacrificial Garb')
     filter_manager.extend_blocks(blocks)
@@ -328,8 +328,8 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
-    blocks = filter_manager.add_comment(902, 'Rare crafting bases 83+')
-    filter_manager.extend_blocks(blocks)
+    # Hide
+    filter_manager.add_comment(902, 'Rare crafting bases 83+', ignored=True)
 
     # T1_RARE_BASE_TYPE
     # block_1_3
@@ -347,7 +347,10 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
     hide_rare_classes = ' '.join(['"Quivers"', '"Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
     if show_rare_class:
-        hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
+        if show_rare_class == 'ALL':
+            hide_rare_classes = '"Quivers" "Shields" "Sceptres" "Claws" "One Hand"'
+        else:
+            hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
     for block in hide_blocks:
         block.modify(status=DEBUG, Identified=False, Class=hide_rare_classes)
     filter_manager.extend_blocks(hide_blocks)
@@ -786,12 +789,20 @@ def modify_filter(filter_manager, show_rare_class=''):
                                                                   '"The Rabid Rhoa" '  # 混沌伤 双子战爪
                                                                   '"The Sigil" '  # T1 ES% 项链
                                                                   '"The Surgeon" '  # 暴击充能 药剂
-                                                                  '"The Twins"',  # T1 攻速 双子战爪
+                                                                  '"The Twins" ',  # T1 攻速 双子战爪
                                            SetFontSize=FONT_SIZE_MIN)
+        if not settings.SSF:
+            trash_base_type = blocks[0].BaseType
+            still_good_base_type = ['"Lantador\'s Lost Love"',
+                                    '"Rain of Chaos"',
+                                    '"The Lover"',
+                                    '"The Scholar"', ]
+            for bt in still_good_base_type:
+                trash_base_type = trash_base_type.replace(bt, '')
+            hide_cards.BaseType += trash_base_type
         filter_manager.append_block(hide_cards)
-        blocks[0].SetFontSize = FONT_SIZE_MIN
-        if settings.SSF:
-            blocks[0].modify(SetFontSize=40, PlayAlertSound=SOUND_LOW_VALUE)
+
+        blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
         filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1706, 'T4 - ...showing the remaining cards')
@@ -880,6 +891,7 @@ def main():
         ('"Boots"', '脚'),
         ('"Body Armour"', '胸'),
         (CLASS_TWO_HAND, '双手'),
+        ('ALL', '全部')
     ]
 
     for clazz, gen_filter_name in show_rare_classes:

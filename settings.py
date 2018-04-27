@@ -38,11 +38,11 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Silver"',  # if SHOW_FLASK_LIFE else '',
+    '"Basalt"',  # if SHOW_FLASK_LIFE else '',
     '"Diamond"',
     '"Granite"',
-    '"Basalt"',
     '"Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
-]).strip()  # '"Ruby" "Sapphire" "Topaz" "Amethyst"',
+]).strip()
 
 #
 # Part 2 - Atlas
@@ -50,18 +50,21 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
 
 MAP_WHITE = False
 MAP_YELLOW = False
-MAP_RED = False
+MAP_RED = False  # or SHAPED
 
 T1_RARE_BASE_TYPE = ' '.join([
     '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
     '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
     '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
 
-    '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',
+    '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
     '"Titan Greaves" "Vaal Greaves"',
     '"Titan Gauntlets" "Vaal Gauntlets"',
-    '"Siege Axe"',
+
+    '"Siege Axe"',  # 开膛斧
 ]).strip()
+
+CURRENCY_PORTAL_FONT_SIZE = [40, 18][0]  # Portal skill
 
 #
 # Part 3 - Others
@@ -78,7 +81,6 @@ LINKED_CLASS = ' '.join([
 SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
-CURRENCY_PORTAL_FONT_SIZE = 40  # [40, 36, 33][max(0, 0 if SHOW_FLASK_LIFE else 1)]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
     class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Boots"', '"Helmets"']) else 2)]
 
@@ -104,7 +106,7 @@ L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = '' if CURRENCY_ALERT_CHANCE else ''
 
-ALERT_JEWEL_BASE_TYPE = ' '.join([
+ALERT_MAGIC_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson" "Viridian" "Cobalt" "Eye"',
     '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
 ]).strip() if not MAP_YELLOW else ''
