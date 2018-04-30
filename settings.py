@@ -9,8 +9,8 @@ SSF = False
 # Part 1 - A1-A10
 #
 
-SHOW_FLASK_HALLOWED = True
-SHOW_FLASK_LIFE = True
+SHOW_FLASK_HALLOWED = True  # True
+SHOW_FLASK_LIFE = True  # True
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Leather Belt"' if SHOW_FLASK_LIFE else '',
@@ -27,6 +27,8 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Boots"',  # 80+血
     # '"Helmets"',  # 90+血
     # '"Gloves"',  # 80+血，有点伤/攻速更好
+
+    # '"Daggers" "Wands"',
 ])
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
@@ -99,7 +101,7 @@ SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_B
 SSF_CRAFT_BELTS_BASE_TYPE = '"Leather Belt"' if SHOW_FLASK_LIFE else ''  # ' '.join(['"Leather Belt"'][0:])
 
 ALERT_ESSENCE_BASE_TYPE = ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" ' \
-                          ' "Essence of Loathing" "Essence of Scorn" '
+                          ' "Essence of Loathing" "Essence of Scorn" ' if SSF else ''
 
 IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
@@ -113,7 +115,7 @@ ALERT_MAGIC_JEWEL_BASE_TYPE = ' '.join([
 
 # TODO： 备注地图八向分类
 ALERT_ATLAS_BASE_TYPE = ' '.join([
-    # '"Two-Toned Boots"',
+    '"Two-Toned Boots"',
     '"Spiked Gloves"',  # 攻速精华
 ]).strip()
 

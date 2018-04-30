@@ -11,7 +11,9 @@ HIDE = 'Hide'
 DEBUG = SHOW if settings.DEBUG else HIDE
 
 CLASS_TWO_HAND = '"Bows" "Two Hand" "Staves"'
-CLASS_HAND = CLASS_TWO_HAND + ' "Quivers" "Shields" "Claws" "Sceptres" "Daggers" "Wands" "One Hand"'
+CLASS_SMALL_ONE_HAND = '"Daggers" "Wands"'
+CLASS_BIG_ONE_HAND = '"Quivers" "Shields" "Claws" "Sceptres" "One Hand"'
+CLASS_HAND = ' '.join([CLASS_TWO_HAND, CLASS_SMALL_ONE_HAND, CLASS_BIG_ONE_HAND])
 CLASS_ACCESSORY = '"Belts" "Amulets" "Rings"'
 
 BASE_TYPE_BODY_EVA = '"Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" ' \
@@ -169,8 +171,6 @@ def modify_endgame_mix(filter_manager):
     blocks[0].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     blocks[1].modify(PlayAlertSound=SOUND_TOP_VALUE, **STYLE_TOP)
     del blocks[2]  # 移除不需要的提示
-
-    # TODO: SetBorderColor????
     blocks[-1].modify(SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_BLACK, SetBackgroundColor=COLOR_TANGERINE)
     filter_manager.extend_blocks(blocks)
 
@@ -341,14 +341,15 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
-    filter_manager.append_block(blocks[1].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
+    if show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
+        filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
+        filter_manager.append_block(blocks[1].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
 
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
     hide_rare_classes = ' '.join(['"Quivers"', '"Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
     if show_rare_class:
-        if show_rare_class == 'ALL':
-            hide_rare_classes = '"Quivers" "Shields" "Sceptres" "Claws" "One Hand"'
+        if show_rare_class == 'ALL':  # 刷一次 T1 用
+            hide_rare_classes = CLASS_BIG_ONE_HAND + ' ' + CLASS_TWO_HAND
         else:
             hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
     for block in hide_blocks:
@@ -409,6 +410,8 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(919, 'AR: Body Armors', ignored=settings.IGNORE_RARE_UNDER_T2)
+    for block in blocks[1::2]:
+        block.SetFontSize = 40
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(920, 'OH: Shields', ignored=settings.IGNORE_RARE_UNDER_T2)
@@ -685,6 +688,8 @@ def modify_filter(filter_manager, show_rare_class=''):
     if settings.ALERT_LOW_CURRENCY:
         blocks[1].PlayAlertSound = SOUND_LOW_VALUE
     blocks[2].BaseType = '"Orb of Transmutation" "Alchemy Shard" "Orb of Augmentation"'
+    if settings.MAP_RED:
+        blocks[2].SetFontSize = FONT_SIZE_MIN
     blocks[-3].SetFontSize = settings.CURRENCY_PORTAL_FONT_SIZE
     blocks[-2].BaseType += ' "Blacksmith\'s Whetstone" '
     blocks[-2].BaseType = blocks[-2].BaseType.replace('"Transmutation Shard"', '')
@@ -726,9 +731,9 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].modify(PlayAlertSound=SOUND_LOW_VALUE, DisableDropSound=None)
     for block in blocks[3:]:
-        block.status = HIDE
+        block.modify(status=HIDE, SetFontSize=26)
     if settings.HIDE_NETS:
-        hide_nets = blocks[2].copy_modify(status=HIDE, BaseType=settings.HIDE_NETS)
+        hide_nets = blocks[2].copy_modify(status=HIDE, BaseType=settings.HIDE_NETS, SetFontSize=26)
         blocks.insert(2, hide_nets)
     filter_manager.extend_blocks(blocks)
 
@@ -769,7 +774,8 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(1703, 'T2 - Great cards', ignored=settings.TEMP)
     if blocks:
         blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-        blocks[0].BaseType += ' "The Encroaching Darkness" "The Throne" '
+        if settings.SSF:
+            blocks[0].BaseType += ' "The Encroaching Darkness" "The Throne" '
         filter_manager.extend_blocks(blocks)
 
     # 1
@@ -838,7 +844,8 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(2003, 'Tier 1 uniques')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
-    blocks[0].BaseType += ' "Basket Rapier" "Twilight Blade" '
+    if settings.SSF:
+        blocks[0].BaseType += ' "Basket Rapier" "Twilight Blade" '
     filter_manager.extend_blocks(blocks)
 
     # 同T1
@@ -854,8 +861,9 @@ def modify_filter(filter_manager, show_rare_class=''):
 
     # 6
     blocks = filter_manager.add_comment(2006, 'Prophecy-Material Uniques')
-    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
-    filter_manager.extend_blocks(blocks)
+    if settings.SSF:
+        blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
+        filter_manager.extend_blocks(blocks)
 
     # 6
     blocks = filter_manager.add_comment(2007, 'Random Uniques')
@@ -886,12 +894,12 @@ def main():
 
     show_rare_classes = [
         ('', 'MODIFY'),
-        ('"Helmets"', '头'),
-        ('"Gloves"', '手'),
-        ('"Boots"', '脚'),
-        ('"Body Armour"', '胸'),
-        (CLASS_TWO_HAND, '双手'),
-        ('ALL', '全部')
+        ('"Helmets"', '1.头'),
+        ('"Gloves"', '2.手'),
+        ('"Boots"', '3.脚'),
+        ('"Body Armour"', '4.胸'),
+        (CLASS_SMALL_ONE_HAND, '5.单手'),
+        # ('ALL', '全部')
     ]
 
     for clazz, gen_filter_name in show_rare_classes:
