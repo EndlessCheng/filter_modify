@@ -449,7 +449,7 @@ Show
 
 # 0514 Remaining crafting rules - add your own bases here!
 Show
- BaseType "Siege Axe" "Titan Greaves" "Vaal Greaves" "Royal Burgonet" "Eternal Burgonet"
+ BaseType "Siege Axe" "Titan Greaves" "Vaal Greaves" "Royal Burgonet" "Eternal Burgonet" "Crusader Buckler"
  Rarity = Normal
  SetFontSize 40
  SetTextColor 255 255 255 255

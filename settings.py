@@ -35,11 +35,11 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     # '"Carved Wand"',  # essence of anger/wrath/hatred
-    # '"Lacquered Buckler"',
     '"Siege Axe"',  # 59 73
 
     '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
     '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
+    '"Crusader Buckler"',
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
