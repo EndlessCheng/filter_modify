@@ -36,20 +36,11 @@ Show
 # 0300 SHAPER ITEMS
 
 # 0301 Exception Handling - Rings, Amulets, Belts
-Show
- ShaperItem True
- BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
- Rarity <= Rare
- SetFontSize 45
- SetTextColor 255 255 255 255
- SetBorderColor 255 255 255 255
- SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
 
 # 0302 Shaper Item Layers - T1
 Show
  ShaperItem True
- Class "Daggers" "Sceptres" "Thrusting One Hand Swords" "Amulets" "Rings"
+ Class "Amulets" "Rings" "Belts"
  Rarity <= Rare
  SetFontSize 45
  SetTextColor 50 130 165 255
@@ -116,7 +107,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
+ PlayAlertSound 10 300
 Show
  ShaperItem True
  ItemLevel >= 83
@@ -127,7 +118,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
+ PlayAlertSound 10 300
 Show
  ShaperItem True
  Class "Amulets" "Rings" "Belts"
@@ -136,7 +127,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 25 235 25 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
+ PlayAlertSound 10 300
 
 # 0304 Shaper Item Layers - T3
 Show
@@ -146,25 +137,15 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 50 130 165
- PlayAlertSound 10 300
 
 # 0400 ELDER ITEMS
 
 # 0401 Exception Handling - Rings, Amulets, Belts
-Show
- ElderItem True
- BaseType "Coral Amulet" "Paua Amulet" "Gold Amulet" "Gold Ring" "Paua Ring" "Iron Ring" "Amethyst Ring" "Unset Ring" "Moonstone Ring" "Studded Belt" "Cloth Belt" "Chain Belt"
- Rarity <= Rare
- SetFontSize 45
- SetTextColor 255 255 255 255
- SetBorderColor 255 255 255 255
- SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
 
 # 0402 Elder Item Layers - T1
 Show
  ElderItem True
- Class "Amulets"
+ Class "Amulets" "Rings" "Belts"
  Rarity <= Rare
  SetFontSize 45
  SetTextColor 50 130 165 255
@@ -220,7 +201,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 25 235 25 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
+ PlayAlertSound 10 300
 Show
  ElderItem True
  ItemLevel >= 83
@@ -231,7 +212,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 20 110 220
- PlayAlertSound 3 300
+ PlayAlertSound 10 300
 
 # 0404 Elder Item Layers - T3
 Show
@@ -241,7 +222,6 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 255 255 255 255
  SetBackgroundColor 50 130 165
- PlayAlertSound 10 300
 
 # 0500 Recipes, Magic and Normal items (endgame!)
 
@@ -385,11 +365,10 @@ Show
  SetBackgroundColor 100 75 0
  PlayAlertSound 1 300
 Show
- BaseType "Two-Toned Boots" "Spiked Gloves"
- Rarity <= Rare
- SetFontSize 45
- SetBorderColor 255 125 0
- SetBackgroundColor 100 75 0
+ BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves"
+ Rarity Normal
+ SetFontSize 42
+ SetBorderColor 0 240 190 240
  PlayAlertSound 2 300
 Show
  Class Amulets
@@ -419,7 +398,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Silver" "Basalt" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
+ BaseType "Silver" "Basalt" "Diamond" "Granite" "Quicksilver" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -451,7 +430,7 @@ Show
 # 0512 60+ Crafting rules for 60++ trinkets
 Show
  Class Jewel
- BaseType "Crimson" "Viridian" "Cobalt" "Eye" "Murderous Eye"
+ BaseType "Crimson" "Viridian" "Cobalt" "Eye" "Murderous Eye" "Searching Eye"
  Rarity <= Magic
  SetFontSize 40
  SetTextColor 0 100 255
@@ -537,32 +516,6 @@ Show
  PlayAlertSound 12 300
 
 # 0515 Chisel recipe items
-Show
- Quality = 20
- BaseType "Gavel" "Rock Breaker" "Stone Hammer"
- Rarity < Unique
- SetFontSize 40
- SetBorderColor 250 250 250
- SetBackgroundColor 75 75 75 255
- PlayAlertSound 1 300
-Show
- Quality >= 18
- Corrupted False
- BaseType "Gavel" "Rock Breaker" "Stone Hammer"
- Rarity Magic
- SetFontSize 36
- SetBorderColor 150 150 150
- SetBackgroundColor 75 75 75 255
- PlayAlertSound 1 300
-Show
- Quality >= 15
- Corrupted False
- BaseType "Gavel" "Rock Breaker" "Stone Hammer"
- Rarity Normal
- SetFontSize 36
- SetBorderColor 150 150 150
- SetBackgroundColor 75 75 75 255
- PlayAlertSound 1 300
 
 # 0516 Fishing Rod
 Show
@@ -650,7 +603,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb"  "Orb of Transmutation"  "Blacksmith's Whetstone"  "Orb of Augmentation" 
+ BaseType "Orb of Chance" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Glassblower's Bauble" "Alchemy Shard"  "Orb of Transmutation"  "Blacksmith's Whetstone"  "Orb of Augmentation" 
  SetFontSize 45
  SetTextColor 210 178 135 255
  SetBorderColor 213 159 100 200
@@ -658,7 +611,7 @@ Show
  PlayAlertSound 2 300
 Show
  Class Currency
- BaseType "Orb of Transmutation" "Alchemy Shard" "Orb of Augmentation"
+ BaseType "Orb of Transmutation" "Blacksmith's Whetstone" "Alchemy Shard"
  SetFontSize 42
  SetTextColor 170 158 130
  SetBorderColor 190 178 135 110
@@ -728,6 +681,23 @@ Show
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0 225
  PlayAlertSound 1 300
+Show
+ Height = 3
+ Width = 1
+ ItemLevel >= 75
+ Rarity Rare
+ SetFontSize 42
+ SetTextColor 255 190 0
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
+Show
+ Height = 3
+ Width = 1
+ ItemLevel >= 65
+ Rarity Rare
+ SetFontSize 42
+ SetBorderColor 180 180 180 255
+ SetBackgroundColor 35 100 20 255
 Hide
  Identified False
  Height <= 4
@@ -1712,7 +1682,7 @@ Hide
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Silver" "Basalt" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
+ BaseType "Silver" "Basalt" "Diamond" "Granite" "Quicksilver" "Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -2073,7 +2043,7 @@ Show
 # 1601 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Ancient Orb" "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Chance"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Ancient Orb"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -2081,7 +2051,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck" "Orb of Chance"
+ BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Vaal Orb" "Apprentice Cartographer's Sextant" "Stacked Deck"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -2089,7 +2059,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Bestiary Orb" "Orb of Scouring" "Glassblower's Bauble"
+ BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Bestiary Orb" "Orb of Scouring"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2102,7 +2072,7 @@ Show
  BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard" "Horizon Shard"
  SetFontSize 45
  SetTextColor 0 0 0 255
- SetBorderColor 40 220 255 255
+ SetBorderColor 0 0 0
  SetBackgroundColor 80 95 210 255
  PlayAlertSound 1 300
 Show
@@ -2133,14 +2103,14 @@ Show
 Show
  Class Currency
  BaseType "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"
- SetFontSize 42
+ SetFontSize 45
  SetTextColor 155 210 135 255
  SetBorderColor 0 120 16 255
  SetBackgroundColor 0 0 0 255
  DisableDropSound True
 Hide
  Class Currency
- BaseType "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net"
+ BaseType "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net" "Simple Steel Net" "Reinforced Steel Net"
  SetFontSize 26
  SetTextColor 155 210 135 255
  SetBorderColor 110 110 110 255
@@ -2275,7 +2245,7 @@ Show
 # 1702 T1 - Top tier cards
 Show
  Class "Divination"
- BaseType "Abandoned Wealth" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Doctor" "The Dragon's Heart" "The Enlightened" "The Fiend" "The Immortal" "The Iron Bard" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "The World Eater" "Wealth and Power"
+ BaseType "Abandoned Wealth" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Doctor" "The Dragon's Heart" "The Fiend" "The Immortal" "The Iron Bard" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "The World Eater" "Wealth and Power"
  SetFontSize 45
  SetTextColor 0 0 255 255
  SetBorderColor 0 0 255 255
@@ -2285,7 +2255,7 @@ Show
 # 1703 T2 - Great cards
 Show
  Class "Divination"
- BaseType "Bowyer's Dream" "Chaotic Disposition" "Last Hope" "Left to Fate" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Celestial Justicar" "The Dreamer" "The Ethereal" "The Formless Sea" "The Hoarder" "The Hunger" "The Offering" "The Risk" "The Thaumaturgist" "The Void"
+ BaseType "Bowyer's Dream" "Chaotic Disposition" "Heterochromia" "Left to Fate" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Celestial Justicar" "The Dreamer" "The Enlightened" "The Ethereal" "The Formless Sea" "The Hoarder" "The Hunger" "The Risk" "The Thaumaturgist" "The Void" "The Encroaching Darkness" "The Throne" 
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 255 255 0 255
@@ -2295,7 +2265,7 @@ Show
 # 1704 T3 - Decent cards
 Show
  Class "Divination"
- BaseType "Blessing of God" "Dialla's Subjugation" "Emperor of Purity" "Hope" "Humility" "Jack in the Box" "Lingering Remnants" "Lucky Connections" "Lucky Deck" "No Traces" "Rebirth" "Scholar of the Seas" "Standoff" "The Breach" "The Chains that Bind" "The Dapper Prodigy" "The Dark Mage" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Obscured" "The Polymath" "The Porcupine" "The Soul" "The Standoff" "The Surveyor" "The Throne" "The Trial" "The Union" "The Valley of Steel Boxes" "The Warlord" "The Wrath" "The Wretched" "Time-Lost Relic" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
+ BaseType "Blessing of God" "Emperor of Purity" "Hope" "Humility" "Jack in the Box" "Lingering Remnants" "Lost Worlds" "Lucky Connections" "Lucky Deck" "Merciless Armament" "No Traces" "Rebirth" "Scholar of the Seas" "Standoff" "The Breach" "The Chains that Bind" "The Dapper Prodigy" "The Dark Mage" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Obscured" "The Offering" "The Polymath" "The Porcupine" "The Soul" "The Standoff" "The Surveyor" "The Throne" "The Trial" "The Union" "The Valley of Steel Boxes" "The Warlord" "The Wrath" "The Wretched" "Time-Lost Relic" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 255 255
@@ -2305,14 +2275,14 @@ Show
 # 1705 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow" "King's Blade" "Prosperity" "Struck by Lightning" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" 
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 175 215 230 180
 Show
  Class "Divination"
- BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+ BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Struck by Lightning" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2413,7 +2383,7 @@ Show
 
 # 2003 Tier 1 uniques
 Show
- BaseType "Arcanist Slippers" "Callous Mask" "Carnal Sceptre" "Clutching Talisman" "Crusader Boots" "Ezomyte Tower Shield" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Legion Gloves" "Nubuck Gloves" "Occultist's Vestment" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Ritual Sceptre" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sapphire Flask" "Thorium Spirit Shield" "Vaal Spirit Shield" "Void Axe" "Wereclaw Talisman"
+ BaseType "Callous Mask" "Carnal Sceptre" "Clutching Talisman" "Crusader Boots" "Ezomyte Tower Shield" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Legion Gloves" "Occultist's Vestment" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Ritual Sceptre" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sapphire Flask" "Wereclaw Talisman" "Basket Rapier" "Twilight Blade" 
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37 255
@@ -2431,7 +2401,7 @@ Show
  SetBackgroundColor 255 255 255
  PlayAlertSound 8 300
 Show
- BaseType "Arcanist Gloves" "Cutlass" "Full Wyrmscale" "Imperial Maul" "Maelstr" "Nubuck Boots" "Sacrificial Garb" "Sanctified Life Flask" "Savant's Robe" "Siege Axe" "Topaz Flask" "Vaal Mask" "Zealot Gloves"
+ BaseType "Arcanist Gloves" "Arcanist Slippers" "Clasped Mitts" "Cutlass" "Destiny Leather" "Full Wyrmscale" "Jewelled Foil" "Nubuck Boots" "Nubuck Gloves" "Sacrificial Garb" "Savant's Robe" "Siege Axe" "Thorium Spirit Shield" "Vaal Mask" "Vaal Spirit Shield" "Void Axe" "Wyrmscale Doublet"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37
@@ -2441,7 +2411,7 @@ Show
 
 # 2005 Multi-Unique bases.
 Show
- BaseType "Amber Amulet" "Carved Wand" "Ebony Tower Shield" "Exquisite Leather" "Goathide Boots" "Gold Amulet" "Gold Ring" "Granite Flask" "Imperial Bow" "Imperial Staff" "Judgement Staff" "Leather Belt" "Onyx Amulet" "Paua Ring" "Sorcerer Boots" "Stibnite Flask" "Titan Greaves" "Two-Stone Ring"
+ BaseType "Amber Amulet" "Carved Wand" "Ebony Tower Shield" "Exquisite Leather" "Goathide Boots" "Gold Amulet" "Gold Ring" "Granite Flask" "Hydrascale Gauntlets" "Imperial Bow" "Imperial Staff" "Leather Belt" "Onyx Amulet" "Paua Ring" "Sorcerer Boots" "Steel Ring" "Stibnite Flask" "Topaz Flask"
  Rarity Unique
  SetFontSize 45
  SetTextColor 0 0 0 255
