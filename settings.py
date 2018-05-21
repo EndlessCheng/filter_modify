@@ -48,8 +48,9 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Stibnite"',
     '"Diamond"',
     '"Granite"',
-    '"Quicksilver"',  # +MS% affix
-    '"Jade" "Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
+    '"Quicksilver"',
+    '"Jade"',
+    '"Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
 ]).strip()
 
 #
