@@ -450,7 +450,7 @@ def modify_gem_flask_map(filter_manager):
     blocks = filter_manager.add_comment(1202, 'Other gems')
     blocks[0], blocks[1] = blocks[1], blocks[0]
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE)
-    if settings.MAP_RED:
+    if settings.MAP_RED and not settings.SSF:
         blocks[1].status = HIDE
     blocks[-1].modify(status=DEBUG, SetFontSize=26)
     filter_manager.extend_blocks(blocks)
@@ -621,9 +621,10 @@ def modify_leveling(filter_manager):
 
     # 注意，后续(13+)需要高亮的蓝白装已经在 "Remaining crafting rules" 里面了
     blocks = filter_manager.add_comment(BLOCK_ACT_1, 'Act 1')
-    blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
-    blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
-    filter_manager.extend_blocks(blocks[:2])
+    if not settings.RICH_LEVELING:
+        blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
+        blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
+        filter_manager.extend_blocks(blocks[:2])
 
     filter_manager.add_comment(2707, 'Act 2+3', ignored=True)
 
@@ -684,7 +685,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     # 1 CURRENCY_ALERT_XXX CURRENCY_XXX_FONT_SIZE
     blocks = filter_manager.add_comment(700, 'Currency - PART 1 - Common currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
-    if settings.MAP_RED:
+    if settings.MAP_RED and not settings.SSF:
         for block in blocks[1:-1]:
             block.modify(status=HIDE, SetFontSize=FONT_SIZE_MIN)
     else:
@@ -754,7 +755,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[0].BaseType += settings.ALERT_ESSENCE_BASE_TYPE
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
-    if settings.MAP_RED:
+    if settings.MAP_RED and not settings.SSF:
         for block in blocks[2:]:
             block.modify(status=HIDE, PlayAlertSound=None)
     filter_manager.extend_blocks(blocks)

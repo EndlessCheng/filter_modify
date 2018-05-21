@@ -7,6 +7,8 @@ SSF = True
 AW = False
 AW_RANGE = False and AW
 
+RICH_LEVELING = False
+
 #
 # Part 1 - A1-A10
 #
@@ -19,7 +21,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 点伤抗性
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤抗性
     '"Siege Axe"',  # ~100%
-]).strip()
+]).strip() if not RICH_LEVELING else ''
 
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
@@ -50,7 +52,7 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Quicksilver"',
     '"Jade"',
     '"Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
-]).strip()
+]).strip() if not RICH_LEVELING else ''
 
 #
 # Part 2 - Atlas
