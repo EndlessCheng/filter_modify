@@ -70,7 +70,9 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Titan Gauntlets" "Vaal Gauntlets"',
 
     '"Siege Axe"',  # 开膛斧
+
     '"Crusader Buckler"',
+    '"Lion Pelt"',
 ]).strip() if not MAP_RED else ''
 
 CURRENCY_PORTAL_FONT_SIZE = [40, 18][0]  # Portal skill
