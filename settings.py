@@ -45,10 +45,11 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Silver"',  # if SHOW_FLASK_LIFE else '',
     '"Basalt"',  # if SHOW_FLASK_LIFE else '',
+    '"Stibnite"',
     '"Diamond"',
     '"Granite"',
     '"Quicksilver"',  # +MS% affix
-    '"Jade" "Quartz" "Sulphur" "Quicksilver" "Stibnite"' if SHOW_FLASK_HALLOWED else '',
+    '"Jade" "Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
 ]).strip()
 
 #
