@@ -39,7 +39,6 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 
     '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
     '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
-    '"Crusader Buckler"',
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
@@ -71,6 +70,7 @@ T1_RARE_BASE_TYPE = ' '.join([
     '"Titan Gauntlets" "Vaal Gauntlets"',
 
     '"Siege Axe"',  # 开膛斧
+    '"Crusader Buckler"',
 ]).strip() if not MAP_RED else ''
 
 CURRENCY_PORTAL_FONT_SIZE = [40, 18][0]  # Portal skill
