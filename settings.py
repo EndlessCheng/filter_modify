@@ -2,8 +2,8 @@ DEBUG = False
 TEMP = False
 
 # Small different on leveling
-TENCENT = True or TEMP
-SSF = True
+TENCENT = False or TEMP
+SSF = False
 AW = False
 AW_RANGE = False and AW
 
@@ -17,10 +17,8 @@ SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Leather Belt"' if SHOW_FLASK_LIFE else '',
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 点伤抗性
-    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤抗性
-    '"Siege Axe"',  # ~100%
+    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"',  # 点伤
+    '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤
 ]).strip() if not RICH_LEVELING else ''
 
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
@@ -32,8 +30,8 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Helmets"',  # 90+血
     # '"Gloves"',  # 80+血，有点伤/攻速更好
 
-    # '"Daggers"',
-])  # '"Wands"',
+    # '"Daggers" "Wands"',
+])
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     # '"Carved Wand"',  # essence of anger/wrath/hatred
@@ -73,12 +71,18 @@ T1_RARE_BASE_TYPE = ' '.join([
 
     '"Siege Axe"',  # 开膛斧
 
-    '"Crusader Buckler"',
+    '"Imbued Wand" "Carved Wand" "Engraved Wand"'
     '"Lion Pelt"',
+    '"Crusader Buckler"',
 ]).strip() if not MAP_RED else ''
 
+MAGIC_JEWEL_BASE_TYPE = ' '.join([
+    '"Crimson" "Viridian" "Cobalt" "Eye"',
+    '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
+    '"Searching Eye"',  # 电伤，血
+]).strip() if not MAP_YELLOW else ''
+
 CURRENCY_PORTAL_FONT_SIZE = [40, 18][0]  # Portal skill
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
 NEED_CHISEL = False
 
 #
@@ -92,7 +96,7 @@ LINKED_CLASS = ' '.join([
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Helmets"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Gloves"' if '"Gloves"' not in HIDE_BELOW_T1_RARE_CLASS else '',
-]).strip() if SHOW_FLASK_LIFE else ''
+]).strip() if SHOW_FLASK_HALLOWED else ''
 SHOW_N2M_ONE_HAND = True and SHOW_FLASK_LIFE
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
@@ -110,19 +114,15 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
     [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
+SSF_CRAFT_BELTS_BASE_TYPE = ''  # ' '.join(['"Leather Belt"'][1:])
+SSF_UNIQUE = '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
 
-ALERT_ESSENCE_BASE_TYPE = ''  # ' "Essence of Greed" "Essence of Contempt" "Essence of Zeal" "Essence of Loathing" "Essence of Scorn" ' if SSF else ''
+ALERT_ESSENCE_BASE_TYPE = ''
 
 IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = ''  # if CURRENCY_ALERT_CHANCE else ''
-
-ALERT_MAGIC_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt" "Eye"',
-    '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
-    '"Searching Eye"',  # 电伤，血
-]).strip() if not MAP_YELLOW else ''
 
 ALERT_ATLAS_NORMAL_BASE_TYPE = ' '.join([
     '"Two-Toned Boots"',  # 血抗（移速）
@@ -130,13 +130,7 @@ ALERT_ATLAS_NORMAL_BASE_TYPE = ' '.join([
     '"Gripped Gloves"',  # 攻速精华
 ]).strip()
 
-HIDE_NETS = ''
-if MAP_WHITE:
-    HIDE_NETS += '"Simple Steel Net"'
-if MAP_YELLOW:
-    HIDE_NETS += ' "Reinforced Steel Net"'
-if MAP_RED:
-    HIDE_NETS += ' "Strong Steel Net"'
+HIDE_NETS = '"Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"'
 
 # SHOW_FLASK_HALLOWED = True
 # SHOW_FLASK_LIFE = True

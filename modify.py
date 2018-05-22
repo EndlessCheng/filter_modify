@@ -222,6 +222,7 @@ def modify_endgame_mix(filter_manager):
         utility_flasks = blocks[-1].copy_modify(BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE,
                                                 SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(utility_flasks)
+    filter_manager.extend_blocks(blocks[:2])
 
     filter_manager.add_comment(509, 'Add your own crafting rules here', ignored=True)
 
@@ -234,13 +235,12 @@ def modify_endgame_mix(filter_manager):
     # Hide
     filter_manager.add_comment(511, '83/84+ Endgame crafting rules', ignored=True)
 
-    # ALERT_MAGIC_JEWEL_BASE_TYPE 12
+    # MAGIC_JEWEL_BASE_TYPE 12
     blocks = filter_manager.add_comment(512, '60+ Crafting rules for 60++ trinkets')
-    if settings.ALERT_MAGIC_JEWEL_BASE_TYPE != '':
-        magic_jewels = blocks[0].copy_modify(BaseType=settings.ALERT_MAGIC_JEWEL_BASE_TYPE,
+    if settings.MAGIC_JEWEL_BASE_TYPE != '':
+        magic_jewels = blocks[0].copy_modify(BaseType=settings.MAGIC_JEWEL_BASE_TYPE,
                                              PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(magic_jewels)
-        filter_manager.append_block(blocks[0])
 
     filter_manager.add_comment(513, 'Warband items', ignored=True)
 
@@ -347,7 +347,7 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    if settings.SSF or show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
+    if show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
         filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
         filter_manager.append_block(blocks[1].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
 
@@ -374,6 +374,8 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(906, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE  # rare jewel
     filter_manager.append_block(blocks[0])
+    if settings.SSF:
+        filter_manager.extend_blocks(blocks[1:3])
     for block in blocks[3:]:
         block.modify(SetBorderColor=COLOR_YELLOW, PlayAlertSound=SOUND_MID_VALUE)
     blocks[4].ItemLevel = ITEM_LEVEL_CHAOS
@@ -546,7 +548,8 @@ def modify_leveling(filter_manager):
     if settings.SHOW_FLASK_MANA:
         filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(2305, 'Show remaining flasks', ignored=True)
+    blocks = filter_manager.add_comment(2305, 'Show remaining flasks')
+    filter_manager.extend_blocks(blocks[:2])
 
     # LINKED_CLASS
     blocks = filter_manager.add_comment(2400, 'Leveling - Merged Rules')
@@ -689,7 +692,8 @@ def modify_filter(filter_manager, show_rare_class=''):
         for block in blocks[1:-1]:
             block.modify(status=HIDE, SetFontSize=FONT_SIZE_MIN)
     else:
-        blocks[1].BaseType += ' "Alchemy Shard" '
+        if settings.SSF and not settings.MAP_YELLOW:
+            blocks[1].BaseType = blocks[1].BaseType.replace('"Orb of Chance"', '')
         if settings.CURRENCY_ALERT_TRANSMUTATION:
             blocks[1].BaseType += ' "Orb of Transmutation" '
         if settings.CURRENCY_ALERT_BLACKSMITH:
@@ -698,10 +702,11 @@ def modify_filter(filter_manager, show_rare_class=''):
             blocks[1].BaseType += ' "Orb of Augmentation" '
         if settings.ALERT_LOW_CURRENCY:
             blocks[1].PlayAlertSound = SOUND_LOW_VALUE
+        blocks[2].BaseType = blocks[2].BaseType.replace('"Alchemy Shard"', '')
         blocks[-3].SetFontSize = settings.CURRENCY_PORTAL_FONT_SIZE
-        blocks[-2].BaseType += ' "Blacksmith\'s Whetstone" '
-        blocks[-2].BaseType = blocks[-2].BaseType.replace('"Transmutation Shard"', '')
+        blocks[-2].BaseType = blocks[-2].BaseType.replace('"Transmutation Shard"', '').replace('"Alteration Shard"', '')
         blocks[-2].SetFontSize = settings.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
+    blocks[-1].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
     blocks[-1].SetFontSize = settings.CURRENCY_WISDOM_FONT_SIZE
     filter_manager.extend_blocks(blocks)
 
@@ -722,15 +727,16 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(1601, 'Regular Rare Currency')
     for block in blocks:
         block.PlayAlertSound = SOUND_MID_VALUE
+    blocks[-1].BaseType += ' "Orb of Chance" '
     filter_manager.extend_blocks(blocks)
 
     # 1
     blocks = filter_manager.add_comment(1602, 'Harbinger Currency')
-    for block in blocks:
-        block.SetBorderColor = COLOR_BLACK
+    blocks[0].SetBorderColor = COLOR_BLACK
     if settings.SSF:
-        blocks[0].BaseType += ' "Horizon Shard"'
+        blocks[0].BaseType += ' "Horizon Shard" '
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[1].BaseType += ' "Alchemy Shard" '
     filter_manager.extend_blocks(blocks)
 
     # 1 2 HIDE_NETS
@@ -756,7 +762,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[0].BaseType += settings.ALERT_ESSENCE_BASE_TYPE
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     if settings.MAP_RED and not settings.SSF:
-        for block in blocks[2:]:
+        for block in blocks[3:]:
             block.modify(status=HIDE, PlayAlertSound=None)
     filter_manager.extend_blocks(blocks)
 
@@ -856,7 +862,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
     if settings.SSF:
-        blocks[0].BaseType += ' "Basket Rapier" "Twilight Blade" '
+        blocks[0].BaseType += ' ' + settings.SSF_UNIQUE
     filter_manager.extend_blocks(blocks)
 
     # 同T1
