@@ -22,6 +22,9 @@ class FilterBlock:
         'Class',
         'BaseType',
         'Rarity',
+        'HasExplicitMod',
+        'StackSize',
+        'GemLevel',
 
         # Actions(Styles)
         'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
@@ -46,6 +49,8 @@ class FilterBlock:
                 assert attr_name in FilterBlock._FILTER_ORDER
                 if attr_name == 'ItemLevel' and getattr(self, 'ItemLevel', None) is not None:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
+                elif attr_name == 'HasExplicitMod' and getattr(self, 'HasExplicitMod', None) is not None:
+                    self.HasExplicitMod += ' ' + attr_value
                 setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
 
