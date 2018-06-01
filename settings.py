@@ -89,6 +89,7 @@ ALERT_ATLAS_NORMAL_BASE_TYPE = ' '.join([
     '"Two-Toned Boots"',  # 血抗（移速）
     '"Spiked Gloves"',  # 攻速精华
     '"Gripped Gloves"',  # 攻速精华
+    '"Fingerless Silk Gloves"',  # TODO: ???
 ]).strip()
 
 #
