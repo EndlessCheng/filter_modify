@@ -23,8 +23,8 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
+    # '"Body Armour"',  # 有血就行
     # '"Sceptres" "Claws" "One Hand"',  # 抗性/智力
-    # '"Body Armour"',  # 血量精华
 
     # '"Boots"',  # 80+血
     # '"Helmets"',  # 90+血
@@ -34,7 +34,7 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
 ])
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
-    # '"Carved Wand"',  # essence of anger/wrath/hatred
+    # '"Engraved Wand"',  # essence of anger/wrath/hatred
     '"Siege Axe"',  # 59 73
 
     '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
@@ -67,23 +67,29 @@ T1_RARE_BASE_TYPE = ' '.join([
 
     '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
     '"Titan Greaves" "Vaal Greaves"',
-    '"Titan Gauntlets" "Vaal Gauntlets"',
+    '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
 
     '"Siege Axe"',  # 开膛斧
 
-    '"Imbued Wand" "Carved Wand" "Engraved Wand"'
-    '"Lion Pelt"',
-    '"Crusader Buckler"',
+    '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
+    '"Lion Pelt"',  # 斯塔空加之首
+    '"Crusader Buckler"',  # 艾许之镜
 ]).strip() if not MAP_RED else ''
 
 MAGIC_JEWEL_BASE_TYPE = ' '.join([
-    '"Crimson" "Viridian" "Cobalt" "Eye"',
-    '"Murderous Eye"',  # 找血，抗性，点伤  >=74：36–45血
-    '"Searching Eye"',  # 电伤，血
-]).strip() if not MAP_YELLOW else ''
+    '"Crimson" "Viridian"',
+    '"Cobalt"',
+]).strip()  # if not MAP_YELLOW else ''
 
 CURRENCY_PORTAL_FONT_SIZE = [40, 18][0]  # Portal skill
 NEED_CHISEL = False
+
+ALERT_ATLAS_NORMAL_BASE_TYPE = ' '.join([
+    '"Bone Helmet"',  # +2/+3，血，召唤血
+    '"Two-Toned Boots"',  # 血抗（移速）
+    '"Spiked Gloves"',  # 攻速精华
+    '"Gripped Gloves"',  # 攻速精华
+]).strip()
 
 #
 # Part 3 - Others
@@ -123,14 +129,6 @@ IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
 SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = ''  # if CURRENCY_ALERT_CHANCE else ''
-
-ALERT_ATLAS_NORMAL_BASE_TYPE = ' '.join([
-    '"Two-Toned Boots"',  # 血抗（移速）
-    '"Spiked Gloves"',  # 攻速精华
-    '"Gripped Gloves"',  # 攻速精华
-]).strip()
-
-HIDE_NETS = '"Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"'
 
 # SHOW_FLASK_HALLOWED = True
 # SHOW_FLASK_LIFE = True

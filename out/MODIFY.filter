@@ -312,6 +312,13 @@ Show
  SetBorderColor 255 255 0 255
  SetBackgroundColor 120 120 0 255
  PlayAlertSound 1 300
+Show
+ Class "Abyss Jewel"
+ Rarity <= Magic
+ SetFontSize 42
+ SetTextColor 0 100 255
+ SetBorderColor 0 75 250
+ SetBackgroundColor 0 20 40 255
 
 # 0505 Exclusive bases: Atlas bases, talismans (includes Rare rarity)
 Show
@@ -365,7 +372,7 @@ Show
  SetBackgroundColor 100 75 0
  PlayAlertSound 1 300
 Show
- BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves"
+ BaseType "Bone Helmet" "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves"
  Rarity Normal
  SetFontSize 42
  SetBorderColor 0 240 190 240
@@ -446,13 +453,12 @@ Show
 # 0512 60+ Crafting rules for 60++ trinkets
 Show
  Class Jewel
- BaseType "Crimson" "Viridian" "Cobalt" "Eye" "Murderous Eye" "Searching Eye"
+ BaseType "Crimson" "Viridian" "Cobalt"
  Rarity <= Magic
  SetFontSize 40
  SetTextColor 0 100 255
  SetBorderColor 0 75 250
  SetBackgroundColor 0 20 40 255
- PlayAlertSound 12 300
 
 # 0513 Warband items
 
@@ -2072,17 +2078,9 @@ Show
  SetBorderColor 0 255 36 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 2 300
-Hide
- Class Currency
- BaseType "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"
- SetFontSize 26
- SetTextColor 155 210 135 255
- SetBorderColor 0 120 16 255
- SetBackgroundColor 0 0 0 255
- DisableDropSound True
 Show
  Class Currency
- BaseType "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"
+ BaseType "Strong Steel Net"
  SetFontSize 45
  SetTextColor 155 210 135 255
  SetBorderColor 0 120 16 255

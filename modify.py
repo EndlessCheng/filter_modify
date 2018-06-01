@@ -176,12 +176,12 @@ def modify_endgame_mix(filter_manager):
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
-    # 8 8 1 去掉最后一个
+    # 8 8 1
     blocks = filter_manager.add_comment(504, 'Abyss Jewels (Rare and Magic)')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].PlayAlertSound = SOUND_MID_VALUE
-    filter_manager.extend_blocks(blocks[:3])
+    filter_manager.extend_blocks(blocks)
 
     # 8 1 1 2 ALERT_ATLAS_NORMAL_BASE_TYPE
     blocks = filter_manager.add_comment(505, 'Exclusive bases: Atlas bases, talismans (includes Rare rarity)')
@@ -235,12 +235,11 @@ def modify_endgame_mix(filter_manager):
     # Hide
     filter_manager.add_comment(511, '83/84+ Endgame crafting rules', ignored=True)
 
-    # MAGIC_JEWEL_BASE_TYPE 12
+    # MAGIC_JEWEL_BASE_TYPE
     blocks = filter_manager.add_comment(512, '60+ Crafting rules for 60++ trinkets')
     if settings.MAGIC_JEWEL_BASE_TYPE != '':
-        magic_jewels = blocks[0].copy_modify(BaseType=settings.MAGIC_JEWEL_BASE_TYPE,
-                                             PlayAlertSound=SOUND_LEVELING)
-        filter_manager.append_block(magic_jewels)
+        blocks[0].BaseType = settings.MAGIC_JEWEL_BASE_TYPE
+        filter_manager.append_block(blocks[0])
 
     filter_manager.add_comment(513, 'Warband items', ignored=True)
 
@@ -370,7 +369,7 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(905, 'Breach Rings')
     filter_manager.extend_blocks(blocks)
 
-    # 2  移除中间两个 1
+    # 2 移除中间两个 ITEM_LEVEL_CHAOS 1
     blocks = filter_manager.add_comment(906, 'Amulets, Jewels, Rings, Belts')
     blocks[0].PlayAlertSound = SOUND_LOW_VALUE  # rare jewel
     filter_manager.append_block(blocks[0])
@@ -739,16 +738,12 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[1].BaseType += ' "Alchemy Shard" '
     filter_manager.extend_blocks(blocks)
 
-    # 1 2 HIDE_NETS
+    # 1 2 hide
     blocks = filter_manager.add_comment(1603, 'Bestiary Currency')
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     blocks[1].modify(PlayAlertSound=SOUND_LOW_VALUE, DisableDropSound=None)
-    blocks[2].BaseType = '"Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net"'
     for block in blocks[3:]:
         block.modify(status=HIDE, SetFontSize=26)
-    if settings.HIDE_NETS:
-        hide_nets = blocks[2].copy_modify(status=HIDE, BaseType=settings.HIDE_NETS, SetFontSize=26)
-        blocks.insert(2, hide_nets)
     filter_manager.extend_blocks(blocks)
 
     # 8
