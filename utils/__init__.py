@@ -51,7 +51,8 @@ class FilterBlock:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
                 elif attr_name == 'HasExplicitMod' and getattr(self, 'HasExplicitMod', None) is not None:
                     self.HasExplicitMod += ' ' + attr_value
-                setattr(self, attr_name, attr_value)
+                else:
+                    setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
 
     def modify(self, **kwargs):
