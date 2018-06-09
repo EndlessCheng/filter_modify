@@ -210,7 +210,7 @@ def modify_endgame_mix(filter_manager):
     blocks[1].PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
-    blocks[-2].status = HIDE
+    blocks[-2].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
     # 8 1 ALERT_ATLAS_NORMAL_BASE_TYPE 2
@@ -220,7 +220,7 @@ def modify_endgame_mix(filter_manager):
     blocks[2].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     blocks[3].modify(PlayAlertSound=SOUND_MID_VALUE, **STYLE_TOP_RARE)
     if settings.ALERT_ATLAS_NORMAL_BASE_TYPE == '':
-        blocks[-1].status = HIDE
+        blocks[-1].status = DEBUG
     else:
         blocks[-1].modify(BaseType=settings.ALERT_ATLAS_NORMAL_BASE_TYPE, Rarity=RARITY_NORMAL,
                           PlayAlertSound=SOUND_LOW_VALUE)
@@ -368,7 +368,7 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     blocks = filter_manager.add_comment(1003, 'Breach Rings')
     filter_manager.extend_blocks(blocks)
 
-    # 移除中间两个 1 ITEM_LEVEL_CHAOS
+    # 移除前两个 1 ITEM_LEVEL_CHAOS
     blocks = filter_manager.add_comment(1004, 'Rare trinkets "remaining"')
     if settings.SSF:
         filter_manager.extend_blocks(blocks[:2])
@@ -398,9 +398,9 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    if show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
-        filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
-        filter_manager.append_block(blocks[1].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
+    # if show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
+    filter_manager.append_block(blocks[0].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
+    filter_manager.append_block(blocks[1].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
 
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
     hide_rare_classes = ' '.join(['"Quivers"', '"Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
@@ -477,23 +477,36 @@ def modify_gem_flask_map(filter_manager):
 
     filter_manager.add_comment(1400, 'Gems', ignored=True)
 
-    # 8 8 8 1
-    blocks = filter_manager.add_comment(1401, 'Value gems')
-    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[1].PlayAlertSound = SOUND_TOP_VALUE
-    blocks[2].modify(SetBackgroundColor=COLOR_WHITE, PlayAlertSound=SOUND_TOP_VALUE)
-    blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap"'
-    blocks[3].PlayAlertSound = SOUND_MID_VALUE
+    # 8
+    blocks = filter_manager.add_comment(1401, 'Special Gems')
+    for block in blocks:
+        block.PlayAlertSound = SOUND_TOP_VALUE
+    blocks[2].SetBackgroundColor = COLOR_WHITE
+    if settings.SSF:
+        blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap"'
     filter_manager.extend_blocks(blocks)
 
-    # Hide   前两个换位 1   hide
-    blocks = filter_manager.add_comment(1402, 'Other gems')
-    del blocks[0]
-    blocks[0], blocks[1] = blocks[1], blocks[0]
-    blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_MID_VALUE)
+    # 8
+    blocks = filter_manager.add_comment(1402, 'Top Gems')
+    for block in blocks:
+        block.PlayAlertSound = SOUND_TOP_VALUE
+    filter_manager.extend_blocks(blocks)
+
+    # 1 hide later
+    blocks = filter_manager.add_comment(1403, 'Quality Gems')
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
     if settings.MAP_RED and not settings.SSF:
-        blocks[1].status = HIDE
-    blocks[-1].modify(status=DEBUG, SetFontSize=26)
+        blocks[1].status = DEBUG
+    filter_manager.extend_blocks(blocks)
+
+    # Remove blocks[1]
+    blocks = filter_manager.add_comment(1404, 'Leveled Gems')
+    del blocks[1]
+    filter_manager.extend_blocks(blocks)
+
+    # Hide
+    blocks = filter_manager.add_comment(1405, 'Other gems')
+    blocks[0].modify(status=DEBUG, SetFontSize=26)
     filter_manager.extend_blocks(blocks)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
@@ -606,7 +619,7 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2800, 'Leveling - RARES', ignored=True)
     hide_leveling_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_leveling_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
-                               Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields" "Wands"', SetFontSize=26)
+                               Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"', SetFontSize=26)
     hide_some_body_rares = hide_leveling_rares.copy_modify(
         ItemLevel='>= 23', Class='"Body Armour"',
         BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
@@ -729,7 +742,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[0].PlayAlertSound = SOUND_MID_VALUE
     if settings.MAP_RED and not settings.SSF:
         for block in blocks[1:-1]:
-            block.modify(status=HIDE, SetFontSize=FONT_SIZE_MIN)
+            block.modify(status=DEBUG, SetFontSize=FONT_SIZE_MIN)
     else:
         if settings.SSF and not settings.MAP_YELLOW:
             blocks[1].BaseType = blocks[1].BaseType.replace('"Orb of Chance"', '')
@@ -789,7 +802,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     # blocks[0].PlayAlertSound = SOUND_MID_VALUE
     # blocks[1].modify(PlayAlertSound=SOUND_LOW_VALUE, DisableDropSound=None)
     # for block in blocks[3:]:
-    #     block.modify(status=HIDE, SetFontSize=26)
+    #     block.modify(status=DEBUG, SetFontSize=26)
     # filter_manager.extend_blocks(blocks)
 
     # 8
@@ -804,7 +817,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[1].PlayAlertSound = SOUND_MID_VALUE
     if settings.MAP_RED and not settings.SSF:
         for block in blocks[3:]:
-            block.modify(status=HIDE, PlayAlertSound=None)
+            block.modify(status=DEBUG, PlayAlertSound=None)
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(1807, 'Perandus')
@@ -922,10 +935,12 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[0].PlayAlertSound = SOUND_UNIQUE
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(2206, 'Prophecy-Material Uniques', ignored=True)
+    filter_manager.add_comment(2206, 'Special Unique Searches', ignored=True)
+
+    filter_manager.add_comment(2207, 'Prophecy-Material Uniques', ignored=True)
 
     # 6
-    blocks = filter_manager.add_comment(2207, 'Random Uniques')
+    blocks = filter_manager.add_comment(2208, 'Random Uniques')
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_UNIQUE)
     filter_manager.extend_blocks(blocks)
 

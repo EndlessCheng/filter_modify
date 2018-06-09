@@ -24,11 +24,12 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Body Armour"',  # 有血就行
-    # '"Sceptres" "Claws" "One Hand"',  # 抗性/智力
+    # '"Sceptres" "One Hand"',  # 抗性/智力
+    # '"Claws"',
 
-    # '"Boots"',  # 80+血
-    # '"Helmets"',  # 90+血
-    # '"Gloves"',  # 80+血，有点伤/攻速更好
+    # '"Boots"',  # 80+血，有移速更好
+    # '"Helmets"',  # 90+血，有命中更好
+    # '"Gloves"',  # 80+血，有攻速/点伤更好
 
     # '"Daggers" "Wands"',
 ])
@@ -42,14 +43,17 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
-    '"Silver"',  # if SHOW_FLASK_LIFE else '',
-    '"Basalt"',  # if SHOW_FLASK_LIFE else '',
+    '"Quicksilver"',
     '"Stibnite"',
+    '"Ruby"',
+    '"Topaz"',
+    '"Silver"',
     '"Diamond"',
     '"Granite"',
-    '"Quicksilver"',
     '"Jade"',
-    '"Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
+    '"Sulphur"',
+    '"Basalt"',
+    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Quartz"' if SHOW_FLASK_HALLOWED else '',
 ]).strip() if not RICH_LEVELING else ''
 
 #
