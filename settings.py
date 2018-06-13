@@ -51,9 +51,10 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Diamond"',
     '"Granite"',
     '"Jade"',
+    '"Quartz"',
     '"Sulphur"',
     '"Basalt"',
-    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Quartz"' if SHOW_FLASK_HALLOWED else '',
+    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine"' if SHOW_FLASK_HALLOWED else '',
 ]).strip() if not RICH_LEVELING else ''
 
 #
