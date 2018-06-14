@@ -166,7 +166,9 @@ def modify_endgame_mix(filter_manager):
     blocks[-2].PlayAlertSound = SOUND_MAGIC_MOD
     filter_manager.extend_blocks(blocks)
 
+    # 8
     blocks = filter_manager.add_comment(503, 'Rare Item Permutations')
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(600, 'Recipes, Magic and Normal items (endgame!)', ignored=True)
@@ -278,12 +280,12 @@ def modify_endgame_mix(filter_manager):
         filter_manager.extend_blocks([normals])
 
     if settings.SSF_CRAFT_BELTS_BASE_TYPE != '':
-        hide_normals = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
-        hide_normals.modify(Class=None, Rarity=RARITY_NORMAL, SetFontSize=FONT_SIZE_MIN)
-        hide_n_leather_belt = hide_normals.copy_modify(BaseType='"Leather Belt"', ItemLevel='<= 29')
-        hide_n_rustic_sash = hide_normals.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
-        filter_manager.extend_blocks([hide_n_leather_belt, hide_n_rustic_sash])  # A4左右开始堆血(T5血从30开始)
-
+        if not settings.SPELL:
+            hide_normals = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
+            hide_normals.modify(Class=None, Rarity=RARITY_NORMAL, SetFontSize=FONT_SIZE_MIN)
+            hide_n_leather_belt = hide_normals.copy_modify(BaseType='"Leather Belt"', ItemLevel='<= 29')
+            hide_n_rustic_sash = hide_normals.copy_modify(BaseType='"Rustic Sash"', ItemLevel='>= 30')
+            filter_manager.extend_blocks([hide_n_leather_belt, hide_n_rustic_sash])  # A4左右开始堆血(T5血从30开始)
         filter_manager.append_block(FilterBlock(
             Class='Belts', BaseType=settings.SSF_CRAFT_BELTS_BASE_TYPE, Rarity=RARITY_NORMAL, ItemLevel='>= 13',
             SetTextColor=COLOR_WHITE))
@@ -299,10 +301,10 @@ def modify_endgame_mix(filter_manager):
     if settings.ALERT_MAGIC_BASE_TYPE != '':
         alert_magics = filter_manager.get_blocks(BLOCK_ACT_1)[1]
         alert_magics.modify(ItemLevel=None, BaseType=None, PlayAlertSound=SOUND_LEVELING)
-        alert_m_iron_ring = alert_magics.copy_modify(BaseType='"Iron Ring"', ItemLevel='<= 20')
-        alert_magic_gloves = alert_magics.copy_modify(Class='"Gloves"', ItemLevel='<= 24')
-        filter_manager.extend_blocks([alert_m_iron_ring, alert_magic_gloves])
-
+        if not settings.SPELL:
+            alert_m_iron_ring = alert_magics.copy_modify(BaseType='"Iron Ring"', ItemLevel='<= 20')
+            alert_magic_gloves = alert_magics.copy_modify(Class='"Gloves"', ItemLevel='<= 24')
+            filter_manager.extend_blocks([alert_m_iron_ring, alert_magic_gloves])
         alert_magics.BaseType = settings.ALERT_MAGIC_BASE_TYPE
         filter_manager.append_block(alert_magics)
 
@@ -403,9 +405,9 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     filter_manager.append_block(blocks[1].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
 
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
-    hide_rare_classes = ' '.join(['"Quivers"', '"Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
+    hide_rare_classes = ' '.join(['"Quivers"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
     if show_rare_class:
-        if show_rare_class == 'ALL':  # 刷一次 T1 用
+        if show_rare_class == 'ALL':  # 刷 1~2 次 T5 用
             hide_rare_classes = CLASS_BIG_ONE_HAND + ' ' + CLASS_TWO_HAND
         else:
             hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
@@ -499,9 +501,10 @@ def modify_gem_flask_map(filter_manager):
         blocks[1].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
-    # Remove blocks[1]
+    # Remove blocks[1] 2
     blocks = filter_manager.add_comment(1404, 'Leveled Gems')
     del blocks[1]
+    blocks[-1].PlayAlertSound = SOUND_LOW_VALUE
     filter_manager.extend_blocks(blocks)
 
     # Hide
@@ -578,15 +581,20 @@ def modify_leveling(filter_manager):
     # 后期只要42和60级的血瓶
     filter_manager.add_comment(2400, 'OVERRIDE AREA 4 - Insert your custom Leveling adjustments here', ignored=True)
     hide_some_life_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Life Flask"',
-                                        BaseType='Sanctified Eternal', SetFontSize=FONT_SIZE_MIN)
-    filter_manager.append_block(hide_some_life_flasks)
+                                        BaseType='"Sanctified" "Eternal"', SetFontSize=FONT_SIZE_MIN)
+    hide_some_mana_flasks = FilterBlock(status=DEBUG, Quality='= 0', Class='"Mana Flask"',
+                                        BaseType='"Grand" "Colossal" "Hallowed"', SetFontSize=FONT_SIZE_MIN)
+    filter_manager.extend_blocks([hide_some_life_flasks, hide_some_mana_flasks])
 
     filter_manager.add_comment(2500, 'Leveling - Flasks', ignored=True)
 
     blocks = filter_manager.add_comment(2501, 'Hide outdated flasks')
     filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(2502, 'Hybrid flasks (normal)', ignored=True)
+    # SHOW_FLASK_LIFE Hallowed
+    blocks = filter_manager.add_comment(2502, 'Hybrid flasks (normal)')
+    if settings.SHOW_FLASK_LIFE:
+        filter_manager.append_block(blocks[-1])
 
     # SHOW_FLASK_HALLOWED 42, 60   SHOW_FLASK_LIFE
     blocks = filter_manager.add_comment(2503, 'Life Flasks - Normal (Kudos to Antnee)')
@@ -619,26 +627,33 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2800, 'Leveling - RARES', ignored=True)
     hide_leveling_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_leveling_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
-                               Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"', SetFontSize=26)
-    hide_some_body_rares = hide_leveling_rares.copy_modify(
-        ItemLevel='>= 23', Class='"Body Armour"',
-        BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
-    filter_manager.extend_blocks([hide_leveling_rares, hide_some_body_rares])
+                               Class='"Bows" "Quivers" "Two Hand" "Staves"', SetFontSize=26)
+    filter_manager.append_block(hide_leveling_rares)
+    if not settings.SPELL:
+        hide_some_body_rares = hide_leveling_rares.copy_modify(
+            ItemLevel='>= 23', Class='"Body Armour"',
+            BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
+        filter_manager.append_block(hide_some_body_rares)
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
         filter_manager.append_block(hide_rares)
 
-    # Rare: 4L RRG RRR L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
+    # Rare: 4L RRG RRR (GGG) L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
     blocks = filter_manager.add_comment(2801, 'Leveling rares - specific items')
     if settings.LINKED_CLASS != '':
         blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
+        filter_manager.append_block(blocks[0])
         rare_rrg = blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
                                          ItemLevel='<= ' + str(settings.L3_MAX_IL))
         rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
-        filter_manager.extend_blocks([blocks[0], rare_rrg, rare_rrr])
+        rare_ggg = rare_rrg.copy_modify(SocketGroup='GGG')
+        filter_manager.extend_blocks([rare_rrg, rare_rrr] if not settings.SPELL else [rare_ggg])
     blocks[2].PlayAlertSound = SOUND_LEVELING
-    blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
+    if not settings.SPELL:
+        blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
     filter_manager.extend_blocks(blocks[1:-1])
+    if settings.SPELL:
+        filter_manager.append_block(blocks[-1])
 
     blocks = filter_manager.add_comment(2802, 'Leveling rares - Progression')
     filter_manager.extend_blocks(blocks)
@@ -648,18 +663,23 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2900, 'Leveling - Useful items', ignored=True)
 
-    # RR**
+    # RR** (GGG)
     blocks = filter_manager.add_comment(2901, 'Linked gear - 4links')
     if settings.LINKED_CLASS != '':
         for block in blocks:
-            block.modify(Class=settings.LINKED_CLASS, SocketGroup='RR', **STYLE_LINKS)
+            socketGroup = 'RR' if not settings.SPELL else 'GGG'
+            block.modify(Class=settings.LINKED_CLASS, SocketGroup=socketGroup, **STYLE_LINKS)
             filter_manager.append_block(block)
 
-    filter_manager.add_comment(2902, 'Linked gear - Caster Weapon Configuration', ignored=True)
+    blocks = filter_manager.add_comment(2902, 'Linked gear - Caster Weapon Configuration')
+    if settings.SPELL:
+        blocks[0].modify(SocketGroup='GB', ItemLevel='<= 12', PlayAlertSound=SOUND_LEVELING)  # 电弧或闪电陷阱
+        blocks[1].modify(SocketGroup='GB', ItemLevel='<= 12', PlayAlertSound=SOUND_LEVELING)  # 电弧或闪电陷阱
+        filter_manager.extend_blocks(blocks)
 
     # RR RG RRG RRR L2_MAX_IL L3_MAX_IL
     blocks = filter_manager.add_comment(2903, 'Linked gear - 3links')
-    if settings.LINKED_CLASS != '':
+    if settings.LINKED_CLASS != '' and not settings.SPELL:
         for block in blocks[2:4]:
             block.modify(LinkedSockets=None, ItemLevel=None, Class=settings.LINKED_CLASS, **STYLE_LINKS)
             links_rr = block.copy_modify(SocketGroup='RR', ItemLevel='<= ' + str(settings.L2_MAX_IL),
@@ -670,15 +690,22 @@ def modify_leveling(filter_manager):
             links_rrr = links_rg.copy_modify(SocketGroup='RRR', ItemLevel='<= ' + str(settings.L3_MAX_IL))
             filter_manager.extend_blocks([links_rr, links_rg, links_rrg, links_rrr])
 
-    filter_manager.add_comment(2904, 'Extra Highlight: Boots', ignored=True)
+    blocks = filter_manager.add_comment(2904, 'Extra Highlight: Boots')
+    if settings.SPELL and not settings.TENCENT:
+        filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(2905, 'Optional Recipes', ignored=True)
 
     # 注意，后续(13+)需要高亮的蓝白装已经在 "Remaining crafting rules" 里面了
     blocks = filter_manager.add_comment(BLOCK_ACT_1, 'Act 1')
     if not settings.RICH_LEVELING:
-        blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
-        blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
+        if settings.SPELL:
+            blocks[0].BaseType = '"Paua Ring"'
+            blocks[1].BaseType = '"Paua Ring"'
+            filter_manager.append_block(blocks[-1])
+        else:
+            blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
+            blocks[1].BaseType = '"Iron Ring" "Rustic Sash" "Amulet"'
         filter_manager.extend_blocks(blocks[:2])
 
     filter_manager.add_comment(2907, 'Act 2+3', ignored=True)
@@ -697,7 +724,7 @@ def modify_leveling(filter_manager):
 
     # 蓝白武器  HIDE_NORMAL_MAGIC_CLASS
     filter_manager.add_comment(3001, 'Progression - Part 1 1-30', ignored=True)
-    if settings.SHOW_N2M_ONE_HAND:
+    if settings.SHOW_N2M_ONE_HAND_MELEE:
         _LEVELING_BASE = [('"Rusted Sword"', 1 - 1), ('"Rusted Spike"', 3), ('"Copper Sword"', 5),
                           ('"Whalebone Rapier"', 7), ('"Sabre"', 10), ('"Jade Hatchet"', 6), ('"Boarding Axe"', 11),
                           ('"Broad Axe"', 21), ('"Wraith Axe"', 54), ]  # ('"Arming Axe"', 25 + 1),
@@ -945,6 +972,7 @@ def modify_filter(filter_manager, show_rare_class=''):
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2300, 'Quest Items and Shaper Orbs')
+    blocks[0].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     modify_leveling(filter_manager)
