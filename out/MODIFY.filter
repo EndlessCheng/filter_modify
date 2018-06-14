@@ -2516,7 +2516,7 @@ Show
 # 1905 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter"  "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter"  "The Blazing Fire" "The Coming Storm" "The Conduit"  "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins"  "The Wolverine" "Thunderous Skies" 
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0

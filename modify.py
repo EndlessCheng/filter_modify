@@ -906,8 +906,12 @@ def modify_filter(filter_manager, show_rare_class=''):
             still_good_base_type = ['"Lantador\'s Lost Love"',
                                     '"Rain of Chaos"',
                                     '"Struck by Lightning"',  # 点电伤 宝石
+                                    '"The Eye of the Dragon"',  # 腐化珠宝
                                     '"The Lover"',
-                                    '"The Scholar"', ]
+                                    '"The Scholar"',
+                                    '"The Warden"',  # 腐化项链
+                                    '"Volatile Power"',  # Q20 瓦尔技能
+                                    ]
             for bt in still_good_base_type:
                 trash_base_type = trash_base_type.replace(bt, '')
 
