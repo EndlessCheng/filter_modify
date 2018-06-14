@@ -638,7 +638,7 @@ def modify_leveling(filter_manager):
         hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
         filter_manager.append_block(hide_rares)
 
-    # Rare: 4L RRG RRR (GGG) L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
+    # Rare: 4L RRG RRR (GGB) L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
     blocks = filter_manager.add_comment(2801, 'Leveling rares - specific items')
     if settings.LINKED_CLASS != '':
         blocks[0].modify(Class=settings.LINKED_CLASS, **STYLE_LINKS)
@@ -646,8 +646,8 @@ def modify_leveling(filter_manager):
         rare_rrg = blocks[0].copy_modify(LinkedSockets='>= 3', SocketGroup='RRG',
                                          ItemLevel='<= ' + str(settings.L3_MAX_IL))
         rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
-        rare_ggg = rare_rrg.copy_modify(SocketGroup='GGG')
-        filter_manager.extend_blocks([rare_rrg, rare_rrr] if not settings.SPELL else [rare_ggg])
+        rare_ggb = rare_rrg.copy_modify(SocketGroup='GGB')
+        filter_manager.extend_blocks([rare_rrg, rare_rrr] if not settings.SPELL else [rare_ggb])
     blocks[2].PlayAlertSound = SOUND_LEVELING
     if not settings.SPELL:
         blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')
@@ -663,11 +663,11 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2900, 'Leveling - Useful items', ignored=True)
 
-    # RR** (GGG)
+    # RR** (GGB)
     blocks = filter_manager.add_comment(2901, 'Linked gear - 4links')
     if settings.LINKED_CLASS != '':
         for block in blocks:
-            socketGroup = 'RR' if not settings.SPELL else 'GGG'
+            socketGroup = 'RR' if not settings.SPELL else 'GGB'
             block.modify(Class=settings.LINKED_CLASS, SocketGroup=socketGroup, **STYLE_LINKS)
             filter_manager.append_block(block)
 

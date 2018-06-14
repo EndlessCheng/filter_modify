@@ -2976,7 +2976,7 @@ Show
  PlayAlertSound 12 300
 Show
  LinkedSockets >= 3
- SocketGroup GGG
+ SocketGroup GGB
  ItemLevel <= 19
  Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity Rare
@@ -3336,7 +3336,7 @@ Show
 # 2901 Linked gear - 4links
 Show
  LinkedSockets >= 4
- SocketGroup GGG
+ SocketGroup GGB
  Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Normal
  SetFontSize 45
@@ -3346,7 +3346,7 @@ Show
  PlayAlertSound 12 300
 Show
  LinkedSockets >= 4
- SocketGroup GGG
+ SocketGroup GGB
  Class "Body Armour" "Boots" "Helmets" "Gloves"
  Rarity = Magic
  SetFontSize 45
