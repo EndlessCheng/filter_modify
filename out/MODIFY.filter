@@ -647,7 +647,7 @@ Show
 Show
  ItemLevel > 65
  Class "Utility Flasks"
- BaseType "Quicksilver" "Stibnite" "Ruby" "Topaz" "Silver" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Basalt" "Bismuth" "Amethyst" "Sapphire" "Aquamarine"
+ BaseType "Quicksilver" "Diamond" "Jade" "Quartz" "Basalt" "Ruby" "Topaz" "Stibnite" "Silver" "Granite" "Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Sulphur"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -703,14 +703,6 @@ Show
  SetBackgroundColor 0 20 40 255
 
 # 0615 Remaining crafting rules - add your own bases here!
-Show
- BaseType "Titan Greaves" "Vaal Greaves" "Royal Burgonet" "Eternal Burgonet"
- Rarity = Normal
- SetFontSize 40
- SetTextColor 255 255 255 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
- PlayAlertSound 12 300
 Show
  ItemLevel >= 13
  Class Belts
@@ -969,25 +961,9 @@ Show
 
 # 1103 T1 rare items
 Show
- ItemLevel >= 75
- BaseType "Archon Kite Shield" "Angelic Kite Shield" "Ceremonial Kite Shield" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Imbued Wand" "Carved Wand" "Engraved Wand""Lion Pelt" "Crusader Buckler"
- Rarity Rare
- SetFontSize 40
- SetTextColor 255 190 0 255
- SetBorderColor 255 125 0
- SetBackgroundColor 100 75 0 225
- PlayAlertSound 1 300
-Show
- BaseType "Archon Kite Shield" "Angelic Kite Shield" "Ceremonial Kite Shield" "Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet" "Titan Greaves" "Vaal Greaves" "Imbued Wand" "Carved Wand" "Engraved Wand""Lion Pelt" "Crusader Buckler"
- Rarity Rare
- SetFontSize 40
- SetTextColor 255 255 119 255
- SetBorderColor 255 125 0
- SetBackgroundColor 100 75 0 225
- PlayAlertSound 1 300
-Show
  Height = 3
  Width = 1
+ ItemLevel >= 75
  Rarity Rare
  SetFontSize 40
  SetTextColor 255 190 0 255
@@ -1001,12 +977,29 @@ Show
  SetTextColor 255 255 119 255
  SetBorderColor 150 150 150
  SetBackgroundColor 0 75 30 255
+Show
+ ItemLevel >= 75
+ Class "Shields"
+ BaseType "Spirit Shield"
+ Rarity Rare
+ SetFontSize 40
+ SetTextColor 255 190 0 255
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 75 30 255
+Show
+ Class "Shields"
+ BaseType "Spirit Shield"
+ Rarity Rare
+ SetFontSize 40
+ SetTextColor 255 255 119 255
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 75 30 255
 Hide
  Identified False
  Height <= 4
  Width <= 1
  ItemLevel >= 75
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetTextColor 255 190 0
@@ -1017,7 +1010,7 @@ Hide
  Height <= 4
  Width <= 1
  ItemLevel >= 65
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetBorderColor 120 120 120
@@ -1027,7 +1020,7 @@ Hide
  Height <= 2
  Width <= 2
  ItemLevel >= 75
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetTextColor 255 190 0
@@ -1038,7 +1031,7 @@ Hide
  Height <= 2
  Width <= 2
  ItemLevel >= 65
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetBorderColor 120 120 120
@@ -1046,7 +1039,7 @@ Hide
 Hide
  Identified False
  ItemLevel >= 75
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetTextColor 255 190 0
@@ -1055,7 +1048,7 @@ Hide
 Hide
  Identified False
  ItemLevel >= 65
- Class "Quivers" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
+ Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 24
  SetBorderColor 0 0 0 100
@@ -1934,7 +1927,7 @@ Hide
 Show
  ItemLevel <= 65
  Class "Utility Flasks"
- BaseType "Quicksilver" "Stibnite" "Ruby" "Topaz" "Silver" "Diamond" "Granite" "Jade" "Quartz" "Sulphur" "Basalt" "Bismuth" "Amethyst" "Sapphire" "Aquamarine"
+ BaseType "Quicksilver" "Diamond" "Jade" "Quartz" "Basalt" "Ruby" "Topaz" "Stibnite" "Silver" "Granite" "Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Sulphur"
  Rarity <= Magic
  SetFontSize 45
  SetBorderColor 50 200 125
@@ -2952,13 +2945,14 @@ Show
 Hide
  Identified False
  ItemLevel >= 13
- Class "Bows" "Quivers" "Two Hand" "Staves"
+ Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
  Rarity = Rare
  SetFontSize 26
  SetBorderColor 0 0 0 100
  SetBackgroundColor 0 0 0 75
 Hide
  Identified False
+ ItemLevel >= 13
  Class "Claws" "One Hand"
  Rarity = Rare
  SetFontSize 26

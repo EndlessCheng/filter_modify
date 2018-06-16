@@ -30,12 +30,12 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     '"Claws" "One Hand"',
     # '"Body Armour"',  # 有血就行
 
-    # '"Shields"',
     # '"Boots"',  # 80+血，有移速更好
     # '"Helmets"',  # 90+血，有命中更好
     # '"Gloves"',  # 80+血，有攻速/点伤更好
 
-    # '"Sceptres"',
+    # '"Shields"',  # 爆率
+    # '"Sceptres"',  # 爆率
     # '"Daggers" "Wands"',
 ])
 
@@ -43,23 +43,26 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
     # '"Engraved Wand"',  # essence of anger/wrath/hatred
     # '"Siege Axe"',  # 59 73
 
-    '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
-    '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
+    # TODO: other bases?
+    # '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
+    # '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
 ]).strip()
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Quicksilver"',
-    '"Stibnite"',
-    '"Ruby"',
-    '"Topaz"',
-    '"Silver"',
     '"Diamond"',
-    '"Granite"',
     '"Jade"',
     '"Quartz"',
-    '"Sulphur"',
     '"Basalt"',
-    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine"' if SHOW_FLASK_HALLOWED else '',
+
+    '"Ruby"',
+    '"Topaz"',
+
+    '"Stibnite"',
+    '"Silver"',
+    '"Granite"',
+
+    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
 ]).strip() if not RICH_LEVELING else ''
 
 #
@@ -75,16 +78,16 @@ T1_RARE_BASE_TYPE = ' '.join([
     # '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
     # '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
 
-    '"Archon Kite Shield" "Angelic Kite Shield" "Ceremonial Kite Shield"' if SPELL else '',
-    '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
-    '"Titan Greaves" "Vaal Greaves"',
+    # TODO: other bases?
+    # '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
+    # '"Titan Greaves" "Vaal Greaves"',
     # '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
 
     # '"Siege Axe"',  # 开膛斧
 
-    '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
-    '"Lion Pelt"',  # 斯塔空加之首
-    '"Crusader Buckler"',  # 艾许之镜
+    # '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
+    # '"Lion Pelt"',  # 斯塔空加之首
+    # '"Crusader Buckler"',  # 艾许之镜
 ]).strip() if not MAP_RED else ''
 
 MAGIC_JEWEL_BASE_TYPE = ' '.join([

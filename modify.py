@@ -391,7 +391,7 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
     filter_manager.add_comment(1102, 'Rare crafting bases 83+', ignored=True)
 
     # T1_RARE_BASE_TYPE
-    # block_1_3
+    # 显示 1x3
     # HIDE_BELOW_T1_RARE_CLASS with Identified=False and show_rare_class
     blocks = filter_manager.add_comment(1103, 'T1 rare items')
     if settings.T1_RARE_BASE_TYPE != '':
@@ -400,17 +400,18 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         filter_manager.append_block(blocks[1].copy_modify(BaseType=settings.T1_RARE_BASE_TYPE, ItemLevel=None,
                                                           PlayAlertSound=SOUND_MID_VALUE, **STYLE_T1_RARE))
 
-    # if show_rare_class == CLASS_SMALL_ONE_HAND or show_rare_class == 'ALL':
-    filter_manager.append_block(blocks[0].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
+    filter_manager.append_block(blocks[0].copy_modify(BaseType=None, Width='= 1', Height='= 3'))
     filter_manager.append_block(blocks[1].copy_modify(BaseType=None, ItemLevel=None, Width='= 1', Height='= 3'))
 
+    if '"Shields"' not in settings.HIDE_BELOW_T1_RARE_CLASS:
+        filter_manager.append_block(blocks[0].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"'))
+        filter_manager.append_block(
+            blocks[1].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"', ItemLevel=None))
+
     hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
-    hide_rare_classes = ' '.join(['"Quivers"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
+    hide_rare_classes = ' '.join(['"Quivers" "Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
     if show_rare_class:
-        if show_rare_class == 'ALL':  # 刷 1~2 次 T5 用
-            hide_rare_classes = CLASS_BIG_ONE_HAND + ' ' + CLASS_TWO_HAND
-        else:
-            hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
+        hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
     for block in hide_blocks:
         block.modify(status=DEBUG, Identified=False, Class=hide_rare_classes)
     filter_manager.extend_blocks(hide_blocks)
@@ -627,15 +628,15 @@ def modify_leveling(filter_manager):
     filter_manager.add_comment(2800, 'Leveling - RARES', ignored=True)
     hide_leveling_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
     hide_leveling_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
-                               Class='"Bows" "Quivers" "Two Hand" "Staves"', SetFontSize=26)
-    filter_manager.append_block(hide_leveling_rares)
+                               Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"', SetFontSize=26)
+    filter_manager.extend_blocks([hide_leveling_rares])
     if not settings.SPELL:
         hide_some_body_rares = hide_leveling_rares.copy_modify(
             ItemLevel='>= 23', Class='"Body Armour"',
             BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
         filter_manager.append_block(hide_some_body_rares)
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
-        hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS, ItemLevel=None)
+        hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS)
         filter_manager.append_block(hide_rares)
 
     # Rare: 4L RRG RRR (GGB) L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
@@ -1005,7 +1006,6 @@ def main():
         ('"Boots"', '3.脚'),
         ('"Body Armour"', '4.胸'),
         (CLASS_SMALL_ONE_HAND, '5.单手'),
-        # ('ALL', '全部')
     ]
 
     for clazz, gen_filter_name in show_rare_classes:
