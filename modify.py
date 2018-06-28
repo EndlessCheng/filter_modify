@@ -555,9 +555,9 @@ def modify_gem_flask_map(filter_manager):
 
     # 加黄边/橙边，不显示稀有度
     blocks = filter_manager.add_comment(1706, 'Mid tier maps (T6-10)')
-    for block in blocks[:3]:
+    for block in blocks[:4]:
         block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_9_10)
-    for block in blocks[3:]:
+    for block in blocks[4:]:
         block.modify(PlayAlertSound=SOUND_MAP, **STYLE_MAP_MID_6_8)
     filter_manager.extend_blocks(blocks)
 
@@ -819,9 +819,10 @@ def modify_filter(filter_manager, show_rare_class=''):
     blocks[1].BaseType += ' "Alchemy Shard" '
     filter_manager.extend_blocks(blocks)
 
-    # 1
+    # 8 1
     blocks = filter_manager.add_comment(1803, 'Incursion Currency')
-    blocks[0].PlayAlertSound = SOUND_MID_VALUE
+    blocks[0].PlayAlertSound = SOUND_TOP_VALUE
+    blocks[1].PlayAlertSound = SOUND_MID_VALUE
     filter_manager.extend_blocks(blocks)
 
     # 1 2 hide

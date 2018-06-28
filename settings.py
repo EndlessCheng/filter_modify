@@ -9,6 +9,7 @@ AW = False
 AW_RANGE = False and AW
 
 SPELL = True
+BOW = False
 
 RICH_LEVELING = False
 
@@ -39,15 +40,6 @@ HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     # '"Daggers" "Wands"',
 ])
 
-ALERT_NORMAL_BASE_TYPE = ' '.join([
-    # '"Engraved Wand"',  # essence of anger/wrath/hatred
-    # '"Siege Axe"',  # 59 73
-
-    # TODO: other bases?
-    # '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
-    # '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
-]).strip()
-
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Quicksilver"',
     '"Diamond"',
@@ -72,23 +64,6 @@ ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
 MAP_WHITE = False  # False
 MAP_YELLOW = False  # False
 MAP_RED = False  # False
-
-T1_RARE_BASE_TYPE = ' '.join([
-    # '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
-    # '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
-    # '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
-
-    # TODO: other bases?
-    # '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
-    # '"Titan Greaves" "Vaal Greaves"',
-    # '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
-
-    # '"Siege Axe"',  # 开膛斧
-
-    # '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
-    # '"Lion Pelt"',  # 斯塔空加之首
-    # '"Crusader Buckler"',  # 艾许之镜
-]).strip() if not MAP_RED else ''
 
 MAGIC_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson"',
@@ -120,13 +95,39 @@ SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
 
 L3_MAX_IL = 19  # RRG 头/脚
 
+ALERT_NORMAL_BASE_TYPE = ' '.join([
+    # '"Engraved Wand"',  # essence of anger/wrath/hatred
+    # '"Siege Axe"',  # 59 73
+
+    # TODO: other bases?
+    # '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
+    # '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
+]).strip()
+
+T1_RARE_BASE_TYPE = ' '.join([
+    # '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
+    # '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
+    # '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
+
+    # TODO: other bases?
+    # '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
+    # '"Titan Greaves" "Vaal Greaves"',
+    # '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
+
+    # '"Siege Axe"',  # 开膛斧
+
+    # '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
+    # '"Lion Pelt"',  # 斯塔空加之首
+    # '"Crusader Buckler"',  # 艾许之镜
+]).strip() if not MAP_RED else ''
+
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Helmets"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Gloves"' if '"Gloves"' not in HIDE_BELOW_T1_RARE_CLASS else '',
 ]).strip() if SHOW_FLASK_HALLOWED else ''
-SHOW_N2M_ONE_HAND_MELEE = True and SHOW_FLASK_LIFE and not SPELL
+SHOW_N2M_ONE_HAND_MELEE = True and SHOW_FLASK_LIFE and not SPELL and not BOW
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(

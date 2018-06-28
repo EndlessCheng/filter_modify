@@ -228,10 +228,19 @@ Show
 # 0501 League-Specific Magic Items
 Show
  Identified True
+ Rarity Rare
  HasExplicitMod "Tacati" "Citaqualotl" "Matatl" "Topotante" "Xopec" "Guatelitzi" "Puhuarte"
  SetFontSize 45
- SetTextColor 220 0 0 240
- SetBorderColor 220 0 0 240
+ SetTextColor 255 190 0
+ SetBorderColor 0 240 190 240
+ SetBackgroundColor 0 75 30 255
+ PlayAlertSound 3 300
+Show
+ Identified True
+ Rarity Magic
+ HasExplicitMod "Tacati" "Citaqualotl" "Matatl" "Topotante" "Xopec" "Guatelitzi" "Puhuarte"
+ SetFontSize 45
+ SetBorderColor 0 240 190 240
  PlayAlertSound 3 300
 Show
  Identified True
@@ -276,7 +285,6 @@ Show
 Show
  Corrupted False
  Identified True
- DropLevel > 55
  Class "Dagger" "Sceptre" "Wand"
  Rarity Magic
  HasExplicitMod "Runic" "Glyphic" "Lich's" "Cremating" "Electrocuting" "Entombing" "Runic" "Xoph's" "Esh's" "Tul's" "of Destruction" "of Celebration" "of Finesse" "of Sortilege" "of Unmaking" "of Ruin" "of Ashes" "of Glaciation" "of Arcing"
@@ -2068,6 +2076,15 @@ Show
 
 # 1706 Mid tier maps (T6-10)
 Show
+ Identified True
+ Class Maps
+ HasExplicitMod "Vaal"
+ SetFontSize 45
+ SetTextColor 0 0 0
+ SetBorderColor 255 255 0
+ SetBackgroundColor 200 200 200
+ PlayAlertSound 4 300
+Show
  DropLevel >= 77
  Class Maps
  SetFontSize 45
@@ -2084,6 +2101,7 @@ Show
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 76
  Class Maps
@@ -2092,6 +2110,7 @@ Show
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 83
  DropLevel >= 75
@@ -2101,6 +2120,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 75
  Class Maps
@@ -2109,6 +2129,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 82
  DropLevel >= 74
@@ -2118,6 +2139,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 74
  Class Maps
@@ -2126,6 +2148,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 81
  DropLevel >= 73
@@ -2135,6 +2158,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 73
  Class Maps
@@ -2143,6 +2167,7 @@ Show
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 
 # 1707 Low tier maps (T1-T5)
 Show
@@ -2154,6 +2179,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 72
  Class Maps
@@ -2162,6 +2188,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 79
  DropLevel >= 71
@@ -2171,6 +2198,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 71
  Class Maps
@@ -2179,6 +2207,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 78
  DropLevel >= 70
@@ -2188,6 +2217,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel >= 70
  Class Maps
@@ -2196,6 +2226,7 @@ Show
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 77
  DropLevel = 69
@@ -2205,6 +2236,7 @@ Show
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel = 69
  Class Maps
@@ -2213,6 +2245,7 @@ Show
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  ItemLevel < 76
  DropLevel <= 68
@@ -2222,6 +2255,7 @@ Show
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  DropLevel < 69
  Class Maps
@@ -2230,6 +2264,7 @@ Show
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
  PlayAlertSound 4 300
+ DisableDropSound True
 Show
  Class Maps
  SetFontSize 45
@@ -2289,20 +2324,22 @@ Show
 # 1801 Regular Rare Currency
 Show
  Class Currency
- BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Ancient Orb"
+ BaseType "Master Cartographer's Sextant" "Journeyman Cartographer's Sextant" "Harbinger's Orb" "Ancient Orb" "Apprentice Cartographer's Sextant" "Orb of Annulment"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 240 90 35 255
  PlayAlertSound 1 300
+ DisableDropSound True
 Show
  Class Currency
- BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Apprentice Cartographer's Sextant" "Stacked Deck"
+ BaseType "Regal Orb" "Orb of Regret" "Chaos Orb" "Gemcutter's Prism" "Stacked Deck"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 249 150 25 255
  PlayAlertSound 1 300
+ DisableDropSound True
 Show
  Class Currency
  BaseType "Blessed Orb" "Orb of Fusing" "Orb of Alchemy" "Cartographer's Chisel" "Engineer's Orb" "Orb of Horizons" "Orb of Binding" "Bestiary Orb" "Orb of Scouring" "Vaal Orb" "Orb of Chance" 
@@ -2311,6 +2348,7 @@ Show
  SetBorderColor 0 0 0
  SetBackgroundColor 213 159 0 255
  PlayAlertSound 1 300
+ DisableDropSound True
 
 # 1802 Harbinger Currency
 Show
@@ -2332,11 +2370,19 @@ Show
 # 1803 Incursion Currency
 Show
  Class Currency
- BaseType "Vial of"
+ BaseType "Vial of Awakening" "Vial of Sacrifice" "Vial of the Ghost"
+ SetFontSize 45
+ SetTextColor 255 0 0 255
+ SetBorderColor 255 0 0 255
+ SetBackgroundColor 255 255 255 255
+ PlayAlertSound 8 300
+Show
+ Class Currency
+ BaseType "Vial of Transcendence" "Vial of Summoning" "Vial of the Ritual" "Vial of Fate" "Vial of Consequence" "Vial of Dominance"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
- SetBackgroundColor 220 0 0 240
+ SetBackgroundColor 159 15 213 255
  PlayAlertSound 1 300
 
 # 1804 Bestiary Currency
@@ -2344,7 +2390,7 @@ Show
 # 1805 Top Currency
 Show
  Class Currency
- BaseType "Mirror of Kalandra" "Exalted Orb" "Divine Orb" "Mirror Shard" "Eternal Orb" "Albino Rhoa Feather" "Orb of Annulment"
+ BaseType "Mirror of Kalandra" "Exalted Orb" "Divine Orb" "Mirror Shard" "Eternal Orb" "Albino Rhoa Feather"
  SetFontSize 45
  SetTextColor 255 0 0 255
  SetBorderColor 255 0 0 255
@@ -2457,7 +2503,7 @@ Show
 # 1809 Others
 Show
  Class Currency
- BaseType "Unshaping Orb" "Cartographer's Seal" "Prophecy" "Imprint"
+ BaseType "Unshaping Orb" "Cartographer's Seal" "Prophecy" "Imprint" "Vial of"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
@@ -2479,7 +2525,7 @@ Show
 # 1902 T1 - Top tier cards
 Show
  Class "Divination"
- BaseType "Abandoned Wealth" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Immortal Resolve" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Celestial Justicar" "The Celestial Stone" "The Doctor" "The Dragon's Heart" "The Fiend" "The Immortal" "The Iron Bard" "The King's Heart" "The Last One Standing" "The Master" "The Mayor" "The Queen" "The Saint's Treasure" "The Samurai's Eye" "The Spark and the Flame" "The Undaunted" "The Valkyrie" "The Wind" "The Wolven King's Bite" "The World Eater" "Wealth and Power"
+ BaseType "Abandoned Wealth" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Immortal Resolve" "Mawr Blaidd" "Perfection" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Celestial Justicar" "The Celestial Stone" "The Doctor" "The Dragon's Heart" "The Fiend" "The Immortal" "The Iron Bard" "The King's Heart" "The Last One Standing" "The Master" "The Mayor" "The Porcupine" "The Professor" "The Queen" "The Saint's Treasure" "The Samurai's Eye" "The Spark and the Flame" "The Undaunted" "The Valkyrie" "The Wind" "The Wolf" "The Wolven King's Bite" "The World Eater" "Wealth and Power"
  SetFontSize 45
  SetTextColor 0 0 255 255
  SetBorderColor 0 0 255 255
@@ -2489,7 +2535,7 @@ Show
 # 1903 T2 - Great cards
 Show
  Class "Divination"
- BaseType "Chaotic Disposition" "Last Hope" "Perfection" "Saint's Treasure" "The Cartographer" "The Dapper Prodigy" "The Dreamer" "The Enlightened" "The Ethereal" "The Hoarder" "The Hunger" "The Professor" "The Risk" "The Sephirot" "The Thaumaturgist" "The Undisputed" "The Vast" "The Void" "The Wolf"
+ BaseType "Bowyer's Dream" "Chaotic Disposition" "Last Hope" "Left to Fate" "Saint's Treasure" "The Breach" "The Brittle Emperor" "The Cartographer" "The Dapper Prodigy" "The Dreamer" "The Enlightened" "The Ethereal" "The Formless Sea" "The Hale Heart" "The Hoarder" "The Hunger" "The Jeweller's Boon" "The Risk" "The Sephirot" "The Thaumaturgist" "The Undisputed" "The Valley of Steel Boxes" "The Vast" "The Void" "Time-Lost Relic"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 200 200 0 255
@@ -2499,7 +2545,7 @@ Show
 # 1904 T3 - Decent cards
 Show
  Class "Divination"
- BaseType "Blessing of God" "Bowyer's Dream" "Emperor of Purity" "Gemcutter's Promise" "Harmony of Souls" "Hope" "Humility" "Jack in the Box" "Left to Fate" "Lingering Remnants" "Lucky Connections" "Lucky Deck" "Merciless Armament" "No Traces" "Rebirth" "Scholar of the Seas" "Shard of Fate" "Standoff" "The Admirer" "The Aesthete" "The Beast" "The Body" "The Breach" "The Brittle Emperor" "The Chains that Bind" "The Dark Mage" "The Darkest Dream" "The Dreamland" "The Encroaching Darkness" "The Fletcher" "The Formless Sea" "The Forsaken" "The Hale Heart" "The Insatiable" "The Inventor" "The Jester" "The Jeweller's Boon" "The Lion" "The Obscured" "The Offering" "The One With All" "The Penitent" "The Poet" "The Polymath" "The Porcupine" "The Realm" "The Road to Power" "The Soul" "The Standoff" "The Surveyor" "The Survivalist" "The Sword King's Salute" "The Throne" "The Trial" "The Tyrant" "The Union" "The Valley of Steel Boxes" "The Warlord" "The Wrath" "The Wretched" "Time-Lost Relic" "Treasure Hunter" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
+ BaseType "Blessing of God" "Emperor of Purity" "Gemcutter's Promise" "Harmony of Souls" "Hope" "Hubris" "Humility" "Jack in the Box" "Lingering Remnants" "Lucky Connections" "Lucky Deck" "Merciless Armament" "No Traces" "Rebirth" "Scholar of the Seas" "Shard of Fate" "Standoff" "The Admirer" "The Aesthete" "The Avenger" "The Beast" "The Body" "The Chains that Bind" "The Cursed King" "The Dark Mage" "The Darkest Dream" "The Dreamland" "The Encroaching Darkness" "The Fletcher" "The Forsaken" "The Insatiable" "The Inventor" "The Jester" "The Lion" "The Obscured" "The Offering" "The One With All" "The Penitent" "The Poet" "The Polymath" "The Realm" "The Road to Power" "The Soul" "The Standoff" "The Surveyor" "The Survivalist" "The Sword King's Salute" "The Throne" "The Traitor" "The Trial" "The Tyrant" "The Union" "The Warlord" "The Wrath" "The Wretched" "Three Voices" "Treasure Hunter" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 255 255
@@ -2509,14 +2555,14 @@ Show
 # 1905 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter"  "The Army of Blood" "The Blazing Fire" "The Coming Storm" "The Conduit"  "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins"  "The Wolverine" "Thunderous Skies" 
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter"  "The Army of Blood" "The Coming Storm" "The Conduit"  "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins"  "The Wolverine" "Thunderous Skies" 
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 175 215 230 180
 Show
  Class "Divination"
- BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Struck by Lightning" "The Army of Blood" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+ BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Struck by Lightning" "The Army of Blood" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2581,7 +2627,7 @@ Show
 
 # 2203 Tier 1 uniques
 Show
- BaseType "Ambush Mitts" "Callous Mask" "Crusader Boots" "Ezomyte Tower Shield" "Gemstone Sword" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Harlequin Mask" "Highborn Staff" "Hydrascale Gauntlets" "Occultist's Vestment" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Royal Axe" "Ruby Flask" "Sanctified Mana Flask" "Sapphire Flask" "Thorium Spirit Shield" "Vaal Spirit Shield"
+ BaseType "Ambush Mitts" "Callous Mask" "Cloth Belt Piece" "Clutching Talisman" "Crusader Boots" "Ezomyte Tower Shield" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Harlequin Mask" "Hydrascale Gauntlets" "Jewelled Foil" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sanctified Mana Flask" "Sapphire Flask" "Savant's Robe" "Thorium Spirit Shield" "Wereclaw Talisman"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37 255
@@ -2599,7 +2645,7 @@ Show
  SetBackgroundColor 255 255 255
  PlayAlertSound 8 300
 Show
- BaseType "Arcanist Gloves" "Arcanist Slippers" "Assassin's Boots" "Bismuth Flask" "Blood Raiment" "Carnal Boots" "Carnal Sceptre" "Clasped Mitts" "Cloth Belt Piece" "Clutching Talisman" "Cutlass" "Destiny Leather" "Full Wyrmscale" "Gladiator Plate" "Hydrascale Boots" "Imperial Maul" "Legion Gloves" "Magistrate Crown" "Nubuck Boots" "Rotfeather Talisman" "Sacrificial Garb" "Sanctified Life Flask" "Savant's Robe" "Siege Axe" "Silken Hood" "Vaal Mask" "Void Axe" "Wereclaw Talisman"
+ BaseType "Arcanist Slippers" "Archon Kite Shield Piece" "Assassin's Boots" "Blood Raiment" "Blunt Arrow Quiver Piece" "Carnal Boots" "Cutlass" "Destiny Leather" "Gemstone Sword" "Hydrascale Boots" "Legion Gloves" "Magistrate Crown" "Nubuck Boots" "Occultist's Vestment" "Ritual Sceptre" "Sacrificial Garb" "Siege Axe" "Vaal Mask" "Vaal Spirit Shield"
  Rarity Unique
  SetFontSize 45
  SetTextColor 175 96 37
@@ -2609,7 +2655,7 @@ Show
 
 # 2205 Multi-Unique bases.
 Show
- BaseType "Amber Amulet" "Carved Wand" "Citrine Amulet" "Ebony Tower Shield" "Exquisite Leather" "Goathide Boots" "Gold Amulet" "Gold Ring" "Granite Flask" "Hubris Circlet" "Imperial Bow" "Imperial Claw" "Imperial Staff" "Lapis Amulet" "Leather Belt" "Midnight Blade" "Onyx Amulet" "Opal Ring" "Paua Ring" "Sadist Garb" "Sorcerer Boots" "Stibnite Flask" "Topaz Flask" "Tornado Wand" "Two-Stone Ring" "Unset Ring" "Zealot Gloves"
+ BaseType "Amber Amulet" "Carved Wand" "Citrine Amulet" "Ebony Tower Shield" "Exquisite Leather" "Full Wyrmscale" "Goathide Boots" "Gold Amulet" "Gold Ring" "Granite Flask" "Hubris Circlet" "Imperial Bow" "Imperial Staff" "Lapis Amulet" "Leather Belt" "Midnight Blade" "Onyx Amulet" "Opal Ring" "Paua Ring" "Sadist Garb" "Sorcerer Boots" "Stibnite Flask" "Topaz Flask" "Topaz Ring" "Tornado Wand" "Two-Stone Ring" "Unset Ring" "Zealot Gloves"
  Rarity Unique
  SetFontSize 45
  SetTextColor 0 0 0 255
@@ -3488,6 +3534,7 @@ Show
  ItemLevel <= 36
  Rarity Magic
  SetTextColor 136 136 255 185
+ SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 Show
  Height <= 2
@@ -3495,6 +3542,7 @@ Show
  ItemLevel <= 36
  Rarity Magic
  SetTextColor 136 136 255 185
+ SetBorderColor 0 0 0
  SetBackgroundColor 0 0 0 185
 
 # 3100 HIDE LAYER 5 - Remaining Items
