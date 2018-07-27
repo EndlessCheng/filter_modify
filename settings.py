@@ -17,6 +17,8 @@ RICH_LEVELING = False
 # Part 1 - A1-A10
 #
 
+NEED_GGB_WEAPON = True  # True
+
 SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
 

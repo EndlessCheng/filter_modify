@@ -672,24 +672,32 @@ def modify_leveling(filter_manager):
             block.modify(Class=settings.LINKED_CLASS, SocketGroup=socketGroup, **STYLE_LINKS)
             filter_manager.append_block(block)
 
+    # GGB
     blocks = filter_manager.add_comment(2902, 'Linked gear - Caster Weapon Configuration')
-    if settings.SPELL:
-        blocks[0].modify(SocketGroup='GB', ItemLevel='<= 12', PlayAlertSound=SOUND_LEVELING)  # 电弧或闪电陷阱
-        blocks[1].modify(SocketGroup='GB', ItemLevel='<= 12', PlayAlertSound=SOUND_LEVELING)  # 电弧或闪电陷阱
+    if settings.SPELL and settings.NEED_GGB_WEAPON:
+        blocks[0].modify(SocketGroup='GGB', ItemLevel=None, PlayAlertSound=SOUND_LEVELING)  # 电弧陷阱
+        blocks[1].modify(SocketGroup='GGB', ItemLevel=None, PlayAlertSound=SOUND_LEVELING)  # 电弧陷阱
         filter_manager.extend_blocks(blocks)
 
-    # RR RG RRG RRR L2_MAX_IL L3_MAX_IL
+    # RR RG RRG RRR L2_MAX_IL L3_MAX_IL      or    GGB
     blocks = filter_manager.add_comment(2903, 'Linked gear - 3links')
-    if settings.LINKED_CLASS != '' and not settings.SPELL:
-        for block in blocks[2:4]:
-            block.modify(LinkedSockets=None, ItemLevel=None, Class=settings.LINKED_CLASS, **STYLE_LINKS)
-            links_rr = block.copy_modify(SocketGroup='RR', ItemLevel='<= ' + str(settings.L2_MAX_IL),
-                                         PlayAlertSound=SOUND_LEVELING)
-            links_rg = block.copy_modify(SocketGroup='RG', ItemLevel='<= ' + str(settings.L2_MAX_IL),
-                                         PlayAlertSound=SOUND_LEVELING)
-            links_rrg = links_rg.copy_modify(SocketGroup='RRG', ItemLevel='<= ' + str(settings.L3_MAX_IL))
-            links_rrr = links_rg.copy_modify(SocketGroup='RRR', ItemLevel='<= ' + str(settings.L3_MAX_IL))
-            filter_manager.extend_blocks([links_rr, links_rg, links_rrg, links_rrr])
+    if settings.LINKED_CLASS != '':
+        if not settings.SPELL:
+            for block in blocks[2:4]:
+                block.modify(LinkedSockets=None, ItemLevel=None, Class=settings.LINKED_CLASS, **STYLE_LINKS)
+                links_rr = block.copy_modify(SocketGroup='RR', ItemLevel='<= ' + str(settings.L2_MAX_IL),
+                                             PlayAlertSound=SOUND_LEVELING)
+                links_rg = block.copy_modify(SocketGroup='RG', ItemLevel='<= ' + str(settings.L2_MAX_IL),
+                                             PlayAlertSound=SOUND_LEVELING)
+                links_rrg = links_rg.copy_modify(SocketGroup='RRG', ItemLevel='<= ' + str(settings.L3_MAX_IL))
+                links_rrr = links_rg.copy_modify(SocketGroup='RRR', ItemLevel='<= ' + str(settings.L3_MAX_IL))
+                filter_manager.extend_blocks([links_rr, links_rg, links_rrg, links_rrr])
+        elif settings.NEED_GGB_WEAPON:
+            for block in blocks[2:4]:
+                block.modify(LinkedSockets=None, ItemLevel=None, Class=settings.LINKED_CLASS, **STYLE_LINKS)
+                links_rrg = block.copy_modify(SocketGroup='GGB', ItemLevel='<= ' + str(settings.L3_MAX_IL),
+                                              PlayAlertSound=SOUND_LEVELING)
+                filter_manager.extend_blocks([links_rrg])
 
     blocks = filter_manager.add_comment(2904, 'Extra Highlight: Boots')
     if settings.SPELL and not settings.TENCENT:

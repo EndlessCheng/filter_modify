@@ -3399,8 +3399,7 @@ Show
 # 2902 Linked gear - Caster Weapon Configuration
 Show
  LinkedSockets = 3
- SocketGroup GB
- ItemLevel <= 12
+ SocketGroup GGB
  Rarity = Normal
  Class "Sceptres" "Wands" "Daggers"
  SetFontSize 40
@@ -3410,8 +3409,7 @@ Show
  PlayAlertSound 12 300
 Show
  LinkedSockets = 3
- SocketGroup GB
- ItemLevel <= 12
+ SocketGroup GGB
  Rarity = Magic
  Class "Sceptres" "Wands" "Daggers"
  SetFontSize 40
@@ -3421,6 +3419,26 @@ Show
  PlayAlertSound 12 300
 
 # 2903 Linked gear - 3links
+Show
+ SocketGroup GGB
+ ItemLevel <= 19
+ Rarity = Normal
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
+ SetFontSize 40
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ SocketGroup GGB
+ ItemLevel <= 19
+ Rarity = Magic
+ Class "Body Armour" "Boots" "Helmets" "Gloves"
+ SetFontSize 40
+ SetTextColor 25 95 235 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
 
 # 2904 Extra Highlight: Boots
 Show
