@@ -675,8 +675,9 @@ def modify_leveling(filter_manager):
     # GGB
     blocks = filter_manager.add_comment(2902, 'Linked gear - Caster Weapon Configuration')
     if settings.SPELL and settings.NEED_GGB_WEAPON:
-        blocks[0].modify(SocketGroup='GGB', ItemLevel=None, PlayAlertSound=SOUND_LEVELING)  # 电弧陷阱
-        blocks[1].modify(SocketGroup='GGB', ItemLevel=None, PlayAlertSound=SOUND_LEVELING)  # 电弧陷阱
+        for block in blocks[:2]:
+            block.modify(Class='"Sceptres" "Wands"', SocketGroup='GGB', ItemLevel=None,
+                         PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS)  # 电弧陷阱
         filter_manager.extend_blocks(blocks)
 
     # RR RG RRG RRR L2_MAX_IL L3_MAX_IL       or GGB
