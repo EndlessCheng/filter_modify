@@ -664,7 +664,7 @@ def modify_leveling(filter_manager):
 
     filter_manager.add_comment(2900, 'Leveling - Useful items', ignored=True)
 
-    # RR** (GGB)
+    # RR**      or GGB
     blocks = filter_manager.add_comment(2901, 'Linked gear - 4links')
     if settings.LINKED_CLASS != '':
         for block in blocks:
@@ -679,7 +679,7 @@ def modify_leveling(filter_manager):
         blocks[1].modify(SocketGroup='GGB', ItemLevel=None, PlayAlertSound=SOUND_LEVELING)  # 电弧陷阱
         filter_manager.extend_blocks(blocks)
 
-    # RR RG RRG RRR L2_MAX_IL L3_MAX_IL      or    GGB
+    # RR RG RRG RRR L2_MAX_IL L3_MAX_IL       or GGB
     blocks = filter_manager.add_comment(2903, 'Linked gear - 3links')
     if settings.LINKED_CLASS != '':
         if not settings.SPELL:
