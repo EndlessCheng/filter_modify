@@ -2,8 +2,8 @@ DEBUG = False
 TEMP = False
 
 # Small different on leveling
-TENCENT = False or TEMP
-SSF = False
+TENCENT = True or TEMP
+SSF = True
 
 AW = False
 AW_RANGE = False and AW
@@ -27,6 +27,18 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"' if not SPELL else '',  # 点伤，血抗
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤，血抗
 ]).strip() if not RICH_LEVELING else ''
+
+ALERT_NORMAL_BASE_TYPE = ' '.join([
+    '"Crystal Sceptre"',
+    '"Platinum Kris"',
+
+    # '"Engraved Wand"',  # essence of anger/wrath/hatred
+    # '"Siege Axe"',  # 59 73
+
+    # TODO: other bases?
+    # '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
+    # '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
+]).strip()
 
 # Life: 70+(Rings), 80+(Amulets, Gloves, Boots), 90+(Helmets, Belts, Body Armour), 100+(Body Armour, IL 73+)
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
@@ -96,15 +108,6 @@ SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_B
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
 
 L3_MAX_IL = 19  # RRG 头/脚
-
-ALERT_NORMAL_BASE_TYPE = ' '.join([
-    # '"Engraved Wand"',  # essence of anger/wrath/hatred
-    # '"Siege Axe"',  # 59 73
-
-    # TODO: other bases?
-    # '"Titan Greaves" "Vaal Greaves"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 62 68
-    # '"Royal Burgonet" "Eternal Burgonet"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',  # 65 69
-]).strip()
 
 T1_RARE_BASE_TYPE = ' '.join([
     # '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器

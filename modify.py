@@ -710,8 +710,8 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(BLOCK_ACT_1, 'Act 1')
     if not settings.RICH_LEVELING:
         if settings.SPELL:
-            blocks[0].BaseType = '"Paua Ring"'
-            blocks[1].BaseType = '"Paua Ring"'
+            for block in blocks[:2]:
+                block.BaseType = '"Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt"'
             filter_manager.append_block(blocks[-1])
         else:
             blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
