@@ -713,7 +713,7 @@ Show
 # 0615 Remaining crafting rules - add your own bases here!
 Show
  Rarity = Normal
- BaseType "Crystal Sceptre" "Platinum Kris"
+ BaseType "Crystal Sceptre" "Platinum Kris" "Fossilised Spirit Shield"
  SetFontSize 40
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -729,7 +729,7 @@ Show
  ItemLevel >= 13
  Rarity Normal
  Class Amulets
- BaseType "Citrine"
+ BaseType "Amber"
  SetTextColor 255 255 255
 Show
  ItemLevel >= 13
@@ -739,7 +739,7 @@ Show
  SetTextColor 255 255 255
 Show
  Rarity = Magic
- BaseType "Jade Amulet" "Turquoise Amulet" "Citrine Amulet"  "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"
+ BaseType "Amber Amulet" "Agate Amulet" "Citrine Amulet"  "Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring" "Leather Belt"
  SetFontSize 45
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
@@ -834,7 +834,7 @@ Show
  PlayAlertSound 1 300
 Show
  Class Currency
- BaseType  "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Glassblower's Bauble" "Orb of Transmutation"  "Orb of Augmentation" 
+ BaseType "Orb of Chance" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Glassblower's Bauble" "Orb of Transmutation"  "Orb of Augmentation" 
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 200
@@ -936,24 +936,6 @@ Show
  ItemLevel >= 75
  Rarity Rare
  Class Rings Amulets Belts
- BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
- SetFontSize 40
- SetTextColor 0 0 0 255
- SetBorderColor 0 0 0 255
- SetBackgroundColor 160 200 50 255
-Show
- ItemLevel >= 65
- Rarity Rare
- Class Rings Amulets Belts
- BaseType "Iron Ring" "Paua Ring" "Moonstone Ring" "Amethyst Ring" "Chain Belt" "Cloth Belt" "Studded Belt" "Coral Amulet" "Paua Amulet"
- SetFontSize 40
- SetTextColor 0 0 0 255
- SetBorderColor 0 0 0 255
- SetBackgroundColor 160 200 50 255
-Show
- ItemLevel >= 75
- Rarity Rare
- Class Rings Amulets Belts
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 255 255 0
@@ -994,6 +976,23 @@ Show
 # 1102 Rare crafting bases 83+
 
 # 1103 T1 rare items
+Show
+ ItemLevel >= 75
+ Rarity Rare
+ BaseType "Kite Shield" "Spirit Shield"
+ SetFontSize 40
+ SetTextColor 255 190 0 255
+ SetBorderColor 255 125 0
+ SetBackgroundColor 100 75 0 225
+ PlayAlertSound 1 300
+Show
+ Rarity Rare
+ BaseType "Kite Shield" "Spirit Shield"
+ SetFontSize 40
+ SetTextColor 255 255 119 255
+ SetBorderColor 255 125 0
+ SetBackgroundColor 100 75 0 225
+ PlayAlertSound 1 300
 Show
  Height = 3
  Width = 1
@@ -1898,7 +1897,7 @@ Show
  PlayAlertSound 8 300
 Show
  Class Gems
- BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Grace" "Item Quantity" "Vaal Breach" "Vaal Summon Skeletons" "Vaal Lightning Trap"
+ BaseType "Portal" "Empower" "Enlighten" "Vaal Haste" "Vaal Grace" "Item Quantity" "Vaal Breach"
  SetFontSize 45
  SetTextColor 30 200 200 255
  SetBorderColor 30 150 180 255
@@ -2379,7 +2378,7 @@ Show
 # 1802 Harbinger Currency
 Show
  Class Currency
- BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard" "Horizon Shard" 
+ BaseType "Annulment Shard" "Harbinger's Shard" "Ancient Shard" "Exalted Shard"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2561,7 +2560,7 @@ Show
 # 1903 T2 - Great cards
 Show
  Class "Divination"
- BaseType "Bowyer's Dream" "Chaotic Disposition" "Last Hope" "Left to Fate" "Saint's Treasure" "The Breach" "The Brittle Emperor" "The Cartographer" "The Dapper Prodigy" "The Dreamer" "The Enlightened" "The Ethereal" "The Formless Sea" "The Hale Heart" "The Hoarder" "The Hunger" "The Jeweller's Boon" "The Risk" "The Sephirot" "The Thaumaturgist" "The Undisputed" "The Valley of Steel Boxes" "The Vast" "The Void" "Time-Lost Relic" "The Encroaching Darkness" "The Throne" 
+ BaseType "Bowyer's Dream" "Chaotic Disposition" "Last Hope" "Left to Fate" "Saint's Treasure" "The Breach" "The Brittle Emperor" "The Cartographer" "The Dapper Prodigy" "The Dreamer" "The Enlightened" "The Ethereal" "The Formless Sea" "The Hale Heart" "The Hoarder" "The Hunger" "The Jeweller's Boon" "The Risk" "The Sephirot" "The Thaumaturgist" "The Undisputed" "The Valley of Steel Boxes" "The Vast" "The Void" "Time-Lost Relic"
  SetFontSize 45
  SetTextColor 0 0 0 255
  SetBorderColor 200 200 0 255
@@ -2581,7 +2580,7 @@ Show
 # 1905 T5 - Format trash tier cards... before
 Hide
  Class "Divination"
- BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" 
+ BaseType "Carrion Crow" "King's Blade" "Prosperity" "The Inoculated" "The Rabid Rhoa" "The Sigil" "The Surgeon" "The Twins" "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade"  "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity"  "Rain Tempter"  "The Army of Blood" "The Coming Storm" "The Conduit"  "The Feast" "The Incantation" "The Inoculated" "The Lich"  "The Lunaris Priestess" "The Metalsmith's Gift" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow"  "The Sigil" "The Siren" "The Surgeon" "The Tower" "The Twins"  "The Wolverine" "Thunderous Skies" 
  SetFontSize 18
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
@@ -2654,7 +2653,7 @@ Show
 # 2203 Tier 1 uniques
 Show
  Rarity Unique
- BaseType "Ambush Mitts" "Callous Mask" "Cloth Belt Piece" "Clutching Talisman" "Crusader Boots" "Ezomyte Tower Shield" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Harlequin Mask" "Hydrascale Gauntlets" "Jewelled Foil" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sanctified Mana Flask" "Sapphire Flask" "Savant's Robe" "Thorium Spirit Shield" "Wereclaw Talisman" "Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"
+ BaseType "Ambush Mitts" "Callous Mask" "Cloth Belt Piece" "Clutching Talisman" "Crusader Boots" "Ezomyte Tower Shield" "Glorious Plate" "Grand Mana Flask" "Greatwolf Talisman" "Harlequin Mask" "Hydrascale Gauntlets" "Jewelled Foil" "Prismatic Jewel" "Prophecy Wand" "Rawhide Boots" "Rawhide Tower Shield" "Rotfeather Talisman" "Royal Axe" "Ruby Flask" "Sanctified Life Flask" "Sanctified Mana Flask" "Sapphire Flask" "Savant's Robe" "Thorium Spirit Shield" "Wereclaw Talisman"
  SetFontSize 45
  SetTextColor 175 96 37 255
  SetBorderColor 175 96 37 255
@@ -3056,7 +3055,7 @@ Show
  Class "Rings" "Amulets" "Belts"
  SetFontSize 45
  SetTextColor 0 0 0 255
- SetBorderColor 0 0 0 255
+ SetBorderColor 255 255 0
  SetBackgroundColor 170 225 70 255
  PlayAlertSound 12 300
 Show

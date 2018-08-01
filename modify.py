@@ -372,11 +372,14 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
 
     # 移除前两个 1 ITEM_LEVEL_CHAOS
     blocks = filter_manager.add_comment(1004, 'Rare trinkets "remaining"')
+    for block in blocks[2:]:
+        block.SetBorderColor = COLOR_YELLOW
     if settings.SSF:
         filter_manager.extend_blocks(blocks[:2])
-    for block in blocks[2:]:
-        block.modify(SetBorderColor=COLOR_YELLOW, PlayAlertSound=SOUND_MID_VALUE)
-    blocks[3].ItemLevel = ITEM_LEVEL_CHAOS
+    else:
+        for block in blocks[2:]:
+            block.PlayAlertSound = SOUND_MID_VALUE
+        blocks[3].ItemLevel = ITEM_LEVEL_CHAOS
     filter_manager.extend_blocks(blocks[2:])
 
     filter_manager.add_comment(1100, 'RARE ITEMS - WEAPONS AND ARMORS (ENDGAME)', ignored=True)
@@ -486,7 +489,7 @@ def modify_gem_flask_map(filter_manager):
         block.PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].SetBackgroundColor = COLOR_WHITE
     if settings.SSF:
-        blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap"'
+        blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap" ' + settings.NEED_GEM
     filter_manager.extend_blocks(blocks)
 
     # 8
@@ -649,6 +652,7 @@ def modify_leveling(filter_manager):
         rare_rrr = rare_rrg.copy_modify(SocketGroup='RRR')
         rare_ggb = rare_rrg.copy_modify(SocketGroup='GGB')
         filter_manager.extend_blocks([rare_rrg, rare_rrr] if not settings.SPELL else [rare_ggb])
+    blocks[1].SetBorderColor = COLOR_YELLOW
     blocks[2].PlayAlertSound = SOUND_LEVELING
     if not settings.SPELL:
         blocks[3].modify(Height=None, Class='"Boots" "Helmets" "Gloves"')

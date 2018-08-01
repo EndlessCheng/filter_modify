@@ -3,7 +3,7 @@ TEMP = False
 
 # Small different on leveling
 TENCENT = True or TEMP
-SSF = True
+SSF = False
 
 AW = False
 AW_RANGE = False and AW
@@ -18,19 +18,25 @@ RICH_LEVELING = False
 #
 
 NEED_GGB_WEAPON = True  # True
+NEED_GEM = '"Shield Charge"'
 
 SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
-    '"Jade Amulet" "Turquoise Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
+    '"Amber Amulet" "Agate Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
+    # '"Jade Amulet" "Turquoise Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
     '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"' if not SPELL else '',  # 点伤，血抗
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤，血抗
+    '"Leather Belt"',  # 血抗
 ]).strip() if not RICH_LEVELING else ''
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
-    '"Crystal Sceptre"',
-    '"Platinum Kris"',
+    # '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用，仅此
+
+    '"Crystal Sceptre"',  # 攻速
+    '"Platinum Kris"',  # 爆率，攻速
+    '"Fossilised Spirit Shield"',  # 爆率
 
     # '"Engraved Wand"',  # essence of anger/wrath/hatred
     # '"Siege Axe"',  # 59 73
@@ -79,6 +85,26 @@ MAP_WHITE = False  # False
 MAP_YELLOW = False  # False
 MAP_RED = False  # False
 
+T1_RARE_BASE_TYPE = ' '.join([
+    '"Kite Shield"',
+    '"Spirit Shield"',
+
+    # '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
+    # '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
+    # '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
+
+    # TODO: other bases?
+    # '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
+    # '"Titan Greaves" "Vaal Greaves"',
+    # '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
+
+    # '"Siege Axe"',  # 开膛斧
+
+    # '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
+    # '"Lion Pelt"',  # 斯塔空加之首
+    # '"Crusader Buckler"',  # 艾许之镜
+]).strip() if not MAP_RED else ''
+
 MAGIC_JEWEL_BASE_TYPE = ' '.join([
     '"Crimson"',
     '"Viridian" "Cobalt"',
@@ -103,28 +129,11 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
     ['"Turquoise"', '"Lapis"']
     [max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if '"Lapis Amulet"' in ALERT_MAGIC_BASE_TYPE else 2):])
 if SPELL:
-    SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Citrine"'][0:])
+    SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Amber"'][0:])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
 SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
 
 L3_MAX_IL = 19  # RRG 头/脚
-
-T1_RARE_BASE_TYPE = ' '.join([
-    # '"Nightmare Mace" "Pernarch" "Legion Hammer" "Tenderizer" "Dragon Mace"',  # 等一个过3.0分的武器
-    # '"Infernal Axe" "Butcher Axe" "Karui Axe" "Engraved Hatchet" "Wraith Axe"',
-    # '"Behemoth Mace" "Vaal Hatchet" "Runic Hatchet"',
-
-    # TODO: other bases?
-    # '"Royal Burgonet" "Eternal Burgonet" "Ezomyte Burgonet"',  # 差不多就行
-    # '"Titan Greaves" "Vaal Greaves"',
-    # '"Titan Gauntlets" "Vaal Gauntlets"',  # 血友病
-
-    # '"Siege Axe"',  # 开膛斧
-
-    # '"Imbued Wand" "Carved Wand" "Engraved Wand"'  # 皮斯卡托的慧眼
-    # '"Lion Pelt"',  # 斯塔空加之首
-    # '"Crusader Buckler"',  # 艾许之镜
-]).strip() if not MAP_RED else ''
 
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
