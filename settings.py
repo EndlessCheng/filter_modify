@@ -3,7 +3,7 @@ TEMP = False
 
 # Small different on leveling
 TENCENT = True or TEMP
-SSF = True
+SSF = False
 
 AW = False
 AW_RANGE = False and AW
