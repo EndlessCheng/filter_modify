@@ -3,7 +3,7 @@ TEMP = False
 
 # Small different on leveling
 TENCENT = True or TEMP
-SSF = False
+SSF = True
 
 AW = False
 AW_RANGE = False and AW
@@ -154,7 +154,7 @@ CURRENCY_ALERT_AUGMENTATION = True and not MAP_YELLOW
 # CURRENCY_ALERT_CHANCE = True and not MAP_YELLOW
 ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
 
-SSF_UNIQUE = '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
+SSF_UNIQUE = ''  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
 
 ALERT_ESSENCE_BASE_TYPE = ''
 

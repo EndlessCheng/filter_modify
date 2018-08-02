@@ -488,8 +488,9 @@ def modify_gem_flask_map(filter_manager):
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
     blocks[2].SetBackgroundColor = COLOR_WHITE
+    blocks[2].BaseType += ' ' + settings.NEED_GEM
     if settings.SSF:
-        blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap" ' + settings.NEED_GEM
+        blocks[2].BaseType += ' "Vaal Summon Skeletons" "Vaal Lightning Trap" '
     filter_manager.extend_blocks(blocks)
 
     # 8
