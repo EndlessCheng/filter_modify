@@ -3470,6 +3470,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
 Show
  Sockets = 3
  SocketGroup G
@@ -3480,6 +3481,7 @@ Show
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
 
 # 2903 Linked gear - 3links
 Show
@@ -3519,7 +3521,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Normal
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" "Light Brigandine" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" 
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -3527,7 +3529,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Magic
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" "Light Brigandine" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" 
  SetFontSize 45
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
