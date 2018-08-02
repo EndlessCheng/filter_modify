@@ -713,7 +713,7 @@ Show
 # 0615 Remaining crafting rules - add your own bases here!
 Show
  Rarity = Normal
- BaseType "Crystal Sceptre" "Platinum Kris" "Fossilised Spirit Shield"
+ BaseType "Ceremonial Kite Shield" "Angelic Kite Shield" "Crystal Sceptre" "Platinum Kris" "Fossilised Spirit Shield"
  SetFontSize 40
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -3442,6 +3442,44 @@ Show
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
+Hide
+ Sockets = 3
+ SocketGroup R
+ Rarity = Normal
+ Class "Sceptres" "Wands"
+ SetFontSize 18
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+Hide
+ Sockets = 3
+ SocketGroup BB
+ Rarity = Normal
+ Class "Sceptres" "Wands"
+ SetFontSize 18
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+Show
+ Sockets = 3
+ SocketGroup G
+ SocketGroup B
+ Rarity = Normal
+ Class "Sceptres" "Wands"
+ SetFontSize 40
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+Show
+ Sockets = 3
+ SocketGroup G
+ SocketGroup B
+ Rarity = Magic
+ Class "Sceptres" "Wands"
+ SetFontSize 40
+ SetTextColor 25 95 235 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
 
 # 2903 Linked gear - 3links
 Show
@@ -3481,7 +3519,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Normal
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt"
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" "Light Brigandine" 
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -3489,7 +3527,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Magic
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt"
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" "Light Brigandine" 
  SetFontSize 45
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255

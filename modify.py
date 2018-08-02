@@ -683,6 +683,16 @@ def modify_leveling(filter_manager):
             block.modify(Class='"Sceptres" "Wands"', SocketGroup='GGB', ItemLevel=None,
                          PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS)  # 电弧陷阱
         filter_manager.extend_blocks(blocks)
+        filter_manager.append_block(
+            blocks[0].copy_modify(status=DEBUG, LinkedSockets=None, Sockets='= 3', SocketGroup='R',
+                                  ItemLevel=None, PlayAlertSound=None, SetFontSize=FONT_SIZE_MIN))
+        filter_manager.append_block(
+            blocks[0].copy_modify(status=DEBUG, LinkedSockets=None, Sockets='= 3', SocketGroup='BB',
+                                  ItemLevel=None, PlayAlertSound=None, SetFontSize=FONT_SIZE_MIN))
+        for block in blocks[:2]:
+            filter_manager.append_block(
+                block.copy_modify(LinkedSockets=None, Sockets='= 3', SocketGroup=['G', 'B'], ItemLevel=None,
+                                  PlayAlertSound=None, **STYLE_LINKS))  # 电弧陷阱
 
     # RR RG RRG RRR L2_MAX_IL L3_MAX_IL       or GGB
     blocks = filter_manager.add_comment(2903, 'Linked gear - 3links')
@@ -715,7 +725,7 @@ def modify_leveling(filter_manager):
     if not settings.RICH_LEVELING:
         if settings.SPELL:
             for block in blocks[:2]:
-                block.BaseType = '"Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt"'
+                block.BaseType = '"Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt"' + ' "Scale Vest" "Light Brigandine" '
             filter_manager.append_block(blocks[-1])
         else:
             blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'

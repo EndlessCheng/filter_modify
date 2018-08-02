@@ -32,7 +32,7 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 ]).strip() if not RICH_LEVELING else ''
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
-    # '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用，仅此
+    '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用，仅此
 
     '"Crystal Sceptre"',  # 攻速
     '"Platinum Kris"',  # 爆率，攻速

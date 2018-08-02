@@ -69,7 +69,12 @@ class FilterBlock:
         new_text = [self.status + '\n']
         for attr in FilterBlock._FILTER_ORDER:
             if getattr(self, attr, None) is not None:
-                new_text.append(" {} {}\n".format(attr, getattr(self, attr)))
+                val = getattr(self, attr)
+                if isinstance(val, list):
+                    for v in val:
+                        new_text.append(f" {attr} {v}\n")
+                else:
+                    new_text.append(f" {attr} {val}\n")
         assert len(new_text) > 1
         return new_text
 
