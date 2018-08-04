@@ -3506,6 +3506,21 @@ Show
  PlayAlertSound 12 300
 
 # 2904 Extra Highlight: Boots
+Show
+ ItemLevel <= 12
+ Rarity = Magic
+ Class "Boots"
+ SetFontSize 45
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
+ SetBackgroundColor 0 0 0 255
+Show
+ ItemLevel <= 24
+ Rarity = Magic
+ Class "Boots"
+ SetFontSize 36
+ SetTextColor 25 95 235 255
+ SetBorderColor 100 100 100 255
 
 # 2905 Optional Recipes
 
@@ -3551,14 +3566,14 @@ Show
 
 # 3001 Progression - Part 1 1-30
 Hide
- ItemLevel >= 2
+ ItemLevel >= 6
  Rarity Magic
  Class "Bows" "Two Hand" "Staves" "Daggers" "Wands" "Quivers" "Shields" "Claws" "Sceptres" "One Hand" "Flasks" "Belts" "Amulets" "Rings"
  SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 75
 Hide
- ItemLevel >= 5
+ ItemLevel >= 6
  Rarity Magic
  Class "Helmets" "Gloves" "Boots" "Body Armour"
  SetFontSize 18

@@ -2,7 +2,7 @@ DEBUG = False
 TEMP = False
 
 # Small different on leveling
-TENCENT = True or TEMP
+TENCENT = False or TEMP
 SSF = False
 
 AW = False
@@ -22,6 +22,7 @@ NEED_GEM = '"Shield Charge"'
 
 SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
+SHOW_4L = True  # True
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amber Amulet" "Agate Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
@@ -140,7 +141,7 @@ LINKED_CLASS = ' '.join([
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Helmets"' if '"Helmets"' not in HIDE_BELOW_T1_RARE_CLASS else '',
     '"Gloves"' if '"Gloves"' not in HIDE_BELOW_T1_RARE_CLASS else '',
-]).strip() if SHOW_FLASK_HALLOWED else ''
+]).strip() if SHOW_4L and SHOW_FLASK_LIFE else ''
 SHOW_N2M_ONE_HAND_MELEE = True and SHOW_FLASK_LIFE and not SPELL and not BOW
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
