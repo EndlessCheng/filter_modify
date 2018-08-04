@@ -3445,8 +3445,8 @@ Show
 Show
  LinkedSockets = 3
  Rarity = Normal
- Class "Wands"
- BaseType "Driftwood Wand"
+ Class "Sceptres" "Wands"
+ BaseType "Driftwood Wand" "Driftwood Sceptre"
  SetFontSize 40
  SetTextColor 255 255 255 255
  SetBorderColor 0 255 255
@@ -3455,8 +3455,8 @@ Show
 Show
  LinkedSockets = 3
  Rarity = Magic
- Class "Wands"
- BaseType "Driftwood Wand"
+ Class "Sceptres" "Wands"
+ BaseType "Driftwood Wand" "Driftwood Sceptre"
  SetFontSize 40
  SetTextColor 25 95 235 255
  SetBorderColor 0 255 255

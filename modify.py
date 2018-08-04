@@ -686,7 +686,7 @@ def modify_leveling(filter_manager):
                 block.copy_modify(SocketGroup='GGB', PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))
         for block in blocks[:2]:
             filter_manager.append_block(
-                block.copy_modify(Class='"Wands"', BaseType='"Driftwood Wand"', ItemLevel=None,
+                block.copy_modify(BaseType='"Driftwood Wand" "Driftwood Sceptre"', ItemLevel=None,
                                   PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))
         for sg in ['R', 'BB']:
             filter_manager.append_block(
