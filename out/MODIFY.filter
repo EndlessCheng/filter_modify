@@ -3442,6 +3442,26 @@ Show
  SetBorderColor 0 255 255
  SetBackgroundColor 0 0 0 255
  PlayAlertSound 12 300
+Show
+ LinkedSockets = 3
+ Rarity = Normal
+ Class "Wands"
+ BaseType "Driftwood Wand"
+ SetFontSize 40
+ SetTextColor 255 255 255 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
+Show
+ LinkedSockets = 3
+ Rarity = Magic
+ Class "Wands"
+ BaseType "Driftwood Wand"
+ SetFontSize 40
+ SetTextColor 25 95 235 255
+ SetBorderColor 0 255 255
+ SetBackgroundColor 0 0 0 255
+ PlayAlertSound 12 300
 Hide
  Sockets = 3
  SocketGroup R
@@ -3449,7 +3469,7 @@ Hide
  Class "Sceptres" "Wands"
  SetFontSize 18
  SetTextColor 255 255 255 255
- SetBorderColor 0 255 255
+ SetBorderColor 0 120 120 255
  SetBackgroundColor 0 0 0 255
 Hide
  Sockets = 3
@@ -3458,7 +3478,7 @@ Hide
  Class "Sceptres" "Wands"
  SetFontSize 18
  SetTextColor 255 255 255 255
- SetBorderColor 0 255 255
+ SetBorderColor 0 120 120 255
  SetBackgroundColor 0 0 0 255
 Show
  Sockets = 3
@@ -3506,21 +3526,6 @@ Show
  PlayAlertSound 12 300
 
 # 2904 Extra Highlight: Boots
-Show
- ItemLevel <= 12
- Rarity = Magic
- Class "Boots"
- SetFontSize 45
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
- SetBackgroundColor 0 0 0 255
-Show
- ItemLevel <= 24
- Rarity = Magic
- Class "Boots"
- SetFontSize 36
- SetTextColor 25 95 235 255
- SetBorderColor 100 100 100 255
 
 # 2905 Optional Recipes
 
@@ -3566,14 +3571,14 @@ Show
 
 # 3001 Progression - Part 1 1-30
 Hide
- ItemLevel >= 6
+ ItemLevel >= 2
  Rarity Magic
  Class "Bows" "Two Hand" "Staves" "Daggers" "Wands" "Quivers" "Shields" "Claws" "Sceptres" "One Hand" "Flasks" "Belts" "Amulets" "Rings"
  SetFontSize 18
  SetBorderColor 0 0 0 150
  SetBackgroundColor 0 0 0 75
 Hide
- ItemLevel >= 6
+ ItemLevel >= 5
  Rarity Magic
  Class "Helmets" "Gloves" "Boots" "Body Armour"
  SetFontSize 18

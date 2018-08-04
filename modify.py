@@ -681,19 +681,21 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2902, 'Linked gear - Caster Weapon Configuration')
     if settings.SPELL and settings.NEED_GGB_WEAPON:
         for block in blocks[:2]:
-            block.modify(Class='"Sceptres" "Wands"', SocketGroup='GGB', ItemLevel=None,
-                         PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS)  # 电弧陷阱
-        filter_manager.extend_blocks(blocks)
-        filter_manager.append_block(
-            blocks[0].copy_modify(status=DEBUG, LinkedSockets=None, Sockets='= 3', SocketGroup='R',
-                                  ItemLevel=None, PlayAlertSound=None, SetFontSize=FONT_SIZE_MIN))
-        filter_manager.append_block(
-            blocks[0].copy_modify(status=DEBUG, LinkedSockets=None, Sockets='= 3', SocketGroup='BB',
-                                  ItemLevel=None, PlayAlertSound=None, SetFontSize=FONT_SIZE_MIN))
+            block.modify(SocketGroup=None, Class='"Sceptres" "Wands"', ItemLevel=None)
+            filter_manager.append_block(
+                block.copy_modify(SocketGroup='GGB', PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))
+        for block in blocks[:2]:
+            filter_manager.append_block(
+                block.copy_modify(Class='"Wands"', BaseType='"Driftwood Wand"', ItemLevel=None,
+                                  PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))
+        for sg in ['R', 'BB']:
+            filter_manager.append_block(
+                blocks[0].copy_modify(status=DEBUG, LinkedSockets=None, Sockets='= 3', SocketGroup=sg,
+                                      ItemLevel=None, PlayAlertSound=None, SetFontSize=FONT_SIZE_MIN))
         for block in blocks[:2]:
             filter_manager.append_block(
                 block.copy_modify(LinkedSockets=None, Sockets='= 3', SocketGroup=['G', 'B'], ItemLevel=None,
-                                  PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))  # 电弧陷阱
+                                  PlayAlertSound=SOUND_LEVELING, **STYLE_LINKS))
 
     # RR RG RRG RRR L2_MAX_IL L3_MAX_IL       or GGB
     blocks = filter_manager.add_comment(2903, 'Linked gear - 3links')

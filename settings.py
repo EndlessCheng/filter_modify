@@ -2,7 +2,7 @@ DEBUG = False
 TEMP = False
 
 # Small different on leveling
-TENCENT = False or TEMP
+TENCENT = True or TEMP
 SSF = False
 
 AW = False
