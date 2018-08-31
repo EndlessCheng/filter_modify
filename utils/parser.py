@@ -14,7 +14,9 @@ class BasicParser:
             return f.readlines()
 
     def remove_comments(self):
-        new_text = list(self.raw_text)
+        new_text = [line for line in list(self.raw_text)
+                    # if not line.startswith(('\tMinimapIcon', '\tPlayEffect'))
+                    ]
         for no, line in enumerate(new_text, 1):
             if line and line[0] != '#':
                 new_text[no - 1] = line.split('#')[0].rstrip() + '\n'
