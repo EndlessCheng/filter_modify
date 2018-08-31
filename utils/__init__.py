@@ -50,10 +50,13 @@ class FilterBlock:
                     continue
                 attr_name, attr_value = line.split(' ', 1)
                 assert attr_name in FilterBlock._FILTER_ORDER, attr_name
-                if attr_name == 'ItemLevel' and getattr(self, 'ItemLevel', None) is not None:
-                    continue  # FIXME: 目前暂时没问题，后续优化成 range
-                elif attr_name == 'HasExplicitMod' and getattr(self, 'HasExplicitMod', None) is not None:
-                    self.HasExplicitMod += ' ' + attr_value
+
+                attr = getattr(self, attr_name, None)
+                if attr is not None:
+                    if not isinstance(attr, list):  # str
+                        attr = [attr]
+                    attr.append(attr_value)
+                    setattr(self, attr_name, attr)
                 else:
                     setattr(self, attr_name, attr_value)
         self.modify(**kwargs)
@@ -70,14 +73,14 @@ class FilterBlock:
 
     def generate(self):
         new_text = [self.status + '\n']
-        for attr in FilterBlock._FILTER_ORDER:
-            if getattr(self, attr, None) is not None:
-                val = getattr(self, attr)
-                if isinstance(val, list):
-                    for v in val:
-                        new_text.append(f" {attr} {v}\n")
+        for attr_name in FilterBlock._FILTER_ORDER:
+            if getattr(self, attr_name, None) is not None:
+                attr = getattr(self, attr_name)
+                if isinstance(attr, list):
+                    for v in attr:
+                        new_text.append(f" {attr_name} {v}\n")
                 else:
-                    new_text.append(f" {attr} {val}\n")
+                    new_text.append(f" {attr_name} {attr}\n")
         assert len(new_text) > 1
         return new_text
 
