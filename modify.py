@@ -16,6 +16,7 @@ CLASS_BIG_ONE_HAND = '"Quivers" "Shields" "Claws" "Sceptres" "One Hand"'
 CLASS_HAND = ' '.join([CLASS_TWO_HAND, CLASS_SMALL_ONE_HAND, CLASS_BIG_ONE_HAND])
 CLASS_ACCESSORY = '"Belts" "Amulets" "Rings"'
 
+BASE_TYPE_BODY_STR = '"Plate Vest" "Chestplate" "Plate"'
 BASE_TYPE_BODY_EVA = '"Shabby Jerkin" "Leather" "Buckskin Tunic" "Eelskin Tunic" "Sharkskin Tunic" ' \
                      '"Thief\'s Garb" "Cutthroat\'s Garb" "Assassin\'s Garb"'
 BASE_TYPE_BODY_ES = '"Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Silken Wrap" "Necromancer Silks"'
@@ -644,6 +645,11 @@ def modify_leveling(filter_manager):
         hide_some_body_rares = hide_leveling_rares.copy_modify(
             ItemLevel='>= 23', Class='"Body Armour"',
             BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
+        filter_manager.append_block(hide_some_body_rares)
+    else:
+        hide_some_body_rares = hide_leveling_rares.copy_modify(
+            ItemLevel='>= 23', Class='"Body Armour"',
+            BaseType=' '.join([BASE_TYPE_BODY_STR]))
         filter_manager.append_block(hide_some_body_rares)
     if settings.HIDE_BELOW_T1_RARE_CLASS != '':
         hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS)

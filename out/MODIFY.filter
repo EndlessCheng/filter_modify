@@ -3101,6 +3101,15 @@ Hide
  SetBackgroundColor 0 0 0 75
 Hide
  Identified False
+ ItemLevel >= 23
+ Rarity = Rare
+ Class "Body Armour"
+ BaseType "Plate Vest" "Chestplate" "Plate"
+ SetFontSize 26
+ SetBorderColor 0 0 0 100
+ SetBackgroundColor 0 0 0 75
+Hide
+ Identified False
  ItemLevel >= 13
  Rarity = Rare
  Class "Claws" "One Hand"
