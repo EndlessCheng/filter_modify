@@ -123,7 +123,7 @@ def modify_endgame_mix(filter_manager):
     blocks = filter_manager.add_comment(302, 'Shaper Item Layers - T1')
     for block in blocks:
         block.PlayAlertSound = SOUND_TOP_VALUE
-    shaper_alerts = blocks[0].copy_modify(Class='"Amulets" "Rings" "Belts"', BaseType=None)
+    shaper_alerts = blocks[0].copy_modify(Class='"Amulets" "Rings" "Belts" "Gloves"', BaseType=None)  # gloves for trap
     filter_manager.append_block(shaper_alerts)
     filter_manager.extend_blocks(blocks)
 
@@ -954,7 +954,8 @@ def modify_filter(filter_manager, show_rare_class=''):
                                 '"The Warden"',  # 腐化项链
                                 '"Volatile Power"',  # Q20 瓦尔技能
 
-                                '"Death"',  # TODO https://dd.reddit.com/r/pathofexile/comments/9bq83e/psa_if_you_hide_the_death_card_in_your_filter/
+                                '"Death"',
+                                # TODO https://dd.reddit.com/r/pathofexile/comments/9bq83e/psa_if_you_hide_the_death_card_in_your_filter/
                                 ]
         for bt in still_good_base_type:
             trash_base_type = trash_base_type.replace(bt, '')
