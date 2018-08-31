@@ -6,7 +6,7 @@ import requests
 
 TYPE_LIST = ['normal', 'cruel', 'merciless', 'uber']
 
-_type_list = ['normal', 'cruel', 'merciless', 'uber'][:1]
+_type_list = ['normal', 'cruel', 'merciless', 'uber'][:2]
 
 
 def gen_url(dt, type_):

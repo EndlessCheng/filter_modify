@@ -13,6 +13,7 @@ class FilterBlock:
         'Quality',
         'ElderItem', 'ShaperItem',
         'ElderMap', 'ShapedMap',
+        'MapTier',
         'Corrupted',
         'Identified',
         'SocketGroup',
@@ -28,7 +29,9 @@ class FilterBlock:
 
         # Actions(Styles)
         'SetFontSize', 'SetTextColor', 'SetBorderColor', 'SetBackgroundColor',
-        'PlayAlertSound',
+        'MinimapIcon',
+        'PlayEffect',
+        'PlayAlertSound', 'CustomAlertSound',
         'DisableDropSound',
     ]
 
@@ -46,7 +49,7 @@ class FilterBlock:
                 if line == '':
                     continue
                 attr_name, attr_value = line.split(' ', 1)
-                assert attr_name in FilterBlock._FILTER_ORDER
+                assert attr_name in FilterBlock._FILTER_ORDER, attr_name
                 if attr_name == 'ItemLevel' and getattr(self, 'ItemLevel', None) is not None:
                     continue  # FIXME: 目前暂时没问题，后续优化成 range
                 elif attr_name == 'HasExplicitMod' and getattr(self, 'HasExplicitMod', None) is not None:

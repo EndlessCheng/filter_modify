@@ -33,7 +33,7 @@ ITEM_LEVEL_REGAL = '>= 75'
 ITEM_LEVEL_CHAOS = '>= 60'
 
 FONT_SIZE_MAX = 45
-FONT_SIZE_MIN = 18
+FONT_SIZE_MIN = 17  # https://dd.reddit.com/r/pathofexile/comments/991bym/to_filter_creators_setfontsize_the_truth/
 
 COLOR_WHITE = '255 255 255'
 COLOR_SILVER = '200 200 200'
@@ -247,13 +247,16 @@ def modify_endgame_mix(filter_manager):
                             SetFontSize=42, SetTextColor=COLOR_WHITE, SetBorderColor=COLOR_LIME_LIGHT)
         filter_manager.append_block(block)
 
-    # ALERT_UTILITY_FLASK_BASE_TYPE 12
+    # ALERT_UTILITY_FLASK_BASE_TYPE 12 SHOW_FLASK_MANA
     blocks = filter_manager.add_comment(611, 'FLASKS (Endgame rules)')
     if settings.ALERT_UTILITY_FLASK_BASE_TYPE != '':
         utility_flasks = blocks[-1].copy_modify(BaseType=settings.ALERT_UTILITY_FLASK_BASE_TYPE,
                                                 SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LEVELING)
         filter_manager.append_block(utility_flasks)
     filter_manager.extend_blocks(blocks[:2])
+    if settings.SHOW_FLASK_MANA:
+        blocks[-2].BaseType = '"Eternal"'
+        filter_manager.append_block(blocks[-2])
 
     filter_manager.add_comment(612, 'Add your own crafting rules here', ignored=True)
 
@@ -944,6 +947,8 @@ def modify_filter(filter_manager, show_rare_class=''):
                                 '"The Scholar"',
                                 '"The Warden"',  # 腐化项链
                                 '"Volatile Power"',  # Q20 瓦尔技能
+
+                                '"Death"',  # TODO https://dd.reddit.com/r/pathofexile/comments/9bq83e/psa_if_you_hide_the_death_card_in_your_filter/
                                 ]
         for bt in still_good_base_type:
             trash_base_type = trash_base_type.replace(bt, '')

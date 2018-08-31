@@ -2,7 +2,7 @@ DEBUG = False
 
 # Small different on leveling
 TENCENT = False
-SSF = False
+SSF = True
 
 AW = False
 AW_RANGE = False and AW
@@ -17,11 +17,11 @@ RICH_LEVELING = False
 #
 
 NEED_GGB_WEAPON = True  # True
-NEED_GEM = '"Shield Charge"'
 
 SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
 SHOW_4L = True  # True
+SHOW_FLASK_MANA = True  # 65 or 3 in 1
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amber Amulet" "Agate Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
@@ -50,31 +50,28 @@ ALERT_NORMAL_BASE_TYPE = ' '.join([
 HIDE_BELOW_T1_RARE_CLASS = ' '.join([
     '"Claws" "One Hand"',
     # '"Body Armour"',  # 有血就行
+    # '"Sceptres"',  # 爆率
 
     # '"Boots"',  # 80+血，有移速更好
     # '"Helmets"',  # 90+血，有命中更好
     # '"Gloves"',  # 80+血，有攻速/点伤更好
 
     # '"Shields"',  # 爆率
-    # '"Sceptres"',  # 爆率
     # '"Daggers" "Wands"',
 ])
 
 ALERT_UTILITY_FLASK_BASE_TYPE = ' '.join([
     '"Quicksilver"',
-    '"Diamond"',
-    '"Jade"',
-    '"Quartz"',
-    '"Basalt"',
-
     '"Ruby"',
     '"Topaz"',
-
-    '"Stibnite"',
+    '"Jade"',
     '"Silver"',
     '"Granite"',
 
-    '"Bismuth" "Amethyst" "Sapphire" "Aquamarine" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
+    '"Basalt"',
+    '"Diamond"',
+
+    '"Bismuth" "Stibnite" "Amethyst" "Sapphire" "Aquamarine" "Quartz" "Sulphur"' if SHOW_FLASK_HALLOWED else '',
 ]).strip() if not RICH_LEVELING else ''
 
 #
@@ -135,6 +132,8 @@ SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
 
 L3_MAX_IL = 19  # RRG 头/脚
 
+NEED_GEM = '"Shield Charge"' if SHOW_FLASK_HALLOWED else ''
+
 LINKED_CLASS = ' '.join([
     '"Body Armour"',
     '"Boots"' if '"Boots"' not in HIDE_BELOW_T1_RARE_CLASS else '',
@@ -154,15 +153,15 @@ CURRENCY_ALERT_AUGMENTATION = True and not MAP_YELLOW
 # CURRENCY_ALERT_CHANCE = True and not MAP_YELLOW
 ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
 
-SSF_UNIQUE = ''  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
+SSF_UNIQUE = '"Twilight Blade"'  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
 
 ALERT_ESSENCE_BASE_TYPE = ''
 
 IGNORE_RARE_UNDER_T2 = False
 L2_MAX_IL = min(4, L3_MAX_IL)
-SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
-if SPELL:
-    SHOW_FLASK_MANA = True and SHOW_FLASK_LIFE
+# SHOW_FLASK_MANA = True and SHOW_FLASK_HALLOWED and SHOW_FLASK_LIFE
+# if SPELL:
+#     SHOW_FLASK_MANA = True and SHOW_FLASK_LIFE
 CHANCING_BASE_TYPE = ''  # if CURRENCY_ALERT_CHANCE else ''
 
 # SHOW_FLASK_HALLOWED = True
