@@ -74,6 +74,9 @@ class FilterBlock:
     def generate(self):
         new_text = [self.status + '\n']
         for attr_name in FilterBlock._FILTER_ORDER:
+            # if attr_name == 'MinimapIcon':
+            #     continue
+
             if getattr(self, attr_name, None) is not None:
                 attr = getattr(self, attr_name)
                 if isinstance(attr, list):
