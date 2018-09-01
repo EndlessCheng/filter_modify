@@ -30,7 +30,7 @@ Show
  SetFontSize 45
  SetBorderColor 0 240 190 240
  SetBackgroundColor 100 100 100 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 8 300
 Show
@@ -39,7 +39,7 @@ Show
  Rarity < Unique
  SetFontSize 45
  SetBorderColor 0 240 190 240
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 Show
@@ -48,7 +48,7 @@ Show
  SetFontSize 45
  SetBorderColor 0 240 190 240
  SetBackgroundColor 0 0 0 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 
@@ -309,7 +309,7 @@ Show
  SetTextColor 255 190 0
  SetBorderColor 0 240 190 240
  SetBackgroundColor 0 75 30 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -320,7 +320,7 @@ Show
  SetTextColor 255 190 0
  SetBorderColor 0 240 190 240
  SetBackgroundColor 0 75 30 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -329,7 +329,7 @@ Show
  HasExplicitMod "Tacati" "Citaqualotl" "Matatl" "Topotante" "Xopec" "Guatelitzi" "Puhuarte"
  SetFontSize 45
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -338,7 +338,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 
@@ -352,7 +352,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -366,7 +366,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -378,7 +378,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -391,7 +391,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -403,7 +403,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -417,7 +417,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -431,7 +431,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -445,7 +445,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -459,7 +459,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -473,7 +473,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -487,7 +487,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -500,7 +500,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -513,7 +513,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 Show
@@ -535,7 +535,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 3 300
 
@@ -549,7 +549,7 @@ Show
  SetFontSize 45
  SetTextColor 0 240 190 240
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 8 300
 
@@ -708,7 +708,7 @@ Show
  DropLevel >= 50
  SetFontSize 45
  SetBorderColor 0 240 190 240
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
 
 # 0702 5-Linked items
@@ -723,7 +723,7 @@ Show
  SetTextColor 255 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 255 255 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 Show
@@ -735,7 +735,7 @@ Show
  SetTextColor 255 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 255 255 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 Show
@@ -745,7 +745,7 @@ Show
  SetTextColor 255 255 255 255
  SetBorderColor 0 0 0
  SetBackgroundColor 213 159 0
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 2 300
 
@@ -769,7 +769,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 240 190 240
  SetBackgroundColor 170 225 70 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue	Temp
  PlayAlertSound 1 300
 Show
@@ -779,7 +779,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 240 190 240
  SetBackgroundColor 170 225 70 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue	Temp
  PlayAlertSound 1 300
 
@@ -813,7 +813,7 @@ Show
  SetTextColor 255 255 0 255
  SetBorderColor 200 200 0 255
  SetBackgroundColor 120 120 0 225
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue	Temp
  PlayAlertSound 1 300
 Show
@@ -831,7 +831,7 @@ Show
  SetTextColor 255 255 0 255
  SetBorderColor 200 200 0 255
  SetBackgroundColor 120 120 0 225
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayAlertSound 2 300
 
 # 0706 Exclusive bases: Top Value
@@ -877,7 +877,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 240 190 240
  SetBackgroundColor 255 125 0 255
- MinimapIcon 2 White Diamond
+ MinimapIcon 0 Yellow Diamond
  PlayEffect Blue
  PlayAlertSound 8 300
 Show
@@ -888,7 +888,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0
- MinimapIcon 2 White Diamond
+ MinimapIcon 0 Yellow Diamond
  PlayEffect White Temp
  PlayAlertSound 1 300
 Show
@@ -898,7 +898,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 255 125 0
  SetBackgroundColor 100 75 0
- MinimapIcon 2 White Diamond
+ MinimapIcon 0 Yellow Diamond
  PlayEffect White Temp
  PlayAlertSound 1 300
 Hide
@@ -923,7 +923,7 @@ Show
  SetTextColor 255 125 0 255
  SetBorderColor 255 125 0 255
  SetBackgroundColor 0 75 30 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue
  PlayAlertSound 8 300
 Show
@@ -934,7 +934,7 @@ Show
  SetTextColor 255 125 0 255
  SetBorderColor 255 125 0 255
  SetBackgroundColor 0 75 30 255
- MinimapIcon 2 Blue Diamond
+ MinimapIcon 0 Blue Diamond
  PlayEffect Blue Temp
  PlayAlertSound 8 300
 Show
@@ -2258,7 +2258,7 @@ Show
  SetTextColor 30 200 200 255
  SetBorderColor 30 150 180 255
  SetBackgroundColor 255 255 255
- MinimapIcon 2 Yellow Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 8 300
 
@@ -2291,7 +2291,7 @@ Show
  SetFontSize 45
  SetTextColor 30 200 200 255
  SetBorderColor 30 200 200 255
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White Temp
  PlayAlertSound 1 300
 Show
@@ -2369,7 +2369,7 @@ Show
  SetFontSize 45
  SetTextColor 74 230 58
  SetBorderColor 74 230 58
- MinimapIcon 1 Green Hexagon
+ MinimapIcon 0 Green Hexagon
  PlayEffect Green Temp
 
 # 1803 Shaped Maps
@@ -2413,7 +2413,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
 Show
@@ -2423,7 +2423,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
 
@@ -2457,7 +2457,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
- MinimapIcon 1 Red Square
+ MinimapIcon 0 Red Square
  PlayEffect Yellow
  PlayAlertSound 8 300
 Show
@@ -2467,7 +2467,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
- MinimapIcon 1 Red Square
+ MinimapIcon 0 Red Square
  PlayEffect Yellow
  PlayAlertSound 8 300
 Show
@@ -2477,7 +2477,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
- MinimapIcon 1 Red Square
+ MinimapIcon 0 Red Square
  PlayEffect Yellow
  PlayAlertSound 8 300
 Show
@@ -2487,7 +2487,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 200 200 200
- MinimapIcon 1 Red Square
+ MinimapIcon 0 Red Square
  PlayEffect Yellow
  PlayAlertSound 8 300
 
@@ -2500,7 +2500,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
 Show
@@ -2510,7 +2510,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
 Show
@@ -2521,7 +2521,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2542,7 +2542,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2563,7 +2563,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2584,7 +2584,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 180 255 0
  SetBackgroundColor 200 200 200
- MinimapIcon 2 Yellow Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2607,7 +2607,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
- MinimapIcon 2 White Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White Temp
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2628,7 +2628,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
- MinimapIcon 2 White Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White Temp
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2649,7 +2649,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 0 0 255
  SetBackgroundColor 200 200 200
- MinimapIcon 2 White Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White Temp
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2670,7 +2670,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
- MinimapIcon 2 White Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White Temp
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2691,7 +2691,7 @@ Show
  SetTextColor 0 0 0
  SetBorderColor 255 255 255
  SetBackgroundColor 200 200 200
- MinimapIcon 2 White Square
+ MinimapIcon 0 Yellow Square
  PlayEffect White Temp
  PlayAlertSound 4 300
  DisableDropSound True
@@ -2748,7 +2748,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213 255
- MinimapIcon 2 Yellow Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect Yellow
  PlayAlertSound 8 300
 Show
@@ -2758,7 +2758,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213 255
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 8 300
 Show
@@ -2767,7 +2767,7 @@ Show
  SetTextColor 159 15 213 255
  SetBorderColor 159 15 213 255
  SetBackgroundColor 0 0 0 255
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 4 300
 Show
@@ -2776,7 +2776,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213 255
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 8 300
 
@@ -2790,7 +2790,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 240 90 35 255
- MinimapIcon 1 Yellow Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect Yellow
  PlayAlertSound 1 300
  DisableDropSound True
@@ -2801,7 +2801,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 249 150 25 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 1 300
  DisableDropSound True
@@ -2812,7 +2812,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 213 159 0 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 1 300
  DisableDropSound True
@@ -2825,7 +2825,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 80 95 210 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 1 300
 Show
@@ -2854,7 +2854,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213 255
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 1 300
 
@@ -2876,7 +2876,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0
  SetBackgroundColor 213 159 0 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 2 300
  DisableDropSound True
@@ -2887,7 +2887,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 249 150 25 255
- MinimapIcon 2 Yellow Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect Yellow
  PlayAlertSound 2 300
  DisableDropSound True
@@ -2935,7 +2935,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 15 180 200 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 1 300
 Show
@@ -2945,7 +2945,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 30 159 200 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White Temp
 Show
  Class Currency
@@ -2954,7 +2954,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 30 159 200 225
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White Temp
 Show
  Class Currency
@@ -3022,7 +3022,7 @@ Show
  SetTextColor 255 0 0
  SetBorderColor 255 0 0
  SetBackgroundColor 255 255 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 Show
@@ -3041,7 +3041,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 0 255
  SetBackgroundColor 159 15 213 255
- MinimapIcon 2 White Circle
+ MinimapIcon 0 Yellow Circle
  PlayEffect White
  PlayAlertSound 8 300
 
@@ -3089,7 +3089,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 0 255 255
  SetBackgroundColor 50 220 240 235
- MinimapIcon 2 Yellow Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect Yellow
  PlayAlertSound 1 300
 
@@ -3101,7 +3101,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 100 150 255
  SetBackgroundColor 145 215 230 225
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 1 300
 Show
@@ -3137,7 +3137,7 @@ Show
  SetTextColor 0 0 0 255
  SetBorderColor 0 100 150 255
  SetBackgroundColor 145 215 230 225
- MinimapIcon 2 White Triangle
+ MinimapIcon 0 Yellow Triangle
  PlayEffect White
  PlayAlertSound 2 300
 
@@ -3261,7 +3261,7 @@ Show
  SetTextColor 175 96 37 255
  SetBorderColor 175 96 37 255
  SetBackgroundColor 53 13 13 255
- MinimapIcon 2 Brown Star
+ MinimapIcon 0 Brown Star
  PlayEffect Brown
  PlayAlertSound 6 300
 
@@ -3271,7 +3271,7 @@ Show
  SetFontSize 45
  SetTextColor 74 230 58 255
  SetBorderColor 74 230 58
- MinimapIcon 1 Green Hexagon
+ MinimapIcon 0 Green Hexagon
  PlayEffect Green
  PlayAlertSound 1 300
 Show
@@ -3279,14 +3279,14 @@ Show
  BaseType "Shaper's Orb" "Elder's Orb"
  SetFontSize 45
  SetBorderColor 74 230 58
- MinimapIcon 1 Green Hexagon
+ MinimapIcon 0 Green Hexagon
  PlayEffect Green Temp
  PlayAlertSound 2 300
 Show
  Class Quest
  SetFontSize 45
  SetBorderColor 74 230 58
- MinimapIcon 1 Green Hexagon
+ MinimapIcon 0 Green Hexagon
  PlayEffect Green Temp
 
 # 2500 OVERRIDE AREA 4 - Insert your custom Leveling adjustments here
@@ -4152,7 +4152,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Normal
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Iron Ring" "Scale Vest" 
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -4160,7 +4160,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Magic
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Scale Vest" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Iron Ring" "Scale Vest" 
  SetFontSize 45
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255

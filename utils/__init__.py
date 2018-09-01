@@ -74,11 +74,11 @@ class FilterBlock:
     def generate(self):
         new_text = [self.status + '\n']
         for attr_name in FilterBlock._FILTER_ORDER:
-            # if attr_name == 'MinimapIcon':
-            #     continue
-
             if getattr(self, attr_name, None) is not None:
                 attr = getattr(self, attr_name)
+                if attr_name == 'MinimapIcon':
+                    attr = attr.replace('2', '0').replace('1', '0').replace('White', 'Yellow')
+
                 if isinstance(attr, list):
                     for v in attr:
                         new_text.append(f" {attr_name} {v}\n")
