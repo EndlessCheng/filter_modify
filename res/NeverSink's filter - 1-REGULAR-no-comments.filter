@@ -1,7 +1,7 @@
 #===============================================================================================================
 # NeverSink's Indepth Loot Filter - for Path of Exile
 #===============================================================================================================
-# VERSION:		6.3
+# VERSION:		6.31
 # TYPE:			1-REGULAR
 # STYLE:		NORMAL
 # AUTHOR:		NeverSink
@@ -202,7 +202,7 @@
 #   [3104] Normal items - First 12 levels - exceptions
 #   [3105] Magic items - general highlight
 # [[3200]] HIDE LAYER 5 - Remaining Items
-# [[3300]] CATCHALL
+# [[3300]] CATCHALL - if you see pink items - send me a mail please - should never happen
 # [[3400]] Special thanks to!
 
 #===============================================================================================================
@@ -546,7 +546,6 @@ Show
 
 Show
 	Identified True
-	Rarity Rare
 	HasExplicitMod "of Crafting" "of Spellcraft" "of Weaponcraft" "of the Underground" "Subterranean"
 	SetFontSize 45
 	SetTextColor 255 190 0
@@ -1839,7 +1838,17 @@ Show
 Show
 	Class Currency
 	BaseType "Scroll of Wisdom"
+	StackSize = 1
 	SetFontSize 40
+	SetTextColor 170 158 130 220
+	SetBorderColor 100 50 30 255
+	SetBackgroundColor 0 0 0 255
+
+Show
+	Class Currency
+	BaseType "Scroll of Wisdom"
+	StackSize > 1
+	SetFontSize 45
 	SetTextColor 170 158 130 220
 	SetBorderColor 100 50 30 255
 	SetBackgroundColor 0 0 0 255
@@ -4102,7 +4111,7 @@ Show
 	SetBackgroundColor 145 215 230 225
 	PlayAlertSound 2 300
 	MinimapIcon 2 White Triangle
-	PlayEffect White
+	PlayEffect White Temp
 
 #===============================================================================================================
 # [[2100]] Currency - PART 4 - remaining items

@@ -618,10 +618,7 @@ def modify_leveling(filter_manager):
     blocks = filter_manager.add_comment(2601, 'Hide outdated flasks')
     filter_manager.extend_blocks(blocks)
 
-    # SHOW_FLASK_LIFE Hallowed
-    blocks = filter_manager.add_comment(2602, 'Hybrid flasks (normal)')
-    if settings.SHOW_FLASK_LIFE:
-        filter_manager.append_block(blocks[-1])
+    filter_manager.add_comment(2602, 'Hybrid flasks (normal)', ignored=True)
 
     # SHOW_FLASK_HALLOWED 42, 60   SHOW_FLASK_LIFE
     blocks = filter_manager.add_comment(2603, 'Life Flasks - Normal (Kudos to Antnee)')
@@ -836,11 +833,11 @@ def modify_filter(filter_manager, show_rare_class=''):
         if settings.ALERT_LOW_CURRENCY:
             blocks[1].PlayAlertSound = SOUND_LOW_VALUE
         blocks[2].BaseType = blocks[2].BaseType.replace('"Alchemy Shard"', '')
-        blocks[-3].SetFontSize = settings.CURRENCY_PORTAL_FONT_SIZE
-        blocks[-2].BaseType = blocks[-2].BaseType.replace('"Transmutation Shard"', '').replace('"Alteration Shard"', '')
-        blocks[-2].SetFontSize = settings.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
-    blocks[-1].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
-    blocks[-1].SetFontSize = settings.CURRENCY_WISDOM_FONT_SIZE
+        blocks[-4].SetFontSize = settings.CURRENCY_PORTAL_FONT_SIZE
+        blocks[-3].BaseType = blocks[-3].BaseType.replace('"Transmutation Shard"', '').replace('"Alteration Shard"', '')
+        blocks[-3].SetFontSize = settings.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
+    blocks[-2].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
+    blocks[-2].SetFontSize = settings.CURRENCY_WISDOM_FONT_SIZE
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(1000, 'OVERRIDE AREA 2 - Override the default rare rulesets here', ignored=True)
@@ -1047,7 +1044,8 @@ def modify_filter(filter_manager, show_rare_class=''):
     filter_manager.extend_blocks(blocks)
 
     # 8
-    blocks = filter_manager.add_comment(3300, 'CATCHALL')
+    blocks = filter_manager.add_comment(3300,
+                                        'CATCHALL - if you see pink items - send me a mail please - should never happen')
     blocks[0].PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks)
 
