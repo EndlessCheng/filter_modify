@@ -1,7 +1,9 @@
 DEBUG = False
 
+DARKNESS = True
+
 # Small different on leveling
-TENCENT = False
+TENCENT = True or DARKNESS
 SSF = True
 
 AW = False
@@ -16,26 +18,30 @@ RICH_LEVELING = False
 # Part 1 - A1-A10
 #
 
+DARKNESS_HIDE_CLASS = ' '.join([
+    '"Bows" "Two Hand" "Staves" "Quivers" "Claws" "One Hand"',
+]).strip()
+
 NEED_GGB_WEAPON = True  # True
 
 SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
-SHOW_4L = True  # True
-SHOW_FLASK_MANA = True  # 65 or 3 in 1
+SHOW_4L = True  # True, 装备合适的话就取消掉
+SHOW_FLASK_MANA = True  # True -> False -> True -> False    65 or 3 in 1
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amber Amulet" "Agate Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
-    # '"Jade Amulet" "Turquoise Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
-    '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"' if not SPELL else '',  # 点伤，血抗
+    '"Jade Amulet" "Turquoise Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
+    # '"Lapis Amulet" "Turquoise Amulet" "Onyx Amulet"' if not SPELL else '',  # 点伤，血抗
     '"Ruby Ring" "Topaz Ring" "Sapphire Ring" "Two-Stone Ring"',  # 点伤，血抗
-    '"Leather Belt"',  # 血抗
+    '"Leather Belt" "Heavy Belt"',  # 血抗
 ]).strip() if not RICH_LEVELING else ''
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
     '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用，仅此
 
-    '"Crystal Sceptre"',  # 攻速
-    '"Platinum Kris"',  # 爆率，攻速
+    # '"Crystal Sceptre"',
+    '"Platinum Kris"',  # 爆率
     '"Fossilised Spirit Shield"',  # 爆率
 
     # '"Engraved Wand"',  # essence of anger/wrath/hatred
@@ -128,7 +134,22 @@ SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(
 if SPELL:
     SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join(['"Amber"'][0:])
 SSF_CRAFT_RINGS_BASE_TYPE = '"Two-Stone"' if '"Two-Stone Ring"' in ALERT_MAGIC_BASE_TYPE else ''
-SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Leather Belt"'][0:])
+SSF_CRAFT_BELTS_BASE_TYPE = ' '.join(['"Heavy Belt" "Leather Belt"'][0:])
+
+if DARKNESS:
+    SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([
+        '"Amber"',
+        '"Jade"',
+    ]).strip()
+    SSF_CRAFT_RINGS_BASE_TYPE = ' '.join([
+        '"Two-Stone"',
+        '"Topaz"',
+        '"Sapphire"',
+        '"Ruby"',
+    ]).strip()
+    SSF_CRAFT_BELTS_BASE_TYPE = ' '.join([
+        '"Heavy Belt" "Leather Belt"',
+    ]).strip()
 
 L3_MAX_IL = 19  # RRG 头/脚
 
@@ -153,7 +174,7 @@ CURRENCY_ALERT_AUGMENTATION = True and not MAP_YELLOW
 # CURRENCY_ALERT_CHANCE = True and not MAP_YELLOW
 ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
 
-SSF_UNIQUE = '"Twilight Blade"'  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
+SSF_UNIQUE = '"Twilight Blade" "Basket Rapier"'  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
 
 ALERT_ESSENCE_BASE_TYPE = ''
 

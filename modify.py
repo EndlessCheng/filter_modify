@@ -103,6 +103,12 @@ BLOCK_HIDE_REMAINING = 3200  # SetFontSize=FONT_SIZE_MIN
 
 def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here', ignored=True)
+    if settings.DARKNESS:
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
+        filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 30', Rarity=RARITY_NORMAL))
 
     # 8
     blocks = filter_manager.add_comment(200, '6 LINKS')
@@ -686,6 +692,11 @@ def modify_leveling(filter_manager):
         filter_manager.append_block(blocks[-1])
 
     blocks = filter_manager.add_comment(2902, 'Leveling rares - Progression')
+    if settings.DARKNESS:
+        for b in blocks:
+            b.modify(Rarity=None, **STYLE_NONE)
+        for b in blocks[:3]:
+            b.modify(ItemLevel=' <= 10')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2903, 'Leveling rares - remaining rules')
@@ -950,30 +961,34 @@ def modify_filter(filter_manager, show_rare_class=''):
 
     # FONT_SIZE_MIN or 2
     blocks = filter_manager.add_comment(2006, 'T5 - Format trash tier cards... before')
-    hide_cards = blocks[0].copy_modify(status=DEBUG, BaseType='"Carrion Crow" '  # Shit
-                                                              '"King\'s Blade" '  # (110-134)% 物理 永恒之剑
-                                                              '"Prosperity" '  # T1 稀有度 金光戒指
-                                                              '"The Inoculated" '  # T1 混合 ES% 护甲
-                                                              '"The Rabid Rhoa" '  # 混沌伤 双子战爪
-                                                              '"The Sigil" '  # T1 ES% 项链
-    # '"The Surgeon" '  # 暴击充能 药剂
-                                                              '"The Twins" ',  # T1 攻速 双子战爪
-                                       SetFontSize=FONT_SIZE_MIN)
-    if not settings.SSF:
-        trash_base_type = blocks[0].BaseType
-        still_good_base_type = ['"Lantador\'s Lost Love"',
-                                '"Rain of Chaos"',
-                                '"Struck by Lightning"',  # 点电伤 宝石
-                                '"The Eye of the Dragon"',  # 腐化珠宝
-                                '"The Lover"',
-                                '"The Scholar"',
-                                '"The Warden"',  # 腐化项链
-                                '"Volatile Power"',  # Q20 瓦尔技能
-                                ]
-        for bt in still_good_base_type:
-            trash_base_type = trash_base_type.replace(bt, '')
-        hide_cards.BaseType += trash_base_type
-    filter_manager.append_block(hide_cards)
+    if settings.DARKNESS:
+        blocks[0].modify(PlayAlertSound=SOUND_LOW_VALUE)
+        filter_manager.extend_blocks(blocks)
+    else:
+        hide_cards = blocks[0].copy_modify(status=DEBUG, BaseType='"Carrion Crow" '  # Shit
+                                                                  '"King\'s Blade" '  # (110-134)% 物理 永恒之剑
+                                                                  '"Prosperity" '  # T1 稀有度 金光戒指
+                                                                  '"The Inoculated" '  # T1 混合 ES% 护甲
+                                                                  '"The Rabid Rhoa" '  # 混沌伤 双子战爪
+                                                                  '"The Sigil" '  # T1 ES% 项链
+        # '"The Surgeon" '  # 暴击充能 药剂
+                                                                  '"The Twins" ',  # T1 攻速 双子战爪
+                                           SetFontSize=FONT_SIZE_MIN)
+        if not settings.SSF:
+            trash_base_type = blocks[0].BaseType
+            still_good_base_type = ['"Lantador\'s Lost Love"',
+                                    '"Rain of Chaos"',
+                                    '"Struck by Lightning"',  # 点电伤 宝石
+                                    '"The Eye of the Dragon"',  # 腐化珠宝
+                                    '"The Lover"',
+                                    '"The Scholar"',
+                                    '"The Warden"',  # 腐化项链
+                                    '"Volatile Power"',  # Q20 瓦尔技能
+                                    ]
+            for bt in still_good_base_type:
+                trash_base_type = trash_base_type.replace(bt, '')
+            hide_cards.BaseType += trash_base_type
+        filter_manager.append_block(hide_cards)
 
     blocks[0].modify(SetFontSize=FONT_SIZE_MAX, PlayAlertSound=SOUND_LOW_VALUE)
     filter_manager.extend_blocks(blocks)
