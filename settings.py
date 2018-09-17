@@ -21,7 +21,7 @@ RICH_LEVELING = False
 # TODO: 开赛前去掉 hide magic, rare
 
 DARKNESS_HIDE_CLASS = ' '.join([
-    '"Bows" "Two Hand" "Staves" "Quivers" "One Hand" "Claws" "Daggers"',
+    '"Bows" "Two Hand" "Staves" "Quivers" "One Hand" "Claws" "Daggers" "Shields"',
 ]).strip()
 
 NEED_GGB_WEAPON = True  # True

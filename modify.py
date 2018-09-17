@@ -111,6 +111,8 @@ def modify_endgame_mix(filter_manager):
         if '"Platinum Kris"' in settings.ALERT_NORMAL_BASE_TYPE:
             filter_manager.append_block(
                 FilterBlock(Class='"Daggers"', BaseType='"Platinum Kris"', Rarity=RARITY_NORMAL, **_global))
+        filter_manager.append_block(
+            FilterBlock(Class='"Shields"', BaseType='"Kite Shield" "Spirit Shield"', Rarity=RARITY_NORMAL, **_global))
         filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL, **_global))
 
         filter_manager.append_block(
