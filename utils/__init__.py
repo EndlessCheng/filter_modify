@@ -5,6 +5,8 @@ class FilterBlock:
     """
     http://pathofexile.gamepedia.com/Item_filter
     https://dd.reddit.com/r/pathofexile/comments/5ftpbg/lootfilter_performance_tips_thanks_to_the/
+
+    `... over 96% of all drops in the endgame are normal and magic items or very low orbs.`
     """
     _FILTER_ORDER = [
         # Conditions

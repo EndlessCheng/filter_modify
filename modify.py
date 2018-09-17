@@ -104,11 +104,20 @@ BLOCK_HIDE_REMAINING = 3200  # SetFontSize=FONT_SIZE_MIN
 def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here', ignored=True)
     if settings.DARKNESS:
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
-        filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 30', Rarity=RARITY_NORMAL))
+        _global = {'ElderItem': False, 'ShaperItem': False}
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC, **_global))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE, **_global))
+
+        if '"Platinum Kris"' in settings.ALERT_NORMAL_BASE_TYPE:
+            filter_manager.append_block(
+                FilterBlock(Class='"Daggers"', BaseType='"Platinum Kris"', Rarity=RARITY_NORMAL, **_global))
+        filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL, **_global))
+
+        filter_manager.append_block(
+            FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL, **_global))
+        filter_manager.append_block(
+            FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 30', Rarity=RARITY_NORMAL, **_global))
+
 
     # 8
     blocks = filter_manager.add_comment(200, '6 LINKS')
