@@ -116,8 +116,7 @@ def modify_endgame_mix(filter_manager):
         filter_manager.append_block(
             FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL, **_global))
         filter_manager.append_block(
-            FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 30', Rarity=RARITY_NORMAL, **_global))
-
+            FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 29', Rarity=RARITY_NORMAL, **_global))
 
     # 8
     blocks = filter_manager.add_comment(200, '6 LINKS')
@@ -832,7 +831,8 @@ def modify_filter(filter_manager, show_rare_class=''):
     modify_endgame_mix(filter_manager)
 
     blocks = filter_manager.add_comment(800, 'HIDE LAYER 1 - MAGIC AND NORMAL ITEMS')
-    blocks[0].status = DEBUG
+    if not settings.DARKNESS:
+        blocks[0].status = DEBUG
     filter_manager.extend_blocks(blocks)
 
     # 1 CURRENCY_ALERT_XXX CURRENCY_XXX_FONT_SIZE
