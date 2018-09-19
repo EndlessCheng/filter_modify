@@ -863,8 +863,9 @@ def modify_filter(filter_manager, show_rare_class=''):
         blocks[-4].SetFontSize = settings.CURRENCY_PORTAL_FONT_SIZE
         blocks[-3].BaseType = blocks[-3].BaseType.replace('"Transmutation Shard"', '').replace('"Alteration Shard"', '')
         blocks[-3].SetFontSize = settings.CURRENCY_ARMOURER_SCRAP_FONT_SIZE
-    blocks[-2].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
     blocks[-2].SetFontSize = settings.CURRENCY_WISDOM_FONT_SIZE
+    blocks[-2].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
+    blocks[-1].BaseType += ' "Alteration Shard" "Engineer\'s Shard" '
     filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(1000, 'OVERRIDE AREA 2 - Override the default rare rulesets here', ignored=True)
