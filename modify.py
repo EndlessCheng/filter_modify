@@ -809,10 +809,11 @@ def modify_leveling(filter_manager):
         filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL))
 
-        for dropLevel in range(1, 56):
+        endgameDropLevel = 57
+        for dropLevel in range(1, endgameDropLevel):
             itemLevel = dropLevel + 4
             filter_manager.append_block(FilterBlock(ItemLevel='<= ' + str(itemLevel), DropLevel='>= ' + str(dropLevel)))
-        filter_manager.append_block(FilterBlock(DropLevel='>= 56'))
+        filter_manager.append_block(FilterBlock(DropLevel='>= ' + str(endgameDropLevel)))
 
     hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
     hide_m_2.modify(Class=' '.join([CLASS_HAND, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC,
