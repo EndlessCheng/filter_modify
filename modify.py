@@ -806,7 +806,7 @@ def modify_leveling(filter_manager):
     if settings.DARKNESS:
         filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 49', Rarity=RARITY_NORMAL))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL))
 
         blocks_rares = filter_manager.get_blocks(2902)  # TODO
         for b in blocks_rares:
