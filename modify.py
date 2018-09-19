@@ -360,6 +360,7 @@ def modify_endgame_mix(filter_manager):
 
     blocks = filter_manager.add_comment(721, 'Endgame-start 4-links')
     if settings.DARKNESS:
+        blocks[0].modify(ItemLevel=None, DropLevel='>= 50')
         filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(722, 'Animate Weapon script - deactivated by default', ignored=True)
@@ -803,7 +804,7 @@ def modify_leveling(filter_manager):
             filter_manager.extend_blocks(weapons)
 
     # other rules here
-    if settings.DARKNESS:
+    if settings.DARKNESS and not settings.ONLY_SHOW_4L_NORMAL:
         filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL))
