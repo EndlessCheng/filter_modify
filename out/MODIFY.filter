@@ -1,20 +1,5 @@
 
 # 0100 OVERRIDE AREA 1 - Override ALL rules here
-Hide
- Rarity Magic
-Hide
- Rarity Rare
-Hide
- Rarity Normal
- Class "Bows" "Two Hand" "Staves" "Quivers" "Claws" "One Hand"
-Show
- ItemLevel <= 5
- Rarity Normal
- Class "Boots"
-Hide
- ItemLevel <= 30
- Rarity Normal
- Class "Boots"
 
 # 0200 6 LINKS
 Show
@@ -1060,7 +1045,7 @@ Show
 # 0716 Remaining crafting rules - add your own bases here!
 Show
  Rarity = Normal
- BaseType "Ceremonial Kite Shield" "Angelic Kite Shield" "Platinum Kris" "Fossilised Spirit Shield"
+ BaseType "Ceremonial Kite Shield" "Angelic Kite Shield" "Crystal Sceptre" "Platinum Kris" "Fossilised Spirit Shield"
  SetFontSize 40
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -1076,7 +1061,7 @@ Show
  ItemLevel >= 13
  Rarity Normal
  Class Amulets
- BaseType "Amber" "Jade"
+ BaseType "Amber" "Jade" "Citrine"
  SetTextColor 255 255 255
 Show
  ItemLevel >= 13
@@ -1143,6 +1128,13 @@ Show
  SetBackgroundColor 75 75 75 255
 
 # 0721 Endgame-start 4-links
+Show
+ LinkedSockets >= 4
+ DropLevel >= 50
+ Rarity < Rare
+ Class "Boots" "Gloves" "Body Armour" "Helmets"
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 185
 
 # 0722 Animate Weapon script - deactivated by default
 
@@ -1220,7 +1212,7 @@ Show
  SetBackgroundColor 0 0 0 255
 Show
  Class Currency
- BaseType "Scroll of Wisdom"
+ BaseType "Scroll of Wisdom" "Alteration Shard" "Engineer's Shard" 
  StackSize > 1
  SetFontSize 45
  SetTextColor 170 158 130 220
@@ -1401,65 +1393,6 @@ Show
  SetTextColor 255 255 119 255
  SetBorderColor 150 150 150
  SetBackgroundColor 0 75 30 255
-Hide
- Identified False
- Height <= 4
- Width <= 1
- ItemLevel >= 75
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetTextColor 255 190 0
- SetBorderColor 120 120 120
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- Height <= 4
- Width <= 1
- ItemLevel >= 65
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetBorderColor 120 120 120
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- Height <= 2
- Width <= 2
- ItemLevel >= 75
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetTextColor 255 190 0
- SetBorderColor 120 120 120
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- Height <= 2
- Width <= 2
- ItemLevel >= 65
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetBorderColor 120 120 120
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- ItemLevel >= 75
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetTextColor 255 190 0
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- ItemLevel >= 65
- Rarity = Rare
- Class "Quivers" "Shields" "Bows" "Two Hand" "Staves" "Claws" "One Hand"
- SetFontSize 24
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
 Show
  ItemLevel >= 75
  Rarity Rare
@@ -2338,9 +2271,9 @@ Show
  PlayAlertSound 2 300
 
 # 1505 Other gems
-Hide
+Show
  Class Gems
- SetFontSize 26
+ SetFontSize 36
  SetBorderColor 0 0 0
 
 # 1600 UTILITY FLASKS (Levelling Rules)
@@ -3621,31 +3554,6 @@ Show
  SetBackgroundColor 75 75 75 255
 
 # 2900 Leveling - RARES
-Hide
- Identified False
- ItemLevel >= 13
- Rarity = Rare
- Class "Bows" "Quivers" "Two Hand" "Staves" "Shields"
- SetFontSize 26
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- ItemLevel >= 23
- Rarity = Rare
- Class "Body Armour"
- BaseType "Plate Vest" "Chestplate" "Plate"
- SetFontSize 26
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
-Hide
- Identified False
- ItemLevel >= 13
- Rarity = Rare
- Class "Claws" "One Hand"
- SetFontSize 26
- SetBorderColor 0 0 0 100
- SetBackgroundColor 0 0 0 75
 
 # 2901 Leveling rares - specific items
 Show
@@ -3700,153 +3608,297 @@ Show
 Show
  Height <= 3
  Width <= 1
- ItemLevel  <= 10
+ ItemLevel <= 12
+ Rarity Rare
+ SetFontSize 45
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 2
  Width <= 2
- ItemLevel  <= 10
+ ItemLevel <= 12
+ Rarity Rare
+ SetFontSize 45
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
- ItemLevel  <= 10
+ ItemLevel <= 12
+ Rarity Rare
+ SetFontSize 45
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 15
  DropLevel > 5
+ Rarity Rare
+ SetFontSize 45
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 15
  DropLevel > 5
+ Rarity Rare
+ SetFontSize 45
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 15
  DropLevel > 5
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 20
  DropLevel > 10
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 20
  DropLevel > 10
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 20
  DropLevel > 10
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 25
  DropLevel > 15
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 25
  DropLevel > 15
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 25
  DropLevel > 15
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 30
  DropLevel > 20
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 30
  DropLevel > 20
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 30
  DropLevel > 20
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 35
  DropLevel > 25
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 35
  DropLevel > 25
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 35
  DropLevel > 25
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 40
  DropLevel > 30
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 40
  DropLevel > 30
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 40
  DropLevel > 30
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 45
  DropLevel > 35
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 45
  DropLevel > 35
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 45
  DropLevel > 35
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 50
  DropLevel > 40
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 50
  DropLevel > 40
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 50
  DropLevel > 40
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 55
  DropLevel > 45
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 55
  DropLevel > 45
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 55
  DropLevel > 45
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  ItemLevel < 60
  DropLevel > 50
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  ItemLevel < 60
  DropLevel > 50
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  ItemLevel < 60
  DropLevel > 50
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 Show
  Height <= 2
  Width <= 2
  DropLevel > 55
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  Height <= 3
  Width <= 1
  DropLevel > 55
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 150 150 150
+ SetBackgroundColor 0 50 0 255
 Show
  DropLevel > 55
+ Rarity Rare
+ SetFontSize 36
+ SetBorderColor 0 0 0
+ SetBackgroundColor 0 0 0 255
 
 # 2903 Leveling rares - remaining rules
 Show
@@ -4010,7 +4062,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Normal
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Iron Ring" "Scale Vest" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Scale Vest" 
  SetFontSize 45
  SetTextColor 255 255 255 255
  SetBorderColor 100 100 100 255
@@ -4018,7 +4070,7 @@ Show
 Show
  ItemLevel <= 12
  Rarity = Magic
- BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Iron Ring" "Scale Vest" 
+ BaseType "Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt" "Scale Vest" 
  SetFontSize 45
  SetTextColor 25 95 235 255
  SetBorderColor 100 100 100 255
@@ -4039,6 +4091,194 @@ Show
 # 3100 Leveling - normal and magic item progression
 
 # 3101 Progression - Part 1 1-30
+Show
+ ItemLevel <= 5
+ Rarity Normal
+ Class "Boots"
+Hide
+ Rarity Normal
+ Class "Bows" "Two Hand" "Staves" "Quivers" "One Hand" "Claws" "Rings" "Amulets" "Belts" "Daggers"
+ SetFontSize 17
+Hide
+ Rarity Normal
+ Class "Shields"
+ BaseType "Tower Shield" "Buckler" "Round Shield" "Spiked Shield"
+ SetFontSize 17
+Hide
+ ItemLevel <= 54
+ Rarity Normal
+ Class "Boots"
+ SetFontSize 17
+Show
+ ItemLevel <= 5
+ DropLevel >= 1
+Show
+ ItemLevel <= 6
+ DropLevel >= 2
+Show
+ ItemLevel <= 7
+ DropLevel >= 3
+Show
+ ItemLevel <= 8
+ DropLevel >= 4
+Show
+ ItemLevel <= 9
+ DropLevel >= 5
+Show
+ ItemLevel <= 10
+ DropLevel >= 6
+Show
+ ItemLevel <= 11
+ DropLevel >= 7
+Show
+ ItemLevel <= 12
+ DropLevel >= 8
+Show
+ ItemLevel <= 13
+ DropLevel >= 9
+Show
+ ItemLevel <= 14
+ DropLevel >= 10
+Show
+ ItemLevel <= 15
+ DropLevel >= 11
+Show
+ ItemLevel <= 16
+ DropLevel >= 12
+Show
+ ItemLevel <= 17
+ DropLevel >= 13
+Show
+ ItemLevel <= 18
+ DropLevel >= 14
+Show
+ ItemLevel <= 19
+ DropLevel >= 15
+Show
+ ItemLevel <= 20
+ DropLevel >= 16
+Show
+ ItemLevel <= 21
+ DropLevel >= 17
+Show
+ ItemLevel <= 22
+ DropLevel >= 18
+Show
+ ItemLevel <= 23
+ DropLevel >= 19
+Show
+ ItemLevel <= 24
+ DropLevel >= 20
+Show
+ ItemLevel <= 25
+ DropLevel >= 21
+Show
+ ItemLevel <= 26
+ DropLevel >= 22
+Show
+ ItemLevel <= 27
+ DropLevel >= 23
+Show
+ ItemLevel <= 28
+ DropLevel >= 24
+Show
+ ItemLevel <= 29
+ DropLevel >= 25
+Show
+ ItemLevel <= 30
+ DropLevel >= 26
+Show
+ ItemLevel <= 31
+ DropLevel >= 27
+Show
+ ItemLevel <= 32
+ DropLevel >= 28
+Show
+ ItemLevel <= 33
+ DropLevel >= 29
+Show
+ ItemLevel <= 34
+ DropLevel >= 30
+Show
+ ItemLevel <= 35
+ DropLevel >= 31
+Show
+ ItemLevel <= 36
+ DropLevel >= 32
+Show
+ ItemLevel <= 37
+ DropLevel >= 33
+Show
+ ItemLevel <= 38
+ DropLevel >= 34
+Show
+ ItemLevel <= 39
+ DropLevel >= 35
+Show
+ ItemLevel <= 40
+ DropLevel >= 36
+Show
+ ItemLevel <= 41
+ DropLevel >= 37
+Show
+ ItemLevel <= 42
+ DropLevel >= 38
+Show
+ ItemLevel <= 43
+ DropLevel >= 39
+Show
+ ItemLevel <= 44
+ DropLevel >= 40
+Show
+ ItemLevel <= 45
+ DropLevel >= 41
+Show
+ ItemLevel <= 46
+ DropLevel >= 42
+Show
+ ItemLevel <= 47
+ DropLevel >= 43
+Show
+ ItemLevel <= 48
+ DropLevel >= 44
+Show
+ ItemLevel <= 49
+ DropLevel >= 45
+Show
+ ItemLevel <= 50
+ DropLevel >= 46
+Show
+ ItemLevel <= 51
+ DropLevel >= 47
+Show
+ ItemLevel <= 52
+ DropLevel >= 48
+Show
+ ItemLevel <= 53
+ DropLevel >= 49
+Show
+ ItemLevel <= 54
+ DropLevel >= 50
+Show
+ ItemLevel <= 55
+ DropLevel >= 51
+Show
+ ItemLevel <= 56
+ DropLevel >= 52
+Show
+ ItemLevel <= 57
+ DropLevel >= 53
+Show
+ ItemLevel <= 58
+ DropLevel >= 54
+Show
+ ItemLevel <= 59
+ DropLevel >= 55
+Show
+ ItemLevel <= 60
+ DropLevel >= 56
+Show
+ DropLevel >= 57
 Hide
  ItemLevel >= 2
  Rarity Magic

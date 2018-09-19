@@ -120,10 +120,10 @@ def modify_endgame_mix(filter_manager):
     filter_manager.extend_blocks(blocks_5l)
 
     # special rules here
-    if settings.DARKNESS:
-        _global = {'ElderItem': False, 'ShaperItem': False}
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC, **_global))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE, **_global))
+    # if settings.DARKNESS:
+    #     _global = {'ElderItem': False, 'ShaperItem': False}
+    #     filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC, **_global))
+    #     filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE, **_global))
 
     filter_manager.add_comment(300, 'SHAPER ITEMS', ignored=True)
 
@@ -551,7 +551,8 @@ def modify_gem_flask_map(filter_manager):
 
     # Hide
     blocks = filter_manager.add_comment(1505, 'Other gems')
-    blocks[0].modify(status=DEBUG, SetFontSize=26)
+    if not settings.DARKNESS:
+        blocks[0].modify(status=DEBUG, SetFontSize=26)
     filter_manager.extend_blocks(blocks)
 
     # ALERT_UTILITY_FLASK_BASE_TYPE
@@ -806,12 +807,17 @@ def modify_leveling(filter_manager):
             filter_manager.extend_blocks(weapons)
 
     # other rules here
-    if settings.DARKNESS and not settings.ONLY_SHOW_4L_NORMAL:
+    if settings.DARKNESS and settings.SHOW_NON_4L_NORMAL:
         filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
         filter_manager.append_block(
-            FilterBlock(status=DEBUG, Class='"Shields"', BaseType=BASE_TYPE_SHIELD_NON_SPELL, Rarity=RARITY_NORMAL))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL))
+            FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL,
+                        SetFontSize=FONT_SIZE_MIN))
+        filter_manager.append_block(
+            FilterBlock(status=DEBUG, Class='"Shields"', BaseType=BASE_TYPE_SHIELD_NON_SPELL, Rarity=RARITY_NORMAL,
+                        SetFontSize=FONT_SIZE_MIN))
+        filter_manager.append_block(
+            FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL,
+                        SetFontSize=FONT_SIZE_MIN))
 
         endgameDropLevel = 57
         for dropLevel in range(1, endgameDropLevel):

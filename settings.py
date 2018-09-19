@@ -18,10 +18,15 @@ RICH_LEVELING = False
 # Part 1 - A1-A10
 #
 
-# TODO: 开赛前去掉 hide magic, rare
-
 DARKNESS_HIDE_CLASS = ' '.join([
-    '"Bows" "Two Hand" "Staves" "Quivers" "One Hand" "Claws" "Daggers" "Shields"',
+    '"Bows" "Two Hand" "Staves" "Quivers" "One Hand" "Claws" "Rings" "Amulets" "Belts"',
+    '"Daggers"',
+    # '"Wands" "Sceptres"',
+    # '"Body Armour"',
+    # '"Shields"',
+    # '"Boots"',  # 80+血，有移速更好
+    # '"Helmets"',  # 90+血，有命中更好
+    # '"Gloves"',  # 80+血，有攻速/点伤更好
 ]).strip()
 
 NEED_GGB_WEAPON = True  # True
@@ -30,6 +35,8 @@ SHOW_FLASK_HALLOWED = True  # True
 SHOW_FLASK_LIFE = True  # True
 SHOW_4L = True  # True, 装备合适的话就取消掉
 SHOW_FLASK_MANA = True  # True -> False -> True -> False    65 or 3 in 1
+
+SHOW_NON_4L_NORMAL = True  # True
 
 ALERT_MAGIC_BASE_TYPE = ' '.join([
     '"Amber Amulet" "Agate Amulet" "Citrine Amulet"' if SPELL else '',  # 血抗
@@ -40,9 +47,9 @@ ALERT_MAGIC_BASE_TYPE = ' '.join([
 ]).strip() if not RICH_LEVELING else ''
 
 ALERT_NORMAL_BASE_TYPE = ' '.join([
-    '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用，仅此
+    '"Ceremonial Kite Shield" "Angelic Kite Shield"',  # 补抗用
 
-    # '"Crystal Sceptre"',
+    '"Crystal Sceptre"',
     '"Platinum Kris"',  # 爆率
     '"Fossilised Spirit Shield"',  # 爆率
 
@@ -142,6 +149,7 @@ if DARKNESS:
     SSF_CRAFT_AMULETS_BASE_TYPE = ' '.join([
         '"Amber"',
         '"Jade"',
+        '"Citrine"',
     ]).strip()
     SSF_CRAFT_RINGS_BASE_TYPE = ' '.join([
         '"Two-Stone"',
@@ -150,7 +158,8 @@ if DARKNESS:
         '"Ruby"',
     ]).strip()
     SSF_CRAFT_BELTS_BASE_TYPE = ' '.join([
-        '"Heavy Belt" "Leather Belt"',
+        '"Heavy Belt"',
+        '"Leather Belt"',
     ]).strip()
 
 L3_MAX_IL = 19  # RRG 头/脚
@@ -166,6 +175,8 @@ LINKED_CLASS = ' '.join([
 SHOW_N2M_ONE_HAND_MELEE = True and SHOW_FLASK_LIFE and not SPELL and not BOW
 
 CURRENCY_WISDOM_FONT_SIZE = [40, 33, 18][max(0, 0 if SHOW_FLASK_LIFE else 2)]
+if DARKNESS and not NEED_GGB_WEAPON:
+    CURRENCY_WISDOM_FONT_SIZE = 18
 CURRENCY_ARMOURER_SCRAP_FONT_SIZE = [40, 36, 18][max(0, 0 if SHOW_FLASK_LIFE else 1, 0 if any(
     class_ not in HIDE_BELOW_T1_RARE_CLASS for class_ in ['"Boots"', '"Helmets"']) else 2)]
 
@@ -175,6 +186,11 @@ CURRENCY_ALERT_BLACKSMITH = True and '"Siege Axe"' in ALERT_NORMAL_BASE_TYPE and
 CURRENCY_ALERT_AUGMENTATION = True and not MAP_YELLOW
 # CURRENCY_ALERT_CHANCE = True and not MAP_YELLOW
 ALERT_LOW_CURRENCY = True and SHOW_FLASK_LIFE
+
+if DARKNESS:
+    CURRENCY_ALERT_TRANSMUTATION = True
+    CURRENCY_ALERT_AUGMENTATION = True
+    ALERT_LOW_CURRENCY = True
 
 SSF_UNIQUE = '"Twilight Blade" "Basket Rapier"'  # '"Siege Axe" "Basket Rapier" "Twilight Blade" "Sadist Garb" "Destiny Leather" "Tornado Wand"'
 
