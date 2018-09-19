@@ -103,22 +103,7 @@ BLOCK_HIDE_REMAINING = 3200  # SetFontSize=FONT_SIZE_MIN
 
 def modify_endgame_mix(filter_manager):
     filter_manager.add_comment(100, 'OVERRIDE AREA 1 - Override ALL rules here', ignored=True)
-    if settings.DARKNESS:
-        _global = {'ElderItem': False, 'ShaperItem': False}
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC, **_global))
-        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE, **_global))
-
-        if '"Platinum Kris"' in settings.ALERT_NORMAL_BASE_TYPE:
-            filter_manager.append_block(
-                FilterBlock(Class='"Daggers"', BaseType='"Platinum Kris"', Rarity=RARITY_NORMAL, **_global))
-        filter_manager.append_block(
-            FilterBlock(Class='"Shields"', BaseType='"Kite Shield" "Spirit Shield"', Rarity=RARITY_NORMAL, **_global))
-        filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL, **_global))
-
-        filter_manager.append_block(
-            FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL, **_global))
-        filter_manager.append_block(
-            FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 29', Rarity=RARITY_NORMAL, **_global))
+    # never override 6L
 
     # 8
     blocks = filter_manager.add_comment(200, '6 LINKS')
@@ -131,6 +116,12 @@ def modify_endgame_mix(filter_manager):
     for block in blocks_5l:
         block.PlayAlertSound = SOUND_TOP_VALUE
     filter_manager.extend_blocks(blocks_5l)
+
+    # special rules here
+    if settings.DARKNESS:
+        _global = {'ElderItem': False, 'ShaperItem': False}
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_MAGIC, **_global))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Rarity=RARITY_RARE, **_global))
 
     filter_manager.add_comment(300, 'SHAPER ITEMS', ignored=True)
 
@@ -367,7 +358,9 @@ def modify_endgame_mix(filter_manager):
     if settings.NEED_RGB:
         filter_manager.extend_blocks(blocks)
 
-    filter_manager.add_comment(721, 'Endgame-start 4-links', ignored=True)
+    blocks = filter_manager.add_comment(721, 'Endgame-start 4-links')
+    if settings.DARKNESS:
+        filter_manager.extend_blocks(blocks)
 
     filter_manager.add_comment(722, 'Animate Weapon script - deactivated by default', ignored=True)
     if settings.AW:
@@ -388,6 +381,8 @@ def modify_endgame_mix(filter_manager):
 
     blocks = filter_manager.add_comment(724, 'Sacrificial Garb')
     filter_manager.extend_blocks(blocks)
+
+    # other rules here
 
 
 def modify_endgame_rare(filter_manager, show_rare_class=''):
@@ -449,13 +444,14 @@ def modify_endgame_rare(filter_manager, show_rare_class=''):
         filter_manager.append_block(
             blocks[1].copy_modify(Class='"Shields"', BaseType='"Spirit Shield"', ItemLevel=None))
 
-    hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
-    hide_rare_classes = ' '.join(['"Quivers" "Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
-    if show_rare_class:
-        hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
-    for block in hide_blocks:
-        block.modify(status=DEBUG, Identified=False, Class=hide_rare_classes)
-    filter_manager.extend_blocks(hide_blocks)
+    if not settings.DARKNESS:
+        hide_blocks = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)
+        hide_rare_classes = ' '.join(['"Quivers" "Shields"', CLASS_TWO_HAND, settings.HIDE_BELOW_T1_RARE_CLASS])
+        if show_rare_class:
+            hide_rare_classes = hide_rare_classes.replace(show_rare_class, '')
+        for block in hide_blocks:
+            block.modify(status=DEBUG, Identified=False, Class=hide_rare_classes)
+        filter_manager.extend_blocks(hide_blocks)
 
     filter_manager.extend_blocks(blocks)
 
@@ -665,23 +661,24 @@ def modify_leveling(filter_manager):
 
     # hide_leveling_rares hide_some_body_rares  HIDE_BELOW_T1_RARE_CLASS
     filter_manager.add_comment(2900, 'Leveling - RARES', ignored=True)
-    hide_leveling_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
-    hide_leveling_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
-                               Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"', SetFontSize=26)
-    filter_manager.extend_blocks([hide_leveling_rares])
-    if not settings.SPELL:
-        hide_some_body_rares = hide_leveling_rares.copy_modify(
-            ItemLevel='>= 23', Class='"Body Armour"',
-            BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
-        filter_manager.append_block(hide_some_body_rares)
-    else:
-        hide_some_body_rares = hide_leveling_rares.copy_modify(
-            ItemLevel='>= 23', Class='"Body Armour"',
-            BaseType=' '.join([BASE_TYPE_BODY_STR]))
-        filter_manager.append_block(hide_some_body_rares)
-    if settings.HIDE_BELOW_T1_RARE_CLASS != '':
-        hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS)
-        filter_manager.append_block(hide_rares)
+    if not settings.DARKNESS:
+        hide_leveling_rares = filter_manager.get_blocks(BLOCK_HIDE_RARES_65)[-1]
+        hide_leveling_rares.modify(status=DEBUG, Identified=False, ItemLevel='>= 13',
+                                   Class='"Bows" "Quivers" "Two Hand" "Staves" "Shields"', SetFontSize=26)
+        filter_manager.extend_blocks([hide_leveling_rares])
+        if not settings.SPELL:
+            hide_some_body_rares = hide_leveling_rares.copy_modify(
+                ItemLevel='>= 23', Class='"Body Armour"',
+                BaseType=' '.join([BASE_TYPE_BODY_EVA, BASE_TYPE_BODY_ES, BASE_TYPE_BODY_EE]))
+            filter_manager.append_block(hide_some_body_rares)
+        else:
+            hide_some_body_rares = hide_leveling_rares.copy_modify(
+                ItemLevel='>= 23', Class='"Body Armour"',
+                BaseType=' '.join([BASE_TYPE_BODY_STR]))
+            filter_manager.append_block(hide_some_body_rares)
+        if settings.HIDE_BELOW_T1_RARE_CLASS != '':
+            hide_rares = hide_leveling_rares.copy_modify(Class=settings.HIDE_BELOW_T1_RARE_CLASS)
+            filter_manager.append_block(hide_rares)
 
     # Rare: 4L RRG RRR (GGB) L3_MAX_IL   ALERT_RARE_ACCESSORY   提醒下(跑)鞋
     blocks = filter_manager.add_comment(2901, 'Leveling rares - specific items')
@@ -702,11 +699,6 @@ def modify_leveling(filter_manager):
         filter_manager.append_block(blocks[-1])
 
     blocks = filter_manager.add_comment(2902, 'Leveling rares - Progression')
-    if settings.DARKNESS:
-        for b in blocks:
-            b.modify(Rarity=None, **STYLE_NONE)
-        for b in blocks[:3]:
-            b.modify(ItemLevel=' <= 10')
     filter_manager.extend_blocks(blocks)
 
     blocks = filter_manager.add_comment(2903, 'Leveling rares - remaining rules')
@@ -773,7 +765,7 @@ def modify_leveling(filter_manager):
     if not settings.RICH_LEVELING:
         if settings.SPELL:
             for block in blocks[:2]:
-                block.BaseType = '"Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt"' + ' "Iron Ring" "Scale Vest" '
+                block.BaseType = '"Paua Ring" "Iron Ring" "Coral Ring" "Chain Belt" "Leather Belt" "Heavy Belt"' + ' "Scale Vest" '
             filter_manager.append_block(blocks[-1])
         else:
             blocks[0].BaseType = '"Rustic Sash" "Amulet"' if settings.TENCENT else '"Iron Ring" "Rustic Sash" "Amulet"'
@@ -809,6 +801,19 @@ def modify_leveling(filter_manager):
                                                    ItemLevel='<= ' + str(leveling_base[1] + _LEVELING_BASE_IL_GAP))
                        for leveling_base in _LEVELING_BASE]
             filter_manager.extend_blocks(weapons)
+
+    # other rules here
+    if settings.DARKNESS:
+        filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
+        filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 49', Rarity=RARITY_NORMAL))
+
+        blocks_rares = filter_manager.get_blocks(2902)  # TODO
+        for b in blocks_rares:
+            b.modify(Rarity=None, **STYLE_NONE)
+        for b in blocks_rares[:3]:
+            b.modify(ItemLevel='<= 10')
+        filter_manager.extend_blocks(blocks_rares)
 
     hide_m_2 = filter_manager.get_blocks(BLOCK_HIDE_REMAINING)[0]
     hide_m_2.modify(Class=' '.join([CLASS_HAND, '"Flasks"', CLASS_ACCESSORY]), Rarity=RARITY_MAGIC,
@@ -1079,7 +1084,7 @@ def modify_filter(filter_manager, show_rare_class=''):
 
 
 def main():
-    filter_name = 'res' + os.sep + 'NeverSink\'s filter - 1-REGULAR.filter'
+    filter_name = 'res' + os.sep + 'NeverSink\'s filter - 0-SOFT.filter'
     with open(filter_name) as f:
         fm = FilterManager(f.readlines())
 
