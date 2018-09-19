@@ -23,6 +23,8 @@ BASE_TYPE_BODY_ES = '"Robe" "Silken Vest" "Silken Garb" "Vestment" "Regalia" "Si
 BASE_TYPE_BODY_EE = '"Padded Vest" "Oiled Vest" "Jacket" "Oiled Coat" "Sleek Coat" "Varnished Coat" "Raiment" ' \
                     '"Waxed Garb" "Lacquered Garb" "Sadist Garb" "Bone Armour" "Crypt Armour" "Carnal Armour"'
 
+BASE_TYPE_SHIELD_NON_SPELL = '"Tower Shield" "Buckler" "Round Shield" "Spiked Shield"'
+
 RARITY_NORMAL = 'Normal'
 RARITY_MAGIC = 'Magic'
 RARITY_RARE = 'Rare'
@@ -807,6 +809,8 @@ def modify_leveling(filter_manager):
     if settings.DARKNESS and not settings.ONLY_SHOW_4L_NORMAL:
         filter_manager.append_block(FilterBlock(Class='"Boots"', ItemLevel='<= 5', Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class=settings.DARKNESS_HIDE_CLASS, Rarity=RARITY_NORMAL))
+        filter_manager.append_block(
+            FilterBlock(status=DEBUG, Class='"Shields"', BaseType=BASE_TYPE_SHIELD_NON_SPELL, Rarity=RARITY_NORMAL))
         filter_manager.append_block(FilterBlock(status=DEBUG, Class='"Boots"', ItemLevel='<= 54', Rarity=RARITY_NORMAL))
 
         endgameDropLevel = 57
