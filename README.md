@@ -1,4 +1,3 @@
 # filter_modify
-Modify [NeverSink's filter](https://github.com/NeverSinkDev/NeverSink-Filter).
 
-This filter is focused on SSF (BTW).
+Moved to [neversink-filter-customizer](https://github.com/EndlessCheng/neversink-filter-customizer).
